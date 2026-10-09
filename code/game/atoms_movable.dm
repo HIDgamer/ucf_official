@@ -42,7 +42,7 @@
 		pulledby.stop_pulling()
 	QDEL_NULL(launch_metadata)
 	QDEL_NULL(em_block)
-	QDEL_NULL(emissive_overlay)
+	emissive_overlay = null
 
 	if(loc)
 		loc.on_stored_atom_del(src) //things that container need to do when a movable atom inside it is deleted
