@@ -88,10 +88,14 @@
 
 	if(opacity)
 		AddElement(/datum/element/light_blocking)
-	if(light_system == MOVABLE_LIGHT)
+	if(light_system == MOVABLE_LIGHT && needs_light_component_at_init())
 		AddComponent(/datum/component/overlay_lighting)
-	if(light_system == DIRECTIONAL_LIGHT)
+	if(light_system == DIRECTIONAL_LIGHT && needs_light_component_at_init())
 		AddComponent(/datum/component/overlay_lighting, is_directional = TRUE)
+
+/// Whether the overlay_lighting component must be created in Initialize() instead of lazily by the light setters.
+/atom/movable/proc/needs_light_component_at_init()
+	return TRUE
 
 /atom/movable/proc/update_emissive_block()
 	if(emissive_overlay)

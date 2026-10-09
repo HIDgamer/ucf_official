@@ -1137,3 +1137,14 @@
 ///Called by /mob/living/carbon/swap_hand() when hands are swapped
 /obj/item/proc/hands_swapped(mob/living/carbon/swapper_of_hands)
 	return
+
+/// Items without a light only get their overlay_lighting component when a light setter is first used.
+/obj/item/needs_light_component_at_init()
+	return light_range > 0
+
+/obj/item/ensure_light_component()
+	if(light_system != MOVABLE_LIGHT && light_system != DIRECTIONAL_LIGHT)
+		return
+	if(QDELETED(src) || GetComponent(/datum/component/overlay_lighting))
+		return
+	AddComponent(/datum/component/overlay_lighting, is_directional = (light_system == DIRECTIONAL_LIGHT) ? TRUE : null)
