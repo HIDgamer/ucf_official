@@ -62,6 +62,8 @@
 	lighting_effect.color = new_color
 
 /area/proc/add_base_lighting()
+	if(area_has_base_lighting)
+		return
 	lighting_effect = mutable_appearance('icons/effects/alphacolors.dmi', "white")
 	lighting_effect.plane = LIGHTING_PLANE
 	lighting_effect.layer = LIGHTING_PRIMARY_LAYER
