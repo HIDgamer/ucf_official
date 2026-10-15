@@ -285,3 +285,78 @@
 	hands_use_check = TRUE
 	cooldown = 6 SECONDS
 	global_audio_cooldown = FALSE
+
+/proc/pick_gendered_sound(mob/living/user, list/male_sounds, list/female_sounds)
+	return pick(user.gender == MALE ? male_sounds : female_sounds)
+
+/datum/emote/living/carbon/human/cry/get_sound(mob/living/user)
+	if(!ishumansynth_strict(user))
+		return
+	return pick_gendered_sound(user, list('sound/voice/cry/male_cry1.ogg', 'sound/voice/cry/male_cry2.ogg', 'sound/voice/cry/male_cry3.ogg'), list('sound/voice/cry/female_cry1.ogg', 'sound/voice/cry/female_cry2.ogg'))
+
+/datum/emote/living/carbon/human/cough
+	audio_cooldown = 3 SECONDS
+	global_audio_cooldown = FALSE
+
+/datum/emote/living/carbon/human/cough/get_sound(mob/living/user)
+	if(!ishumansynth_strict(user))
+		return
+	return pick_gendered_sound(user, list('sound/voice/cough/male_cough1.ogg', 'sound/voice/cough/male_cough2.ogg', 'sound/voice/cough/male_cough3.ogg', 'sound/voice/cough/male_cough4.ogg', 'sound/voice/cough/male_cough5.ogg', 'sound/voice/cough/male_cough6.ogg'), list('sound/voice/cough/female_cough1.ogg', 'sound/voice/cough/female_cough2.ogg', 'sound/voice/cough/female_cough3.ogg', 'sound/voice/cough/female_cough4.ogg', 'sound/voice/cough/female_cough5.ogg', 'sound/voice/cough/female_cough6.ogg'))
+
+/datum/emote/living/carbon/human/sigh
+	audio_cooldown = 3 SECONDS
+	global_audio_cooldown = FALSE
+
+/datum/emote/living/carbon/human/sigh/get_sound(mob/living/user)
+	if(!ishumansynth_strict(user))
+		return
+	return pick_gendered_sound(user, list('sound/voice/sigh/male_sigh1.ogg', 'sound/voice/sigh/male_sigh2.ogg', 'sound/voice/sigh/male_sigh3.ogg'), list('sound/voice/sigh/female_sigh1.ogg', 'sound/voice/sigh/female_sigh2.ogg', 'sound/voice/sigh/female_sigh3.ogg'))
+
+/datum/emote/living/carbon/human/sneeze
+	audio_cooldown = 3 SECONDS
+	global_audio_cooldown = FALSE
+
+/datum/emote/living/carbon/human/sneeze/get_sound(mob/living/user)
+	if(!ishumansynth_strict(user))
+		return
+	return pick_gendered_sound(user, list('sound/voice/sneeze/male_sneeze1.ogg'), list('sound/voice/sneeze/female_sneeze1.ogg'))
+
+/datum/emote/living/carbon/human/sniff
+	audio_cooldown = 3 SECONDS
+	global_audio_cooldown = FALSE
+
+/datum/emote/living/carbon/human/sniff/get_sound(mob/living/user)
+	if(!ishumansynth_strict(user))
+		return
+	return pick_gendered_sound(user, list('sound/voice/sniff/male_sniff.ogg'), list('sound/voice/sniff/female_sniff.ogg'))
+
+/datum/emote/living/carbon/human/snore
+	audio_cooldown = 8 SECONDS
+	global_audio_cooldown = FALSE
+
+/datum/emote/living/carbon/human/snore/get_sound(mob/living/user)
+	if(!ishumansynth_strict(user))
+		return
+	return pick_gendered_sound(user, list('sound/voice/snore/snore_male1.ogg', 'sound/voice/snore/snore_male2.ogg', 'sound/voice/snore/snore_male3.ogg', 'sound/voice/snore/snore_male4.ogg', 'sound/voice/snore/snore_male5.ogg'), list('sound/voice/snore/snore_female1.ogg', 'sound/voice/snore/snore_female2.ogg', 'sound/voice/snore/snore_female3.ogg'))
+
+/datum/emote/living/carbon/human/gag
+	audio_cooldown = 3 SECONDS
+	global_audio_cooldown = FALSE
+
+/datum/emote/living/carbon/human/gag/get_sound(mob/living/user)
+	if(!ishumansynth_strict(user))
+		return
+	return pick('sound/voice/gag/gag1.ogg', 'sound/voice/gag/gag2.ogg', 'sound/voice/gag/gag3.ogg', 'sound/voice/gag/gag4.ogg', 'sound/voice/gag/gag5.ogg')
+
+/datum/emote/living/carbon/human/whistle
+	sound = 'sound/voice/whistle/whistle1.ogg'
+	global_audio_cooldown = FALSE
+
+/datum/emote/living/carbon/human/hiccup
+	key = "hiccup"
+	key_third_person = "hiccups"
+	message = "hiccups."
+	sound = 'sound/voice/hiccup/sf_hiccup_male_01.ogg'
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	audio_cooldown = 5 SECONDS
+	global_audio_cooldown = FALSE

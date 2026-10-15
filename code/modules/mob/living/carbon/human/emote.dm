@@ -75,13 +75,6 @@
 	global_audio_cooldown = FALSE
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/cry/get_sound(mob/living/user)
-	if(!ishumansynth_strict(user))
-		return
-	if(user.gender == MALE)
-		return pick('sound/voice/cry/male_cry1.ogg', 'sound/voice/cry/male_cry2.ogg')
-	return pick('sound/voice/cry/female_cry1.ogg', 'sound/voice/cry/female_cry2.ogg')
-
 /datum/emote/living/carbon/human/eyebrow
 	key = "eyebrow"
 	message = "raises an eyebrow."
