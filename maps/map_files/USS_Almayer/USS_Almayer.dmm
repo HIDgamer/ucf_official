@@ -2387,11 +2387,12 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
 "anN" = (
-/obj/structure/machinery/conveyor{
-	id = "Orbital Cannon"
+/obj/vehicle/motorbike{
+	dir = 4
 	},
-/turf/open/floor/plating/almayer,
-/area/almayer/shipboard/weapon_room)
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer/cargo,
+/area/almayer/shipboard/panic)
 "anO" = (
 /turf/open/floor/almayer/orange/west,
 /area/almayer/engineering/upper_engineering)
@@ -13294,17 +13295,6 @@
 /obj/structure/machinery/auto_rack/smartgun_ammo,
 /turf/open/floor/almayer/uscm/directional/logo_c/west,
 /area/almayer/squads/req)
-"bNQ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/machinery/conveyor{
-	id = "Orbital Cannon";
-	dir = 4
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/shipboard/weapon_room)
 "bNS" = (
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 1
@@ -13319,10 +13309,6 @@
 /area/almayer/shipboard/weapon_room)
 "bOs" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/conveyor{
-	id = "Orbital Cannon";
 	dir = 4
 	},
 /turf/open/floor/almayer/redcorner/east,
@@ -13388,10 +13374,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/conveyor{
-	id = "Orbital Cannon";
-	dir = 4
-	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/weapon_room)
 "bON" = (
@@ -13401,10 +13383,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/conveyor{
-	id = "Orbital Cannon";
-	dir = 4
-	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/weapon_room)
 "bOO" = (
@@ -13412,10 +13390,6 @@
 	pixel_y = 28
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/conveyor{
-	id = "Orbital Cannon";
 	dir = 4
 	},
 /turf/open/floor/almayer/red/north,
@@ -13606,10 +13580,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 1
-	},
-/obj/structure/machinery/conveyor{
-	id = "Orbital Cannon";
-	dir = 10
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/weapon_room)
@@ -14940,10 +14910,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/living/cryo_cells)
-"cdA" = (
-/obj/structure/window/framed/almayer,
-/turf/open/floor/plating,
-/area/almayer/hallways/hangar)
 "cdB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -16841,10 +16807,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/conveyor{
-	id = "Orbital Cannon";
-	dir = 5
-	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/weapon_room)
 "cFn" = (
@@ -17615,7 +17577,7 @@
 /area/almayer/command/corporateliaison)
 "cVt" = (
 /obj/structure/window/framed/almayer,
-/turf/open/space/basic,
+/turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "cVw" = (
 /obj/structure/machinery/light/small{
@@ -20950,17 +20912,6 @@
 "elE" = (
 /turf/open/floor/hangar_airlock/inner/frame5,
 /area/almayer/hallways/hangar)
-"elG" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/machinery/conveyor{
-	id = "Orbital Cannon";
-	dir = 6
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/shipboard/weapon_room)
 "elR" = (
 /turf/closed/wall/almayer/research/containment/wall/corner{
 	dir = 1
@@ -22143,13 +22094,8 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "eGs" = (
-/obj/vehicle/motorbike{
-	dir = 4
-	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/almayer/cargo,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer/plate,
 /area/almayer/shipboard/panic)
 "eGH" = (
 /obj/structure/machinery/light/small{
@@ -24111,13 +24057,6 @@
 /obj/item/weapon/shield/riot,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
-"fxW" = (
-/obj/structure/machinery/conveyor{
-	id = "belt";
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area/almayer/shipboard/weapon_room)
 "fxZ" = (
 /obj/structure/pipes/standard/manifold/hidden,
 /obj/effect/decal/medical_decals{
@@ -32467,6 +32406,9 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "iWB" = (
@@ -35052,12 +34994,10 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
 "jXz" = (
-/obj/vehicle/motorbike/grey{
-	dir = 4
-	},
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/item/frame/rack,
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/panic)
 "jXN" = (
@@ -38687,6 +38627,9 @@
 /obj/structure/sign/safety/bulkhead_door{
 	pixel_x = 8;
 	pixel_y = -32
+	},
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
@@ -43019,15 +42962,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering/starboard)
-"ngY" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/machinery/conveyor{
-	id = "Orbital Cannon"
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/shipboard/weapon_room)
 "nhi" = (
 /obj/structure/bed/chair/comfy,
 /obj/structure/window/reinforced/ultra,
@@ -52695,6 +52629,9 @@
 	pixel_y = 0;
 	pixel_x = 32
 	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_umbilical)
 "qTA" = (
@@ -53718,7 +53655,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "rob" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -54932,7 +54869,7 @@
 	id = "Hangar Lockdown";
 	name = "\improper Hangar Lockdown Blast Door"
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "rLK" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -59706,9 +59643,7 @@
 /turf/open/floor/almayer/redfull,
 /area/almayer/living/briefing)
 "tGH" = (
-/obj/vehicle/motorbike/black{
-	dir = 8
-	},
+/obj/item/frame/rack,
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/panic)
 "tGS" = (
@@ -60690,11 +60625,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/fore_hallway)
 "ubw" = (
-/obj/structure/machinery/conveyor_switch{
-	id = "Orbital Cannon"
+/obj/structure/machinery/light{
+	dir = 8
 	},
-/turf/open/floor/almayer,
-/area/almayer/shipboard/weapon_room)
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
 "ubA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -61075,14 +61010,6 @@
 /obj/structure/largecrate/supply/floodlights,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_p)
-"uin" = (
-/obj/structure/sign/safety/suit_storage{
-	pixel_x = 8;
-	pixel_y = -32
-	},
-/obj/structure/machinery/light/almayer,
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
 "uiC" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -65347,12 +65274,10 @@
 /turf/open/floor/almayer/redcorner/north,
 /area/almayer/hallways/lower/port_fore_hallway)
 "vNk" = (
-/obj/vehicle/motorbike{
-	dir = 8
-	},
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
+/obj/item/frame/rack,
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/panic)
 "vNo" = (
@@ -67742,6 +67667,7 @@
 /obj/vehicle/motorbike/black{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/panic)
 "wFn" = (
@@ -71757,11 +71683,17 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/grunt_rnr)
 "ykv" = (
-/obj/vehicle/motorbike/green{
-	dir = 8
-	},
 /obj/structure/machinery/light/small{
 	dir = 4
+	},
+/obj/item/frame/rack,
+/obj/item/tool/weldingtool{
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/obj/item/tool/wrench{
+	pixel_x = -8;
+	pixel_y = 10
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/panic)
@@ -81902,8 +81834,8 @@ bNl
 sSc
 sSc
 bDO
-anN
-elG
+bHP
+bPG
 hpk
 bBA
 yhZ
@@ -82106,7 +82038,7 @@ sSc
 sSc
 bDO
 bPn
-bNQ
+bPG
 ald
 gol
 sGK
@@ -82309,7 +82241,7 @@ sSc
 sSc
 bOq
 bPo
-bNQ
+bPG
 acs
 bBA
 xHX
@@ -82511,7 +82443,7 @@ ohA
 ohA
 ohA
 cFh
-ngY
+bDW
 bPJ
 iuz
 bBA
@@ -82714,7 +82646,7 @@ bNm
 bNm
 bNm
 bOs
-ubw
+aqu
 aqu
 bQz
 bBA
@@ -83933,7 +83865,7 @@ bNS
 alU
 bPg
 bEx
-fxW
+aqu
 bQI
 bBA
 gsy
@@ -88201,7 +88133,7 @@ gpi
 cSx
 aYt
 bHB
-uin
+xyw
 qTu
 wlD
 gTk
@@ -88574,10 +88506,10 @@ sGw
 nmp
 eWs
 usq
+tGH
 sbt
-sbt
-eGs
-sbt
+jXz
+anN
 nZR
 xcV
 aYz
@@ -88778,10 +88710,10 @@ klT
 eWs
 uVW
 qxI
+eGs
 qxI
 qxI
-qxI
-qxI
+eGs
 xcV
 aYz
 xyw
@@ -88980,7 +88912,7 @@ sGw
 xzB
 bfs
 kNf
-kNf
+tGH
 kNf
 vNk
 kNf
@@ -89386,7 +89318,7 @@ sGw
 xzB
 bfs
 wVN
-wVN
+tGH
 wVN
 jXz
 wFN
@@ -89591,7 +89523,7 @@ bfs
 uVW
 qxI
 qxI
-qxI
+eGs
 qxI
 qxI
 xcV
@@ -93686,7 +93618,7 @@ xyw
 aqs
 bcm
 wXT
-cdA
+cVt
 bcm
 emC
 emC
@@ -93887,7 +93819,7 @@ quO
 bHB
 bcc
 wlK
-xyw
+ubw
 xyw
 xyw
 lrX
@@ -94293,9 +94225,9 @@ sbE
 bHB
 bcc
 xJR
-xyw
-xyw
 puI
+xyw
+xyw
 iWx
 bcm
 ymg
@@ -94498,7 +94430,7 @@ xyw
 tIS
 bcm
 wXT
-cdA
+cVt
 bcm
 bcm
 emC
