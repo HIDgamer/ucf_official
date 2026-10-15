@@ -130,3 +130,34 @@ HELP TO PROC TYPEPATH SHORTCUTS (Purely based on the path in the code)
 	if (!object)
 		return
 	return call(object, delegate)(arglist(calling_arguments))
+
+/// A callback for player input that runs as the mob that sent it
+/datum/callback/verb_callback
+	var/datum/weakref/user
+
+/datum/callback/verb_callback/New(thingtocall, proctocall, ...)
+	user = WEAKREF(usr)
+	return ..()
+
+/datum/callback/verb_callback/Destroy(force, ...)
+	user = null
+	return ..()
+
+/datum/callback/verb_callback/Invoke(...)
+	var/mob/our_user = user?.resolve()
+	if(QDELETED(our_user) || isnull(our_user.client))
+		return
+	var/mob/previous_user = usr
+	usr = our_user
+	. = ..()
+	usr = previous_user
+
+/datum/callback/verb_callback/InvokeAsync(...)
+	set waitfor = FALSE
+	var/mob/our_user = user?.resolve()
+	if(QDELETED(our_user) || isnull(our_user.client))
+		return
+	var/mob/previous_user = usr
+	usr = our_user
+	. = ..()
+	usr = previous_user

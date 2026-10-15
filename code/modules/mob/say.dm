@@ -44,7 +44,7 @@
 	if(!client?.attempt_talking(message))
 		return
 
-	usr.say(message)
+	QUEUE_OR_CALL_VERB_FOR(VERB_CALLBACK(src, TYPE_PROC_REF(/mob, say), message), SSspeech_controller)
 
 /mob/verb/me_verb(message as text)
 	set name = "Me"
@@ -55,9 +55,9 @@
 		return
 
 	if(use_me)
-		usr.emote("me",usr.emote_type,message, TRUE)
+		QUEUE_OR_CALL_VERB_FOR(VERB_CALLBACK(src, TYPE_PROC_REF(/mob, emote), "me", emote_type, message, TRUE), SSspeech_controller)
 	else
-		usr.emote(message, 1, null, TRUE)
+		QUEUE_OR_CALL_VERB_FOR(VERB_CALLBACK(src, TYPE_PROC_REF(/mob, emote), message, 1, null, TRUE), SSspeech_controller)
 
 /mob/proc/say_dead(message)
 	var/name = src.real_name

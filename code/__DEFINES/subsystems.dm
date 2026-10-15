@@ -159,6 +159,8 @@
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
 
 #define SS_PRIORITY_INPUT   1000
+#define SS_PRIORITY_SPEECH_CONTROLLER 900
+#define SS_PRIORITY_DELAYED_VERBS 850
 #define SS_PRIORITY_TIMER   700
 #define SS_PRIORITY_AUTOFIRE 450
 #define SS_PRIORITY_SOUND   250
