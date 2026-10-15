@@ -295,8 +295,8 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		if(!SCT)
 			break
 		SCT.spawn_tower()
-	QDEL_NULL_LIST(GLOB.comm_tower_landmarks_net_one)
-	QDEL_NULL_LIST(GLOB.comm_tower_landmarks_net_two)
+	QDEL_LIST(GLOB.comm_tower_landmarks_net_one)
+	QDEL_LIST(GLOB.comm_tower_landmarks_net_two)
 
 //////////////////////////
 //Reports player logouts//

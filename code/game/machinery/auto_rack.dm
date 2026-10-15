@@ -55,6 +55,8 @@
 		overlays += "auto_rack_locked"
 
 /obj/structure/machinery/auto_rack/proc/restock(amount = max_stored)
+	if(!stocked_weapon)
+		return
 	var/to_add = min(amount, max_stored - contents.len)
 	for(var/i in 1 to to_add)
 		new stocked_weapon(src)
