@@ -99,11 +99,11 @@
 	// Add the hovered atom to the trace
 	LAZYADD(mouse_trace_history, over_obj)
 
-/// Whether a drag that went down on this atom was meant as a click, only a drag started with shift is a drag
+/// Whether a drag that went down on this atom was meant as a click, in harm intent only a drag started with shift is a drag
 /proc/drag_is_click(datum/src_object, datum/pressed_raw, mob/user, list/press_mods)
 	if(!src_object || pressed_raw != src_object || istype(src_object, /atom/movable/screen))
 		return FALSE
-	if(HAS_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG) || isgun(user.get_active_hand()))
+	if(user.a_intent != INTENT_HARM || HAS_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG) || isgun(user.get_active_hand()))
 		return FALSE
 	return !press_mods[SHIFT_CLICK] && (press_mods[LEFT_CLICK] || press_mods[RIGHT_CLICK] || press_mods[MIDDLE_CLICK])
 
