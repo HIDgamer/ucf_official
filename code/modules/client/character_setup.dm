@@ -70,6 +70,15 @@
 		ethnicities += key
 	.["ethnicities"] = ethnicities
 	.["has_predator"] = !!owner.check_whitelist_status(WHITELIST_PREDATOR)
+	var/list/voice_names = list()
+	for(var/voice_name in get_voice_pack_choices(FALSE))
+		voice_names += voice_name
+	.["voice_packs"] = voice_names
+	var/list/synth_voice_names = list()
+	for(var/synth_voice_name in get_voice_pack_choices(TRUE))
+		synth_voice_names += synth_voice_name
+	.["synth_voice_packs"] = synth_voice_names
+	.["voice_limits"] = list("min_speed" = VOICE_DEFAULT_MINSPEED, "max_speed" = VOICE_DEFAULT_MAXSPEED, "min_pitch" = VOICE_DEFAULT_MINPITCH, "max_pitch" = VOICE_DEFAULT_MAXPITCH, "min_range" = VOICE_DEFAULT_MINVARY, "max_range" = VOICE_DEFAULT_MAXVARY)
 
 /datum/character_setup/ui_data(mob/user)
 	. = list()
@@ -85,6 +94,13 @@
 	.["default_slot"] = prefs.default_slot
 	.["random_name"] = prefs.be_random_name
 	.["random_body"] = prefs.be_random_body
+	var/datum/voice_pack/current_voice = GLOB.voice_pack_list[prefs.voice_pack]
+	.["voice_pack"] = current_voice?.display_name()
+	var/datum/voice_pack/current_synth_voice = GLOB.voice_pack_list[prefs.synth_voice_pack]
+	.["synth_voice_pack"] = current_synth_voice?.display_name()
+	.["voice_speed"] = prefs.voice_speed
+	.["voice_pitch"] = prefs.voice_pitch
+	.["voice_pitch_range"] = prefs.voice_pitch_range
 
 /datum/character_setup/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -128,6 +144,36 @@
 
 		if("rotate_preview")
 			prefs.rotate_preview(params["clockwise"] != FALSE)
+			return TRUE
+
+		if("voice_pack")
+			var/list/voice_choices = get_voice_pack_choices(FALSE)
+			if(voice_choices[params["voice_pack"]])
+				prefs.voice_pack = voice_choices[params["voice_pack"]]
+				prefs.preview_voice(ui.user)
+			return TRUE
+
+		if("synth_voice_pack")
+			var/list/synth_voice_choices = get_voice_pack_choices(TRUE)
+			if(synth_voice_choices[params["synth_voice_pack"]])
+				prefs.synth_voice_pack = synth_voice_choices[params["synth_voice_pack"]]
+				prefs.preview_voice(ui.user, TRUE)
+			return TRUE
+
+		if("voice_speed")
+			prefs.voice_speed = clamp(text2num(params["voice_speed"]), VOICE_DEFAULT_MINSPEED, VOICE_DEFAULT_MAXSPEED)
+			return TRUE
+
+		if("voice_pitch")
+			prefs.voice_pitch = clamp(text2num(params["voice_pitch"]), VOICE_DEFAULT_MINPITCH, VOICE_DEFAULT_MAXPITCH)
+			return TRUE
+
+		if("voice_pitch_range")
+			prefs.voice_pitch_range = clamp(text2num(params["voice_pitch_range"]), VOICE_DEFAULT_MINVARY, VOICE_DEFAULT_MAXVARY)
+			return TRUE
+
+		if("voice_preview")
+			prefs.preview_voice(ui.user, params["synthetic"] ? TRUE : FALSE)
 			return TRUE
 
 		if("save")

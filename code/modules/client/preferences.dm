@@ -201,6 +201,12 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/species = "Human"    //Species datum to use.
 	var/ethnicity = "Western" // Ethnicity
 	var/body_type = "Mesomorphic (Average)" // Body Type
+	var/voice_pack = VOICE_DEFAULT_PACK
+	var/synth_voice_pack = VOICE_DEFAULT_SYNTH_PACK
+	var/voice_pitch = 1
+	var/voice_speed = 6
+	var/voice_pitch_range = 0.2
+	COOLDOWN_DECLARE(voice_preview_cooldown)
 	var/language = "None" //Secondary language
 	var/list/gear //Custom/fluff item loadout.
 	var/preferred_squad = "None"
@@ -384,6 +390,11 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br>"
 			dat += "<b>Ethnicity:</b> <a href='?_src_=prefs;preference=ethnicity;task=input'><b>[ethnicity]</b></a><br>"
 			dat += "<b>Body Type:</b> <a href='?_src_=prefs;preference=body_type;task=input'><b>[body_type]</b></a><br>"
+			var/datum/voice_pack/current_voice = GLOB.voice_pack_list[voice_pack]
+			dat += "<b>Talk Sound:</b> <a href='?_src_=prefs;preference=voice_pack;task=input'><b>[current_voice?.display_name()]</b></a> <a href='?_src_=prefs;preference=voice_preview'>Preview</a><br>"
+			var/datum/voice_pack/current_synth_voice = GLOB.voice_pack_list[synth_voice_pack]
+			dat += "<b>Synthetic Talk Sound:</b> <a href='?_src_=prefs;preference=synth_voice_pack;task=input'><b>[current_synth_voice?.display_name()]</b></a> <a href='?_src_=prefs;preference=voice_preview_synth'>Preview</a><br>"
+			dat += "<b>Talk Speed:</b> <a href='?_src_=prefs;preference=voice_speed;task=input'><b>[voice_speed]</b></a> <b>Pitch:</b> <a href='?_src_=prefs;preference=voice_pitch;task=input'><b>[voice_pitch]</b></a> <b>Pitch Variation:</b> <a href='?_src_=prefs;preference=voice_pitch_range;task=input'><b>[voice_pitch_range]</b></a><br>"
 			dat += "<b>Traits:</b> <a href='byond://?src=\ref[user];preference=traits;task=open'><b>Character Traits</b></a>"
 			dat += "<br>"
 
@@ -1634,6 +1645,38 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if (new_body_type)
 						body_type = new_body_type
 
+				if("voice_pack")
+					var/list/voice_choices = get_voice_pack_choices(FALSE)
+					var/new_voice = tgui_input_list(user, "Choose how your character sounds when talking:", "Character Preferences", voice_choices)
+					if(new_voice)
+						voice_pack = voice_choices[new_voice]
+						preview_voice(user)
+
+				if("synth_voice_pack")
+					var/list/synth_voice_choices = get_voice_pack_choices(TRUE)
+					var/new_synth_voice = tgui_input_list(user, "Choose how your character sounds when talking as a synthetic:", "Character Preferences", synth_voice_choices)
+					if(new_synth_voice)
+						synth_voice_pack = synth_voice_choices[new_synth_voice]
+						preview_voice(user, TRUE)
+
+				if("voice_speed")
+					var/new_speed = tgui_input_number(user, "Choose how fast your character talks, lower is faster:", "Character Preferences", voice_speed, VOICE_DEFAULT_MAXSPEED, VOICE_DEFAULT_MINSPEED, integer_only = FALSE)
+					if(isnum(new_speed))
+						voice_speed = clamp(new_speed, VOICE_DEFAULT_MINSPEED, VOICE_DEFAULT_MAXSPEED)
+						preview_voice(user)
+
+				if("voice_pitch")
+					var/new_pitch = tgui_input_number(user, "Choose the pitch of your character's voice:", "Character Preferences", voice_pitch, VOICE_DEFAULT_MAXPITCH, VOICE_DEFAULT_MINPITCH, integer_only = FALSE)
+					if(isnum(new_pitch))
+						voice_pitch = clamp(new_pitch, VOICE_DEFAULT_MINPITCH, VOICE_DEFAULT_MAXPITCH)
+						preview_voice(user)
+
+				if("voice_pitch_range")
+					var/new_range = tgui_input_number(user, "Choose how much the pitch of your character's voice varies:", "Character Preferences", voice_pitch_range, VOICE_DEFAULT_MAXVARY, VOICE_DEFAULT_MINVARY, integer_only = FALSE)
+					if(isnum(new_range))
+						voice_pitch_range = clamp(new_range, VOICE_DEFAULT_MINVARY, VOICE_DEFAULT_MAXVARY)
+						preview_voice(user)
+
 				if("facial")
 					var/new_facial = input(user, "Choose your character's facial-hair color:", "Character Preference", rgb(r_facial, g_facial, b_facial)) as color|null
 					if(new_facial)
@@ -1894,6 +1937,12 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					var/num = text2num(href_list["num"])
 					be_special ^= (1<<num)
 
+				if("voice_preview")
+					preview_voice(user)
+
+				if("voice_preview_synth")
+					preview_voice(user, TRUE)
+
 				if("rand_name")
 					be_random_name = !be_random_name
 
@@ -2131,6 +2180,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	character.gender = gender
 	character.ethnicity = ethnicity
 	character.body_type = body_type
+	character.set_voice_from_prefs(src)
 
 	character.r_eyes = r_eyes
 	character.g_eyes = g_eyes

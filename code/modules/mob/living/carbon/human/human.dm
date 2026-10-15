@@ -58,6 +58,7 @@
 	despawn_fax_responder()
 	assigned_equipment_preset = null
 	QDEL_NULL(sprint_dust)
+	QDEL_NULL(bark_voice)
 	GLOB.human_mob_list -= src
 	GLOB.alive_human_list -= src
 	SShuman.processable_human_list -= src

@@ -443,6 +443,11 @@
 	S["age"] >> age
 	S["ethnicity"] >> ethnicity
 	S["body_type"] >> body_type
+	S["voice_pack"] >> voice_pack
+	S["synth_voice_pack"] >> synth_voice_pack
+	S["voice_pitch"] >> voice_pitch
+	S["voice_speed"] >> voice_speed
+	S["voice_pitch_range"] >> voice_pitch_range
 	S["language"] >> language
 	S["spawnpoint"] >> spawnpoint
 
@@ -523,6 +528,12 @@
 	age = sanitize_integer(age, AGE_MIN, AGE_MAX, initial(age))
 	ethnicity = sanitize_ethnicity(ethnicity)
 	body_type = sanitize_body_type(body_type)
+	var/datum/voice_pack/saved_voice = GLOB.voice_pack_list[voice_pack]
+	voice_pack = (saved_voice && !saved_voice.synth_only) ? voice_pack : VOICE_DEFAULT_PACK
+	synth_voice_pack = GLOB.voice_pack_list[synth_voice_pack] ? synth_voice_pack : VOICE_DEFAULT_SYNTH_PACK
+	voice_pitch = isnum(voice_pitch) ? clamp(voice_pitch, VOICE_DEFAULT_MINPITCH, VOICE_DEFAULT_MAXPITCH) : 1
+	voice_speed = isnum(voice_speed) ? clamp(voice_speed, VOICE_DEFAULT_MINSPEED, VOICE_DEFAULT_MAXSPEED) : 6
+	voice_pitch_range = isnum(voice_pitch_range) ? clamp(voice_pitch_range, VOICE_DEFAULT_MINVARY, VOICE_DEFAULT_MAXVARY) : 0.2
 	r_hair = sanitize_integer(r_hair, 0, 255, initial(r_hair))
 	g_hair = sanitize_integer(g_hair, 0, 255, initial(g_hair))
 	b_hair = sanitize_integer(b_hair, 0, 255, initial(b_hair))
@@ -594,6 +605,11 @@
 	S["age"] << age
 	S["ethnicity"] << ethnicity
 	S["body_type"] << body_type
+	S["voice_pack"] << voice_pack
+	S["synth_voice_pack"] << synth_voice_pack
+	S["voice_pitch"] << voice_pitch
+	S["voice_speed"] << voice_speed
+	S["voice_pitch_range"] << voice_pitch_range
 	S["language"] << language
 	S["hair_red"] << r_hair
 	S["hair_green"] << g_hair

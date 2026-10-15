@@ -79,6 +79,8 @@
 	var/obj/item/s_store = null
 
 	var/voice
+	var/datum/atom_voice/bark_voice
+	var/speaking_over_radio = FALSE
 
 	var/special_voice = "" // For changing our voice. Used by a symptom.
 

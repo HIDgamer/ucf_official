@@ -172,6 +172,7 @@ GLOBAL_LIST_INIT(admin_verbs_server, list(
 	/datum/admins/proc/restart,
 	/datum/admins/proc/delay,
 	/datum/admins/proc/toggleaban,
+	/datum/admins/proc/toggle_voices,
 	/datum/admins/proc/end_round,
 	/datum/admins/proc/change_ground_map,
 	/datum/admins/proc/change_ship_map,

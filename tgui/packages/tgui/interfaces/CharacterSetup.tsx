@@ -2,7 +2,16 @@ import { BooleanLike } from 'common/react';
 import { useEffect, useState } from 'react';
 
 import { useBackend } from '../backend';
-import { Box, Button, Dropdown, Input, LabeledList, Section, Stack } from '../components';
+import {
+  Box,
+  Button,
+  Dropdown,
+  Input,
+  LabeledList,
+  NumberInput,
+  Section,
+  Stack,
+} from '../components';
 import { Window } from '../layouts';
 
 type Data = {
@@ -16,6 +25,21 @@ type Data = {
   default_slot: number;
   random_name: BooleanLike;
   random_body: BooleanLike;
+  voice_packs: string[];
+  synth_voice_packs: string[];
+  voice_pack: string;
+  synth_voice_pack: string;
+  voice_speed: number;
+  voice_pitch: number;
+  voice_pitch_range: number;
+  voice_limits: {
+    min_speed: number;
+    max_speed: number;
+    min_pitch: number;
+    max_pitch: number;
+    min_range: number;
+    max_range: number;
+  };
 };
 
 // The entry point replacing the legacy ShowChoices() popup. Covers the full Marine
@@ -36,6 +60,14 @@ export const CharacterSetup = () => {
     default_slot,
     random_name,
     random_body,
+    voice_packs = [],
+    synth_voice_packs = [],
+    voice_pack,
+    synth_voice_pack,
+    voice_speed,
+    voice_pitch,
+    voice_pitch_range,
+    voice_limits,
   } = data;
 
   const [nameDraft, setNameDraft] = useState(real_name);
@@ -173,6 +205,81 @@ export const CharacterSetup = () => {
                 </Section>
               </Stack.Item>
             </Stack>
+          </Stack.Item>
+          <Stack.Item>
+            <Section title="Talk Sounds">
+              <LabeledList>
+                <LabeledList.Item label="Voice">
+                  <Stack>
+                    <Stack.Item grow>
+                      <Dropdown
+                        selected={voice_pack}
+                        options={voice_packs}
+                        onSelected={(value) => act('voice_pack', { voice_pack: value })}
+                      />
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Button
+                        icon="volume-high"
+                        onClick={() => act('voice_preview', { synthetic: false })}
+                      >
+                        Preview
+                      </Button>
+                    </Stack.Item>
+                  </Stack>
+                </LabeledList.Item>
+                <LabeledList.Item label="Synthetic Voice">
+                  <Stack>
+                    <Stack.Item grow>
+                      <Dropdown
+                        selected={synth_voice_pack}
+                        options={synth_voice_packs}
+                        onSelected={(value) =>
+                          act('synth_voice_pack', { synth_voice_pack: value })
+                        }
+                      />
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Button
+                        icon="volume-high"
+                        onClick={() => act('voice_preview', { synthetic: true })}
+                      >
+                        Preview
+                      </Button>
+                    </Stack.Item>
+                  </Stack>
+                </LabeledList.Item>
+                <LabeledList.Item label="Speed (lower is faster)">
+                  <NumberInput
+                    value={voice_speed}
+                    minValue={voice_limits.min_speed}
+                    maxValue={voice_limits.max_speed}
+                    step={1}
+                    onChange={(value) => act('voice_speed', { voice_speed: value })}
+                  />
+                </LabeledList.Item>
+                <LabeledList.Item label="Pitch">
+                  <NumberInput
+                    value={voice_pitch}
+                    minValue={voice_limits.min_pitch}
+                    maxValue={voice_limits.max_pitch}
+                    step={0.05}
+                    onChange={(value) => act('voice_pitch', { voice_pitch: value })}
+                  />
+                </LabeledList.Item>
+                <LabeledList.Item label="Pitch Variation">
+                  <NumberInput
+                    value={voice_pitch_range}
+                    minValue={voice_limits.min_range}
+                    maxValue={voice_limits.max_range}
+                    step={0.05}
+                    onChange={(value) =>
+                      act('voice_pitch_range', { voice_pitch_range: value })
+                    }
+                  />
+                </LabeledList.Item>
+              </LabeledList>
+            </Section>
           </Stack.Item>
           <Stack.Item>
             <Section title="Appearance & Loadout">
