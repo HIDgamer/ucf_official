@@ -69,6 +69,34 @@
 	containername = "PARS-159 Boyars Dualcannon ammo crate"
 	group = "Vehicle Ammo"
 
+/datum/supply_packs/ammo_lav_aphe
+	name = "LAV-35 35mm APHE magazines (x5)"
+	contains = list(
+		/obj/item/ammo_magazine/hardpoint/lav_cannon,
+		/obj/item/ammo_magazine/hardpoint/lav_cannon,
+		/obj/item/ammo_magazine/hardpoint/lav_cannon,
+		/obj/item/ammo_magazine/hardpoint/lav_cannon,
+		/obj/item/ammo_magazine/hardpoint/lav_cannon,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "LAV-35 35mm APHE ammo crate"
+	group = "Vehicle Ammo"
+
+/datum/supply_packs/ammo_lav_he_airburst
+	name = "LAV-35 35mm HE airburst magazines (x5)"
+	contains = list(
+		/obj/item/ammo_magazine/hardpoint/lav_cannon/he_airburst,
+		/obj/item/ammo_magazine/hardpoint/lav_cannon/he_airburst,
+		/obj/item/ammo_magazine/hardpoint/lav_cannon/he_airburst,
+		/obj/item/ammo_magazine/hardpoint/lav_cannon/he_airburst,
+		/obj/item/ammo_magazine/hardpoint/lav_cannon/he_airburst,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "LAV-35 35mm HE airburst ammo crate"
+	group = "Vehicle Ammo"
+
 /datum/supply_packs/ammo_glauncher
 	name = "M92T Grenade Launcher magazines (x5)"
 	contains = list(

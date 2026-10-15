@@ -203,8 +203,22 @@
 /obj/vehicle/multitile/proc/can_rotate(deg)
 	if(bound_width == bound_height)
 		return TRUE
-	//VHCLTODO: Add non-square checks here
-	return FALSE
+	// Quarter turns swap the footprint, anything else keeps it
+	if(dir == turn(dir, deg) || dir == turn(dir, deg + 180))
+		return TRUE
+
+	var/turf/old_min_turf = locate(x + bound_x / world.icon_size, y + bound_y / world.icon_size, z)
+	var/turf/new_min_turf = locate(x + bound_y / world.icon_size, y + bound_x / world.icon_size, z)
+	if(!old_min_turf || !new_min_turf)
+		return FALSE
+
+	var/list/old_turfs = CORNER_BLOCK(old_min_turf, bound_width / world.icon_size, bound_height / world.icon_size)
+	for(var/turf/T as anything in CORNER_BLOCK(new_min_turf, bound_height / world.icon_size, bound_width / world.icon_size))
+		if(T in old_turfs)
+			continue
+		if(!T.Enter(src, towing))
+			return FALSE
+	return TRUE
 
 /obj/vehicle/multitile/proc/rotate_entrances(deg)
 	entrances = rotate_origins(deg, entrances)

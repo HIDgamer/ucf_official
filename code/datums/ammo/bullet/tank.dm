@@ -76,6 +76,45 @@
 		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
 			shake_camera(L, 1, 1)
 
+//LAV Autocannon Ammo//
+
+/datum/ammo/bullet/tank/dualcannon/lav_aphe
+	name = "35mm APHE bullet"
+	damage = 62
+	penetration = ARMOR_PENETRATION_TIER_5
+
+/datum/ammo/bullet/tank/lav_he_airburst
+	name = "35mm HE airburst shell"
+	icon_state = "autocannon"
+	damage_falloff = 0
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_STRIKES_SURFACE
+
+	accuracy = HIT_ACCURACY_TIER_8
+	scatter = 0
+	damage = 20
+	penetration = ARMOR_PENETRATION_TIER_1
+	accurate_range = 10
+	max_range = 12
+	shell_speed = AMMO_SPEED_TIER_5
+
+/datum/ammo/bullet/tank/lav_he_airburst/proc/airburst(turf/target, obj/projectile/projectile)
+	if(!target)
+		return
+	create_shrapnel(target, 8, cause_data = projectile.weapon_cause_data)
+	cell_explosion(target, 40, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+
+/datum/ammo/bullet/tank/lav_he_airburst/on_hit_mob(mob/hit_mob, obj/projectile/projectile)
+	airburst(get_turf(hit_mob), projectile)
+
+/datum/ammo/bullet/tank/lav_he_airburst/on_hit_obj(obj/object, obj/projectile/projectile)
+	airburst(get_turf(object), projectile)
+
+/datum/ammo/bullet/tank/lav_he_airburst/on_hit_turf(turf/hit_turf, obj/projectile/projectile)
+	airburst(hit_turf, projectile)
+
+/datum/ammo/bullet/tank/lav_he_airburst/do_at_max_range(obj/projectile/projectile)
+	airburst(get_turf(projectile), projectile)
+
 //Minigun Ammo//
 
 /datum/ammo/bullet/tank/minigun

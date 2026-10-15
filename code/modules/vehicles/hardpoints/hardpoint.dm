@@ -361,6 +361,10 @@
 
 	to_chat(user, SPAN_NOTICE("You reload \the [name]."))
 
+/// Whether the weapons loader may stock this magazine as a backup clip.
+/obj/item/hardpoint/proc/accepts_magazine(obj/item/ammo_magazine/magazine)
+	return ammo && istype(magazine, ammo.type)
+
 //try adding magazine to hardpoint's backup clips. Called via weapons loader
 /obj/item/hardpoint/proc/try_add_clip(obj/item/ammo_magazine/A, mob/user)
 	if(!ammo)

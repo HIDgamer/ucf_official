@@ -383,11 +383,16 @@
 				return
 
 	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
-	if(!hardpoint && notify_no_hardpoint_selected)
-		to_chat(source, SPAN_WARNING("Please select an active hardpoint first."))
+	if(!hardpoint)
+		notify_no_hardpoint(source)
 		return
 
 	hardpoint.start_fire(source, object, location, control, params)
+
+/// Tells a crewman clicking without a usable hardpoint why nothing fired.
+/obj/vehicle/multitile/proc/notify_no_hardpoint(mob/user)
+	if(notify_no_hardpoint_selected)
+		to_chat(user, SPAN_WARNING("Please select an active hardpoint first."))
 
 /obj/vehicle/multitile/proc/handle_player_entrance(mob/M)
 	if(!M || M.client == null)

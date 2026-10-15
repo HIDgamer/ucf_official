@@ -27,7 +27,7 @@
 		if(QDELETED(H) || QDELETED(H.ammo))
 			continue
 
-		if(istype(I, H.ammo.type))
+		if(H.accepts_magazine(I))
 			reloading_hardpoint = H
 			break
 
