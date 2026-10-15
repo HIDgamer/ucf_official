@@ -424,6 +424,7 @@ GLOBAL_LIST_INIT_TYPED(aluminium_recipes, /datum/stack_recipe, list ( \
 	singular_name = "aluminum sheet"
 	icon_state = "sheet-aluminum"
 	sheettype = "aluminum"
+	stack_id = "aluminum"
 	black_market_value = 10
 
 /*
@@ -439,5 +440,6 @@ GLOBAL_LIST_INIT_TYPED(copper_recipes, /datum/stack_recipe, list ( \
 	singular_name = "copper sheet"
 	icon_state = "sheet-copper"
 	sheettype = "copper"
+	stack_id = "copper"
 	black_market_value = 10
 

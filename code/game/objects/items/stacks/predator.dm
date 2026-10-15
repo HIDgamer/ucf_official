@@ -13,6 +13,7 @@
 	attack_speed = 1.4 SECONDS //stop spam
 	amount = 8
 	max_amount = 8
+	stack_id = "yautja rope"
 
 /obj/item/stack/yautja_rope/attack(mob/living/mob_victim, mob/living/carbon/human/user)
 	if(mob_victim.stat != DEAD)

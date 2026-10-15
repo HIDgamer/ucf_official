@@ -84,14 +84,19 @@
 	do { \
 		var/list/_L = target._status_traits; \
 		var/list/_S = sources; \
+		if (sources && !islist(sources)) { \
+			_S = list(sources); \
+		} else { \
+			_S = sources\
+		}; \
 		if (_L) { \
 			for (var/_T in _L) { \
 				_L[_T] &= _S;\
 				if (!length(_L[_T])) { \
 					_L -= _T; \
-					SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(_T), _T); \
-					if(trait in GLOB.traits_with_elements) { \
-						target.RemoveElement(GLOB.traits_with_elements[trait]); \
+					SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(_T)); \
+					if(_T in GLOB.traits_with_elements) { \
+						target.RemoveElement(GLOB.traits_with_elements[_T]); \
 					}; \
 				};\
 			};\
