@@ -769,7 +769,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(istype(src, /obj/structure/machinery/door/airlock/glass))
 		playsound(loc, 'sound/machines/windowdoor.ogg', 25, 1)
 	else
-		playsound(loc, 'sound/machines/airlock.ogg', 25, 0)
+		playsound(loc, 'sound/machines/airlock/open.ogg', 25, 0)
 	if(closeOther != null && istype(closeOther, /obj/structure/machinery/door/airlock/) && !closeOther.density)
 		closeOther.close()
 
@@ -825,7 +825,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(istype(src, /obj/structure/machinery/door/airlock/glass))
 		playsound(loc, 'sound/machines/windowdoor.ogg', 25, 1)
 	else
-		playsound(loc, 'sound/machines/airlock.ogg', 25, 0)
+		playsound(loc, 'sound/machines/airlock/close.ogg', 25, 0)
 	for(var/turf/turf in locs)
 		var/obj/structure/window/killthis = (locate(/obj/structure/window) in turf)
 		if(killthis)
