@@ -14,9 +14,14 @@ export const NtosMain = (props) => {
     proposed_login,
   } = data;
   const headerPrograms = programs.filter((program) => program.header_program);
+  const listedCount = programs.length - headerPrograms.length;
+  const height = Math.min(
+    700,
+    252 + (headerPrograms.length ? 48 : 0) + listedCount * 32,
+  );
 
   return (
-    <NtosWindow title="PDA Interface" width={400} height={500}>
+    <NtosWindow title="PDA Interface" width={400} height={height}>
       <NtosWindow.Content scrollable>
         {headerPrograms.length > 0 && (
           <Section>

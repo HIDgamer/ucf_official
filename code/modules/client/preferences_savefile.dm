@@ -445,6 +445,7 @@
 	S["body_type"] >> body_type
 	S["voice_pack"] >> voice_pack
 	S["synth_voice_pack"] >> synth_voice_pack
+	S["pda_theme"] >> pda_theme
 	S["voice_pitch"] >> voice_pitch
 	S["voice_speed"] >> voice_speed
 	S["voice_pitch_range"] >> voice_pitch_range
@@ -531,6 +532,7 @@
 	var/datum/voice_pack/saved_voice = GLOB.voice_pack_list[voice_pack]
 	voice_pack = (saved_voice && !saved_voice.synth_only) ? voice_pack : VOICE_DEFAULT_PACK
 	synth_voice_pack = GLOB.voice_pack_list[synth_voice_pack] ? synth_voice_pack : VOICE_DEFAULT_SYNTH_PACK
+	pda_theme = GLOB.pda_themes[pda_theme] ? pda_theme : PDA_THEME_TERMINAL_NAME
 	voice_pitch = isnum(voice_pitch) ? clamp(voice_pitch, VOICE_DEFAULT_MINPITCH, VOICE_DEFAULT_MAXPITCH) : 1
 	voice_speed = isnum(voice_speed) ? clamp(voice_speed, VOICE_DEFAULT_MINSPEED, VOICE_DEFAULT_MAXSPEED) : 6
 	voice_pitch_range = isnum(voice_pitch_range) ? clamp(voice_pitch_range, VOICE_DEFAULT_MINVARY, VOICE_DEFAULT_MAXVARY) : 0.2
@@ -607,6 +609,7 @@
 	S["body_type"] << body_type
 	S["voice_pack"] << voice_pack
 	S["synth_voice_pack"] << synth_voice_pack
+	S["pda_theme"] << pda_theme
 	S["voice_pitch"] << voice_pitch
 	S["voice_speed"] << voice_speed
 	S["voice_pitch_range"] << voice_pitch_range

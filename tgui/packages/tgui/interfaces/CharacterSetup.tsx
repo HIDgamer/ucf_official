@@ -31,6 +31,8 @@ type Data = {
   synth_voice_pack: string;
   voice_speed: number;
   voice_pitch: number;
+  pda_themes: string[];
+  pda_theme: string;
   voice_pitch_range: number;
   voice_limits: {
     min_speed: number;
@@ -68,6 +70,8 @@ export const CharacterSetup = () => {
     voice_pitch,
     voice_pitch_range,
     voice_limits,
+    pda_themes = [],
+    pda_theme,
   } = data;
 
   const [nameDraft, setNameDraft] = useState(real_name);
@@ -140,16 +144,26 @@ export const CharacterSetup = () => {
                       </Box>
                     </Stack.Item>
                     <Stack.Item>
-                      <Box style={{ display: 'flex', justifyContent: 'center', gap: '4px' }}>
+                      <Box
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'center',
+                          gap: '4px',
+                        }}
+                      >
                         <Button
                           icon="rotate-left"
                           tooltip="Rotate Left"
-                          onClick={() => act('rotate_preview', { clockwise: false })}
+                          onClick={() =>
+                            act('rotate_preview', { clockwise: false })
+                          }
                         />
                         <Button
                           icon="rotate-right"
                           tooltip="Rotate Right"
-                          onClick={() => act('rotate_preview', { clockwise: true })}
+                          onClick={() =>
+                            act('rotate_preview', { clockwise: true })
+                          }
                         />
                       </Box>
                     </Stack.Item>
@@ -182,7 +196,9 @@ export const CharacterSetup = () => {
                       <Dropdown
                         selected={ethnicity}
                         options={ethnicities}
-                        onSelected={(value) => act('ethnicity', { ethnicity: value })}
+                        onSelected={(value) =>
+                          act('ethnicity', { ethnicity: value })
+                        }
                       />
                     </LabeledList.Item>
                     <LabeledList.Item label="Always Random Name">
@@ -215,13 +231,17 @@ export const CharacterSetup = () => {
                       <Dropdown
                         selected={voice_pack}
                         options={voice_packs}
-                        onSelected={(value) => act('voice_pack', { voice_pack: value })}
+                        onSelected={(value) =>
+                          act('voice_pack', { voice_pack: value })
+                        }
                       />
                     </Stack.Item>
                     <Stack.Item>
                       <Button
                         icon="volume-high"
-                        onClick={() => act('voice_preview', { synthetic: false })}
+                        onClick={() =>
+                          act('voice_preview', { synthetic: false })
+                        }
                       >
                         Preview
                       </Button>
@@ -242,7 +262,9 @@ export const CharacterSetup = () => {
                     <Stack.Item>
                       <Button
                         icon="volume-high"
-                        onClick={() => act('voice_preview', { synthetic: true })}
+                        onClick={() =>
+                          act('voice_preview', { synthetic: true })
+                        }
                       >
                         Preview
                       </Button>
@@ -255,7 +277,9 @@ export const CharacterSetup = () => {
                     minValue={voice_limits.min_speed}
                     maxValue={voice_limits.max_speed}
                     step={1}
-                    onChange={(value) => act('voice_speed', { voice_speed: value })}
+                    onChange={(value) =>
+                      act('voice_speed', { voice_speed: value })
+                    }
                   />
                 </LabeledList.Item>
                 <LabeledList.Item label="Pitch">
@@ -264,7 +288,9 @@ export const CharacterSetup = () => {
                     minValue={voice_limits.min_pitch}
                     maxValue={voice_limits.max_pitch}
                     step={0.05}
-                    onChange={(value) => act('voice_pitch', { voice_pitch: value })}
+                    onChange={(value) =>
+                      act('voice_pitch', { voice_pitch: value })
+                    }
                   />
                 </LabeledList.Item>
                 <LabeledList.Item label="Pitch Variation">
@@ -275,6 +301,21 @@ export const CharacterSetup = () => {
                     step={0.05}
                     onChange={(value) =>
                       act('voice_pitch_range', { voice_pitch_range: value })
+                    }
+                  />
+                </LabeledList.Item>
+              </LabeledList>
+            </Section>
+          </Stack.Item>
+          <Stack.Item>
+            <Section title="PDA">
+              <LabeledList>
+                <LabeledList.Item label="Theme">
+                  <Dropdown
+                    selected={pda_theme}
+                    options={pda_themes}
+                    onSelected={(value) =>
+                      act('pda_theme', { pda_theme: value })
                     }
                   />
                 </LabeledList.Item>
@@ -300,7 +341,11 @@ export const CharacterSetup = () => {
                   </Button>
                 </Stack.Item>
                 <Stack.Item grow basis="45%">
-                  <Button fluid icon="shirt" onClick={() => act('open_loadout')}>
+                  <Button
+                    fluid
+                    icon="shirt"
+                    onClick={() => act('open_loadout')}
+                  >
                     Starting Loadout
                   </Button>
                 </Stack.Item>
@@ -311,17 +356,29 @@ export const CharacterSetup = () => {
             <Section title="Jobs & Background">
               <Stack wrap>
                 <Stack.Item grow basis="45%">
-                  <Button fluid icon="list-check" onClick={() => act('open_job_prefs')}>
+                  <Button
+                    fluid
+                    icon="list-check"
+                    onClick={() => act('open_job_prefs')}
+                  >
                     Job Preferences
                   </Button>
                 </Stack.Item>
                 <Stack.Item grow basis="45%">
-                  <Button fluid icon="id-badge" onClick={() => act('open_job_slots')}>
+                  <Button
+                    fluid
+                    icon="id-badge"
+                    onClick={() => act('open_job_slots')}
+                  >
                     Job Slot Assignment
                   </Button>
                 </Stack.Item>
                 <Stack.Item grow basis="45%">
-                  <Button fluid icon="file-lines" onClick={() => act('open_background')}>
+                  <Button
+                    fluid
+                    icon="file-lines"
+                    onClick={() => act('open_background')}
+                  >
                     Background & Records
                   </Button>
                 </Stack.Item>
@@ -332,19 +389,31 @@ export const CharacterSetup = () => {
             <Section title="Role Settings">
               <Stack wrap>
                 <Stack.Item grow basis="45%">
-                  <Button fluid icon="dna" onClick={() => act('open_whitelist_roles')}>
+                  <Button
+                    fluid
+                    icon="dna"
+                    onClick={() => act('open_whitelist_roles')}
+                  >
                     Xeno / CO / Synthetic Settings
                   </Button>
                 </Stack.Item>
                 {!!has_predator && (
                   <Stack.Item grow basis="45%">
-                    <Button fluid icon="user-ninja" onClick={() => act('open_predator')}>
+                    <Button
+                      fluid
+                      icon="user-ninja"
+                      onClick={() => act('open_predator')}
+                    >
                       Predator Settings
                     </Button>
                   </Stack.Item>
                 )}
                 <Stack.Item grow basis="45%">
-                  <Button fluid icon="sliders" onClick={() => act('open_settings')}>
+                  <Button
+                    fluid
+                    icon="sliders"
+                    onClick={() => act('open_settings')}
+                  >
                     Settings & Special
                   </Button>
                 </Stack.Item>

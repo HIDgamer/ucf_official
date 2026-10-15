@@ -203,6 +203,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/body_type = "Mesomorphic (Average)" // Body Type
 	var/voice_pack = VOICE_DEFAULT_PACK
 	var/synth_voice_pack = VOICE_DEFAULT_SYNTH_PACK
+	var/pda_theme = PDA_THEME_TERMINAL_NAME
 	var/voice_pitch = 1
 	var/voice_speed = 6
 	var/voice_pitch_range = 0.2
@@ -394,6 +395,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Talk Sound:</b> <a href='?_src_=prefs;preference=voice_pack;task=input'><b>[current_voice?.display_name()]</b></a> <a href='?_src_=prefs;preference=voice_preview'>Preview</a><br>"
 			var/datum/voice_pack/current_synth_voice = GLOB.voice_pack_list[synth_voice_pack]
 			dat += "<b>Synthetic Talk Sound:</b> <a href='?_src_=prefs;preference=synth_voice_pack;task=input'><b>[current_synth_voice?.display_name()]</b></a> <a href='?_src_=prefs;preference=voice_preview_synth'>Preview</a><br>"
+			dat += "<b>PDA Theme:</b> <a href='?_src_=prefs;preference=pda_theme;task=input'><b>[pda_theme]</b></a><br>"
 			dat += "<b>Talk Speed:</b> <a href='?_src_=prefs;preference=voice_speed;task=input'><b>[voice_speed]</b></a> <b>Pitch:</b> <a href='?_src_=prefs;preference=voice_pitch;task=input'><b>[voice_pitch]</b></a> <b>Pitch Variation:</b> <a href='?_src_=prefs;preference=voice_pitch_range;task=input'><b>[voice_pitch_range]</b></a><br>"
 			dat += "<b>Traits:</b> <a href='byond://?src=\ref[user];preference=traits;task=open'><b>Character Traits</b></a>"
 			dat += "<br>"
@@ -1658,6 +1660,11 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(new_synth_voice)
 						synth_voice_pack = synth_voice_choices[new_synth_voice]
 						preview_voice(user, TRUE)
+
+				if("pda_theme")
+					var/new_pda_theme = tgui_input_list(user, "Choose the theme of your PDA:", "Character Preferences", GLOB.pda_themes)
+					if(new_pda_theme)
+						pda_theme = new_pda_theme
 
 				if("voice_speed")
 					var/new_speed = tgui_input_number(user, "Choose how fast your character talks, lower is faster:", "Character Preferences", voice_speed, VOICE_DEFAULT_MAXSPEED, VOICE_DEFAULT_MINSPEED, integer_only = FALSE)

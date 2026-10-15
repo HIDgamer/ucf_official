@@ -5,10 +5,12 @@
  */
 
 import { BooleanLike } from 'common/react';
+import { useEffect, useRef } from 'react';
 
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
 import { Box, Button } from '../components';
+import { growWindowHeight } from '../drag';
 import { Window } from './Window';
 
 export type NTOSData = {
@@ -151,8 +153,30 @@ export const NtosWindow = (props) => {
 };
 
 const NtosWindowContent = (props) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const lastHeight = useRef(0);
+
+  useEffect(() => {
+    const scroller = ref.current?.querySelector('.Layout__content--scrollable');
+    if (!scroller) {
+      return;
+    }
+    const timeout = setTimeout(() => {
+      const height = scroller.scrollHeight;
+      if (height === lastHeight.current) {
+        return;
+      }
+      lastHeight.current = height;
+      const overflow = height - scroller.clientHeight;
+      if (overflow > 1) {
+        growWindowHeight(overflow + 4);
+      }
+    }, 250);
+    return () => clearTimeout(timeout);
+  });
+
   return (
-    <div className="NtosWindow__content">
+    <div className="NtosWindow__content" ref={ref}>
       <Window.Content {...props} />
     </div>
   );

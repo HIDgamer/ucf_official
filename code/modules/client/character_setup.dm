@@ -78,6 +78,9 @@
 	for(var/synth_voice_name in get_voice_pack_choices(TRUE))
 		synth_voice_names += synth_voice_name
 	.["synth_voice_packs"] = synth_voice_names
+	.["pda_themes"] = list()
+	for(var/pda_theme_name in GLOB.pda_themes)
+		.["pda_themes"] += pda_theme_name
 	.["voice_limits"] = list("min_speed" = VOICE_DEFAULT_MINSPEED, "max_speed" = VOICE_DEFAULT_MAXSPEED, "min_pitch" = VOICE_DEFAULT_MINPITCH, "max_pitch" = VOICE_DEFAULT_MAXPITCH, "min_range" = VOICE_DEFAULT_MINVARY, "max_range" = VOICE_DEFAULT_MAXVARY)
 
 /datum/character_setup/ui_data(mob/user)
@@ -98,6 +101,7 @@
 	.["voice_pack"] = current_voice?.display_name()
 	var/datum/voice_pack/current_synth_voice = GLOB.voice_pack_list[prefs.synth_voice_pack]
 	.["synth_voice_pack"] = current_synth_voice?.display_name()
+	.["pda_theme"] = prefs.pda_theme
 	.["voice_speed"] = prefs.voice_speed
 	.["voice_pitch"] = prefs.voice_pitch
 	.["voice_pitch_range"] = prefs.voice_pitch_range
@@ -158,6 +162,11 @@
 			if(synth_voice_choices[params["synth_voice_pack"]])
 				prefs.synth_voice_pack = synth_voice_choices[params["synth_voice_pack"]]
 				prefs.preview_voice(ui.user, TRUE)
+			return TRUE
+
+		if("pda_theme")
+			if(GLOB.pda_themes[params["pda_theme"]])
+				prefs.pda_theme = params["pda_theme"]
 			return TRUE
 
 		if("voice_speed")

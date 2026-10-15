@@ -24,6 +24,8 @@
 	var/comp_light_color = COLOR_WHITE
 	var/list/datum/computer_file/program/stored_files = list()
 	var/list/default_programs = list()
+	var/list/extra_programs = list()
+	var/can_print_notes = FALSE
 	var/datum/computer_file/program/active_program
 	var/list/datum/computer_file/program/idle_threads = list()
 
@@ -31,7 +33,7 @@
 	. = ..()
 	set_light_color(comp_light_color)
 	set_light_on(FALSE)
-	for(var/program_type in default_programs)
+	for(var/program_type in default_programs + extra_programs)
 		install_program(new program_type)
 	update_icon()
 
