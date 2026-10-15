@@ -19,6 +19,7 @@
 	var/z
 	var/y_s_offset // Vertical sound offset
 	var/x_s_offset // Horizontal sound offset
+	var/list/interior_rects // Interior areas whose listeners also hear it, as list(center x, center y, width, height, z)
 
 /proc/get_free_channel()
 	var/static/cur_chan = 1

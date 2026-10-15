@@ -169,6 +169,9 @@
 			return
 		return O.relaymove(mob, direct)
 	else
+		if(mob.sprinting)
+			var/mob/living/carbon/human/sprinter = mob
+			sprinter.validate_sprint()
 		move_delay = mob.move_delay
 		if(mob.recalculate_move_delay)
 			recalculate_move_delay()
@@ -202,6 +205,9 @@
 			if (mob.tile_contents)
 				mob.tile_contents = list()
 		if(.)
+			if(mob.sprinting)
+				var/mob/living/carbon/human/sprinter = mob
+				sprinter.on_sprint_step(direct)
 			mob.track_steps_walked()
 			mob.life_steps_total++
 			if(mob.clone != null)
