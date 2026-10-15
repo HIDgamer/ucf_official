@@ -33,7 +33,7 @@
 /// Plays the talk sounds for a spoken message to the clients that hear it
 /datum/atom_voice/proc/start_barking(message, list/hearers, talk_icon_state, atom/movable/speaker, over_radio = FALSE)
 	var/datum/voice_pack/pack = over_radio ? GLOB.voice_pack_list[VOICE_RADIO_PACK] : (issynth(speaker) ? synth_voicepack : voicepack)
-	if(!pack || !GLOB.voices_enabled || !length(message))
+	if(!pack || !GLOB.voices_enabled || SSlag_switch.measures[DISABLE_TALK_SOUNDS] || !length(message))
 		return
 	var/list/client/listeners = list()
 	for(var/mob/hearer in hearers)
