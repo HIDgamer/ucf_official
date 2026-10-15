@@ -93,6 +93,13 @@
 	. = ..()
 	if(src == user)
 		.["Check injuries"] = list("radial_examine2", CALLBACK(src, PROC_REF(check_for_injuries)))
+	else if(ishuman(user) && stat != DEAD)
+		var/mob/living/carbon/human/shooter = user
+		var/datum/component/gunpoint/aim = shooter.GetComponent(/datum/component/gunpoint)
+		if(aim?.target == src)
+			.["Lower aim"] = list("radial_drop", CALLBACK(shooter, TYPE_PROC_REF(/mob/living/carbon/human, lower_aim)))
+		else if(istype(shooter.get_active_hand(), /obj/item/weapon/gun))
+			.["Hold up"] = list("radial_point", CALLBACK(shooter, TYPE_PROC_REF(/mob/living/carbon/human, hold_up), src))
 
 /obj/item/modular_computer/get_context_actions(mob/user)
 	. = ..()
