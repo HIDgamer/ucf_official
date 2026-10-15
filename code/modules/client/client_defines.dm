@@ -95,6 +95,9 @@
 	///Our object window datum. It stores info about and handles behavior for the object tab
 	var/datum/object_window_info/obj_window
 
+	///Our loot panel datum, created when first opened
+	var/datum/lootpanel/loot_panel
+
 	/// list of all tabs
 	var/list/panel_tabs = list()
 

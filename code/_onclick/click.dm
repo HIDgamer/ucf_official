@@ -243,7 +243,12 @@
 	if (mods["alt"])
 		var/turf/T = get_turf(src)
 		if(T && user.TurfAdjacent(T) && length(T.contents))
-			user.set_listed_turf(T)
+			if(user.client?.prefs?.toggle_prefs & TOGGLE_LOOT_PANEL)
+				if(!user.client.loot_panel)
+					user.client.loot_panel = new(user.client)
+				user.client.loot_panel.open(T)
+			else
+				user.set_listed_turf(T)
 
 		return TRUE
 	return FALSE

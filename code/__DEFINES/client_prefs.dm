@@ -39,6 +39,7 @@
 #define TOGGLE_AMMO_DISPLAY_TYPE (1<<19)/// limit how often the ammo is displayed when using semi-automatic fire
 #define TOGGLE_AUTO_SHOVE_OFF (1<<20) /// Toggles between automatically shoving xenomorphs in the way as Queen.
 #define TOGGLE_MIDDLE_MOUSE_CLICK (1<<21) /// Determines whether middle mouse click activates xeno abilities.
+#define TOGGLE_LOOT_PANEL (1<<22) /// Determines whether alt-clicking a turf opens the loot panel instead of the Turf stat tab.
 
 #define JOB_SLOT_RANDOMISED_SLOT -1
 #define JOB_SLOT_CURRENT_SLOT 0
