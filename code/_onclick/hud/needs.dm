@@ -34,6 +34,7 @@
 	var/image/drink_image
 	var/atom/movable/screen/thirst_bar/thirst_bar
 	var/parched = FALSE
+	var/shown = FALSE
 
 /atom/movable/screen/thirst/Initialize(mapload, ...)
 	. = ..()
@@ -42,6 +43,7 @@
 	drink_image.appearance_flags |= KEEP_APART
 	drink_image.filters += filter(arglist(outline_filter(1, COLOR_BLACK, OUTLINE_SHARP)))
 	underlays += drink_image
+	alpha = 0
 	thirst_bar = new
 	vis_contents += thirst_bar
 
@@ -52,6 +54,10 @@
 	return ..()
 
 /atom/movable/screen/thirst/proc/update_thirst(hydration, now_parched)
+	var/want_shown = hydration < HYDRATION_HUD_SHOW || now_parched
+	if(want_shown != shown)
+		shown = want_shown
+		animate(src, alpha = shown ? 255 : 0, time = 1 SECONDS)
 	thirst_bar.update_fullness(hydration / HYDRATION_MAX)
 	if(now_parched == parched)
 		return

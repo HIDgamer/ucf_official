@@ -125,6 +125,7 @@
 								hud_used.healths.icon_state = "health0"
 
 			if(hud_used.nutrition_icon)
+				hud_used.nutrition_icon.alpha = nutrition >= NUTRITION_LOW ? 0 : 255
 				switch(nutrition)
 					if(350 to INFINITY)
 						hud_used.nutrition_icon.icon_state = "nutrition0"

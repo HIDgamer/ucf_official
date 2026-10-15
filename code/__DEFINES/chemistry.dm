@@ -68,6 +68,8 @@
 #define HYDRATION_NORMAL 400
 #define HYDRATION_LOW 250
 #define HYDRATION_VERYLOW 100
+/// The thirst bar only shows below this
+#define HYDRATION_HUD_SHOW 300
 
 #define THIRST_QUENCHED 0
 #define THIRST_THIRSTY 1
