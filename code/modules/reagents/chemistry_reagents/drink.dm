@@ -10,6 +10,7 @@
 	description = "Uh, some kind of drink."
 	reagent_state = LIQUID
 	nutriment_factor = 0.5 * REAGENTS_METABOLISM
+	hydration_factor = 3
 	// Drinks should be used up faster than other reagents.
 	custom_metabolism = FOOD_METABOLISM
 	color = "#E78108" // rgb: 231, 129, 8

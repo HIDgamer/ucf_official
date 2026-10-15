@@ -55,3 +55,11 @@
 #define SPRINT_RESUME_ENERGY 25
 /// Tiles sprinted in a row to count as a sustained sprint
 #define SPRINT_SUSTAINED_TILES 8
+/// Food drain multiplier while sprinting
+#define SPRINT_FOOD_MULTIPLIER 2
+/// Water drain multiplier while sprinting
+#define SPRINT_WATER_MULTIPLIER 4
+/// Regen multiplier while thirsty
+#define SPRINT_THIRSTY_REGEN 0.5
+/// Disarm roll bonus against a fully winded target
+#define SPRINT_DISARM_PENALTY 20

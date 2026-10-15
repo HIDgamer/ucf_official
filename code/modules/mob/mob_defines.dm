@@ -125,6 +125,7 @@
 
 	var/charges = 0
 	var/nutrition = NUTRITION_NORMAL//Carbon
+	var/hydration = HYDRATION_NORMAL//Carbon
 
 	var/overeatduration = 0 // How long this guy is overeating //Carbon
 	var/recovery_constant = 1

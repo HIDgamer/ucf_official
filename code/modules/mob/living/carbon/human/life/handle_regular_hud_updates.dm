@@ -137,6 +137,9 @@
 					else
 						hud_used.nutrition_icon.icon_state = "nutrition3"
 
+			update_stamina_hud()
+			update_thirst_hud()
+
 			if(hud_used.oxygen_icon)
 				if(hal_screwyhud == 3 || oxygen_alert)
 					hud_used.oxygen_icon.icon_state = "oxy1"

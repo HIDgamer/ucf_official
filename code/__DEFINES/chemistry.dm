@@ -60,6 +60,19 @@
 #define NUTRITION_LOW 250
 #define NUTRITION_VERYLOW 50
 
+/// How fast mob hydration normally decreases
+#define HYDRATION_FACTOR 0.03
+
+// Hydration levels
+#define HYDRATION_MAX 550
+#define HYDRATION_NORMAL 400
+#define HYDRATION_LOW 250
+#define HYDRATION_VERYLOW 100
+
+#define THIRST_QUENCHED 0
+#define THIRST_THIRSTY 1
+#define THIRST_PARCHED 2
+
 //Metabolization mods
 #define REAGENT_EFFECT "effectiveness"
 #define REAGENT_BOOST "boost"

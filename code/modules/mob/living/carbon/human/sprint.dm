@@ -20,7 +20,7 @@
 /mob/living/carbon/human/proc/get_sprint_energy()
 	var/regen_start = max(sprint_energy_time, sprint_rest_until)
 	if(world.time > regen_start)
-		sprint_energy = min(SPRINT_ENERGY_MAX, sprint_energy + (world.time - regen_start) * SPRINT_ENERGY_REGEN)
+		sprint_energy = min(SPRINT_ENERGY_MAX, sprint_energy + (world.time - regen_start) * SPRINT_ENERGY_REGEN * (thirst_state == THIRST_QUENCHED ? 1 : SPRINT_THIRSTY_REGEN))
 		sprint_energy_time = world.time
 	return sprint_energy
 
@@ -29,12 +29,17 @@
 		return FALSE
 	if(m_intent != MOVE_INTENT_RUN)
 		return FALSE
+	if(thirst_state == THIRST_PARCHED)
+		return FALSE
 	return get_sprint_energy() >= (sprint_exhausted ? SPRINT_RESUME_ENERGY : 1)
 
 /mob/living/carbon/human/proc/start_sprint()
 	if(sprinting)
 		return
 	if(!can_sprint())
+		if(thirst_state == THIRST_PARCHED && stat == CONSCIOUS)
+			to_chat(src, SPAN_WARNING("You are too parched to sprint."))
+			return
 		if(sprint_exhausted && stat == CONSCIOUS)
 			to_chat(src, SPAN_WARNING(issynth(src) ? "You are overheating too much to sprint." : "You're too out of breath to sprint."))
 		return
@@ -42,6 +47,7 @@
 	sprinting = TRUE
 	sprint_streak = 0
 	recalculate_move_delay = TRUE
+	update_stamina_hud()
 
 /mob/living/carbon/human/proc/stop_sprint()
 	if(!sprinting)
@@ -52,6 +58,7 @@
 		sprint_dust?.appear("sprint_cloud_small", dir, get_turf(src), 0.4 SECONDS)
 	sprint_streak = 0
 	sprint_dir = 0
+	update_stamina_hud()
 
 /// Ends the sprint when the human can no longer keep it up, called before every step
 /mob/living/carbon/human/proc/validate_sprint()
@@ -75,6 +82,9 @@
 	sprint_energy = max(energy, 0)
 	sprint_energy_time = world.time
 	sprint_rest_until = world.time + SPRINT_REGEN_DELAY
+	nutrition = max(0, nutrition - HUNGER_FACTOR / 5 * (SPRINT_FOOD_MULTIPLIER - 1))
+	hydration = max(0, hydration - HYDRATION_FACTOR / 5 * (SPRINT_WATER_MULTIPLIER - 1))
+	update_stamina_hud()
 	if(energy > 0)
 		return
 	sprint_exhausted = TRUE

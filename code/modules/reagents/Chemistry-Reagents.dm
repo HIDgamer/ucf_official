@@ -22,6 +22,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/list/data_properties = list("blood_type" = null, "blood_color" = "#A10808", "viruses" = null, "resistances" = null) //mostly for viruses...
 	var/volume = 0
 	var/nutriment_factor = 0
+	/// Hydration gained per unit swallowed
+	var/hydration_factor = 0
 	var/custom_metabolism = REAGENTS_METABOLISM
 	var/overdose = 0 //The young brother of overdose. Side effects include
 	var/overdose_critical = 0 //The nastier brother of overdose. Expect to die

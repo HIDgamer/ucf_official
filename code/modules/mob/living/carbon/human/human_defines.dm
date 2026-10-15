@@ -73,6 +73,7 @@
 	var/sprint_exhausted = FALSE
 	var/sprint_streak = 0
 	var/sprint_dir = 0
+	var/thirst_state = THIRST_QUENCHED
 	var/obj/effect/sprint_dust/sprint_dust
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null

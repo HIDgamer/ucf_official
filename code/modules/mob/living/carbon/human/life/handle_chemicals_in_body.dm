@@ -26,13 +26,16 @@
 	if(!(species.flags & IS_SYNTHETIC))
 		//Nutrition decrease
 		if(stat != DEAD)
-			nutrition = max(0, nutrition - HUNGER_FACTOR)
+			nutrition = max(0, nutrition - HUNGER_FACTOR * (sprinting ? SPRINT_FOOD_MULTIPLIER : 1))
+			hydration = max(0, hydration - HYDRATION_FACTOR * (sprinting ? SPRINT_WATER_MULTIPLIER : 1))
+			update_thirst_state()
 
 
 		handle_trace_chems()
 
 	else
 		nutrition = NUTRITION_NORMAL //synthetics are never hungry
+		hydration = HYDRATION_NORMAL
 
 	return //TODO: DEFERRED
 

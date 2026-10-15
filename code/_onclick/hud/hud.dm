@@ -39,6 +39,8 @@
 	var/atom/movable/screen/module_store_icon
 
 	var/atom/movable/screen/nutrition_icon
+	var/atom/movable/screen/stamina_bolt/stamina_icon
+	var/atom/movable/screen/thirst/thirst_icon
 
 	var/atom/movable/screen/use_attachment
 	var/atom/movable/screen/toggle_raillight
@@ -135,6 +137,8 @@
 	tethered_icon = null
 
 	nutrition_icon = null
+	stamina_icon = null
+	thirst_icon = null
 
 	use_attachment = null
 	toggle_raillight = null

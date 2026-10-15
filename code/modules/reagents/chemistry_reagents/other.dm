@@ -113,6 +113,7 @@
 	reagent_state = LIQUID
 	color = "#0064C8" // rgb: 0, 100, 200
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
+	hydration_factor = 4
 	chemclass = CHEM_CLASS_BASIC
 	chemfiresupp = TRUE
 	intensitymod = -3

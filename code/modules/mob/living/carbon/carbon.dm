@@ -34,8 +34,9 @@
 /mob/living/carbon/Move(NewLoc, direct)
 	. = ..()
 	if(.)
-		if(nutrition && stat != DEAD)
-			nutrition -= HUNGER_FACTOR/5
+		if(stat != DEAD)
+			nutrition = max(0, nutrition - HUNGER_FACTOR / 5)
+			hydration = max(0, hydration - HYDRATION_FACTOR / 5)
 
 /mob/living/carbon/relaymove(mob/user, direction)
 	if(user.is_mob_incapacitated(TRUE))
