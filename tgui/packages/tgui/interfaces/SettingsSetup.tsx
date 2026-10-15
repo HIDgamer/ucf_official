@@ -52,7 +52,6 @@ type Data = {
   toggle_auto_eject_magazine_to_hand: BooleanLike;
   toggle_eject_magazine_to_hand: BooleanLike;
   toggle_automatic_punctuation: BooleanLike;
-  toggle_combat_clickdrag_override: BooleanLike;
   toggle_middle_mouse_swap_hands: BooleanLike;
   toggle_vend_item_to_hand: BooleanLike;
   toggle_ammo_display_type: BooleanLike;
@@ -413,11 +412,6 @@ export const SettingsSetup = () => {
                       label="Automatic Punctuation"
                       on={!!data.toggle_automatic_punctuation}
                       action="toggle_automatic_punctuation"
-                    />
-                    <Toggle
-                      label="Combat Click-Drag Override"
-                      on={!!data.toggle_combat_clickdrag_override}
-                      action="toggle_combat_clickdrag_override"
                     />
                     <Toggle
                       label="Middle-Click Swap Hands"

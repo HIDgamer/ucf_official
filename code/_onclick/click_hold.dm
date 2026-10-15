@@ -14,10 +14,17 @@
 	/// The history of all atoms that were hovered over while the mouse was depressed
 	var/list/mouse_trace_history
 	var/list/lmb_last_mousedown_mods
+	/// What the mouse button went down on, kept to turn a drag that was not meant into a click
+	var/datum/weakref/mouse_down_raw
+	var/datum/weakref/mouse_down_atom
+	var/mouse_down_control
+	var/mouse_down_params
 	var/datum/entity/clan_player/clan_info
 
 /client/MouseDown(atom/A, turf/T, skin_ctl, params)
 	ignore_next_click = FALSE
+	mouse_down_atom = null
+	mouse_down_raw = A ? WEAKREF(A) : null
 	if(!A)
 		return
 
@@ -27,6 +34,9 @@
 	if(click_catcher_click)
 		params += ";click_catcher=1"
 	holding_click = TRUE
+	mouse_down_atom = WEAKREF(A)
+	mouse_down_control = skin_ctl
+	mouse_down_params = params
 
 	mouse_trace_history = null
 	LAZYADD(mouse_trace_history, A)
@@ -38,23 +48,9 @@
 	if(mods["left"])
 		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_DOWN, A, mods)
 		lmb_last_mousedown_mods = mods
+	if(mods[RIGHT_CLICK])
+		start_context_hold(mods)
 
-	/*Used by TOGGLE_COMBAT_CLICKDRAG_OVERRIDE to trigger clicks immediately when depressing the mouse button when on disarm/harm intent to prevent click-dragging
-	from 'eating' attacks. We'll either abort and let Byond behave normally, or override it and do a click immediately even if the button is held down.*/
-	if(prefs && prefs.toggle_prefs & TOGGLE_COMBAT_CLICKDRAG_OVERRIDE && !(HAS_TRAIT(mob, TRAIT_OVERRIDE_CLICKDRAG)) )
-		switch(mob.a_intent) //Only combat intents should override click-drags.
-			if(INTENT_HELP, INTENT_GRAB)
-				return
-
-		//Some combat intent click-drags shouldn't be overridden.
-		var/mob/target_mob = A
-		if(ismob(target_mob) && target_mob.faction == mob.faction && !mods["ctrl"] && !(iscarbonsizexeno(mob) && !mob.get_active_hand())) //Don't attack your allies or yourself, unless you're a xeno with an open hand.
-			return
-
-		if(!isturf(T)) //If clickdragging something in your own inventory, it's probably a deliberate attempt to open something, tactical-reload, etc. Don't click it.
-			return //'T' is actually 'location', and if it isn't a turf, the item is most likely a HUD screen or in inventory somewhere.
-
-		Click(A, T, skin_ctl, params)
 
 /client/MouseUp(atom/A, turf/T, skin_ctl, params)
 	if(!A)
@@ -65,6 +61,13 @@
 	if(click_catcher_click)
 		params += ";click_catcher=1"
 	holding_click = FALSE
+
+	if(context_menu_press)
+		context_menu_press = FALSE
+		context_release_until = world.time + 3
+		if(istype(A, /atom/movable/screen/radial/slice))
+			A.clicked(mob)
+		return
 
 	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEUP, A, T, skin_ctl, params) & COMSIG_MOB_CLICK_CANCELED)
 		return
@@ -96,7 +99,30 @@
 	// Add the hovered atom to the trace
 	LAZYADD(mouse_trace_history, over_obj)
 
+/// Whether a drag that went down on this atom was meant as a click, only a drag started with shift is a drag
+/proc/drag_is_click(datum/src_object, datum/pressed_raw, mob/user, list/press_mods)
+	if(!src_object || pressed_raw != src_object || istype(src_object, /atom/movable/screen))
+		return FALSE
+	if(HAS_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG) || isgun(user.get_active_hand()))
+		return FALSE
+	return !press_mods[SHIFT_CLICK] && (press_mods[LEFT_CLICK] || press_mods[RIGHT_CLICK] || press_mods[MIDDLE_CLICK])
+
+/client/proc/drag_became_click(datum/src_object, src_location)
+	var/datum/weakref/raw_ref = mouse_down_raw
+	var/datum/weakref/atom_ref = mouse_down_atom
+	mouse_down_raw = null
+	mouse_down_atom = null
+	var/atom/pressed = atom_ref?.resolve()
+	if(!pressed || !drag_is_click(src_object, raw_ref?.resolve(), mob, params2list(mouse_down_params)))
+		return FALSE
+	Click(pressed, src_location, mouse_down_control, mouse_down_params)
+	return TRUE
+
 /client/MouseDrop(datum/src_object, datum/over_object, src_location, over_location, src_control, over_control, params)
+	if(world.time <= context_release_until)
+		return
+	if(drag_became_click(src_object, src_location))
+		return
 	. = ..()
 	if(over_object)
 		SEND_SIGNAL(over_object, COMSIG_ATOM_DROPPED_ON, src_object, src)

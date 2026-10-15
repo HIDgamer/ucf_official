@@ -263,6 +263,9 @@ Administrative related.
 
 /datum/config_entry/flag/smooth_glide
 	config_entry_value = TRUE
+
+/datum/config_entry/flag/smooth_attack_animation
+	config_entry_value = TRUE
 /*
 Voting
 */

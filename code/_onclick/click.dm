@@ -3,6 +3,8 @@
 
 /// 1 decisecond click delay (above and beyond mob/next_move)
 /mob/var/next_click = 0
+/// The modifiers of the click being handled, ISTATE_*
+/mob/var/istate = 0
 
 /*
 	client/Click is called every time a client clicks anywhere, it should never be overridden.
@@ -42,6 +44,7 @@
 
 	next_click = world.time + 1 //Maximum code-permitted clickrate 10.26/s, practical maximum manual rate: 8.5, autoclicker maximum: between 7.2/s and 8.5/s.
 	var/list/mods = params2list(params)
+	istate = click_istate(mods)
 
 	if (!clicked_something)
 		clicked_something = list("" = null)
@@ -50,7 +53,7 @@
 		clicked_something[mod] = TRUE
 
 	// Don't allow any other clicks while dragging something
-	if (mods["drag"])
+	if (mods[DRAG])
 		return
 
 	if(SEND_SIGNAL(client, COMSIG_CLIENT_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
@@ -83,7 +86,7 @@
 		return
 
 	face_atom(A)
-	if(mods["middle"])
+	if(mods[MIDDLE_CLICK])
 		return
 	// Special type of click.
 	if (is_mob_restrained())
@@ -149,6 +152,8 @@
 	return
 
 /mob/proc/click_adjacent(atom/targeted_atom, obj/item/used_item, mods)
+	if((istate & ISTATE_SECONDARY) && secondary_click_adjacent(targeted_atom, used_item, mods))
+		return
 	if(used_item)
 		var/attackby_result = targeted_atom.attackby(used_item, src, mods)
 		var/afterattack_result
@@ -156,18 +161,45 @@
 			// in case the attackby slept
 			if(!used_item)
 				if(!isitem(targeted_atom) && !issurface(targeted_atom))
-					next_move += 4
+					next_move += CLICK_CD_UNARMED
 				UnarmedAttack(targeted_atom, 1, mods)
 				return
 
 			afterattack_result = used_item.afterattack(targeted_atom, src, 1, mods)
 
 		if(used_item.attack_speed && !src.contains(targeted_atom) && (attackby_result & ATTACKBY_HINT_UPDATE_NEXT_MOVE) || (afterattack_result & ATTACKBY_HINT_UPDATE_NEXT_MOVE) || (used_item.flags_item & ADJACENT_CLICK_DELAY))
-			next_move += used_item.attack_speed
+			next_move += used_item.attack_speed * MELEE_DELAY_MULTIPLIER
 	else
 		if(!isitem(targeted_atom) && !issurface(targeted_atom))
-			next_move += 4
+			next_move += CLICK_CD_UNARMED
 		UnarmedAttack(targeted_atom, 1, mods)
+
+/// Right-click on something in reach, returns TRUE when the click was used up
+/mob/proc/secondary_click_adjacent(atom/targeted_atom, obj/item/used_item, mods)
+	return used_item?.attack_secondary(targeted_atom, src, mods) == SECONDARY_ATTACK_CANCEL
+
+/mob/living/secondary_click_adjacent(atom/targeted_atom, obj/item/used_item, mods)
+	. = ..()
+	if(.)
+		return
+	if(used_item || !can_shove_with_secondary_click(targeted_atom))
+		return
+	return secondary_shove(targeted_atom, mods)
+
+/// Whether a right-click on the target may turn into a shove
+/mob/living/proc/can_shove_with_secondary_click(atom/target)
+	if(target == src || !isliving(target) || !(ishuman(src) || isxeno(src)))
+		return FALSE
+	return !(client?.prefs?.toggle_prefs & TOGGLE_SECONDARY_CLICK_OFF)
+
+/// Disarms the target with the current hand state whatever the selected intent
+/mob/living/proc/secondary_shove(mob/living/target, mods)
+	var/old_intent = a_intent
+	a_intent = INTENT_DISARM
+	istate &= ~ISTATE_SECONDARY
+	click_adjacent(target, null, mods)
+	a_intent = old_intent
+	return TRUE
 
 /mob/proc/check_click_intercept(params,A)
 	//Client level intercept
@@ -234,34 +266,58 @@
 	A.attack_remote(src)
 	return TRUE
 
+/// Turns the click parameters into ISTATE flags
+/proc/click_istate(list/mods)
+	. = 0
+	if(mods[RIGHT_CLICK])
+		. |= ISTATE_SECONDARY
+	if(mods[CTRL_CLICK])
+		. |= ISTATE_CONTROL
+	if(mods[SHIFT_CLICK])
+		. |= ISTATE_SHIFT
+	if(mods[ALT_CLICK])
+		. |= ISTATE_ALT
+	if(mods[MIDDLE_CLICK])
+		. |= ISTATE_MIDDLE
+
 /atom/proc/clicked(mob/user, list/mods)
-	if (mods["shift"] && !mods["middle"])
-		if(can_examine(user))
-			examine(user)
-		return TRUE
-
-	if (mods["alt"])
-		var/turf/T = get_turf(src)
-		if(T && user.TurfAdjacent(T) && length(T.contents))
-			if(user.client?.prefs?.toggle_prefs & TOGGLE_LOOT_PANEL)
-				if(!user.client.loot_panel)
-					user.client.loot_panel = new(user.client)
-				user.client.loot_panel.open(T)
-			else
-				user.set_listed_turf(T)
-
-		return TRUE
+	if (mods[SHIFT_CLICK] && !mods[MIDDLE_CLICK])
+		return shift_click(user)
+	if (mods[ALT_CLICK])
+		return alt_click(user)
 	return FALSE
+
+/// Shift-click, examines by default
+/atom/proc/shift_click(mob/user)
+	if(can_examine(user))
+		examine(user)
+	return TRUE
+
+/// Alt-click, lists the contents of the turf by default
+/atom/proc/alt_click(mob/user)
+	var/turf/T = get_turf(src)
+	if(T && user.TurfAdjacent(T) && length(T.contents))
+		if(user.client?.prefs?.toggle_prefs & TOGGLE_LOOT_PANEL)
+			if(!user.client.loot_panel)
+				user.client.loot_panel = new(user.client)
+			user.client.loot_panel.open(T)
+		else
+			user.set_listed_turf(T)
+	return TRUE
 
 /atom/movable/clicked(mob/user, list/mods)
 	if (..())
 		return TRUE
 
-	if (mods["ctrl"])
-		if (Adjacent(user) && user.next_move < world.time)
-			user.start_pulling(src)
-		return TRUE
+	if (mods[CTRL_CLICK])
+		return ctrl_click(user)
 	return FALSE
+
+/// Ctrl-click, starts pulling by default
+/atom/movable/proc/ctrl_click(mob/user)
+	if (Adjacent(user) && user.next_move < world.time)
+		user.start_pulling(src)
+	return TRUE
 
 /*
 	Translates into attack_hand, etc.

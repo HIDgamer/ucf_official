@@ -40,3 +40,24 @@
 #define ATTACKBY_HINT_NO_AFTERATTACK (1 << 0) 
 /// From /mob/proc/click_adjacent() : (atom/A, obj/item/W, mods) applies the click delay to next_move
 #define ATTACKBY_HINT_UPDATE_NEXT_MOVE (1 << 1)
+
+/// The click's modifiers, stored on the mob as istate for the click being handled
+#define ISTATE_SECONDARY (1<<0)
+#define ISTATE_CONTROL (1<<1)
+#define ISTATE_SHIFT (1<<2)
+#define ISTATE_ALT (1<<3)
+#define ISTATE_MIDDLE (1<<4)
+
+/// Extra delay after an unarmed attack on something that is not an item or a surface
+#define CLICK_CD_UNARMED 3
+
+/// From /obj/item/proc/attack_secondary(): the normal click goes ahead
+#define SECONDARY_ATTACK_CONTINUE 0
+/// From /obj/item/proc/attack_secondary(): the right-click was used up
+#define SECONDARY_ATTACK_CANCEL 1
+
+/// How long the right button is held down on something for the context menu to open
+#define CONTEXT_MENU_HOLD_TIME (0.35 SECONDS)
+
+/// Scales every weapon's attack_speed, lower is a shorter wait between swings
+#define MELEE_DELAY_MULTIPLIER 0.75

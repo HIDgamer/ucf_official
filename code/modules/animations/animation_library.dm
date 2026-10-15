@@ -173,7 +173,7 @@ Can look good elsewhere as well.*/
 
 
 
-/mob/living/proc/animation_attack_on(atom/A, pixel_offset = 8)
+/mob/living/proc/animation_attack_on(atom/A, pixel_offset = 8, obj/item/used_item)
 	SEND_SIGNAL(src, COMSIG_MOB_ANIMATING)
 	if(A.clone)
 		if(src.Adjacent(A.clone))
@@ -205,8 +205,64 @@ Can look good elsewhere as well.*/
 		if(SOUTHWEST)
 			pixel_x_diff = -pixel_offset
 			pixel_y_diff = -pixel_offset
-	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = 2, flags = ANIMATION_PARALLEL)
-	animate(pixel_x = initial(pixel_x), pixel_y = initial(pixel_y), time = 2)
+	if(!CONFIG_GET(flag/smooth_attack_animation))
+		animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = 2, flags = ANIMATION_PARALLEL)
+		animate(pixel_x = initial(pixel_x), pixel_y = initial(pixel_y), time = 2)
+		return
+	if(used_item && ismovable(A))
+		animation_item_thrust(A, used_item)
+	var/turn_dir = 1
+	if(direction & (NORTH|SOUTH))
+		turn_dir = prob(50) ? -1 : 1
+	if(direction & WEST && !(direction & EAST))
+		turn_dir = -1
+	var/matrix/initial_transform = matrix(transform)
+	var/matrix/rotated_transform = matrix(transform)
+	rotated_transform.Turn(15 * turn_dir)
+	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, transform = rotated_transform, time = 1, easing = BACK_EASING|EASE_IN, flags = ANIMATION_PARALLEL)
+	animate(pixel_x = pixel_x - pixel_x_diff, pixel_y = pixel_y - pixel_y_diff, transform = initial_transform, time = 2, easing = SINE_EASING, flags = ANIMATION_PARALLEL)
+
+/// A small copy of an item that thrusts onto the target and fades out
+/obj/effect/item_thrust
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	anchored = TRUE
+
+/mob/living/proc/animation_item_thrust(atom/movable/target, obj/item/used_item)
+	var/obj/effect/item_thrust/thrust = new
+	thrust.appearance = used_item.appearance
+	thrust.appearance_flags = APPEARANCE_UI
+	thrust.plane = ABOVE_GAME_PLANE
+	thrust.layer = FLY_LAYER
+	thrust.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	thrust.pixel_x = 0
+	thrust.pixel_y = 0
+	var/direction = get_dir(src, target)
+	if(direction & NORTH)
+		thrust.pixel_y = -12
+	else if(direction & SOUTH)
+		thrust.pixel_y = 12
+	if(direction & EAST)
+		thrust.pixel_x = -14
+	else if(direction & WEST)
+		thrust.pixel_x = 14
+	if(!direction)
+		thrust.pixel_y = 12
+		thrust.pixel_x = prob(50) ? 5 : -5
+	var/matrix/start_transform = matrix()
+	start_transform.Scale(0.4)
+	thrust.transform = start_transform
+	var/matrix/end_transform = matrix()
+	end_transform.Scale(0.75)
+	target.vis_contents += thrust
+	animate(thrust, alpha = 175, transform = end_transform, pixel_x = 0, pixel_y = 0, time = 3)
+	animate(time = 1)
+	animate(alpha = 0, time = 3, easing = CIRCULAR_EASING|EASE_OUT)
+	addtimer(CALLBACK(src, PROC_REF(end_item_thrust), target, thrust), 1 SECONDS)
+
+/mob/living/proc/end_item_thrust(atom/movable/target, obj/effect/item_thrust/thrust)
+	if(!QDELETED(target))
+		target.vis_contents -= thrust
+	qdel(thrust)
 
 
 /atom/proc/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)

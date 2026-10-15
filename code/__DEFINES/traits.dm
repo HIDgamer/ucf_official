@@ -310,7 +310,7 @@
 //If an item with this trait is in an ear slot, no other item with this trait can fit in the other ear slot
 #define TRAIT_ITEM_EAR_EXCLUSIVE "t_item_ear_exclusive"
 
-//This item will force clickdrag to work even if the preference to disable is enabled. (Full-auto items)
+//Mouse drags by this mob are never turned into clicks (Full-auto items)
 #define TRAIT_OVERRIDE_CLICKDRAG "t_override_clickdrag"
 
 //This item will use special rename component behaviors.

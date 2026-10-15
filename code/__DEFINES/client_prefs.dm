@@ -16,7 +16,7 @@
 // Deprecated. Can't remove this or bitshift values down because it would fuck up the savefiles
 // Feel free to replace this whatever you want, if you can find a useful toggle for it. Alternatively, don't because savefiles using flags
 // Is a complete and utter mistake.
-#define TOGGLE_FREE_PLACE_YOUR_OWN_TOGGLE_HERE (1<<2)
+#define TOGGLE_SCREENTIPS_OFF (1<<2) /// Hides the text that says what clicking the hovered thing does.
 #define TOGGLE_DIRECTIONAL_ATTACK (1<<3) // This toggles whether attacks for xeno use directional attacks
 #define TOGGLE_AUTO_EJECT_MAGAZINE_OFF (1<<4) // This toggles whether guns with auto ejectors will not auto eject their magazines
 												   // MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND
@@ -25,7 +25,6 @@
 #define TOGGLE_EJECT_MAGAZINE_TO_HAND (1<<6) // This toggles whether manuallye jecting magazines from guns will cause you to unwield your gun
 												   // and put the empty magazine in your hand
 #define TOGGLE_AUTOMATIC_PUNCTUATION (1<<7) // Whether your sentences will automatically be punctuated with a period
-#define TOGGLE_COMBAT_CLICKDRAG_OVERRIDE (1<<8) // Whether disarm/harm intents cause clicks to trigger immediately when the mouse button is depressed.
 #define TOGGLE_ALTERNATING_DUAL_WIELD (1<<9) // Whether dual-wielding fires both guns at once or swaps between them, OUTDATED, used to update savefiles, now dual_wield_pref
 #define TOGGLE_FULLSCREEN (1<<10) // See /client/proc/update_fullscreen in client_procs.dm
 #define TOGGLE_MEMBER_PUBLIC (1<<11) //determines if you get a byond logo by your name in ooc if you're a member or not
@@ -40,6 +39,8 @@
 #define TOGGLE_AUTO_SHOVE_OFF (1<<20) /// Toggles between automatically shoving xenomorphs in the way as Queen.
 #define TOGGLE_MIDDLE_MOUSE_CLICK (1<<21) /// Determines whether middle mouse click activates xeno abilities.
 #define TOGGLE_LOOT_PANEL (1<<22) /// Determines whether alt-clicking a turf opens the loot panel instead of the Turf stat tab.
+#define TOGGLE_SECONDARY_CLICK_OFF (1<<23) /// Disables right-click secondary actions such as shoving.
+#define TOGGLE_CONTEXT_MENU_OFF (1<<8) /// Holding the right mouse button no longer opens the context menu.
 
 #define JOB_SLOT_RANDOMISED_SLOT -1
 #define JOB_SLOT_CURRENT_SLOT 0

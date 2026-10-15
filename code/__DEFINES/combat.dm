@@ -35,3 +35,6 @@
 #define DECLOAK_SUBMERGED 2
 /// Caused by an EMP.
 #define DECLOAK_EMP 3
+
+/// Melee damage at or above which the target's camera shakes
+#define MELEE_HEAVY_HIT 20

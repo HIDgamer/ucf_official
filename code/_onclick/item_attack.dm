@@ -8,6 +8,16 @@
 	if(flags_item & CAN_DIG_SHRAPNEL && ishuman(user))
 		dig_out_shrapnel(user)
 
+/// Called when the item is used with a right-click on something in reach, return SECONDARY_ATTACK_CANCEL to use the click up
+/obj/item/proc/attack_secondary(atom/target, mob/user, list/mods)
+	return SECONDARY_ATTACK_CONTINUE
+
+/obj/item/weapon/attack_secondary(atom/target, mob/living/user, list/mods)
+	if(!istype(user) || !user.can_shove_with_secondary_click(target))
+		return SECONDARY_ATTACK_CONTINUE
+	user.secondary_shove(target, mods)
+	return SECONDARY_ATTACK_CANCEL
+
 // No comment
 /atom/proc/attackby(obj/item/W, mob/living/user, list/mods)
 	if(SEND_SIGNAL(src, COMSIG_PARENT_ATTACKBY, W, user, mods) & COMPONENT_NO_AFTERATTACK)
@@ -20,8 +30,9 @@
 	if(W && !.)
 		if(!(W.flags_item & NOBLUDGEON))
 			visible_message(SPAN_DANGER("[src] has been hit by [user] with [W]."), null, null, 5, CHAT_TYPE_MELEE_HIT)
-			user.animation_attack_on(src)
-			user.flick_attack_overlay(src, "punch")
+			user.animation_attack_on(src, used_item = W)
+			if(!CONFIG_GET(flag/smooth_attack_animation))
+				user.flick_attack_overlay(src, "punch")
 			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /mob/living/attackby(obj/item/I, mob/user)
@@ -44,6 +55,14 @@
 /obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	return FALSE
 
+
+/// Plays the sound of the item hitting something, louder for harder hits and a generic thud if it has none of its own
+/obj/item/proc/play_hit_sound()
+	var/hit_sound = hitsound
+	if(!hit_sound && force)
+		hit_sound = "swing_hit"
+	if(hit_sound)
+		playsound(loc, hit_sound, clamp(15 + force * 0.75, 20, 55), 1)
 
 /obj/item/proc/attack(mob/living/M, mob/living/user)
 	if((flags_item & NOBLUDGEON) || (MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && M.stat == DEAD && !user.get_target_lock(M.faction_group)))
@@ -96,8 +115,9 @@
 		user.visible_message(SPAN_DANGER("[M] has been [used_verb] with [src][showname]."),
 			SPAN_DANGER("You [used_verb] [M == user ? "yourself":M] with [src]."), null, 5, CHAT_TYPE_MELEE_HIT)
 
-		user.animation_attack_on(M)
-		user.flick_attack_overlay(M, "punch")
+		user.animation_attack_on(M, used_item = src)
+		if(!CONFIG_GET(flag/smooth_attack_animation))
+			user.flick_attack_overlay(M, "punch")
 		if(isxeno(M))
 			var/mob/living/carbon/xenomorph/X = M
 			power = armor_damage_reduction(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff - X.armor_deflection_debuff, 20, 0, 0, X.armor_integrity)
@@ -107,8 +127,7 @@
 
 			var/armor_punch = armor_break_calculation(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff - X.armor_deflection_debuff, 20, 0, 0, X.armor_integrity)
 			X.apply_armorbreak(armor_punch)
-		if(hitsound)
-			playsound(loc, hitsound, 25, 1)
+		play_hit_sound()
 		switch(damtype)
 			if("brute")
 				M.apply_damage(power,BRUTE)
@@ -116,6 +135,9 @@
 				M.apply_damage(power,BURN)
 				to_chat(M, SPAN_WARNING("It burns!"))
 		if(power > 5)
+			animation_flash_color(M)
+			if(power >= MELEE_HEAVY_HIT)
+				shake_camera(M, 2, 1)
 			M.last_damage_data = create_cause_data(initial(name), user)
 			user.track_hit(initial(name))
 			if(user.faction == M.faction)
@@ -124,7 +146,7 @@
 	else
 		var/mob/living/carbon/human/H = M
 		var/hit = H.attacked_by(src, user)
-		if (hit && hitsound)
-			playsound(loc, hitsound, 25, 1)
+		if(hit)
+			play_hit_sound()
 		return (hit|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)

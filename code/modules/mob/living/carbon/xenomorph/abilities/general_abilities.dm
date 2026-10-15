@@ -12,7 +12,7 @@
 		selected_ability.on_deselect(src)
 	if(!ability)
 		selected_ability = null
-		client?.set_right_click_menu_mode(shift_only = FALSE)
+		client?.set_right_click_menu_mode(shift_only = TRUE)
 		return
 	selected_ability = ability
 	selected_ability.on_select(src)

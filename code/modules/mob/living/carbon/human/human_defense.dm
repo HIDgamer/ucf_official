@@ -174,7 +174,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	if(!I || !user)
 		return FALSE
 
-	user.animation_attack_on(src)
+	user.animation_attack_on(src, used_item = I)
 	var/target_zone = check_zone(user.zone_selected)
 	//IF there is an override, use that, otherwise, check if selected zone is valid, if it is, use that, otherwise use chest
 
@@ -208,15 +208,16 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	if(!I.force)
 		return FALSE
-	if(weapon_sharp)
-		user.flick_attack_overlay(src, "punch")
-	else
+	if(!CONFIG_GET(flag/smooth_attack_animation))
 		user.flick_attack_overlay(src, "punch")
 
 	var/damage = armor_damage_reduction(GLOB.marine_melee, I.force, armor, (weapon_sharp?30:0) + (weapon_edge?10:0)) // no penetration frm punches
 	apply_damage(damage, I.damtype, affecting, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
 
 	if(damage > 5)
+		animation_flash_color(src)
+		if(damage >= MELEE_HEAVY_HIT)
+			shake_camera(src, 2, 1)
 		last_damage_data = create_cause_data(initial(I.name), user)
 		user.track_hit(initial(I.name))
 		if(user.faction == faction)

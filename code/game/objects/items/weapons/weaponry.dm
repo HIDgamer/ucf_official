@@ -253,10 +253,11 @@
 			M.visible_message(SPAN_DANGER("[user] and [M] cross blades!"))
 		playsound(user, 'sound/weapons/bladeslice.ogg', 25, 1)
 		playsound(M, 'sound/weapons/bladeslice.ogg', 25, 1)
-		user.animation_attack_on(M)
-		user.flick_attack_overlay(M, "punch")
+		user.animation_attack_on(M, used_item = src)
 		M.animation_attack_on(user)
-		M.flick_attack_overlay(user, "punch")
+		if(!CONFIG_GET(flag/smooth_attack_animation))
+			user.flick_attack_overlay(M, "punch")
+			M.flick_attack_overlay(user, "punch")
 		spawn(5)
 			user.apply_effect((kill_delay-5)/15, STUN)
 			M.apply_effect((kill_delay-5)/15, STUN)
@@ -276,8 +277,9 @@
 						SPAN_DANGER("You [used_verb] [M] with [src]."), null, 5)
 
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1)
-		user.animation_attack_on(M)
-		user.flick_attack_overlay(M, "punch")
+		user.animation_attack_on(M, used_item = src)
+		if(!CONFIG_GET(flag/smooth_attack_animation))
+			user.flick_attack_overlay(M, "punch")
 
 		M.apply_effect(kill_delay/15, STUN)
 

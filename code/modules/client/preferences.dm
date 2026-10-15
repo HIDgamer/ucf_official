@@ -672,8 +672,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_EJECT_MAGAZINE_TO_HAND]'><b>[toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Automatic Punctuation: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AUTOMATIC_PUNCTUATION]'><b>[toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION ? "On" : "Off"]</b></a><br>"
-			dat += "<b>Toggle Combat Click-Drag Override: \
-					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_COMBAT_CLICKDRAG_OVERRIDE]'><b>[toggle_prefs & TOGGLE_COMBAT_CLICKDRAG_OVERRIDE ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Middle-Click Swap Hands: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_MIDDLE_MOUSE_SWAP_HANDS]'><b>[toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Vendors Vending to Hands: \
@@ -682,6 +680,12 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AMMO_DISPLAY_TYPE]'><b>[toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Alt-Click Loot Panel: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_LOOT_PANEL]'><b>[toggle_prefs & TOGGLE_LOOT_PANEL ? "On" : "Off"]</b></a><br>"
+			dat += "<b>Toggle Right-Click Shove: \
+					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_SECONDARY_CLICK_OFF]'><b>[toggle_prefs & TOGGLE_SECONDARY_CLICK_OFF ? "Off" : "On"]</b></a><br>"
+			dat += "<b>Toggle Screentips: \
+					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_SCREENTIPS_OFF]'><b>[toggle_prefs & TOGGLE_SCREENTIPS_OFF ? "Off" : "On"]</b></a><br>"
+			dat += "<b>Toggle Right-Click Hold Menu: \
+					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_CONTEXT_MENU_OFF]'><b>[toggle_prefs & TOGGLE_CONTEXT_MENU_OFF ? "Off" : "On"]</b></a><br>"
 			dat += "<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations Detail Level</a><br>"
 			dat += "<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Dual Wield Functionality</a><br>"
 			dat += "<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_holotag'>Toggle Auto Holotags</a><br>"
