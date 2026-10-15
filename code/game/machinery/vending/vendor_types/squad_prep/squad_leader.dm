@@ -246,8 +246,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vet_leader, list(
 	vendor_role = list(JOB_SQUAD_LEADER)
 
 /obj/structure/machinery/cm_vending/clothing/leader/get_listed_products(mob/living/carbon/human/user)
-	if(user?.wear_id)
-		var/obj/item/card/id/id_card = user.wear_id
+	var/obj/item/card/id/id_card = user?.get_idcard()
+	if(id_card)
 		if(id_card.paygrade == PAY_SHORT_ME8E) //Checks for vSL
 			return GLOB.cm_vending_clothing_vet_leader
 	return GLOB.cm_vending_clothing_leader

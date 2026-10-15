@@ -84,7 +84,7 @@ export const NtosWindow = (props) => {
               {PC_stationtime}
             </Box>
             <Box inline italic mr={2} opacity={0.33}>
-              {(PC_device_theme === 'syndicate' && 'Syndix') || 'NtOS'}
+              Weyland-Yutani
               {!!PC_lowpower_mode && ' - RUNNING ON LOW POWER MODE'}
             </Box>
           </div>
