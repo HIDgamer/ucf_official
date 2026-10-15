@@ -31,7 +31,7 @@
 
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 
-/obj/item/clothing/under/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT), override_icon_state[] = null)
+/obj/item/clothing/under/marine/Initialize(mapload, new_protection[] = MARINE_COLD_PROT_BY_MAP, override_icon_state[] = null)
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -111,7 +111,7 @@
 	specialty = "USCM tanker"
 
 /obj/item/clothing/under/marine/tanker/New(loc,
-	new_protection = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
+	new_protection = MARINE_COLD_PROT_BY_MAP)
 
 	..(loc, new_protection)
 

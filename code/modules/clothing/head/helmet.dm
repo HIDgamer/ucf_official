@@ -431,7 +431,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	///Designates a visor type that should start down when initialized
 	var/start_down_visor_type
 
-/obj/item/clothing/head/helmet/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
+/obj/item/clothing/head/helmet/marine/Initialize(mapload, new_protection[] = MARINE_COLD_PROT_BY_MAP)
 	. = ..()
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
@@ -1528,7 +1528,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi'
 
 /obj/item/clothing/head/helmet/skullcap/jungle/New(loc, type,
-	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
+	new_protection[] = MARINE_COLD_PROT_BY_MAP)
 	select_gamemode_skin(type,, new_protection)
 	..()
 	switch(icon_state)

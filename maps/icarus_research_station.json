@@ -1,0 +1,45 @@
+{
+    "map_name": "Icarus Research Station",
+    "map_path": "map_files/Icarus_Research_Station",
+    "map_file": "Icarus_Research_Station.dmm",
+    "environment_traits": {
+        "COLD": true
+    },
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/corporate/shiva",
+        "/datum/equipment_preset/survivor/doctor/shiva",
+        "/datum/equipment_preset/survivor/scientist/shiva",
+        "/datum/equipment_preset/survivor/engineer/shiva",
+        "/datum/equipment_preset/survivor/colonial_marshal/shiva",
+        "/datum/equipment_preset/survivor/security/shiva",
+        "/datum/equipment_preset/survivor/clf/cold",
+        "/datum/equipment_preset/survivor/civilian"
+    ],
+    "defcon_triggers": [
+        3300,
+        2100,
+        1450,
+        580,
+        0.0
+    ],
+    "survivor_message": "You are a survivor of the attack on the Icarus Research Station. You worked or lived at the station, and managed to avoid the alien attacks... until now.",
+    "announce_text": "An automated distress signal has been received from the Icarus Research Station. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
+    "monkey_types": [
+        "yiren"
+    ],
+    "traits": [{ "Ground": true }],
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 0,
+        "xeno_hive_delta": 0
+    },
+    "camouflage": "snow",
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

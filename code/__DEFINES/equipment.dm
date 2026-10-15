@@ -471,6 +471,8 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define SHOE_MAX_HEAT_PROT 650
 /// For the ice planet map protection from the elements.
 #define ICE_PLANET_MIN_COLD_PROT 175
+/// Cold protection override for marine clothing, by ground map name.
+#define MARINE_COLD_PROT_BY_MAP list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT, MAP_ICARUS_RESEARCH_STATION = ICE_PLANET_MIN_COLD_PROT)
 
 //=================================================
 

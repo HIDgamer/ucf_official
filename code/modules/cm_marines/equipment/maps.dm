@@ -77,6 +77,11 @@
 	html_link = "images/1/18/Map_icecolony.png"
 	color = "cyan"
 
+/obj/item/map/icarus_research_station_map
+	name = "\improper Icarus Research Station map"
+	desc = "A labelled print out of the anterior scan of the Icarus Research Station."
+	color = "cyan"
+
 /obj/item/map/whiskey_outpost_map
 	name = "\improper Whiskey Outpost map"
 	desc = "A tactical printout of the Whiskey Outpost defensive positions and locations."
@@ -160,7 +165,8 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_KUTJEVO = new /obj/item/map/kutjevo_map(),
 		MAP_LV522_CHANCES_CLAIM = new /obj/item/map/lv522_map(),
 		MAP_LV759_HYBRISA_PROSPERA = new /obj/item/map/lv759_map(),
-		MAP_NEW_VARADERO = new /obj/item/map/new_varadero()
+		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
+		MAP_ICARUS_RESEARCH_STATION = new /obj/item/map/icarus_research_station_map()
 	)
 
 //used by marine equipment machines to spawn the correct map.
