@@ -838,3 +838,12 @@ GLOBAL_LIST_INIT(ghost_prefs_verbs, list(
 	/client/proc/toggle_ghost_health_scan,
 	/client/proc/pick_ghost_orbit,
 	/client/proc/hide_ghost_preferences))
+
+/client/verb/toggle_roundend_credits()
+	set name = "Toggle Round-End Credits"
+	set category = "Preferences.UI"
+	set desc = "Show or hide the credits that roll when the round ends"
+
+	prefs.show_roundend_credits = !prefs.show_roundend_credits
+	to_chat(src, SPAN_NOTICE("The round-end credits are now [prefs.show_roundend_credits ? "shown" : "hidden"]."))
+	prefs.save_preferences()

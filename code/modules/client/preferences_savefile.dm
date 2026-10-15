@@ -154,6 +154,7 @@
 	S["toggles_admin"] >> toggles_admin
 	S["UI_style"] >> UI_style
 	S["tgui_say"] >> tgui_say
+	S["show_roundend_credits"] >> show_roundend_credits
 	S["UI_style_color"] >> UI_style_color
 	S["UI_style_alpha"] >> UI_style_alpha
 	S["item_animation_pref_level"] >> item_animation_pref_level
@@ -228,6 +229,7 @@
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
 	UI_style = sanitize_inlist(UI_style, list("white", "dark", "midnight", "orange", "old"), initial(UI_style))
 	tgui_say = sanitize_integer(tgui_say, FALSE, TRUE, TRUE)
+	show_roundend_credits = sanitize_integer(show_roundend_credits, FALSE, TRUE, TRUE)
 	be_special = sanitize_integer(be_special, 0, SHORT_REAL_LIMIT, initial(be_special))
 	default_slot = sanitize_integer(default_slot, 1, MAX_SAVE_SLOTS, initial(default_slot))
 	toggles_chat = sanitize_integer(toggles_chat, 0, SHORT_REAL_LIMIT, initial(toggles_chat))
@@ -340,6 +342,7 @@
 	S["UI_style_color"] << UI_style_color
 	S["UI_style_alpha"] << UI_style_alpha
 	S["tgui_say"] << tgui_say
+	S["show_roundend_credits"] << show_roundend_credits
 	S["item_animation_pref_level"] << item_animation_pref_level
 	S["pain_overlay_pref_level"] << pain_overlay_pref_level
 	S["flash_overlay_pref"] << flash_overlay_pref

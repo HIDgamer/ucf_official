@@ -46,6 +46,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/savefile_version = 0
 
 	var/tgui_say = TRUE
+	var/show_roundend_credits = TRUE
 	var/tgui_say_light_mode = FALSE
 
 	//non-preference stuff

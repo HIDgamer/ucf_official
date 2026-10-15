@@ -108,6 +108,7 @@ SUBSYSTEM_DEF(ticker)
 				current_state = GAME_STATE_FINISHED
 				GLOB.ooc_allowed = TRUE
 				mode.declare_completion(force_ending)
+				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(roll_credits)), 10 SECONDS)
 				REDIS_PUBLISH("byond.round", "type" = "round-complete", "round_name" = GLOB.round_statistics.round_name)
 				flash_clients()
 				addtimer(CALLBACK(
