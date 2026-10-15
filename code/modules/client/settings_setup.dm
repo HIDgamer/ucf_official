@@ -66,6 +66,7 @@
 	.["ghost_radio"] = !!(prefs.toggles_chat & CHAT_GHOSTRADIO)
 	.["ghost_spyradio"] = !!(prefs.toggles_chat & CHAT_LISTENINGBUG)
 	.["ghost_hivemind"] = !!(prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
+	.["ghost_announce_clarity"] = !!(prefs.toggles_chat & CHAT_GHOSTANNOUNCECLARITY)
 	.["lang_chat_disabled"] = prefs.lang_chat_disabled
 	.["langchat_emotes"] = !!(prefs.toggles_langchat & LANGCHAT_SEE_EMOTES)
 
@@ -94,6 +95,11 @@
 	.["toggle_middle_mouse_swap_hands"] = !!(prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS)
 	.["toggle_vend_item_to_hand"] = !!(prefs.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND)
 	.["toggle_ammo_display_type"] = !!(prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE)
+	.["toggle_screentips"] = !(prefs.toggle_prefs & TOGGLE_SCREENTIPS_OFF)
+	.["toggle_context_menu"] = !(prefs.toggle_prefs & TOGGLE_CONTEXT_MENU_OFF)
+	.["toggle_secondary_click"] = !(prefs.toggle_prefs & TOGGLE_SECONDARY_CLICK_OFF)
+	.["toggle_loot_panel"] = !!(prefs.toggle_prefs & TOGGLE_LOOT_PANEL)
+	.["show_roundend_credits"] = prefs.show_roundend_credits
 
 	.["show_synth_ert"] = !!owner.check_whitelist_status(WHITELIST_SYNTHETIC)
 	.["ert_leader"] = !!(prefs.toggles_ert & PLAY_LEADER)
@@ -139,6 +145,8 @@
 			toggle_bitflag(prefs, "toggles_chat", CHAT_LISTENINGBUG)
 		if("ghost_hivemind")
 			toggle_bitflag(prefs, "toggles_chat", CHAT_GHOSTHIVEMIND)
+		if("ghost_announce_clarity")
+			toggle_bitflag(prefs, "toggles_chat", CHAT_GHOSTANNOUNCECLARITY)
 		if("lang_chat_disabled")
 			prefs.lang_chat_disabled = !prefs.lang_chat_disabled
 		if("langchat_emotes")
@@ -189,6 +197,16 @@
 			toggle_bitflag(prefs, "toggle_prefs", TOGGLE_VEND_ITEM_TO_HAND)
 		if("toggle_ammo_display_type")
 			toggle_bitflag(prefs, "toggle_prefs", TOGGLE_AMMO_DISPLAY_TYPE)
+		if("toggle_screentips")
+			toggle_bitflag(prefs, "toggle_prefs", TOGGLE_SCREENTIPS_OFF)
+		if("toggle_context_menu")
+			toggle_bitflag(prefs, "toggle_prefs", TOGGLE_CONTEXT_MENU_OFF)
+		if("toggle_secondary_click")
+			toggle_bitflag(prefs, "toggle_prefs", TOGGLE_SECONDARY_CLICK_OFF)
+		if("toggle_loot_panel")
+			toggle_bitflag(prefs, "toggle_prefs", TOGGLE_LOOT_PANEL)
+		if("show_roundend_credits")
+			prefs.show_roundend_credits = !prefs.show_roundend_credits
 
 		if("ert_leader")
 			toggle_bitflag(prefs, "toggles_ert", PLAY_LEADER)

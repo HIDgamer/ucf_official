@@ -27,6 +27,7 @@ type Data = {
   ghost_radio: BooleanLike;
   ghost_spyradio: BooleanLike;
   ghost_hivemind: BooleanLike;
+  ghost_announce_clarity: BooleanLike;
   lang_chat_disabled: BooleanLike;
   langchat_emotes: BooleanLike;
 
@@ -55,6 +56,11 @@ type Data = {
   toggle_middle_mouse_swap_hands: BooleanLike;
   toggle_vend_item_to_hand: BooleanLike;
   toggle_ammo_display_type: BooleanLike;
+  toggle_screentips: BooleanLike;
+  toggle_context_menu: BooleanLike;
+  toggle_secondary_click: BooleanLike;
+  toggle_loot_panel: BooleanLike;
+  show_roundend_credits: BooleanLike;
 
   show_synth_ert: BooleanLike;
   ert_leader: BooleanLike;
@@ -90,7 +96,12 @@ export const SettingsSetup = () => {
   const { act, data } = useBackend<Data>();
 
   return (
-    <Window title="Settings & Special" theme="crtlobby" width={1000} height={750}>
+    <Window
+      title="Settings & Special"
+      theme="crtlobby"
+      width={1000}
+      height={750}
+    >
       <Window.Content scrollable>
         <Stack>
           <Stack.Item grow basis={0}>
@@ -104,7 +115,9 @@ export const SettingsSetup = () => {
                       </Button>
                     </LabeledList.Item>
                     <LabeledList.Item label="Keybinds">
-                      <Button onClick={() => act('viewmacros')}>View Keybinds</Button>
+                      <Button onClick={() => act('viewmacros')}>
+                        View Keybinds
+                      </Button>
                     </LabeledList.Item>
                     <LabeledList.Item label="Say Input Style">
                       <Button onClick={() => act('inputstyle')}>
@@ -113,11 +126,16 @@ export const SettingsSetup = () => {
                     </LabeledList.Item>
                     <LabeledList.Item label="Say Input Color">
                       <Button onClick={() => act('inputcolor')}>
-                        {data.tgui_say_light_mode ? 'Lightmode' : 'Darkmode (default)'}
+                        {data.tgui_say_light_mode
+                          ? 'Lightmode'
+                          : 'Darkmode (default)'}
                       </Button>
                     </LabeledList.Item>
                     <LabeledList.Item label="Saved Messages">
-                      <Button icon="comment-dots" onClick={() => act('saved_messages')}>
+                      <Button
+                        icon="comment-dots"
+                        onClick={() => act('saved_messages')}
+                      >
                         Manage Saved Messages
                       </Button>
                     </LabeledList.Item>
@@ -128,7 +146,9 @@ export const SettingsSetup = () => {
                 <Section title="UI Customization">
                   <LabeledList>
                     <LabeledList.Item label="Style">
-                      <Button onClick={() => act('ui_style')}>{data.ui_style}</Button>
+                      <Button onClick={() => act('ui_style')}>
+                        {data.ui_style}
+                      </Button>
                     </LabeledList.Item>
                     <LabeledList.Item label="Color">
                       <Button onClick={() => act('ui_style_color')}>
@@ -141,7 +161,9 @@ export const SettingsSetup = () => {
                       </Button>
                     </LabeledList.Item>
                     <LabeledList.Item label="Stylesheet">
-                      <Button onClick={() => act('stylesheet')}>{data.stylesheet}</Button>
+                      <Button onClick={() => act('stylesheet')}>
+                        {data.stylesheet}
+                      </Button>
                     </LabeledList.Item>
                     <Toggle
                       label="Hide Statusbar"
@@ -167,7 +189,9 @@ export const SettingsSetup = () => {
                       />
                     )}
                     <LabeledList.Item label="Custom Cursors">
-                      <Button onClick={() => act('customcursors')}>Toggle</Button>
+                      <Button onClick={() => act('customcursors')}>
+                        Toggle
+                      </Button>
                     </LabeledList.Item>
                   </LabeledList>
                 </Section>
@@ -236,6 +260,13 @@ export const SettingsSetup = () => {
                       action="ghost_hivemind"
                       onLabel="Show"
                       offLabel="Hide"
+                    />
+                    <Toggle
+                      label="Ghost Announcement Clarity"
+                      on={!!data.ghost_announce_clarity}
+                      action="ghost_announce_clarity"
+                      onLabel="Full Clarity"
+                      offLabel="Garbled"
                     />
                     <Toggle
                       label="Abovehead Chat"
@@ -318,10 +349,14 @@ export const SettingsSetup = () => {
                       offLabel="No"
                     />
                     <LabeledList.Item label="Meme/Atmospheric Sounds">
-                      <Button onClick={() => act('toggle_admin_sound_types')}>Toggle</Button>
+                      <Button onClick={() => act('toggle_admin_sound_types')}>
+                        Toggle
+                      </Button>
                     </LabeledList.Item>
                     <LabeledList.Item label="Eye Blur Type">
-                      <Button onClick={() => act('set_eye_blur_type')}>Set</Button>
+                      <Button onClick={() => act('set_eye_blur_type')}>
+                        Set
+                      </Button>
                     </LabeledList.Item>
                     <LabeledList.Item label="Flash Type">
                       <Button onClick={() => act('set_flash_type')}>Set</Button>
@@ -428,11 +463,40 @@ export const SettingsSetup = () => {
                       on={!!data.toggle_ammo_display_type}
                       action="toggle_ammo_display_type"
                     />
+                    <Toggle
+                      label="Screentips"
+                      on={!!data.toggle_screentips}
+                      action="toggle_screentips"
+                    />
+                    <Toggle
+                      label="Hold-Right-Click Context Menu"
+                      on={!!data.toggle_context_menu}
+                      action="toggle_context_menu"
+                    />
+                    <Toggle
+                      label="Right-Click Shove"
+                      on={!!data.toggle_secondary_click}
+                      action="toggle_secondary_click"
+                    />
+                    <Toggle
+                      label="Alt-Click Loot Panel"
+                      on={!!data.toggle_loot_panel}
+                      action="toggle_loot_panel"
+                    />
+                    <Toggle
+                      label="Round-End Credits"
+                      on={!!data.show_roundend_credits}
+                      action="show_roundend_credits"
+                    />
                     <LabeledList.Item label="Item Animation Detail">
-                      <Button onClick={() => act('switch_item_animations')}>Toggle</Button>
+                      <Button onClick={() => act('switch_item_animations')}>
+                        Toggle
+                      </Button>
                     </LabeledList.Item>
                     <LabeledList.Item label="Dual Wield Functionality">
-                      <Button onClick={() => act('toggle_dualwield')}>Toggle</Button>
+                      <Button onClick={() => act('toggle_dualwield')}>
+                        Toggle
+                      </Button>
                     </LabeledList.Item>
                   </LabeledList>
                 </Section>
@@ -440,15 +504,57 @@ export const SettingsSetup = () => {
               <Stack.Item>
                 <Section title="ERT Settings">
                   <LabeledList>
-                    <Toggle label="Spawn as Leader" on={!!data.ert_leader} action="ert_leader" onLabel="Yes" offLabel="No" />
-                    <Toggle label="Spawn as Medic" on={!!data.ert_medic} action="ert_medic" onLabel="Yes" offLabel="No" />
-                    <Toggle label="Spawn as Engineer" on={!!data.ert_engineer} action="ert_engineer" onLabel="Yes" offLabel="No" />
-                    <Toggle label="Spawn as Specialist" on={!!data.ert_specialist} action="ert_specialist" onLabel="Yes" offLabel="No" />
-                    <Toggle label="Spawn as Smartgunner" on={!!data.ert_smartgunner} action="ert_smartgunner" onLabel="Yes" offLabel="No" />
+                    <Toggle
+                      label="Spawn as Leader"
+                      on={!!data.ert_leader}
+                      action="ert_leader"
+                      onLabel="Yes"
+                      offLabel="No"
+                    />
+                    <Toggle
+                      label="Spawn as Medic"
+                      on={!!data.ert_medic}
+                      action="ert_medic"
+                      onLabel="Yes"
+                      offLabel="No"
+                    />
+                    <Toggle
+                      label="Spawn as Engineer"
+                      on={!!data.ert_engineer}
+                      action="ert_engineer"
+                      onLabel="Yes"
+                      offLabel="No"
+                    />
+                    <Toggle
+                      label="Spawn as Specialist"
+                      on={!!data.ert_specialist}
+                      action="ert_specialist"
+                      onLabel="Yes"
+                      offLabel="No"
+                    />
+                    <Toggle
+                      label="Spawn as Smartgunner"
+                      on={!!data.ert_smartgunner}
+                      action="ert_smartgunner"
+                      onLabel="Yes"
+                      offLabel="No"
+                    />
                     {!!data.show_synth_ert && (
-                      <Toggle label="Spawn as Synth" on={!!data.ert_synth} action="ert_synth" onLabel="Yes" offLabel="No" />
+                      <Toggle
+                        label="Spawn as Synth"
+                        on={!!data.ert_synth}
+                        action="ert_synth"
+                        onLabel="Yes"
+                        offLabel="No"
+                      />
                     )}
-                    <Toggle label="Spawn as Miscellaneous" on={!!data.ert_misc} action="ert_misc" onLabel="Yes" offLabel="No" />
+                    <Toggle
+                      label="Spawn as Miscellaneous"
+                      on={!!data.ert_misc}
+                      action="ert_misc"
+                      onLabel="Yes"
+                      offLabel="No"
+                    />
                   </LabeledList>
                 </Section>
               </Stack.Item>
