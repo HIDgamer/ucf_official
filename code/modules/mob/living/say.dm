@@ -105,7 +105,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	else
 		overlays += speech_bubble
 
-	if(!looping_bubble)
+	if(!looping_bubble && !animated)
 		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
 /mob/living/proc/remove_speech_bubble(mutable_appearance/speech_bubble, list_of_mobs)
