@@ -402,6 +402,9 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define CLF_JOB_LIST list(JOB_CLF, JOB_CLF_ENGI, JOB_CLF_MEDIC, JOB_CLF_SPECIALIST, JOB_CLF_LEADER, JOB_CLF_COMMANDER, JOB_CLF_SYNTH)
 
+//-------- BASTION --------//
+#define JOB_BLUESHIELD "Blueshield"
+
 //-------- TWE --------//
 #define JOB_TWE_REPRESENTATIVE "TWE Representative"
 

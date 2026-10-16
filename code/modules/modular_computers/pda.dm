@@ -95,6 +95,7 @@ GLOBAL_LIST_INIT(pda_types_by_job, list(
 	JOB_INTEL = /obj/item/modular_computer/pda/ship_staff,
 	JOB_COMBAT_REPORTER = /obj/item/modular_computer/pda/ship_staff,
 	JOB_CORPORATE_LIAISON = /obj/item/modular_computer/pda/ship_staff/liaison,
+	JOB_BLUESHIELD = /obj/item/modular_computer/pda/ship_staff/security,
 ))
 
 /// Gives the new human a PDA if their job is issued one, in a pouch slot, else a pouch that fits it, else the backpack
@@ -135,6 +136,7 @@ GLOBAL_LIST_INIT(pda_roles_by_job, list(
 	JOB_INTEL = "IO",
 	JOB_COMBAT_REPORTER = "CC",
 	JOB_CORPORATE_LIAISON = "CL",
+	JOB_BLUESHIELD = "BS",
 ))
 
 /// Theme names a PDA can be set to, with the theme each one uses

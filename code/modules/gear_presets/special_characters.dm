@@ -78,3 +78,37 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/chrismmar(new_human), WEAR_J_STORE)
 
 	. = ..()
+
+/datum/equipment_preset/other/mann_shield
+	name = "MannShield"
+	flags = EQUIPMENT_PRESET_EXTRA
+	restricted_to_ckeys = list("hidgamer", "chrismmar")
+
+	idtype = /obj/item/card/id/silver
+	assignment = JOB_BLUESHIELD
+	rank = JOB_BLUESHIELD
+	role_comm_title = "BS"
+	faction = FACTION_MARINE
+	faction_group = FACTION_LIST_MARINE
+	skills = /datum/skills/MP
+	languages = list(LANGUAGE_ENGLISH)
+
+	minimap_icon = "mp"
+	minimap_background = "background_command"
+
+/datum/equipment_preset/other/mann_shield/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
+
+/datum/equipment_preset/other/mann_shield/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/bastion/rank/blueshield(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/bastion/armor/vest/blueshield/jacket(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/bastion/combat(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/bastion/jackboots(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/bastion/beret/blueshield(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/bastion/blueshield(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full/blueshield(new_human), WEAR_WAIST)
+
+	. = ..()

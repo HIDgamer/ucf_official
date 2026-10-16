@@ -641,6 +641,14 @@
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/device/clue_scanner(src)
 
+/obj/item/storage/belt/security/MP/full/blueshield/fill_preset_inventory()
+	new /obj/item/explosive/grenade/flashbang(src)
+	new /obj/item/explosive/grenade/flashbang(src)
+	new /obj/item/reagent_container/spray/pepper(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/device/flash(src)
+	new /obj/item/weapon/baton(src)
+
 /obj/item/storage/belt/security/MP/full/synth/fill_preset_inventory()
 	new /obj/item/explosive/grenade/flashbang(src)
 	new /obj/item/device/flash(src)
