@@ -32,7 +32,7 @@
 
 /datum/map_template/interior/lav
 	name = "LAV"
-	interior_id = "apc_no_fpw"
+	interior_id = "lav"
 
 /datum/map_template/interior/tank
 	name = "Tank"

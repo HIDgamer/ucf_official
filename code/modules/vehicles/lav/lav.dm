@@ -1,28 +1,26 @@
 /obj/vehicle/multitile/apc/lav
 	name = "\improper LAV-35 Light Armored Vehicle"
-	desc = "A LAV-35 Light Armored Vehicle. An armored transport with eight big wheels and a 35mm autocannon. Entrances on the sides and back."
+	desc = "A LAV-35 Light Armored Vehicle. An armored transport with eight big wheels and a 35mm autocannon. Entrance at the back only."
 
 	icon = 'icons/obj/vehicles/lav.dmi'
 	icon_state = "lav_base"
-	pixel_x = -64
-	pixel_y = -64
+	pixel_x = -48
+	pixel_y = -48
 
-	bound_width = 64
-	bound_height = 128
+	bound_width = 96
+	bound_height = 96
 
 	bound_x = -32
-	bound_y = -64
+	bound_y = -32
 
 	health = 1100
 
 	interior_map = /datum/map_template/interior/lav
 
 	entrances = list(
-		"left" = list(1, 0),
-		"right" = list(-2, 0),
-		"rear left" = list(0, 2),
-		"rear right" = list(-1, 2),
-		"rear center" = list(0, 2)
+		"rear left" = list(1, 2),
+		"rear center" = list(0, 2),
+		"rear right" = list(-1, 2)
 	)
 
 	hardpoints_allowed = list(
@@ -124,8 +122,8 @@
 	name = "LAV Spawner"
 	icon = 'icons/obj/vehicles/lav.dmi'
 	icon_state = "lav_base"
-	pixel_x = -64
-	pixel_y = -64
+	pixel_x = -48
+	pixel_y = -48
 
 /obj/effect/vehicle_spawner/lav/Initialize()
 	. = ..()
