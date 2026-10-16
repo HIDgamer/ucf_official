@@ -5,7 +5,9 @@
 #define GUNPOINT_MULT_STAGE_3 2
 /// Tiles the shooter can be from the target without losing the aim
 #define GUNPOINT_RANGE 5
-#define GUNPOINT_FLINCH_CHANCE 50
+#define GUNPOINT_FLINCH_CHANCE 5
+/// Damage a single hit needs to deal before it can make the shooter flinch
+#define GUNPOINT_FLINCH_MIN_DAMAGE 12
 #define GUNPOINT_MAX_DUMP_ROUNDS 40
 
 /// Red crosshair over a person held at gunpoint, everyone can see it
@@ -154,7 +156,7 @@
 /// A hit shooter may flinch and fire once
 /datum/component/gunpoint/proc/flinch(datum/source, list/damagedata, damagetype)
 	SIGNAL_HANDLER
-	if(!prob(GUNPOINT_FLINCH_CHANCE))
+	if(damagedata["damage"] < GUNPOINT_FLINCH_MIN_DAMAGE || !prob(GUNPOINT_FLINCH_CHANCE))
 		return
 	var/mob/living/carbon/human/shooter = parent
 	shooter.visible_message(SPAN_DANGER("[shooter] flinches!"), SPAN_DANGER("You flinch!"))
@@ -178,4 +180,5 @@
 #undef GUNPOINT_MULT_STAGE_3
 #undef GUNPOINT_RANGE
 #undef GUNPOINT_FLINCH_CHANCE
+#undef GUNPOINT_FLINCH_MIN_DAMAGE
 #undef GUNPOINT_MAX_DUMP_ROUNDS
