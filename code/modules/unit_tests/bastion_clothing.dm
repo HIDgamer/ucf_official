@@ -60,3 +60,17 @@
 	TEST_ASSERT(istype(shield.belt, /obj/item/storage/belt/security/MP/full/blueshield), "No blueshield belt")
 	TEST_ASSERT(istype(shield.gloves, /obj/item/clothing/gloves/bastion/combat), "No combat gloves")
 	TEST_ASSERT(istype(shield.shoes, /obj/item/clothing/shoes/bastion/jackboots), "No jackboots")
+
+/// Every wardrobe vendor stocks real items and has its sprite
+/datum/unit_test/bastion_wardrobe_vendors/Run()
+	var/list/problems = list()
+	for(var/path in subtypesof(/obj/structure/machinery/vending/bastion))
+		var/obj/structure/machinery/vending/bastion/vendor = allocate(path)
+		if(!icon_exists(vendor.icon, vendor.icon_state))
+			problems += "[path] icon [vendor.icon_state]"
+		if(!length(vendor.products))
+			problems += "[path] has no products"
+		for(var/product in vendor.products)
+			if(!ispath(product, /obj/item))
+				problems += "[path] stocks [product]"
+	TEST_ASSERT(!length(problems), "Wardrobe vendor problems:\n[problems.Join("\n")]")

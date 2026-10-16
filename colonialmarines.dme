@@ -1798,6 +1798,7 @@
 #include "code\modules\clothing\bastion\shoes.dm"
 #include "code\modules\clothing\bastion\suits.dm"
 #include "code\modules\clothing\bastion\under.dm"
+#include "code\modules\clothing\bastion\vendors.dm"
 #include "code\modules\cm_aliens\Ovipositor.dm"
 #include "code\modules\cm_aliens\weeds.dm"
 #include "code\modules\cm_aliens\XenoStructures.dm"

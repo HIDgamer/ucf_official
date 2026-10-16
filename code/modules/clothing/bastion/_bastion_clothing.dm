@@ -101,3 +101,7 @@
 	. = ..()
 	if(suit?.hood_up)
 		suit.remove_hood(user)
+
+/// Wardrobe vending machines
+/obj/structure/machinery/vending/bastion
+	icon = 'icons/obj/structures/machinery/bastion_vending.dmi'
