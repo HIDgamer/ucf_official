@@ -83,6 +83,19 @@ CIVILIAN
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
+/datum/skills/civilian/survivor/rmc
+	name = "Survivor Royal Marines Commando"
+	additional_skills = list(
+		SKILL_CQC = SKILL_CQC_SKILLED,
+		SKILL_POLICE = SKILL_POLICE_SKILLED,
+		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+		SKILL_FIREARMS = SKILL_FIREARMS_EXPERT,
+		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+	)
+
 /datum/skills/civilian/survivor/goon/medic
 	name = "Survivor Goon Medic"
 	additional_skills = list(

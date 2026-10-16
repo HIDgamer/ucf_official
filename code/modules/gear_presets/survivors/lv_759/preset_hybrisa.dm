@@ -403,6 +403,48 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/beanbag, WEAR_IN_R_STORE)
 	..()
 
+// Royal Marines Commando - TWE soldiers caught on the colony, wearing the Mk. IV heavy or Mk. II light armor.
+
+/datum/equipment_preset/survivor/hybrisa/royal_marine_commando
+	name = "Survivor - Hybrisa - Royal Marines Commando"
+	assignment = "Royal Marines Commando"
+	minimap_icon = "rmc_rifleman"
+	minimap_background = "background_twe"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	faction = FACTION_TWE
+	faction_group = list(FACTION_SURVIVOR, FACTION_TWE)
+	paygrades = list(PAY_SHORT_RMC1 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/civilian/survivor/rmc
+	idtype = /obj/item/card/id/dogtag
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_BRIG)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
+
+	survivor_variant = SECURITY_SURVIVOR
+
+/datum/equipment_preset/survivor/hybrisa/royal_marine_commando/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/royal_marine/jumpsuit, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/royal_marine, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/royal_marine, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/royal_marine/knife, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/royal_marines, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/twe, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/p90/twe, WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90/twe, WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90/twe, WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90/twe, WEAR_IN_R_STORE)
+
+	if(prob(65))
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/royal_marine/mk4, WEAR_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_JACKET)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/royal_marine/mk2, WEAR_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/device/binoculars, WEAR_IN_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_IN_JACKET)
+	..()
+
 //////////////// MEDICAL & SCIENCE //////////////////
 ////////////////////////////////////////////////////
 

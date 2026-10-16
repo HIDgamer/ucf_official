@@ -1393,6 +1393,12 @@
 	icon_state = "rmc_uniform_lt"
 	worn_state = "rmc_uniform_lt"
 
+/obj/item/clothing/under/marine/veteran/royal_marine/jumpsuit
+	name = "\improper Imperial Armed Space Forces combat jumpsuit"
+	desc = "The field jumpsuit of the Imperial Armed Space Forces of the Three World Empire. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "jumpsuit"
+	worn_state = "jumpsuit"
+
 /obj/item/clothing/under/marine/officer/royal_marine
 	name = "royal marines commando service uniform"
 	desc = "The service uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment. Wear your uniform with honour, Commando."

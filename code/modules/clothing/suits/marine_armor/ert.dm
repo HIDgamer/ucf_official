@@ -875,6 +875,61 @@
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
 
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine/mk4
+	name = "\improper Mk. IV heavy body armor"
+	desc = "The Mk. IV Heavy Body Armor is standard issue to TWE frontline infantry, worn by members of the Imperial Armed Space Forces of the Three World Empire as well as the Royal Marines Commando. Comparable to the M3 pattern personal armor worn by USCM forces, it offers slightly better protection at the cost of being more expensive."
+	icon_state = "mk4"
+	item_state = "mk4"
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	storage_slots = 3
+	slowdown = SLOWDOWN_ARMOR_MEDIUM
+	movement_compensation = SLOWDOWN_ARMOR_LIGHT
+	uniform_restricted = null
+
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine/mk2
+	name = "\improper Mk. II light armor"
+	desc = "Assigned to the recon elements and light infantry of the TWE military, the Mk. II is comparable to the M3-L pattern light armor and offers similar protection. It comes with additional storage space to allow for more time between resupplies."
+	icon_state = "mk2"
+	item_state = "mk2"
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	storage_slots = 3
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	movement_compensation = SLOWDOWN_ARMOR_LIGHT
+	uniform_restricted = null
+
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine/mk5
+	name = "\improper Mk. V Lightfoot armor"
+	desc = "The Mk. V Lightfoot is the standard armor given to rear echelon, garrison and auxiliary forces of the TWE Armed Forces, issued to personnel who are not expected to engage in combat. Additional storage space has been built into its lightweight design so that mechanics, logistics personnel and other rear echelon troops can better perform their duties."
+	icon_state = "mk5"
+	item_state = "mk5"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_VERYLOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_VERYLOW
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	storage_slots = 5
+	slowdown = SLOWDOWN_ARMOR_NONE
+	movement_compensation = SLOWDOWN_ARMOR_NONE
+	uniform_restricted = null
+
 /atom/movable/marine_light
 	light_system = DIRECTIONAL_LIGHT
 

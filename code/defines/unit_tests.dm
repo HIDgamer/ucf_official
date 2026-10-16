@@ -99,6 +99,7 @@
 #include "..\modules\unit_tests\tgui_create_message.dm"
 #include "..\modules\unit_tests\timer_sanity.dm"
 #include "..\modules\unit_tests\tutorials.dm"
+#include "..\modules\unit_tests\twe_armor.dm"
 #include "..\modules\unit_tests\xeno_strains.dm"
 
 // Unit tests backend
