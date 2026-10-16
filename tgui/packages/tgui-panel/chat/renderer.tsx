@@ -5,6 +5,7 @@
  */
 
 import { EventEmitter } from 'common/events';
+import { flushSync } from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import { Tooltip } from 'tgui/components';
 import { createLogger } from 'tgui/logging';
@@ -24,6 +25,7 @@ import {
   RENDERER_RELOAD_WAIT,
   RENDERER_RELOAD_WAIT_TRIDENT,
 } from './constants';
+import { DEFAULT_HIGHLIGHT_SOUND } from '../settings/constants';
 import { canPageAcceptType, createMessage, isSameMessage } from './model';
 import { highlightNode, linkifyNode } from './replaceInTextNode';
 
@@ -108,13 +110,76 @@ const updateMessageBadge = (message) => {
   const foundBadge = node.querySelector('.Chat__badge');
   const badge = foundBadge || document.createElement('div');
   badge.textContent = times;
-  badge.className = 'Chat__badge';
+  badge.className = 'Chat__badge Chat__badge--animate';
+  requestAnimationFrame(() => {
+    badge.className = 'Chat__badge';
+  });
   if (!foundBadge) {
     node.appendChild(badge);
   }
 };
 
+const HIGHLIGHT_SOUND_COOLDOWN = 3000;
+let lastHighlightSoundAt = 0;
+
+/** Asks the server to play a highlight sound, at most once per cooldown. */
+const playHighlightSound = (soundFile, volume) => {
+  const now = Date.now();
+  if (now - lastHighlightSoundAt < HIGHLIGHT_SOUND_COOLDOWN) {
+    return;
+  }
+  lastHighlightSoundAt = now;
+  Byond.sendMessage('chat/highlight_sound', { file: soundFile, volume });
+};
+
+const RADIO_CHANNEL_LABEL = /^\[[^\]]+\]\s*/;
+
+/** Whether the text node is only a radio channel label such as "[Alpha] ". */
+const isRadioChannelName = (node) => {
+  const text = node.textContent || '';
+  const match = RADIO_CHANNEL_LABEL.exec(text);
+  return !!(
+    node.parentElement?.classList.contains('name') &&
+    match &&
+    match[0].length === text.length
+  );
+};
+
+/** Splits the radio channel label off the speaker name so it can be skipped. */
+const splitRadioChannelLabel = (root) => {
+  const nameNodes = root.querySelectorAll('.name');
+  for (let i = 0; i < nameNodes.length; i++) {
+    const firstChild = nameNodes[i].firstChild;
+    if (firstChild?.nodeType !== Node.TEXT_NODE) {
+      continue;
+    }
+    const text = firstChild.textContent || '';
+    const match = RADIO_CHANNEL_LABEL.exec(text);
+    if (match && match[0].length < text.length) {
+      firstChild.splitText(match[0].length);
+    }
+  }
+};
+
+/** Messages such as "You put on your helmet." should not trigger a highlight sound. */
+const isSelfActionMessage = (text) => /^\s*You\b/.test(text);
+
 class ChatRenderer {
+  loaded: boolean;
+  rootNode: HTMLElement | null;
+  queue: Array<any>;
+  messages: Array<any>;
+  visibleMessages: Array<any>;
+  page: any;
+  events: EventEmitter;
+  scrollNode: any;
+  scrollTracking: boolean;
+  highlightParsers: Array<any> | null;
+  currentJob: string | null;
+  currentCharacter: string | null;
+  handleScroll: (type?: any) => void;
+  ensureScrollTracking: () => void;
+
   constructor() {
     /** @type {HTMLElement} */
     this.loaded = false;
@@ -124,6 +189,8 @@ class ChatRenderer {
     this.messages = [];
     this.visibleMessages = [];
     this.page = null;
+    this.currentJob = null;
+    this.currentCharacter = null;
     this.events = new EventEmitter();
     // Scroll handler
     /** @type {HTMLElement} */
@@ -180,15 +247,44 @@ class ChatRenderer {
 
   tryFlushQueue() {
     if (this.isReady() && this.queue.length > 0) {
-      this.processBatch(this.queue);
+      this.processBatch(this.queue, { suppressHighlightSound: true });
       this.queue = [];
     }
   }
 
   assignStyle(style = {}) {
     for (let key of Object.keys(style)) {
-      this.rootNode.style.setProperty(key, style[key]);
+      this.rootNode!.style.setProperty(key, style[key]);
     }
+  }
+
+  setJob(title) {
+    this.currentJob =
+      typeof title === 'string' && title ? title.trim().toLowerCase() : null;
+  }
+
+  setCharacter(name) {
+    this.currentCharacter =
+      typeof name === 'string' && name ? name.trim().toLowerCase() : null;
+  }
+
+  matchesFilters(parser) {
+    if (
+      parser.jobs?.length &&
+      !(this.currentJob && parser.jobs.includes(this.currentJob))
+    ) {
+      return false;
+    }
+    if (
+      parser.characters?.length &&
+      !(
+        this.currentCharacter &&
+        parser.characters.includes(this.currentCharacter)
+      )
+    ) {
+      return false;
+    }
+    return true;
   }
 
   setHighlight(highlightSettings, highlightSettingById) {
@@ -203,6 +299,17 @@ class ChatRenderer {
       const highlightWholeMessage = setting.highlightWholeMessage;
       const matchWord = setting.matchWord;
       const matchCase = setting.matchCase;
+      const enabled = setting.enabled !== false;
+      const playSound = !!setting.playSound;
+      const soundFile = setting.soundFile || DEFAULT_HIGHLIGHT_SOUND;
+      const soundVolume = Number(setting.soundVolume ?? 0.5);
+      const jobs = String(setting.jobFilter || '')
+        .split(',')
+        .map((str) => str.trim().toLowerCase())
+        .filter(Boolean);
+      const characters = (
+        Array.isArray(setting.characterFilter) ? setting.characterFilter : []
+      ).map((str) => String(str).trim().toLowerCase());
       // This allow-list is for literal *word* entries only — it deliberately excludes real regex
       // syntax (. * + ( ) { } | ?) because a word entry is meant to be safe literal text, not a
       // pattern. It used to also gate /regex/-wrapped entries, which meant almost no real regex
@@ -212,7 +319,9 @@ class ChatRenderer {
       const allowedRegex = /^[a-z0-9_\-$/^[\s\]\\]+$/gi;
       const regexEscapeCharacters = /[!#$%^&*)(+=.<>{}[\]:;'"|~`_\-\\/]/g;
       const isRegexEntry = (str) =>
-        str.length > 2 && str.charAt(0) === '/' && str.charAt(str.length - 1) === '/';
+        str.length > 2 &&
+        str.charAt(0) === '/' &&
+        str.charAt(str.length - 1) === '/';
       const lines = String(text)
         .split(',')
         .map((str) => str.trim())
@@ -233,7 +342,7 @@ class ChatRenderer {
       if (lines.length === 0) {
         return;
       }
-      let regexExpressions = [];
+      const regexExpressions: string[] = [];
       // Organize each highlight entry into regex expressions and words
       for (let line of lines) {
         // Regex expression syntax is /[exp]/
@@ -282,6 +391,12 @@ class ChatRenderer {
         highlightRegex,
         highlightColor,
         highlightWholeMessage,
+        enabled,
+        playSound,
+        soundFile,
+        soundVolume,
+        jobs,
+        characters,
       });
     });
   }
@@ -300,7 +415,7 @@ class ChatRenderer {
     }
     this.page = page;
     // Fast clear of the root node
-    this.rootNode.textContent = '';
+    this.rootNode!.textContent = '';
     this.visibleMessages = [];
     // Re-add message nodes
     const fragment = document.createDocumentFragment();
@@ -313,7 +428,7 @@ class ChatRenderer {
       }
     }
     if (node) {
-      this.rootNode.appendChild(fragment);
+      this.rootNode!.appendChild(fragment);
       node.scrollIntoView();
     }
   }
@@ -336,8 +451,12 @@ class ChatRenderer {
     return null;
   }
 
-  processBatch(batch, options = {}) {
-    const { prepend, notifyListeners = true } = options;
+  processBatch(batch, options: any = {}) {
+    const {
+      prepend,
+      notifyListeners = true,
+      suppressHighlightSound = false,
+    } = options;
     const now = Date.now();
     // Queue up messages until chat is ready
     if (!this.isReady()) {
@@ -416,35 +535,62 @@ class ChatRenderer {
             outputProps[canon_name] = working_value;
           }
           const oldHtml = { __html: childNode.innerHTML };
+          const Element = TGUI_CHAT_COMPONENTS[targetName];
+          if (!Element) {
+            logger.error(
+              `Error: unknown chat component "${targetName}" in message`,
+              message,
+            );
+            childNode.removeAttribute('data-component');
+            continue;
+          }
           while (childNode.firstChild) {
             childNode.removeChild(childNode.firstChild);
           }
-          const Element = TGUI_CHAT_COMPONENTS[targetName];
 
           const reactRoot = createRoot(childNode);
 
-          /* eslint-disable react/no-danger */
-          reactRoot.render(
-            <Element {...outputProps}>
-              <span dangerouslySetInnerHTML={oldHtml} />
-            </Element>,
-            childNode,
-          );
+          // flushSync so the line wraps correctly before the scroll is set
+          flushSync(() => {
+            reactRoot.render(
+              <Element {...outputProps}>
+                <span dangerouslySetInnerHTML={oldHtml} />
+              </Element>,
+            );
+          });
         }
 
         // Highlight text
         if (!message.avoidHighlighting && this.highlightParsers) {
-          this.highlightParsers.map((parser) => {
-            const highlighted = highlightNode(
-              node,
-              parser.highlightRegex,
-              parser.highlightWords,
-              (text) => createHighlightNode(text, parser.highlightColor),
-            );
-            if (highlighted && parser.highlightWholeMessage) {
-              node.className += ' ChatMessage--highlighted';
-            }
-          });
+          splitRadioChannelLabel(node);
+          let soundPlayed = false;
+          this.highlightParsers
+            .filter((parser) => parser.enabled && this.matchesFilters(parser))
+            .forEach((parser) => {
+              const highlighted = highlightNode(
+                node,
+                parser.highlightRegex,
+                parser.highlightWords,
+                (text) => createHighlightNode(text, parser.highlightColor),
+                (textNode) => !isRadioChannelName(textNode),
+              );
+              if (highlighted && parser.highlightWholeMessage) {
+                node.className += ' ChatMessage--highlighted';
+                node.style.setProperty(
+                  '--highlight-color',
+                  parser.highlightColor,
+                );
+              }
+              if (highlighted && parser.playSound && !soundPlayed) {
+                soundPlayed = true;
+                if (
+                  !suppressHighlightSound &&
+                  !isSelfActionMessage(node.textContent || '')
+                ) {
+                  playHighlightSound(parser.soundFile, parser.soundVolume);
+                }
+              }
+            });
         }
         // Linkify text
         const linkifyNodes = node.querySelectorAll('.linkify');
@@ -482,11 +628,11 @@ class ChatRenderer {
       }
     }
     if (node) {
-      const firstChild = this.rootNode.childNodes[0];
+      const firstChild = this.rootNode!.childNodes[0];
       if (prepend && firstChild) {
-        this.rootNode.insertBefore(fragment, firstChild);
+        this.rootNode!.insertBefore(fragment, firstChild);
       } else {
-        this.rootNode.appendChild(fragment);
+        this.rootNode!.appendChild(fragment);
       }
       if (this.scrollTracking) {
         setTimeout(() => this.scrollToBottom());
@@ -516,7 +662,7 @@ class ChatRenderer {
         this.visibleMessages = messages.slice(fromIndex);
         for (let i = 0; i < fromIndex; i++) {
           const message = messages[i];
-          this.rootNode.removeChild(message.node);
+          this.rootNode!.removeChild(message.node);
           // Mark this message as pruned
           message.node = 'pruned';
         }
@@ -556,12 +702,13 @@ class ChatRenderer {
       message.node = undefined;
     }
     // Fast clear of the root node
-    this.rootNode.textContent = '';
+    this.rootNode!.textContent = '';
     this.messages = [];
     this.visibleMessages = [];
     // Repopulate the chat log
     this.processBatch(messages, {
       notifyListeners: false,
+      suppressHighlightSound: true,
     });
   }
 
@@ -577,7 +724,7 @@ class ChatRenderer {
     this.visibleMessages = [];
     for (let i = 0; i < messages.length; i++) {
       const message = messages[i];
-      this.rootNode.removeChild(message.node);
+      this.rootNode!.removeChild(message.node);
       // Mark this message as pruned
       message.node = 'pruned';
     }
@@ -633,18 +780,21 @@ class ChatRenderer {
       .substring(0, 19)
       .replace(/[-:]/g, '')
       .replace('T', '-');
-    window.navigator.msSaveBlob(blob, `ss13-chatlog-${timestamp}.html`);
+    (window.navigator as any).msSaveBlob(
+      blob,
+      `ss13-chatlog-${timestamp}.html`,
+    );
   }
 }
 
 // Make chat renderer global so that we can continue using the same
 // instance after hot code replacement.
-if (!window.__chatRenderer__) {
-  window.__chatRenderer__ = new ChatRenderer();
+if (!(window as any).__chatRenderer__) {
+  (window as any).__chatRenderer__ = new ChatRenderer();
 }
 
 /** @type {ChatRenderer} */
-export const chatRenderer = window.__chatRenderer__;
+export const chatRenderer = (window as any).__chatRenderer__;
 
 setTimeout(
   () => {

@@ -37,3 +37,9 @@ export const FONTS = [
 ];
 
 export const MAX_HIGHLIGHT_SETTINGS = 10;
+
+export const DEFAULT_HIGHLIGHT_SOUND = 'sound/misc/highlight_sounds/Beep.ogg';
+
+export const HIGHLIGHT_SOUNDS = [
+  { label: 'Beep', value: DEFAULT_HIGHLIGHT_SOUND },
+];

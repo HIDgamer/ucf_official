@@ -2476,3 +2476,17 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 #undef MENU_MENTOR
 #undef MENU_SETTINGS
 #undef MENU_SPECIAL
+
+/// Names of the characters saved in every slot
+/datum/preferences/proc/get_saved_character_names()
+	var/list/names = list()
+	if(!path || !fexists(path))
+		return names
+	var/savefile/S = new /savefile(path)
+	var/slot_name
+	for(var/slot in 1 to MAX_SAVE_SLOTS)
+		S.cd = "/character[slot]"
+		S["real_name"] >> slot_name
+		if(slot_name)
+			names |= slot_name
+	return names

@@ -77,6 +77,7 @@ const loadChatFromStorage = async (store) => {
     ];
     chatRenderer.processBatch(batch, {
       prepend: true,
+      suppressHighlightSound: true,
     });
   }
   store.dispatch(loadChat(state));
@@ -183,6 +184,11 @@ export const chatMiddleware = (store) => {
       );
 
       return;
+    }
+    if (type === 'player/set') {
+      chatRenderer.setJob(payload?.job);
+      chatRenderer.setCharacter(payload?.character);
+      return next(action);
     }
     if (type === 'roundrestart') {
       // Save chat as soon as possible

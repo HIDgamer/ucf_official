@@ -150,6 +150,7 @@ export const highlightNode = (
   regex,
   words,
   createNode = createHighlightNode,
+  filter = (_textNode) => true,
 ) => {
   if (!createNode) {
     createNode = createHighlightNode;
@@ -159,10 +160,10 @@ export const highlightNode = (
   for (let i = 0; i < childNodes.length; i++) {
     const node = childNodes[i];
     // Is a text node
-    if (node.nodeType === 3) {
+    if (node.nodeType === 3 && filter(node)) {
       n += replaceInTextNode(regex, words, createNode)(node);
     } else {
-      n += highlightNode(node, regex, words, createNode);
+      n += highlightNode(node, regex, words, createNode, filter);
     }
   }
   return n;

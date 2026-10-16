@@ -25,6 +25,7 @@ import {
 
 import { ChatPageSettings } from '../chat';
 import { clearChat, rebuildChat, saveChatToDisk } from '../chat/actions';
+import { selectGame } from '../game/selectors';
 import { CRT_THEMES } from '../themes';
 import {
   addHighlightSetting,
@@ -33,7 +34,12 @@ import {
   updateHighlightSetting,
   updateSettings,
 } from './actions';
-import { FONTS, MAX_HIGHLIGHT_SETTINGS, SETTINGS_TABS } from './constants';
+import {
+  FONTS,
+  HIGHLIGHT_SOUNDS,
+  MAX_HIGHLIGHT_SETTINGS,
+  SETTINGS_TABS,
+} from './constants';
 import {
   selectActiveTab,
   selectHighlightSettingById,
@@ -331,15 +337,45 @@ const TextHighlightSetting = (props) => {
   const highlightSettingById = useSelector(selectHighlightSettingById);
   const dispatch = useDispatch();
   const {
+    enabled = true,
     highlightColor,
     highlightText,
     highlightWholeMessage,
     matchWord,
     matchCase,
+    playSound = false,
+    soundFile,
+    soundVolume = 0.5,
+    jobFilter = '',
+    characterFilter = [],
   } = highlightSettingById[id];
+  const { playerCharacter, playerCharacters = [] } = useSelector(selectGame);
+  const knownCharacters = Array.from(
+    new Set([
+      ...playerCharacters,
+      ...(playerCharacter ? [playerCharacter] : []),
+      ...characterFilter,
+    ]),
+  );
+  const update = (changes) =>
+    dispatch(
+      updateHighlightSetting({
+        id: id,
+        ...changes,
+      }),
+    );
   return (
     <Stack.Item {...rest}>
       <Stack mb={1} color="label" align="baseline">
+        <Stack.Item>
+          <Button.Checkbox
+            checked={enabled}
+            tooltip="Turns this highlight off without deleting it."
+            onClick={() => update({ enabled: !enabled })}
+          >
+            Enabled
+          </Button.Checkbox>
+        </Stack.Item>
         <Stack.Item grow>
           <Button
             color="transparent"
@@ -435,6 +471,85 @@ const TextHighlightSetting = (props) => {
           )
         }
       />
+      <Stack mt={1} align="baseline" color="label">
+        <Stack.Item>
+          <Button.Checkbox
+            checked={playSound}
+            tooltip="Plays a sound when a message matches, at most once every few seconds. Messages you reload or reapply stay silent."
+            onClick={() => update({ playSound: !playSound })}
+          >
+            Play sound
+          </Button.Checkbox>
+        </Stack.Item>
+        {!!playSound && (
+          <>
+            <Stack.Item>
+              <Dropdown
+                width="8em"
+                options={HIGHLIGHT_SOUNDS.map((option) => option.label)}
+                selected={
+                  HIGHLIGHT_SOUNDS.find((option) => option.value === soundFile)
+                    ?.label ?? HIGHLIGHT_SOUNDS[0].label
+                }
+                onSelected={(label) =>
+                  update({
+                    soundFile: HIGHLIGHT_SOUNDS.find(
+                      (option) => option.label === label,
+                    )?.value,
+                  })
+                }
+              />
+            </Stack.Item>
+            <Stack.Item>
+              Volume{' '}
+              <NumberInput
+                width="4.2em"
+                step={5}
+                stepPixelSize={2}
+                minValue={0}
+                maxValue={100}
+                unit="%"
+                value={Math.round(soundVolume * 100)}
+                format={(value) => toFixed(value)}
+                onChange={(value) => update({ soundVolume: value / 100 })}
+              />
+            </Stack.Item>
+          </>
+        )}
+      </Stack>
+      <Stack mt={1} align="baseline" color="label">
+        <Stack.Item>Only as</Stack.Item>
+        <Stack.Item grow>
+          <Input
+            fluid
+            value={jobFilter}
+            placeholder="Jobs, comma separated (any job if empty)"
+            onChange={(e, value) => update({ jobFilter: value })}
+          />
+        </Stack.Item>
+      </Stack>
+      {knownCharacters.length > 0 && (
+        <Box mt={1} color="label">
+          Only for characters (any if none picked):
+          <Box mt={0.5}>
+            {knownCharacters.map((name) => (
+              <Button.Checkbox
+                key={name}
+                checked={characterFilter.includes(name)}
+                onClick={() =>
+                  update({
+                    characterFilter: characterFilter.includes(name)
+                      ? characterFilter.filter((entry) => entry !== name)
+                      : [...characterFilter, name],
+                  })
+                }
+              >
+                {name}
+              </Button.Checkbox>
+            ))}
+          </Box>
+        </Box>
+      )}
     </Stack.Item>
   );
 };

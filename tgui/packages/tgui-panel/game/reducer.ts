@@ -13,6 +13,9 @@ const initialState = {
   roundTime: null,
   roundRestartedAt: null,
   connectionLostAt: null,
+  playerJob: null,
+  playerCharacter: null,
+  playerCharacters: [],
 };
 
 export const gameReducer = (state = initialState, action) => {
@@ -33,6 +36,17 @@ export const gameReducer = (state = initialState, action) => {
     return {
       ...state,
       connectionLostAt: null,
+    };
+  }
+  if (type === 'player/set') {
+    const { payload } = action;
+    return {
+      ...state,
+      playerJob: payload?.job ?? null,
+      playerCharacter: payload?.character ?? null,
+      playerCharacters: Array.isArray(payload?.characters)
+        ? payload.characters
+        : [],
     };
   }
   return state;

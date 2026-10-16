@@ -12,6 +12,7 @@
 	var/datum/tgui_window/window
 	var/broken = FALSE
 	var/initialized_at
+	var/next_highlight_sound = 0
 
 /datum/tgui_panel/New(client/client, id)
 	src.client = client
@@ -84,6 +85,7 @@
 				),
 			),
 		))
+		send_player_info()
 		return TRUE
 // Deprecated due to removal of old sound play commands
 //	if(type == "audio/setAdminMusicVolume")
@@ -91,6 +93,9 @@
 //		return TRUE
 	if(type == "telemetry")
 		analyze_telemetry(payload)
+		return TRUE
+	if(type == "chat/highlight_sound")
+		play_highlight_sound(payload)
 		return TRUE
 	if(type == "act/ping_relays")
 		ping_relays()
@@ -103,3 +108,36 @@
  */
 /datum/tgui_panel/proc/send_roundrestart()
 	window.send_message("roundrestart")
+
+/// Sounds the chat panel may ask to have played when a highlight matches
+GLOBAL_LIST_INIT(chat_highlight_sounds, list(
+	"sound/misc/highlight_sounds/Beep.ogg" = 'sound/misc/highlight_sounds/Beep.ogg',
+))
+
+/**
+ * public
+ *
+ * Sends the client's current job, character and saved character names,
+ * used for conditional chat highlights.
+ */
+/datum/tgui_panel/proc/send_player_info()
+	if(broken || !window)
+		return
+	window.send_message("player/set", list(
+		"job" = client.mob?.job,
+		"character" = client.mob?.real_name || client.prefs?.real_name,
+		"characters" = client.prefs?.get_saved_character_names(),
+	))
+
+/// Plays one of the allowed highlight sounds for the client, at most once every couple of seconds
+/datum/tgui_panel/proc/play_highlight_sound(list/payload)
+	if(!islist(payload) || world.time < next_highlight_sound)
+		return
+	var/sound_file = payload["file"]
+	if(!istext(sound_file) || !GLOB.chat_highlight_sounds[sound_file])
+		return
+	var/volume = text2num(payload["volume"])
+	if(!isnum(volume))
+		volume = 0.5
+	next_highlight_sound = world.time + 2 SECONDS
+	playsound_client(client, GLOB.chat_highlight_sounds[sound_file], vol = clamp(volume, 0, 1) * 100)
