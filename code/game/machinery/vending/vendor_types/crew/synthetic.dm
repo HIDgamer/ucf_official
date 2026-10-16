@@ -427,7 +427,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	vend_delay = 1 SECONDS
 
 /obj/structure/machinery/cm_vending/clothing/synth/snowflake/get_listed_products(mob/user)
-	return GLOB.cm_vending_clothing_synth_snowflake
+	var/static/list/all_products
+	if(!all_products)
+		all_products = GLOB.cm_vending_clothing_synth_snowflake + GLOB.cm_vending_clothing_bastion_synth
+	return all_products
 
 
 //------------EXPERIMENTAL TOOLS---------------

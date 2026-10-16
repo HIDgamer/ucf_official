@@ -74,3 +74,23 @@
 			if(!ispath(product, /obj/item))
 				problems += "[path] stocks [product]"
 	TEST_ASSERT(!length(problems), "Wardrobe vendor problems:\n[problems.Join("\n")]")
+
+/// The commanding officer and synthetic snowflake vendors stock the Bastion clothing and nothing captain themed
+/datum/unit_test/bastion_vendor_lists/Run()
+	var/list/problems = list()
+	for(var/list/entry as anything in GLOB.cm_vending_clothing_bastion_co + GLOB.cm_vending_clothing_bastion_synth)
+		if(!entry[3])
+			continue
+		if(!ispath(entry[3], /obj/item))
+			problems += "[entry[1]] is not an item"
+	for(var/list/entry as anything in GLOB.cm_vending_clothing_bastion_co)
+		if(entry[3] && findtext("[entry[3]]", "captain"))
+			problems += "[entry[3]] is captain clothing"
+	for(var/list/entry as anything in GLOB.cm_vending_clothing_bastion_synth)
+		if(entry[3] && findtext("[entry[3]]", "costume|dress|bunny"))
+			problems += "[entry[3]] is not humble"
+	var/obj/structure/machinery/cm_vending/clothing/commanding_officer/co_vendor = allocate(/obj/structure/machinery/cm_vending/clothing/commanding_officer)
+	TEST_ASSERT(length(co_vendor.get_listed_products()) > length(GLOB.cm_vending_clothing_commanding_officer), "The CO vendor does not stock the Bastion clothing")
+	var/obj/structure/machinery/cm_vending/clothing/synth/snowflake/synth_vendor = allocate(/obj/structure/machinery/cm_vending/clothing/synth/snowflake)
+	TEST_ASSERT(length(synth_vendor.get_listed_products()) > length(GLOB.cm_vending_clothing_synth_snowflake), "The synth snowflake vendor does not stock the Bastion clothing")
+	TEST_ASSERT(!length(problems), "Vendor list problems:\n[problems.Join("\n")]")

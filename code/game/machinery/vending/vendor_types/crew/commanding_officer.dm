@@ -150,7 +150,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 	vendor_role = list(JOB_CO, JOB_WO_CO, "Commander C++")
 
 /obj/structure/machinery/cm_vending/clothing/commanding_officer/get_listed_products(mob/user)
-	return GLOB.cm_vending_clothing_commanding_officer
+	var/static/list/all_products
+	if(!all_products)
+		all_products = GLOB.cm_vending_clothing_commanding_officer + GLOB.cm_vending_clothing_bastion_co
+	return all_products
 
 /obj/effect/essentials_set/commanding_officer
 	spawned_gear_list = list(
