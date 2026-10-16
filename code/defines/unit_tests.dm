@@ -83,6 +83,7 @@
 // Unit tests
 #include "..\modules\unit_tests\areas_unpowered.dm"
 #include "..\modules\unit_tests\autowiki.dm"
+#include "..\modules\unit_tests\bastion_clothing.dm"
 #include "..\modules\unit_tests\check_runtimes.dm"
 #include "..\modules\unit_tests\create_and_destroy.dm"
 #include "..\modules\unit_tests\duplicate_sprite_accessories.dm"
