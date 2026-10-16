@@ -114,6 +114,8 @@ GLOBAL_VAR_INIT(glide_size_user_scale, 1)
 
 /// Sets the glide for a step about to be taken with the given movement delay, matched to the mob's observed step cadence
 /mob/proc/set_step_glide(delay)
+	if(isobserver(src))
+		return
 	if(!CONFIG_GET(flag/smooth_glide))
 		return
 	if(isnull(delay))
