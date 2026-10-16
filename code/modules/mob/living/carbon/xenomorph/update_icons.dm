@@ -67,21 +67,21 @@
 	var/mutation_caste_state = "[get_strain_icon()] [caste.caste_type]"
 	if(stat == DEAD)
 		icon_state = "[mutation_caste_state] Dead"
-		if(!(icon_state in icon_states(icon_xeno)))
+		if(!icon_exists(icon_xeno, icon_state))
 			icon_state = "Normal [caste.caste_type] Dead"
 	else if(body_position == LYING_DOWN)
 		if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
 			icon_state = "[mutation_caste_state] Sleeping"
-			if(!(icon_state in icon_states(icon_xeno)))
+			if(!icon_exists(icon_xeno, icon_state))
 				icon_state = "Normal [caste.caste_type] Sleeping"
 		else
 			icon_state = "[mutation_caste_state] Knocked Down"
-			if(!(icon_state in icon_states(icon_xeno)))
+			if(!icon_exists(icon_xeno, icon_state))
 				icon_state = "Normal [caste.caste_type] Knocked Down"
 	else
 		var/movement_state = m_intent != MOVE_INTENT_RUN && has_walking_icon_state ? "Walking" : "Running"
 		icon_state = "[mutation_caste_state] [movement_state]"
-		if(!(icon_state in icon_states(icon_xeno)))
+		if(!icon_exists(icon_xeno, icon_state))
 			icon_state = "Normal [caste.caste_type] [movement_state]"
 
 

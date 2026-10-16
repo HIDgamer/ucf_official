@@ -13,9 +13,9 @@
 		var/tmp_icon_state = overlay_state? overlay_state : icon_state
 		if(inv_overlay_icon)
 			inv_overlay = image(icon = inv_overlay_icon, icon_state = tmp_icon_state, dir = SOUTH)
-		else if(icon_override && ("[tmp_icon_state]_tie" in icon_states(icon_override)))
+		else if(icon_override && icon_exists(icon_override, "[tmp_icon_state]_tie"))
 			inv_overlay = image(icon = icon_override, icon_state = "[tmp_icon_state]_tie", dir = SOUTH)
-		else if("[tmp_icon_state]_tie" in icon_states(GLOB.default_onmob_icons[WEAR_ACCESSORY]))
+		else if(icon_exists(GLOB.default_onmob_icons[WEAR_ACCESSORY], "[tmp_icon_state]_tie"))
 			inv_overlay = image(icon = GLOB.default_onmob_icons[WEAR_ACCESSORY], icon_state = "[tmp_icon_state]_tie", dir = SOUTH)
 		else
 			inv_overlay = image(icon = GLOB.default_onmob_icons[WEAR_ACCESSORY], icon_state = tmp_icon_state, dir = SOUTH)
@@ -47,7 +47,7 @@
 		if(sprite_sheet_bodytype)
 			use_sprite_sheet = sprite_sheet_bodytype
 
-		if(icon_override && ("[tmp_icon_state]_mob" in icon_states(icon_override)))
+		if(icon_override && icon_exists(icon_override, "[tmp_icon_state]_mob"))
 			return overlay_image(icon_override, "[tmp_icon_state]_mob", color, RESET_COLOR)
 		if(use_sprite_sheet)
 			return overlay_image(use_sprite_sheet, tmp_icon_state, color, RESET_COLOR)

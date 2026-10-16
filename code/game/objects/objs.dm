@@ -439,7 +439,7 @@
 	if(slot == WEAR_R_HAND || slot == WEAR_L_HAND)
 		return FALSE
 
-	if(icon_state in icon_states(sprite_sheets[bodytype]))
+	if(icon_exists(sprite_sheets[bodytype], icon_state))
 		return TRUE
 
 	return (slot != WEAR_JACKET && slot != WEAR_HEAD)

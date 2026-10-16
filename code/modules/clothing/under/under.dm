@@ -269,7 +269,7 @@
 		under_icon = GLOB.default_onmob_icons[WEAR_BODY]
 
 	var/check_worn_state = "[worn_state]_d[contained_sprite ? "_un" : ""]"
-	if(!(check_worn_state in icon_states(under_icon)))
+	if(!icon_exists(under_icon, check_worn_state))
 		flags_jumpsuit &= ~UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/verb/rollsuit()
@@ -302,7 +302,7 @@
 		under_icon = GLOB.default_onmob_icons[WEAR_BODY]
 
 	var/check_worn_state = "[worn_state]_dj[contained_sprite ? "_un" : ""]"
-	if(!(check_worn_state in icon_states(under_icon)))
+	if(!icon_exists(under_icon, check_worn_state))
 		flags_jumpsuit &= ~UNIFORM_JACKET_REMOVABLE
 
 /obj/item/clothing/under/verb/removejacket()
