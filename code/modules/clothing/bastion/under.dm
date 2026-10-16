@@ -603,6 +603,63 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
 	)
 
+/obj/item/clothing/under/bastion/rank/captain/bunnysuit
+	name = "captain's bunnysuit"
+	desc = "The staple of any bunny themed captains. Great for securing the disk."
+	icon = 'icons/obj/items/clothing/bastion/bunnysprites/bunnysuits.dmi'
+	icon_state = "bunnysuit_captain"
+	item_state = null
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/costumes/bunnysprites/bunnysuits_worn.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+
+/obj/item/clothing/under/bastion/rank/captain/nova/imperial
+	name = "captain's naval jumpsuit"
+	desc = "A white naval suit adorned with golden epaulets and a rank badge denoting a Captain. There are two ways to destroy a person, kill him, or ruin his reputation."
+	icon = 'icons/obj/items/clothing/bastion/monke/under/command.dmi'
+	icon_state = "impcap"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/monke/under/command.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+
+/obj/item/clothing/under/bastion/rank/captain/nova/imperial/generic
+	name = "grey officer's naval jumpsuit"
+	desc = "A grey naval suit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
+	icon_state = "impcom"
+
+/obj/item/clothing/under/bastion/rank/captain/nova/imperial/generic/grey
+	name = "dark grey officer's naval jumpsuit"
+	desc = "A dark grey naval suit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
+	icon_state = "impcom_dark"
+
+/obj/item/clothing/under/bastion/rank/captain/nova/imperial/generic/pants
+	name = "officer's naval jumpsuit"
+	desc = "A grey naval suit over black pants, with a rank badge denoting an Officer. Doesn't protect against blaster fire."
+	icon_state = "impcom_pants"
+
+/obj/item/clothing/under/bastion/rank/captain/nova/imperial/generic/red
+	name = "red officer's naval jumpsuit"
+	desc = "A red naval suit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
+	icon_state = "impcom_red"
+
+/obj/item/clothing/under/bastion/rank/captain/nova/kilt
+	name = "captain's kilt"
+	desc = "A midnight blue kilt, padded with nano-kevlar and adorned with gold and a tartan sash."
+	icon = 'icons/obj/items/clothing/bastion/monke/under/command.dmi'
+	icon_state = "capkilt"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/monke/under/command.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+
 /obj/item/clothing/under/bastion/rank/captain/parade
 	name = "captain's parade uniform"
 	desc = "A captain's luxury-wear, for special occasions."
@@ -659,6 +716,63 @@
 	desc = "It's a jumpsuit worn by the quartermaster. It's specially designed to prevent back injuries caused by pushing paper."
 	icon_state = "qm"
 	item_state = "lb_suit"
+
+/obj/item/clothing/under/bastion/rank/cargo/qm/nova/casual
+	name = "quartermaster's casualwear"
+	desc = "A brown jacket with matching trousers for the relaxed Quartermaster."
+	icon = 'icons/obj/items/clothing/bastion/monke/under/cargo.dmi'
+	icon_state = "qmc"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/monke/under/cargo.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+
+/obj/item/clothing/under/bastion/rank/cargo/qm/nova/formal
+	name = "quartermaster's formal jumpsuit"
+	desc = "A western-like alternate uniform for the old fashioned QM."
+	icon = 'icons/obj/items/clothing/bastion/monke/under/cargo.dmi'
+	icon_state = "supply_chief"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/monke/under/cargo.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+
+/obj/item/clothing/under/bastion/rank/cargo/qm/nova/formal/skirt
+	name = "quartermaster's formal jumpskirt"
+	desc = "A western-like alternate uniform for the old fashioned QM. Skirt included!"
+	icon_state = "supply_chief_skirt"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+
+/obj/item/clothing/under/bastion/rank/cargo/qm/nova/gorka
+	name = "quartermaster's gorka"
+	desc = "A rugged, utilitarian gorka with silver markings. Unlike the regular employees', this one is lined with silk on the inside."
+	icon = 'icons/obj/items/clothing/bastion/monke/under/cargo.dmi'
+	icon_state = "gorka_qm"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/monke/under/cargo.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+
+/obj/item/clothing/under/bastion/rank/cargo/qm/nova/turtleneck
+	name = "quartermaster's turtleneck"
+	desc = "A snug turtleneck sweater worn by the Quartermaster, characterized by the expensive-looking pair of suit pants."
+	icon = 'icons/obj/items/clothing/bastion/monke/under/cargo.dmi'
+	icon_state = "turtleneck_qm"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/monke/under/cargo.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+
+/obj/item/clothing/under/bastion/rank/cargo/qm/nova/turtleneck/skirt
+	name = "quartermaster's skirtleneck"
+	desc = "A snug turtleneck sweater worn by the Quartermaster, as shown by the elegant double-lining of its silk skirt."
+	icon_state = "skirtleneckQM"
 
 /obj/item/clothing/under/bastion/rank/cargo/qm/skirt
 	name = "quartermaster's jumpskirt"
@@ -958,6 +1072,51 @@
 	icon_state = "hop"
 	item_state = "b_suit"
 
+/obj/item/clothing/under/bastion/rank/civilian/head_of_personnel/nova/imperial
+	name = "head of personnel's naval jumpsuit"
+	desc = "A pale green naval suit and a rank badge denoting the Personnel Officer. Target, maximum firepower."
+	icon = 'icons/obj/items/clothing/bastion/monke/under/civilian.dmi'
+	icon_state = "imphop"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/monke/under/civilian.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+
+/obj/item/clothing/under/bastion/rank/civilian/head_of_personnel/nova/parade
+	name = "head of personnel's male formal uniform"
+	desc = "A luxurious uniform for the head of personnel, woven in a deep blue. On the lapel is a small pin in the shape of a corgi's head."
+	icon = 'icons/obj/items/clothing/bastion/monke/under/civilian.dmi'
+	icon_state = "hop_parade_male"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/monke/under/civilian.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+
+/obj/item/clothing/under/bastion/rank/civilian/head_of_personnel/nova/parade/female
+	name = "head of personnel's female formal uniform"
+	icon_state = "hop_parade_female"
+
+/obj/item/clothing/under/bastion/rank/civilian/head_of_personnel/nova/turtleneck
+	name = "head of personnel's turtleneck"
+	desc = "A soft blue turtleneck and black khakis worn by Executives who prefer a bit more comfort over style."
+	icon = 'icons/obj/items/clothing/bastion/monke/under/civilian.dmi'
+	icon_state = "hopturtle"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/monke/under/civilian.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+
+/obj/item/clothing/under/bastion/rank/civilian/head_of_personnel/nova/turtleneck/skirt
+	name = "head of personnel's turtleneck skirt"
+	desc = "A soft blue turtleneck and black skirt worn by Executives who prefer a bit more comfort over style."
+	icon_state = "hopturtle_skirt"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+
 /obj/item/clothing/under/bastion/rank/civilian/head_of_personnel/skirt
 	name = "head of personnel's skirt"
 	desc = "A slick uniform and skirt combo worn by those to earn the position of \"Head of Personnel\"."
@@ -1180,6 +1339,17 @@
 	icon_state = "chiefengineer"
 	item_state = "gy_suit"
 
+/obj/item/clothing/under/bastion/rank/engineering/chief_engineer/nova/imperial
+	name = "chief engineer's naval jumpsuit"
+	desc = "A gray naval suit with a lead-lined vest and a rank badge denoting the Officer of the Internal Engineering Division. Doesn't come with a death machine building guide."
+	icon = 'icons/obj/items/clothing/bastion/monke/under/engineering.dmi'
+	icon_state = "impce"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/monke/under/engineering.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+
 /obj/item/clothing/under/bastion/rank/engineering/chief_engineer/skirt
 	name = "chief engineer's jumpskirt"
 	desc = "It's a high visibility jumpskirt given to those engineers insane enough to achieve the rank of \"Chief Engineer\". Made from fire resistant materials."
@@ -1199,6 +1369,42 @@
 	desc = "A high visibility jumpsuit. Made from fire resistant materials."
 	icon_state = "hazard"
 	item_state = "syndicate-orange"
+
+/obj/item/clothing/under/bastion/rank/engineering/engineer/nova/hazard_chem
+	name = "chemical hazard jumpsuit"
+	desc = "A high visibility jumpsuit with additional protection from gas and chemical hazards, at the cost of less fire-proofing."
+	icon = 'icons/obj/items/clothing/bastion/monke/under/engineering.dmi'
+	icon_state = "hazard_green"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/monke/under/engineering.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+
+/obj/item/clothing/under/bastion/rank/engineering/engineer/nova/trouser
+	name = "engineering trousers"
+	desc = "An engineering-orange set of trousers. Their waistband proudly displays an 'anti-radiation' symbol, though the effectiveness of radiation-proof-pants-only is still up for debate."
+	icon = 'icons/obj/items/clothing/bastion/monke/under/engineering.dmi'
+	icon_state = "workpants_orange"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/monke/under/engineering.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+	flags_armor_protection = BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	flags_cold_protection = BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	flags_heat_protection = BODY_FLAG_GROIN|BODY_FLAG_LEGS
+
+/obj/item/clothing/under/bastion/rank/engineering/engineer/nova/utility
+	name = "engineering utility uniform"
+	desc = "A utility uniform worn by Engineering personnel."
+	icon = 'icons/obj/items/clothing/bastion/monke/under/engineering.dmi'
+	icon_state = "util_eng"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/monke/under/engineering.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
 
 /obj/item/clothing/under/bastion/rank/engineering/engineer/skirt
 	name = "engineer's jumpskirt"
@@ -1573,6 +1779,20 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
+/obj/item/clothing/under/bastion/rank/security/head_of_security/bunnysuit
+	name = "Head of Security's bunnysuit"
+	desc = "The staple of any bunny themed security commanders. Includes kevlar weave stockings and a gilded tail."
+	icon = 'icons/obj/items/clothing/bastion/bunnysprites/bunnysuits.dmi'
+	icon_state = "bunnysuit_hos"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/costumes/bunnysprites/bunnysuits_worn.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+
 /obj/item/clothing/under/bastion/rank/security/head_of_security/formal
 	name = "head of security's formal uniform"
 	desc = "The insignia on this uniform tells you that this uniform belongs to the Head of Security."
@@ -1904,3 +2124,15 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+
+/obj/item/clothing/under/bastion/wonka
+	name = "wonky suit"
+	desc = "Come with me, and you'll be, in a world of OSHA violations!"
+	icon = 'icons/obj/items/clothing/bastion/uniforms.dmi'
+	icon_state = "wonka"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/uniform.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+	item_state_slots = list(WEAR_BODY = "wonka")

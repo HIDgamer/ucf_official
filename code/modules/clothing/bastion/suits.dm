@@ -120,6 +120,48 @@
 	flags_cold_protection = BODY_FLAG_CHEST
 	flags_heat_protection = BODY_FLAG_CHEST
 
+/obj/item/clothing/suit/bastion/armor/hos/hos_formal
+	name = "\improper Head of Security's parade jacket"
+	desc = "For when an armoured vest isn't fashionable enough."
+	icon = 'icons/obj/items/clothing/bastion/suits/armor.dmi'
+	icon_state = "hosformal"
+	item_state = "hostrench"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/suits/armor.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+	armor_melee = 30
+	armor_bullet = 30
+	armor_laser = 30
+	armor_energy = 40
+	armor_bomb = 25
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	toggle_capable = TRUE
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/suit/bastion/armor/hos_tailcoat
+	name = "head of security's tailcoat"
+	desc = "A reinforced tailcoat worn by bunny themed security commanders. Enhanced with a special alloy for some extra protection and style."
+	icon = 'icons/obj/items/clothing/bastion/bunnysprites/tailcoats.dmi'
+	icon_state = "hos"
+	item_state = "armor"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/costumes/bunnysprites/tailcoats_worn.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+	armor_melee = 30
+	armor_bullet = 30
+	armor_laser = 30
+	armor_energy = 40
+	armor_bomb = 25
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+
 /obj/item/clothing/suit/bastion/armor/secduster
 	name = "security duster"
 	desc = "A standard-issue armored duster that keeps a security officer protected and fashionable."
@@ -265,6 +307,88 @@
 	flags_cold_protection = BODY_FLAG_CHEST
 	flags_heat_protection = BODY_FLAG_CHEST
 
+/obj/item/clothing/suit/bastion/armor/vest/capcarapace/captains_formal
+	name = "captain's parade coat"
+	desc = "For when an armoured vest isn't fashionable enough."
+	icon = 'icons/obj/items/clothing/bastion/suits/armor.dmi'
+	icon_state = "capformal"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/suits/armor.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+	armor_melee = 50
+	armor_bullet = 40
+	armor_laser = 50
+	armor_energy = 50
+	armor_bomb = 25
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	toggle_capable = TRUE
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/suit/bastion/armor/vest/capcarapace/jacket
+	name = "captain's jacket"
+	desc = "A lightweight armored jacket in the Captain's colors. For when you want something sleeker."
+	icon = 'icons/obj/items/clothing/bastion/monke/suits/armor.dmi'
+	icon_state = "capjacket_casual"
+	item_state = "armor"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/monke/suits/armor.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+	armor_melee = 50
+	armor_bullet = 40
+	armor_laser = 50
+	armor_energy = 50
+	armor_bomb = 25
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+
+/obj/item/clothing/suit/bastion/armor/vest/capcarapace/tailcoat_captain
+	name = "captain's tailcoat"
+	desc = "A nautical coat usually worn by bunny themed captains. It’s reinforced with genetically modified armored blue rabbit fluff."
+	icon = 'icons/obj/items/clothing/bastion/bunnysprites/tailcoats.dmi'
+	icon_state = "captain"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/costumes/bunnysprites/tailcoats_worn.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+	armor_melee = 50
+	armor_bullet = 40
+	armor_laser = 50
+	armor_energy = 50
+	armor_bomb = 25
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+
+/obj/item/clothing/suit/bastion/armor/vest/hop/hop_formal
+	name = "head of personnel's parade jacket"
+	desc = "A luxurious deep blue jacket for the Head of Personnel, woven with a red trim. It smells of bureaucracy."
+	icon = 'icons/obj/items/clothing/bastion/monke/suits/armor.dmi'
+	icon_state = "hopformal"
+	item_state = "b_suit"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/monke/suits/armor.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+	armor_melee = 35
+	armor_bullet = 30
+	armor_laser = 30
+	armor_energy = 40
+	armor_bomb = 25
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	toggle_capable = TRUE
+	actions_types = list(/datum/action/item_action/toggle)
+
 /obj/item/clothing/suit/bastion/armor/vest/nanotrasen_representative
 	name = "representative's armored vest"
 	desc = "The pen is mightier than the sword but a sword still hurts."
@@ -316,6 +440,22 @@
 	armor_laser = 25
 	armor_energy = 35
 	armor_bomb = 20
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+
+/obj/item/clothing/suit/bastion/brownfurrich
+	name = "quartermaster fur coat"
+	desc = "Cargonia, or if you're a dork, Cargoslavia has shipped out a coat for loyal quartermasters, despite accusations it's just a dyed black fur coat, it's...not, promise!"
+	icon = 'icons/obj/items/clothing/bastion/monke/suits.dmi'
+	icon_state = "winter_coat"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/monke/suit.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+	armor_melee = 10
+	armor_bullet = 10
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
@@ -741,6 +881,18 @@
 	icon_state = "coatce"
 	item_state = null
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/engineering/ce
+
+/obj/item/clothing/suit/bastion/hooded/wintercoat/engineering/signal_tech
+	name = "network admin's winter coat"
+	desc = "A surprisingly heavy yellow winter coat with reflective green stripes. It has a small antennae for its zipper tab, and the inside layer is covered with a radiation-resistant silver-nylon blend. Because heat insulation is clearly not a priority."
+	icon = 'icons/obj/items/clothing/bastion/suits.dmi'
+	icon_state = "coat_signal_tech"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/suit.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/engineering/signal_tech
 
 /obj/item/clothing/suit/bastion/hooded/wintercoat/eva
 	name = "\proper Endotherm winter coat"
@@ -1307,6 +1459,23 @@
 	toggle_capable = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
 
+/obj/item/clothing/suit/bastion/toggle/jacket/engi
+	name = "engineering jacket"
+	desc = "A comfortable jacket in engineering yellow."
+	icon = 'icons/obj/items/clothing/bastion/monke/suits.dmi'
+	icon_state = "engi_dep_jacket"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/monke/suit.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN
+	toggle_noun = "zipper"
+	toggle_capable = TRUE
+	actions_types = list(/datum/action/item_action/toggle)
+
 /obj/item/clothing/suit/bastion/toggle/jacket/sci
 	name = "science jacket"
 	desc = "A comfortable jacket in science purple."
@@ -1318,6 +1487,23 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
 	)
 	armor_bomb = 10
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN
+	toggle_noun = "zipper"
+	toggle_capable = TRUE
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/suit/bastion/toggle/jacket/supply/head
+	name = "quartermaster's jacket"
+	desc = "Even if people refuse to recognize you as a head, they can recognize you as a badass."
+	icon = 'icons/obj/items/clothing/bastion/monke/suits.dmi'
+	icon_state = "qmjacket"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/monke/suit.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN

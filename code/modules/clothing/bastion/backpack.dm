@@ -31,6 +31,12 @@
 	icon_state = "backpack-hydroponics"
 	item_state = "botpack"
 
+/obj/item/storage/backpack/bastion/captain
+	name = "captain's backpack"
+	desc = "It's a special backpack made exclusively for Nanotrasen officers."
+	icon_state = "backpack-captain"
+	item_state = "captainpack"
+
 /obj/item/storage/backpack/bastion/chemistry
 	name = "chemistry backpack"
 	desc = "A backpack specially designed to repel stains and hazardous liquids."
@@ -41,6 +47,13 @@
 	name = "trophy rack"
 	desc = "It's useful for both carrying extra gear and proudly declaring your insanity."
 	icon_state = "backpack-cult"
+
+/obj/item/storage/backpack/bastion/duffelbag
+	name = "duffel bag"
+	desc = "A large duffel bag for holding extra things."
+	icon_state = "duffel"
+	item_state = "duffel"
+	slowdown = 1
 
 /obj/item/storage/backpack/bastion/duffelbag/blueshield
 	name = "blueshield duffelbag"
@@ -53,83 +66,114 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/monke/backpack_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/monke/backpack_righthand.dmi',
 	)
-	slowdown = 1
+
+/obj/item/storage/backpack/bastion/duffelbag/captain
+	name = "captain's duffel bag"
+	desc = "A large duffel bag for holding extra captainly goods."
+	icon_state = "duffel-captain"
+	item_state = "duffel-captain"
 
 /obj/item/storage/backpack/bastion/duffelbag/chemistry
 	name = "chemistry duffel bag"
 	desc = "A large duffel bag for holding extra chemical substances."
 	icon_state = "duffel-chemistry"
 	item_state = "duffel-chemistry"
-	slowdown = 1
 
 /obj/item/storage/backpack/bastion/duffelbag/engineering
 	name = "industrial duffel bag"
 	desc = "A large duffel bag for holding extra tools and supplies."
 	icon_state = "duffel-engineering"
 	item_state = "duffel-eng"
-	slowdown = 1
+
+/obj/item/storage/backpack/bastion/duffelbag/explorer
+	name = "explorer duffel bag"
+	desc = "A large duffel bag for holding extra exotic treasures."
+	icon_state = "duffel-explorer"
+	item_state = "duffel-explorer"
 
 /obj/item/storage/backpack/bastion/duffelbag/genetics
 	name = "geneticist's duffel bag"
 	desc = "A large duffel bag for holding extra genetic mutations."
 	icon_state = "duffel-genetics"
 	item_state = "duffel-genetics"
-	slowdown = 1
+
+/obj/item/storage/backpack/bastion/duffelbag/head_of_personnel
+	name = "head of personnel duffelbag"
+	desc = "A robust duffelbag issued to Nanotrasen's finest second."
+	icon = 'icons/obj/items/clothing/bastion/monke/backpacks.dmi'
+	icon_state = "duffel_hop"
+	item_state = "duffel_hop"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/bastion/monke/back.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/monke/backpack_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/monke/backpack_righthand.dmi',
+	)
 
 /obj/item/storage/backpack/bastion/duffelbag/hydroponics
 	name = "hydroponic's duffel bag"
 	desc = "A large duffel bag for holding extra gardening tools."
 	icon_state = "duffel-hydroponics"
 	item_state = "duffel-hydroponics"
-	slowdown = 1
 
 /obj/item/storage/backpack/bastion/duffelbag/med
 	name = "medical duffel bag"
 	desc = "A large duffel bag for holding extra medical supplies."
 	icon_state = "duffel-medical"
 	item_state = "duffel-med"
-	slowdown = 1
 
 /obj/item/storage/backpack/bastion/duffelbag/science
 	name = "scientist's duffel bag"
 	desc = "A large duffel bag for holding extra scientific components."
 	icon_state = "duffel-science"
 	item_state = "duffel-sci"
-	slowdown = 1
 
 /obj/item/storage/backpack/bastion/duffelbag/sec
 	name = "security duffel bag"
 	desc = "A large duffel bag for holding extra security supplies and ammunition."
 	icon_state = "duffel-security"
 	item_state = "duffel-sec"
-	slowdown = 1
 
 /obj/item/storage/backpack/bastion/duffelbag/secmed
 	name = "security medical duffelbag"
 	desc = "A large duffel bag for holding extra supplies, now in security grey!"
 	icon_state = "duffel-secmed"
 	item_state = "duffel-secmed"
-	slowdown = 1
 
 /obj/item/storage/backpack/bastion/duffelbag/virology
 	name = "pathologist's duffel bag"
 	desc = "A large duffel bag for holding extra viral bottles."
 	icon_state = "duffel-virology"
 	item_state = "duffel-virology"
-	slowdown = 1
 
 /obj/item/storage/backpack/bastion/duffelbag/xenobiologist
 	name = "xenobiologist's duffel bag"
 	desc = "A large duffel bag for holding extra hazardous components."
 	icon_state = "duffel-xenobio"
 	item_state = "duffel-xenobio"
-	slowdown = 1
+
+/obj/item/storage/backpack/bastion/explorer
+	name = "explorer bag"
+	desc = "A robust backpack for stashing your loot."
+	icon_state = "backpack-explorer"
+	item_state = "explorerpack"
 
 /obj/item/storage/backpack/bastion/genetics
 	name = "genetics backpack"
 	desc = "A bag designed to be super tough, just in case someone hulks out on you."
 	icon_state = "backpack-genetics"
 	item_state = "genepack"
+
+/obj/item/storage/backpack/bastion/head_of_personnel
+	name = "head of personnel backpack"
+	desc = "A exclusive backpack issued to Nanotrasen's finest second."
+	icon = 'icons/obj/items/clothing/bastion/monke/backpacks.dmi'
+	icon_state = "backpack_hop"
+	item_state = "backpack_hop"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/bastion/monke/back.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/monke/backpack_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/monke/backpack_righthand.dmi',
+	)
 
 /obj/item/storage/backpack/bastion/industrial
 	name = "industrial backpack"
@@ -143,6 +187,12 @@
 	icon_state = "backpack-medical"
 	item_state = "medicalpack"
 
+/obj/item/storage/backpack/bastion/satchel
+	name = "satchel"
+	desc = "A trendy looking satchel."
+	icon_state = "satchel-norm"
+	item_state = "satchel-norm"
+
 /obj/item/storage/backpack/bastion/satchel/blueshield
 	name = "blueshield satchel"
 	desc = "A robust satchel issued to Nanotrasen's finest."
@@ -154,6 +204,12 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/monke/backpack_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/monke/backpack_righthand.dmi',
 	)
+
+/obj/item/storage/backpack/bastion/satchel/cap
+	name = "captain's satchel"
+	desc = "An exclusive satchel for Nanotrasen officers."
+	icon_state = "satchel-captain"
+	item_state = "satchel-cap"
 
 /obj/item/storage/backpack/bastion/satchel/chem
 	name = "chemist satchel"
@@ -178,6 +234,18 @@
 	desc = "A sterile satchel with geneticist colours."
 	icon_state = "satchel-genetics"
 	item_state = "satchel-gen"
+
+/obj/item/storage/backpack/bastion/satchel/head_of_personnel
+	name = "head of personnel satchel"
+	desc = "A exclusive satchel issued to Nanotrasen's finest second."
+	icon = 'icons/obj/items/clothing/bastion/monke/backpacks.dmi'
+	icon_state = "satchel_hop"
+	item_state = "satchel_hop"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/bastion/monke/back.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/monke/backpack_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/monke/backpack_righthand.dmi',
+	)
 
 /obj/item/storage/backpack/bastion/satchel/hyd
 	name = "botanist satchel"

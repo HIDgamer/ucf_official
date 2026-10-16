@@ -59,6 +59,18 @@
 	icon_state = "bandstriped_3d9829294a98"
 	item_state = "greyscale_bandana_3d9829294a98"
 
+/obj/item/clothing/mask/bastion/bandana/striped/cargo
+	name = "striped cargo bandana"
+	desc = "A fine bandana with nanotech lining, a stripe across and cargo colors."
+	icon_state = "bandstriped_9670325f350b"
+	item_state = "greyscale_bandana_9670325f350b"
+
+/obj/item/clothing/mask/bastion/bandana/striped/engineering
+	name = "striped engineering bandana"
+	desc = "A fine bandana with nanotech lining, a stripe across and engineering colors."
+	icon_state = "bandstriped_dab50eec7404"
+	item_state = "greyscale_bandana_dab50eec7404"
+
 /obj/item/clothing/mask/bastion/bandana/striped/medical
 	name = "striped medical bandana"
 	desc = "A fine bandana with nanotech lining, a stripe across and medical colors."

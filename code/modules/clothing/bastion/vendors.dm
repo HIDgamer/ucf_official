@@ -410,31 +410,6 @@
 		/obj/item/clothing/head/bastion/flatcap = 1,
 	)
 
-/obj/structure/machinery/vending/bastion/cent_wardrobe
-	name = "\improper CentDrobe"
-	desc = "A one-of-a-kind vending machine for all your centcom aesthetic needs!"
-	icon_state = "centdrobe"
-	product_ads = "Show those ERTs who's the most stylish in the briefing room!"
-	vend_reply = "Thank you for using the CentDrobe!"
-	products = list(
-		/obj/item/clothing/shoes/bastion/laceup = 3,
-		/obj/item/clothing/shoes/bastion/jackboots = 3,
-		/obj/item/clothing/gloves/bastion/combat = 3,
-		/obj/item/clothing/glasses/bastion/sunglasses = 3,
-		/obj/item/clothing/under/bastion/rank/centcom/commander = 3,
-		/obj/item/clothing/under/bastion/rank/centcom/commander/skirt = 3,
-		/obj/item/clothing/under/bastion/rank/centcom/intern = 3,
-		/obj/item/clothing/under/bastion/rank/centcom/official = 3,
-		/obj/item/clothing/under/bastion/rank/centcom/officer = 3,
-		/obj/item/clothing/under/bastion/rank/centcom/officer/skirt = 3,
-		/obj/item/clothing/suit/bastion/armor/centcom_formal = 3,
-		/obj/item/clothing/suit/bastion/space/officer = 3,
-		/obj/item/clothing/suit/bastion/hooded/wintercoat/centcom = 3,
-		/obj/item/clothing/head/bastion/hats/centcom_cap = 3,
-		/obj/item/clothing/head/bastion/hats/centhat = 3,
-		/obj/item/clothing/head/bastion/hats/intern = 3,
-	)
-
 /obj/structure/machinery/vending/bastion/clothing
 	name = "ClothesMate"
 	desc = "A vending machine for clothing."
@@ -585,4 +560,61 @@
 		/obj/item/clothing/shoes/bastion/winterboots = 2,
 		/obj/item/clothing/mask/bastion/gas = 2,
 		/obj/item/clothing/gloves/bastion/color/grey/protects_cold = 2,
+	)
+
+/obj/structure/machinery/vending/bastion/wardrobe_cargo
+	name = "CargoDrobe"
+	desc = "A highly advanced vending machine for buying cargo related clothing for free."
+	icon_state = "cargodrobe"
+	product_ads = "Upgraded Assistant Style! Pick yours today!;These shorts are comfy and easy to wear, get yours now!"
+	vend_reply = "Thank you for using the CargoDrobe!"
+	products = list(
+		/obj/item/clothing/suit/bastion/hooded/wintercoat/cargo = 3,
+		/obj/item/clothing/suit/bastion/hazardvest = 6,
+		/obj/item/clothing/under/bastion/rank/cargo/tech = 3,
+		/obj/item/clothing/under/bastion/rank/cargo/tech/skirt = 3,
+		/obj/item/clothing/shoes/bastion/sneakers/black = 3,
+		/obj/item/clothing/gloves/bastion/fingerless = 3,
+		/obj/item/clothing/head/bastion/beret/cargo = 3,
+		/obj/item/clothing/mask/bastion/bandana/striped/cargo = 3,
+		/obj/item/clothing/head/bastion/soft = 3,
+		/obj/item/storage/backpack/bastion = 3,
+		/obj/item/storage/backpack/bastion/satchel = 3,
+		/obj/item/storage/backpack/bastion/duffelbag = 3,
+	)
+	premium = list(
+		/obj/item/clothing/head/bastion/costume/mailman = 1,
+		/obj/item/clothing/under/bastion/misc/mailman = 1,
+	)
+
+/obj/structure/machinery/vending/bastion/engi_wardrobe
+	name = "EngiDrobe"
+	desc = "A vending machine renowned for vending industrial grade clothing."
+	icon_state = "engidrobe"
+	product_ads = "Guaranteed to protect your feet from industrial accidents!;Afraid of radiation? Then wear yellow!"
+	vend_reply = "Thank you for using the EngiDrobe!"
+	products = list(
+		/obj/item/storage/backpack/bastion/duffelbag/engineering = 3,
+		/obj/item/storage/backpack/bastion/industrial = 3,
+		/obj/item/storage/backpack/bastion/satchel/eng = 3,
+		/obj/item/clothing/suit/bastion/hooded/wintercoat/engineering = 3,
+		/obj/item/clothing/under/bastion/rank/engineering/engineer = 3,
+		/obj/item/clothing/under/bastion/rank/engineering/engineer/skirt = 3,
+		/obj/item/clothing/under/bastion/rank/engineering/engineer/hazard = 3,
+		/obj/item/clothing/suit/bastion/hazardvest = 3,
+		/obj/item/clothing/shoes/bastion/workboots = 3,
+		/obj/item/clothing/head/bastion/beret/engi = 3,
+		/obj/item/clothing/mask/bastion/bandana/striped/engineering = 3,
+		/obj/item/clothing/head/bastion/utility/hardhat = 3,
+		/obj/item/clothing/head/bastion/utility/hardhat/welding = 3,
+		/obj/item/clothing/under/bastion/rank/engineering/engineer/nova/trouser = 3,
+		/obj/item/clothing/under/bastion/rank/engineering/engineer/nova/utility = 3,
+		/obj/item/clothing/under/bastion/rank/engineering/engineer/nova/hazard_chem = 3,
+		/obj/item/clothing/under/bastion/misc/overalls = 3,
+		/obj/item/clothing/suit/bastion/toggle/jacket/engi = 3,
+		/obj/item/clothing/head/bastion/utility/hardhat/orange = 2,
+		/obj/item/clothing/head/bastion/utility/hardhat/welding/orange = 2,
+		/obj/item/clothing/head/bastion/utility/hardhat/dblue = 2,
+		/obj/item/clothing/head/bastion/utility/hardhat/welding/dblue = 2,
+		/obj/item/clothing/head/bastion/utility/hardhat/red = 2,
 	)

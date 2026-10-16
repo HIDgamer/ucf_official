@@ -187,9 +187,19 @@
 	icon_state = "winterboots"
 	armor_bio = 80
 
+/obj/item/clothing/shoes/bastion/workboots
+	name = "work boots"
+	desc = "Nanotrasen-issue Engineering lace-up work boots for the especially blue-collar."
+	icon_state = "workboots"
+	item_state = "jackboots"
+	armor_bio = 80
+
 /obj/item/clothing/shoes/bastion/workboots/black
 	name = "black work boots"
 	desc = "Lace-up work boots to protect the average grey-collar worker from stepping on hazards, from broken glass to dropped pens."
 	icon_state = "workboots_black"
-	item_state = "jackboots"
-	armor_bio = 80
+
+/obj/item/clothing/shoes/bastion/workboots/mining
+	name = "mining boots"
+	desc = "Steel-toed mining boots for mining in hazardous environments. Very good at keeping toes uncrushed."
+	icon_state = "explorer"

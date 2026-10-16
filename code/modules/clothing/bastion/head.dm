@@ -536,6 +536,16 @@
 	armor_laser = 50
 	armor_energy = 50
 
+/obj/item/clothing/head/bastion/hats/caphat/bunnyears_captain
+	name = "captain's bunny ears"
+	desc = "A pair of dark blue bunny ears attached to a headband. Worn in lieu of the more traditional bicorn hat."
+	icon = 'icons/obj/items/clothing/bastion/bunnysprites/bunny_ears.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/costumes/bunnysprites/bunny_ears_worn.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
+	)
+
 /obj/item/clothing/head/bastion/hats/caphat/parade
 	name = "captain's parade cap"
 	desc = "Worn only by Captains with an abundance of class."
@@ -656,6 +666,75 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
 	)
+
+/obj/item/clothing/head/bastion/hats/imperial
+	name = "grey naval officer cap"
+	desc = "A grey naval cap with a silver disk in the center."
+	icon = 'icons/obj/items/clothing/bastion/monke/hats.dmi'
+	icon_state = "impcom"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/monke/head.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
+	)
+
+/obj/item/clothing/head/bastion/hats/imperial/cap
+	name = "captain's naval officer cap"
+	desc = "A white naval cap with a silver disk in the center."
+	icon_state = "impcap"
+
+/obj/item/clothing/head/bastion/hats/imperial/ce
+	name = "chief engineer's blast helmet"
+	desc = "Despite seeming like it's made of metal, it's actually a very cheap plastic.."
+	icon_state = "impce"
+	armor_melee = 15
+	armor_bullet = 5
+	armor_laser = 20
+	armor_energy = 10
+	armor_bomb = 20
+	armor_bio = 10
+	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDETOPHAIR
+
+/obj/item/clothing/head/bastion/hats/imperial/cmo
+	name = "chief medical officer's naval cap"
+	desc = "A teal naval cap with a silver disk in the center."
+	icon_state = "impcmo"
+
+/obj/item/clothing/head/bastion/hats/imperial/grey
+	name = "dark grey naval officer cap"
+	desc = "A dark grey naval cap with a silver disk in the center."
+	icon_state = "impcommand"
+
+/obj/item/clothing/head/bastion/hats/imperial/helmet
+	name = "blast helmet"
+	desc = "A sharp helmet with some goggles on the top. Unfortunately, both those and the helmet itself are made of flimsy plastic."
+	icon_state = "blast_helmet"
+
+/obj/item/clothing/head/bastion/hats/imperial/hop
+	name = "head of personnel's naval officer cap"
+	desc = "An olive naval cap with a silver disk in the center."
+	icon_state = "imphop"
+
+/obj/item/clothing/head/bastion/hats/imperial/hos
+	name = "head of security's naval officer cap"
+	desc = "A tar black naval cap with a silver disk in the center."
+	icon_state = "imphos"
+	armor_melee = 40
+	armor_bullet = 30
+	armor_laser = 25
+	armor_energy = 35
+	armor_bomb = 25
+	armor_bio = 10
+
+/obj/item/clothing/head/bastion/hats/imperial/red
+	name = "red naval officer cap"
+	desc = "A red naval cap with a silver disk in the center."
+	icon_state = "impcap_red"
+
+/obj/item/clothing/head/bastion/hats/imperial/white
+	name = "white naval officer cap"
+	desc = "A white naval cap with a silver disk in the center."
+	icon_state = "impcap"
 
 /obj/item/clothing/head/bastion/hats/intern
 	name = "\improper CentCom Head Intern beancap"
@@ -948,6 +1027,16 @@
 	desc = "A white winter coat hood. Feels surprisingly heavy. The tag says that it's not child safe."
 	icon_state = "hood_ce"
 
+/obj/item/clothing/head/bastion/hooded/winterhood/engineering/signal_tech
+	desc = "A yellow winter coat hood. Definitely not enough to keep you warm near the telecommunications servers."
+	icon = 'icons/obj/items/clothing/bastion/hats.dmi'
+	icon_state = "winterhood_signal_tech"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/head.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
+	)
+
 /obj/item/clothing/head/bastion/hooded/winterhood/eva
 	name = "\proper Endotherm winter hood"
 	desc = "A thickly padded hood attached to an even thicker coat."
@@ -1073,6 +1162,23 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
 	)
 
+/obj/item/clothing/head/bastion/playbunnyears/hos
+	name = "head of security's bunny ears"
+	desc = "Red and gold bunny ears attached to a headband. Shows your authority over all bunny officers."
+	icon = 'icons/obj/items/clothing/bastion/bunnysprites/bunny_ears.dmi'
+	icon_state = "hos"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/costumes/bunnysprites/bunny_ears_worn.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
+	)
+	armor_melee = 40
+	armor_bullet = 30
+	armor_laser = 25
+	armor_energy = 35
+	armor_bomb = 25
+	armor_bio = 10
+
 /obj/item/clothing/head/bastion/rasta
 	name = "rastacap"
 	desc = "Perfect for tucking in those dreadlocks."
@@ -1084,65 +1190,42 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
 	)
 
-/obj/item/clothing/head/bastion/soft/black
-	name = "black cap"
-	desc = "It's a baseball hat in a tasteless black colour."
+/obj/item/clothing/head/bastion/soft
+	name = "cargo cap"
+	desc = "It's a baseball hat in a tasteful brown colour."
 	icon = 'icons/obj/items/clothing/bastion/head/hats.dmi'
-	icon_state = "blacksoft"
+	icon_state = "cargosoft"
 	item_state = "greyscale_softcap"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/head/hats.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
 	)
+
+/obj/item/clothing/head/bastion/soft/black
+	name = "black cap"
+	desc = "It's a baseball hat in a tasteless black colour."
+	icon_state = "blacksoft"
 
 /obj/item/clothing/head/bastion/soft/mime
 	name = "white cap"
 	desc = "It's a baseball hat in a tasteless white colour."
-	icon = 'icons/obj/items/clothing/bastion/head/hats.dmi'
 	icon_state = "mimesoft"
-	item_state = "greyscale_softcap"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/head/hats.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
-	)
 
 /obj/item/clothing/head/bastion/soft/paramedic
 	name = "paramedic cap"
 	desc = "It's a baseball hat with a dark turquoise color with a reflective cross on the top."
-	icon = 'icons/obj/items/clothing/bastion/head/hats.dmi'
 	icon_state = "paramedicsoft"
-	item_state = "greyscale_softcap"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/head/hats.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
-	)
 
 /obj/item/clothing/head/bastion/soft/purple
 	name = "purple cap"
 	desc = "It's a baseball hat in a tasteless purple colour."
-	icon = 'icons/obj/items/clothing/bastion/head/hats.dmi'
 	icon_state = "purplesoft"
-	item_state = "greyscale_softcap"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/head/hats.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
-	)
 
 /obj/item/clothing/head/bastion/soft/sec
 	name = "security cap"
 	desc = "It's a robust baseball hat in tasteful red colour."
-	icon = 'icons/obj/items/clothing/bastion/head/hats.dmi'
 	icon_state = "secsoft"
-	item_state = "greyscale_softcap"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/head/hats.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
-	)
 	armor_melee = 30
 	armor_bullet = 25
 	armor_laser = 25
@@ -1178,6 +1261,43 @@
 
 /obj/item/clothing/head/bastion/utility/chefhat/i_am_assuming_direct_control
 	desc = "The commander in chef's head wear. Upon closer inspection, there seem to be dozens of tiny levers, buttons, dials, and screens inside of this hat. What the hell...?"
+
+/obj/item/clothing/head/bastion/utility/hardhat
+	name = "hard hat"
+	desc = "A piece of headgear used in dangerous working conditions to protect the head. Comes with a built-in flashlight."
+	icon = 'icons/obj/items/clothing/bastion/head/utility.dmi'
+	icon_state = "hardhat0_yellow"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/head/utility.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
+	)
+	armor_melee = 15
+	armor_bullet = 5
+	armor_laser = 20
+	armor_energy = 10
+	armor_bomb = 20
+	armor_bio = 50
+
+/obj/item/clothing/head/bastion/utility/hardhat/dblue
+	icon_state = "hardhat0_dblue"
+
+/obj/item/clothing/head/bastion/utility/hardhat/orange
+	icon_state = "hardhat0_orange"
+
+/obj/item/clothing/head/bastion/utility/hardhat/red
+	icon_state = "hardhat0_red"
+
+/obj/item/clothing/head/bastion/utility/hardhat/welding
+	name = "welding hard hat"
+	desc = "A piece of headgear used in dangerous working conditions to protect the head. Comes with a built-in flashlight AND welding shield! The bulb seems a little smaller though."
+	flags_inv_hide = HIDEEYES|HIDEFACE
+
+/obj/item/clothing/head/bastion/utility/hardhat/welding/dblue
+	icon_state = "hardhat0_dblue"
+
+/obj/item/clothing/head/bastion/utility/hardhat/welding/orange
+	icon_state = "hardhat0_orange"
 
 /obj/item/clothing/head/bastion/utility/surgerycap
 	name = "blue surgery cap"
@@ -1223,3 +1343,14 @@
 	)
 	item_state_slots = list(WEAR_HEAD = "wig")
 	flags_inv_hide = HIDETOPHAIR
+
+/obj/item/clothing/head/bastion/wonka
+	name = "wonky hat"
+	desc = "Come with me, and you'll be, in a world of OSHA violations!"
+	icon = 'icons/obj/items/clothing/bastion/hats.dmi'
+	icon_state = "wonka"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/head.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
+	)
