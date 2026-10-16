@@ -3,6 +3,7 @@
 	var/static/list/roots = list(
 		/obj/item/clothing/under/bastion = WEAR_BODY,
 		/obj/item/clothing/suit/bastion = WEAR_JACKET,
+		/obj/item/clothing/accessory/poncho/bastion = WEAR_JACKET,
 		/obj/item/clothing/head/bastion = WEAR_HEAD,
 		/obj/item/clothing/shoes/bastion = WEAR_FEET,
 		/obj/item/clothing/gloves/bastion = WEAR_HANDS,
@@ -31,7 +32,7 @@
 	wearer.create_hud()
 	var/obj/item/clothing/under/bastion/rank/civilian/janitor/uniform = allocate(/obj/item/clothing/under/bastion/rank/civilian/janitor)
 	TEST_ASSERT(wearer.equip_to_slot_if_possible(uniform, WEAR_BODY), "The uniform could not be worn")
-	var/obj/item/clothing/suit/bastion/hooded/wintercoat/security/coat = allocate(/obj/item/clothing/suit/bastion/hooded/wintercoat/security)
+	var/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/security/coat = allocate(/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/security)
 	TEST_ASSERT(wearer.equip_to_slot_if_possible(coat, WEAR_JACKET), "The coat could not be worn")
 	coat.attack_self(wearer)
 	TEST_ASSERT(coat.hood_up && wearer.head == coat.hood, "The hood did not go on the head")
@@ -45,6 +46,8 @@
 	var/obj/item/clothing/suit/bastion/toggle/toggle_suit = allocate(subtypesof(/obj/item/clothing/suit/bastion/toggle)[1])
 	toggle_suit.attack_self(wearer)
 	TEST_ASSERT_EQUAL(toggle_suit.icon_state, "[toggle_suit.closed_icon_state]_t", "The toggle suit did not switch sprite")
+	var/obj/item/clothing/suit/storage/marine/armor = allocate(/obj/item/clothing/suit/storage/marine)
+	TEST_ASSERT(armor.can_attach_accessory(coat), "The coat cannot be attached to armor")
 
 /// The Mann Shield preset dresses a human as the Bastion blueshield and is admin restricted
 /datum/unit_test/mann_shield_preset/Run()
@@ -54,7 +57,7 @@
 	var/mob/living/carbon/human/shield = allocate(/mob/living/carbon/human)
 	arm_equipment(shield, /datum/equipment_preset/other/mann_shield, FALSE, FALSE)
 	TEST_ASSERT(istype(shield.w_uniform, /obj/item/clothing/under/bastion/rank/blueshield), "No blueshield uniform")
-	TEST_ASSERT(istype(shield.wear_suit, /obj/item/clothing/suit/bastion/armor/vest/blueshield/jacket), "No blueshield jacket")
+	TEST_ASSERT(istype(shield.wear_suit, /obj/item/clothing/accessory/poncho/bastion/armor/vest/blueshield/jacket), "No blueshield jacket")
 	TEST_ASSERT(istype(shield.head, /obj/item/clothing/head/beret/marine/commander/council), "No blue beret")
 	TEST_ASSERT(istype(shield.back, /obj/item/storage/backpack/bastion/blueshield), "No blueshield backpack")
 	TEST_ASSERT(istype(shield.belt, /obj/item/storage/belt/security/MP/full/blueshield), "No blueshield belt")

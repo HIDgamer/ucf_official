@@ -12,6 +12,20 @@
 	w_class = SIZE_MEDIUM
 	slowdown = 0
 
+/obj/item/clothing/accessory/poncho/bastion
+	name = "suit"
+	icon = 'icons/obj/items/clothing/bastion/suits/default.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/suits/default.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+	flags_armor_protection = NO_FLAGS
+	flags_cold_protection = NO_FLAGS
+	flags_heat_protection = NO_FLAGS
+	w_class = SIZE_MEDIUM
+	slowdown = 0
+
 /obj/item/clothing/suit/bastion/apron
 	name = "apron"
 	desc = "A basic blue apron."
@@ -258,10 +272,22 @@
 	flags_cold_protection = BODY_FLAG_CHEST
 	flags_heat_protection = BODY_FLAG_CHEST
 
-/obj/item/clothing/suit/bastion/armor/vest/blueshield/jacket
+/obj/item/clothing/accessory/poncho/bastion/armor/vest/blueshield/jacket
 	name = "blueshield's jacket"
 	desc = "An expensive kevlar-lined jacket with a golden badge on the chest and \"NT\" emblazoned on the back. It weighs surprisingly little, despite how heavy it looks."
+	icon = 'icons/obj/items/clothing/bastion/monke/suits/armor.dmi'
 	icon_state = "blueshield"
+	item_state = "armor"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/monke/suits/armor.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
+	)
+	armor_melee = 35
+	armor_bullet = 30
+	armor_laser = 30
+	armor_energy = 40
+	armor_bomb = 25
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
@@ -328,7 +354,7 @@
 	toggle_capable = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
 
-/obj/item/clothing/suit/bastion/armor/vest/capcarapace/jacket
+/obj/item/clothing/accessory/poncho/bastion/armor/vest/capcarapace/jacket
 	name = "captain's jacket"
 	desc = "A lightweight armored jacket in the Captain's colors. For when you want something sleeker."
 	icon = 'icons/obj/items/clothing/bastion/monke/suits/armor.dmi'
@@ -424,7 +450,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 
-/obj/item/clothing/suit/bastion/armor/vest/secjacket
+/obj/item/clothing/accessory/poncho/bastion/armor/vest/secjacket
 	name = "security jacket"
 	desc = "A red jacket in red Security colors. It has hi-vis stripes all over it."
 	icon = 'icons/obj/items/clothing/bastion/suits/armor.dmi'
@@ -775,7 +801,7 @@
 	hoodtype = /obj/item/clothing/head/bastion/hooded/techpriest
 	hood_up_affix = "_t"
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat
 	name = "winter coat"
 	desc = "A heavy jacket made from 'synthetic' animal furs."
 	icon = 'icons/obj/items/clothing/bastion/suits/wintercoat.dmi'
@@ -793,7 +819,7 @@
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood
 	hood_up_affix = "_t"
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/captain
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/captain
 	name = "captain's winter coat"
 	desc = "A luxurious winter coat, stuffed with the down of the endangered Uka bird and trimmed with genuine sable. The fabric is an indulgently soft micro-fiber, and the deep ultramarine colour is only one that could be achieved with minute amounts of crystalline bluespace dust woven into the thread between the plectrums. Extremely lavish, and extremely durable."
 	icon_state = "coatcaptain"
@@ -805,21 +831,21 @@
 	armor_bomb = 25
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/captain
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/cargo
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/cargo
 	name = "cargo winter coat"
 	desc = "A tan-and-grey winter coat. The zipper tab is a small pin resembling a MULE. It fills you with the warmth of a fierce independence."
 	icon_state = "coatcargo"
 	item_state = "coatcargo"
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/cargo
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/cargo/qm
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/cargo/qm
 	name = "quartermaster's winter coat"
 	desc = "A dark brown winter coat that has a golden crate pin for its zipper pully."
 	icon_state = "coatqm"
 	item_state = null
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/cargo/qm
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/centcom
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/centcom
 	name = "centcom winter coat"
 	desc = "A luxurious winter coat woven in the bright green and gold colours of Central Command. It has a small pin in the shape of the Nanotrasen logo for a zipper."
 	icon_state = "coatcentcom"
@@ -831,28 +857,28 @@
 	armor_bomb = 35
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/centcom
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/engineering
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/engineering
 	name = "engineering winter coat"
 	desc = "A surprisingly heavy yellow winter coat with reflective orange stripes. It has a small wrench for its zipper tab, and the inside layer is covered with a radiation-resistant silver-nylon blend. Because you're worth it."
 	icon_state = "coatengineer"
 	item_state = "coatengineer"
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/engineering
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/engineering/atmos
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/engineering/atmos
 	name = "atmospherics winter coat"
 	desc = "A yellow and blue winter coat. The zipper pull-tab is made to look like a miniature breath mask."
 	icon_state = "coatatmos"
 	item_state = "coatatmos"
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/engineering/atmos
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/engineering/ce
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/engineering/ce
 	name = "chief engineer's winter coat"
 	desc = "A white winter coat with reflective green and yellow stripes. Stuffed with asbestos, treated with fire retardant PBDE, lined with a micro thin sheet of lead foil and snugly fitted to your body's measurements. This baby's ready to save you from anything except the thyroid cancer and systemic fibrosis you'll get from wearing it. The zipper tab is a tiny golden wrench."
 	icon_state = "coatce"
 	item_state = null
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/engineering/ce
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/engineering/signal_tech
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/engineering/signal_tech
 	name = "network admin's winter coat"
 	desc = "A surprisingly heavy yellow winter coat with reflective green stripes. It has a small antennae for its zipper tab, and the inside layer is covered with a radiation-resistant silver-nylon blend. Because heat insulation is clearly not a priority."
 	icon = 'icons/obj/items/clothing/bastion/suits.dmi'
@@ -864,7 +890,7 @@
 	)
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/engineering/signal_tech
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/eva
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/eva
 	name = "\proper Endotherm winter coat"
 	desc = "A thickly padded winter coat to keep the wearer well insulated no matter the circumstances. It has a harness for a larger oxygen tank attached to the back."
 	icon_state = "coateva"
@@ -877,7 +903,7 @@
 	w_class = SIZE_LARGE
 	slowdown = 0.75
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/hop
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/hop
 	name = "head of personnel's winter coat"
 	desc = "A cozy winter coat, covered in thick fur. The breast features a proud yellow chevron, reminding everyone that you're the second banana."
 	icon_state = "coathop"
@@ -889,21 +915,21 @@
 	armor_bomb = 10
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/hop
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/hydro
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/hydro
 	name = "hydroponics winter coat"
 	desc = "A green and blue winter coat. The zipper tab looks like the flower from a member of Rosa Hesperrhodos, a pretty pink-and-white rose. The colours absolutely clash."
 	icon_state = "coathydro"
 	item_state = "coathydro"
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/hydro
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/janitor
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/janitor
 	name = "janitors winter coat"
 	desc = "A purple-and-beige winter coat that smells of space cleaner."
 	icon_state = "coatjanitor"
 	item_state = null
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/janitor
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/medical
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/medical
 	name = "medical winter coat"
 	desc = "An arctic white winter coat with a small blue caduceus instead of a plastic zipper tab. Snazzy."
 	icon_state = "coatmedical"
@@ -911,14 +937,14 @@
 	armor_bio = 40
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/medical
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/medical/chemistry
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/medical/chemistry
 	name = "chemistry winter coat"
 	desc = "A lab-grade winter coat made with acid resistant polymers. For the enterprising chemist who was exiled to a frozen wasteland on the go."
 	icon_state = "coatchemistry"
 	item_state = null
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/medical/chemistry
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/medical/cmo
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/medical/cmo
 	name = "chief medical officer's winter coat"
 	desc = "A winter coat in a vibrant shade of blue with a small silver caduceus instead of a plastic zipper tab. The normal liner is replaced with an exceptionally thick, soft layer of fur."
 	icon_state = "coatcmo"
@@ -926,7 +952,7 @@
 	armor_bio = 50
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/medical/cmo
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/medical/paramedic
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/medical/paramedic
 	name = "paramedic winter coat"
 	desc = "A winter coat with blue markings. Warm, but probably won't protect from biological agents. For the cozy doctor on the go."
 	icon_state = "coatparamed"
@@ -934,14 +960,14 @@
 	armor_bio = 50
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/medical/paramedic
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/medical/viro
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/medical/viro
 	name = "virology winter coat"
 	desc = "A white winter coat with green markings. Warm, but wont fight off the common cold or any other disease. Might make people stand far away from you in the hallway. The zipper tab looks like an oversized bacteriophage."
 	icon_state = "coatviro"
 	item_state = null
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/medical/viro
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/miner
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/miner
 	name = "mining winter coat"
 	desc = "A dusty button up winter coat. The zipper tab looks like a tiny pickaxe."
 	icon_state = "coatminer"
@@ -949,7 +975,7 @@
 	armor_melee = 10
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/miner
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/nova
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/nova
 	name = "assistant's formal winter coat"
 	desc = "A dark gray winter coat with bronze-gold detailing, and a zipper in the shape of a toolbox."
 	icon = 'icons/obj/items/clothing/bastion/monke/suits/wintercoat.dmi'
@@ -961,7 +987,7 @@
 	)
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/nova
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/nova/blueshield
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/nova/blueshield
 	name = "blueshield's winter coat"
 	desc = "A comfy kevlar-lined coat with blue highlights, fit to keep the blueshield armored and warm."
 	icon_state = "coatblueshield"
@@ -972,7 +998,7 @@
 	armor_bomb = 25
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/nova/blueshield
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/science
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/science
 	name = "science winter coat"
 	desc = "A white winter coat with an outdated atomic model instead of a plastic zipper tab."
 	icon_state = "coatscience"
@@ -980,14 +1006,14 @@
 	armor_bomb = 10
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/science
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/science/genetics
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/science/genetics
 	name = "genetics winter coat"
 	desc = "A white winter coat with a DNA helix for the zipper tab."
 	icon_state = "coatgenetics"
 	item_state = null
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/science/genetics
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/science/rd
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/science/rd
 	name = "research director's winter coat"
 	desc = "A thick arctic winter coat with an outdated atomic model instead of a plastic zipper tab. Most in the know are heavily aware that Bohr's model of the atom was outdated by the time of the 1930s when the Heisenbergian and Schrodinger models were generally accepted for true. Nevertheless, we still see its use in anachronism, roleplaying, and, in this case, as a zipper tab. At least it should keep you warm on your ivory pillar."
 	icon_state = "coatrd"
@@ -995,14 +1021,14 @@
 	armor_bomb = 20
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/science/rd
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/science/robotics
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/science/robotics
 	name = "robotics winter coat"
 	desc = "A black winter coat with a badass flaming robotic skull for the zipper tab. This one has bright red designs and a few useless buttons."
 	icon_state = "coatrobotics"
 	item_state = null
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/science/robotics
 
-/obj/item/clothing/suit/bastion/hooded/wintercoat/security
+/obj/item/clothing/accessory/poncho/bastion/hooded/wintercoat/security
 	name = "security winter jacket"
 	desc = "A red, armour-padded winter coat. It glitters with a mild ablative coating and a robust air of authority.  The zipper tab is a pair of jingly little handcuffs that get annoying after the first ten seconds."
 	icon_state = "coatsecurity"
@@ -1014,7 +1040,7 @@
 	armor_bomb = 25
 	hoodtype = /obj/item/clothing/head/bastion/hooded/winterhood/security
 
-/obj/item/clothing/suit/bastion/jacket/bomber
+/obj/item/clothing/accessory/poncho/bastion/jacket/bomber
 	name = "bomber jacket"
 	desc = "Aviators not included."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1029,7 +1055,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/capjacket
+/obj/item/clothing/accessory/poncho/bastion/jacket/capjacket
 	name = "captain's parade jacket"
 	desc = "Worn by a Captain to show their class."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1044,7 +1070,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/curator
+/obj/item/clothing/accessory/poncho/bastion/jacket/curator
 	name = "treasure hunter's coat"
 	desc = "Both fashionable and lightly armoured, this jacket is favoured by treasure hunters the galaxy over."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1062,7 +1088,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/det_suit
+/obj/item/clothing/accessory/poncho/bastion/jacket/det_suit
 	name = "trenchcoat"
 	desc = "A 18th-century multi-purpose trenchcoat. Someone who wears this means serious business."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1081,31 +1107,31 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/det_suit/dark
+/obj/item/clothing/accessory/poncho/bastion/jacket/det_suit/dark
 	name = "noir trenchcoat"
 	desc = "A hard-boiled private investigator's dark trenchcoat."
 	icon_state = "noirdet"
 	item_state = null
 
-/obj/item/clothing/suit/bastion/jacket/det_suit/disco
+/obj/item/clothing/accessory/poncho/bastion/jacket/det_suit/disco
 	name = "disco ass blazer"
 	desc = "Looks like someone skinned this blazer off some long extinct disco-animal. It has an enigmatic white rectangle on the back and the right sleeve."
 	icon_state = "jamrock_blazer"
 	item_state = null
 
-/obj/item/clothing/suit/bastion/jacket/det_suit/kim
+/obj/item/clothing/accessory/poncho/bastion/jacket/det_suit/kim
 	name = "aerostatic bomber jacket"
 	desc = "A jacket once worn by the revolutionary air brigades during the Antecentennial Revolution. There are quite a few pockets on the inside, mostly for storing notebooks and compasses."
 	icon_state = "aerostatic_bomber_jacket"
 	item_state = null
 
-/obj/item/clothing/suit/bastion/jacket/det_suit/noir
+/obj/item/clothing/accessory/poncho/bastion/jacket/det_suit/noir
 	name = "noir suit coat"
 	desc = "A dapper private investigator's dark suit coat."
 	icon_state = "detsuit"
 	item_state = null
 
-/obj/item/clothing/suit/bastion/jacket/hos/blue
+/obj/item/clothing/accessory/poncho/bastion/jacket/hos/blue
 	name = "head of security's jacket"
 	desc = "This piece of clothing was specifically designed for asserting superior authority."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1119,7 +1145,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/hos/tan
+/obj/item/clothing/accessory/poncho/bastion/jacket/hos/tan
 	name = "head of security's jacket"
 	desc = "This piece of clothing was specifically designed for asserting superior authority."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1133,7 +1159,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/leather
+/obj/item/clothing/accessory/poncho/bastion/jacket/leather
 	name = "leather jacket"
 	desc = "Pompadour not included."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1148,12 +1174,12 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/leather/biker
+/obj/item/clothing/accessory/poncho/bastion/jacket/leather/biker
 	name = "biker jacket"
 	desc = "You think I'm not even worth a single dollar, but I feel like a millionare."
 	icon_state = "leatherjacket_biker"
 
-/obj/item/clothing/suit/bastion/jacket/letterman
+/obj/item/clothing/accessory/poncho/bastion/jacket/letterman
 	name = "letterman jacket"
 	desc = "A classic brown letterman jacket. Looks pretty hot and heavy."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1167,7 +1193,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/letterman_nanotrasen
+/obj/item/clothing/accessory/poncho/bastion/jacket/letterman_nanotrasen
 	name = "blue letterman jacket"
 	desc = "A blue letterman jacket with a proud Nanotrasen N on the back. The tag says that it was made in Space China."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1181,7 +1207,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/letterman_red
+/obj/item/clothing/accessory/poncho/bastion/jacket/letterman_red
 	name = "red letterman jacket"
 	desc = "A letterman jacket in a sick red color. Radical."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1195,7 +1221,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/letterman_syndie
+/obj/item/clothing/accessory/poncho/bastion/jacket/letterman_syndie
 	name = "blood-red letterman jacket"
 	desc = "Oddly, this jacket seems to have a large S on the back..."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1209,7 +1235,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/miljacket
+/obj/item/clothing/accessory/poncho/bastion/jacket/miljacket
 	name = "military jacket"
 	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1223,7 +1249,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/officer/blue
+/obj/item/clothing/accessory/poncho/bastion/jacket/officer/blue
 	name = "security officer's jacket"
 	desc = "This jacket is for those special occasions when a security officer isn't required to wear their armor."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1237,7 +1263,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/officer/tan
+/obj/item/clothing/accessory/poncho/bastion/jacket/officer/tan
 	name = "security officer's jacket"
 	desc = "This jacket is for those special occasions when a security officer isn't required to wear their armor."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1251,7 +1277,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/puffer
+/obj/item/clothing/accessory/poncho/bastion/jacket/puffer
 	name = "puffer jacket"
 	desc = "A thick jacket with a rubbery, water-resistant shell."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1267,7 +1293,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/puffer/vest
+/obj/item/clothing/accessory/poncho/bastion/jacket/puffer/vest
 	name = "puffer vest"
 	desc = "A thick vest with a rubbery, water-resistant shell."
 	icon_state = "puffervest"
@@ -1277,7 +1303,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 
-/obj/item/clothing/suit/bastion/jacket/research_director
+/obj/item/clothing/accessory/poncho/bastion/jacket/research_director
 	name = "research director's coat"
 	desc = "A mix between a labcoat and just a regular coat. It's made out of a special anti-bacterial, anti-acidic, and anti-biohazardous synthetic fabric."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1292,7 +1318,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/warden/blue
+/obj/item/clothing/accessory/poncho/bastion/jacket/warden/blue
 	name = "warden's jacket"
 	desc = "Perfectly suited for the warden that wants to leave an impression of style on those who visit the brig."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1306,7 +1332,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/warden/tan
+/obj/item/clothing/accessory/poncho/bastion/jacket/warden/tan
 	name = "warden's jacket"
 	desc = "Perfectly suited for the warden that wants to leave an impression of style on those who visit the brig."
 	icon = 'icons/obj/items/clothing/bastion/suits/jacket.dmi'
@@ -1360,7 +1386,7 @@
 	toggle_capable = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
 
-/obj/item/clothing/suit/bastion/toggle/jacket/engi
+/obj/item/clothing/accessory/poncho/bastion/toggle/jacket/engi
 	name = "engineering jacket"
 	desc = "A comfortable jacket in engineering yellow."
 	icon = 'icons/obj/items/clothing/bastion/monke/suits.dmi'
@@ -1377,7 +1403,7 @@
 	toggle_capable = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
 
-/obj/item/clothing/suit/bastion/toggle/jacket/sci
+/obj/item/clothing/accessory/poncho/bastion/toggle/jacket/sci
 	name = "science jacket"
 	desc = "A comfortable jacket in science purple."
 	icon = 'icons/obj/items/clothing/bastion/monke/suits.dmi'
@@ -1395,7 +1421,7 @@
 	toggle_capable = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
 
-/obj/item/clothing/suit/bastion/toggle/jacket/supply/head
+/obj/item/clothing/accessory/poncho/bastion/toggle/jacket/supply/head
 	name = "quartermaster's jacket"
 	desc = "Even if people refuse to recognize you as a head, they can recognize you as a badass."
 	icon = 'icons/obj/items/clothing/bastion/monke/suits.dmi'
