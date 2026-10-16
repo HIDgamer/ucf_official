@@ -620,20 +620,6 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/costume/football_armor
-	name = "football protective gear"
-	desc = "Given to members of the football team!"
-	icon = 'icons/obj/items/clothing/bastion/greyscale/suit.dmi'
-	icon_state = "football_armor_d74722"
-	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/greyscale/suit.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
-
 /obj/item/clothing/suit/bastion/costume/ianshirt
 	name = "worn shirt"
 	desc = "A worn out, curiously comfortable t-shirt with a picture of Ian. You wouldn't go so far as to say it feels like being hugged when you wear it, but it's pretty close. Good for sleeping in."
@@ -771,22 +757,6 @@
 	)
 	item_state_slots = list(WEAR_JACKET = "dinojammies")
 	hoodtype = /obj/item/clothing/head/bastion/hooded/dinojammies
-	hood_up_affix = "_t"
-
-/obj/item/clothing/suit/bastion/hooded/ethereal_raincoat
-	name = "ethereal raincoat"
-	desc = " A raincoat commonly worn by travelers or tourists not too fond of Sprout's rainy weather."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/suit.dmi'
-	icon_state = "eth_raincoat_4e7cc7"
-	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/greyscale/suit.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-	hoodtype = /obj/item/clothing/head/bastion/hooded/ethereal_rainhood
 	hood_up_affix = "_t"
 
 /obj/item/clothing/suit/bastion/hooded/techpriest
@@ -1135,20 +1105,6 @@
 	icon_state = "detsuit"
 	item_state = null
 
-/obj/item/clothing/suit/bastion/jacket/fancy
-	name = "fancy fur coat"
-	desc = "Rated 10 out of 10 in Cosmo for best coat brand."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/suit.dmi'
-	icon_state = "fancy_coat_ede3dc414344"
-	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/greyscale/suit.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
-
 /obj/item/clothing/suit/bastion/jacket/hos/blue
 	name = "head of security's jacket"
 	desc = "This piece of clothing was specifically designed for asserting superior authority."
@@ -1295,20 +1251,6 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/oversized
-	name = "oversized jacket"
-	desc = "An oversized jacket."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/suit.dmi'
-	icon_state = "jacket_oversized_414344"
-	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/greyscale/suit.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-
 /obj/item/clothing/suit/bastion/jacket/puffer
 	name = "puffer jacket"
 	desc = "A thick jacket with a rubbery, water-resistant shell."
@@ -1350,25 +1292,6 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/bastion/jacket/tailcoat/bartender
-	name = "bartender's tailcoat"
-	desc = "A coat usually worn by bunny themed bartenders. It has an interior holster for firearms and some extra padding for minor protection."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/suit.dmi'
-	icon_state = "tailcoat_bar_39393fffffff"
-	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/greyscale/suit.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	armor_melee = 15
-	armor_bullet = 10
-	armor_laser = 10
-	armor_energy = 15
-	armor_bomb = 10
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-
 /obj/item/clothing/suit/bastion/jacket/warden/blue
 	name = "warden's jacket"
 	desc = "Perfectly suited for the warden that wants to leave an impression of style on those who visit the brig."
@@ -1396,28 +1319,6 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
-
-/obj/item/clothing/suit/bastion/mothcoat
-	name = "mothic flightsuit"
-	desc = "This peculiar utility harness is a common sight among the moth fleet's crews due to its ability to fasten the wings to the body without impacting mobility inside cramped ship interiors. It looks somewhat crude yet it's surprisingly comfortable."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/suit.dmi'
-	icon_state = "mothcoat_eaeaea"
-	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/greyscale/suit.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_CHEST
-	flags_cold_protection = BODY_FLAG_CHEST
-	flags_heat_protection = BODY_FLAG_CHEST
-
-/obj/item/clothing/suit/bastion/mothcoat/winter
-	name = "mothic mantella"
-	desc = "A thick garment that keeps warm and protects those precious wings from harsh weather, also commonly used during festivities. Feels much heavier than it looks."
-	icon_state = "mothcoat_winter_557979795e55"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 
 /obj/item/clothing/suit/bastion/space/officer
 	name = "CentCom officer's coat"
@@ -1501,23 +1402,6 @@
 	icon_state = "qmjacket"
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/monke/suit.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN
-	toggle_noun = "zipper"
-	toggle_capable = TRUE
-	actions_types = list(/datum/action/item_action/toggle)
-
-/obj/item/clothing/suit/bastion/toggle/jacket/sweater
-	name = "sweater jacket"
-	desc = "A sweater jacket."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/suit.dmi'
-	icon_state = "sweater_414344"
-	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/greyscale/suit.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
 	)
@@ -1634,17 +1518,3 @@
 	name = "purple suit jacket"
 	desc = "A foppish dress jacket."
 	icon_state = "suitjacket_purp"
-
-/obj/item/clothing/suit/bastion/toggle/suspenders
-	name = "suspenders"
-	desc = "They suspend the illusion of the mime's play."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/suit.dmi'
-	icon_state = "suspenders_972a2a"
-	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/greyscale/suit.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	toggle_noun = "straps"
-	toggle_capable = TRUE
-	actions_types = list(/datum/action/item_action/toggle)

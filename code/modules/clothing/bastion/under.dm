@@ -35,40 +35,6 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
 	)
 
-/obj/item/clothing/under/bastion/color/red
-	name = "red jumpsuit"
-	desc = "A standard issue colored jumpsuit. Variety is the spice of life!"
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "jumpsuit_eb0c07"
-	item_state = "jumpsuit_eb0c07"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/under_left.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/under_right.dmi',
-	)
-
-/obj/item/clothing/under/bastion/costume/buttondown/shorts
-	name = "button-down shirt with shorts"
-	desc = "A fancy button-down shirt with shorts."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "buttondown_shorts_eeeeeeee8e2e222227d8d39c"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-
-/obj/item/clothing/under/bastion/costume/buttondown/slacks
-	name = "button-down shirt with slacks"
-	desc = "A fancy button-down shirt with slacks."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "buttondown_slacks_eeeeeeee8e2e222227d8d39c"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-
 /obj/item/clothing/under/bastion/costume/citizen_uniform
 	name = "citizen uniform"
 	desc = "A blue matching uniform. It makes you feel like you're in a labor camp."
@@ -94,17 +60,6 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_HANDS|BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_HANDS|BODY_FLAG_FEET
 
-/obj/item/clothing/under/bastion/costume/donatorgrayscaleturtleneck/nondonator
-	name = "turtleneck with pants"
-	desc = "A turtleneck with a pair of pants, this one is easily dyeable."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "donatorgrayscaleturtleneck_8cd4a2404577"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-
 /obj/item/clothing/under/bastion/costume/dutch
 	name = "dutch's suit"
 	desc = "You can feel a <b>god damn plan</b> coming on."
@@ -112,16 +67,6 @@
 	icon_state = "DutchUniform"
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/under/costume.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-
-/obj/item/clothing/under/bastion/costume/football_suit
-	name = "football uniform"
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "football_suit_d74722"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
 	)
@@ -217,20 +162,6 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
 	)
 
-/obj/item/clothing/under/bastion/costume/playbunny
-	name = "bunny suit"
-	desc = "The staple of any bunny themed waiters and the like. It has a little cottonball tail too."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "playbunny_39393f39393fffffff87502e"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-
 /obj/item/clothing/under/bastion/costume/soviet
 	name = "soviet uniform"
 	desc = "For the Motherland!"
@@ -297,21 +228,6 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
 	)
 
-/obj/item/clothing/under/bastion/dress/ballgown
-	name = "ballgown"
-	desc = "A luxurious ballgown best worn before midnight. A signature of the letters 'VA` is stitched on the hem."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "ballgown_ffffffccecffffffff"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_inv_hide = HIDESHOES
-
 /obj/item/clothing/under/bastion/dress/redeveninggown
 	name = "red evening gown"
 	desc = "Fancy dress for space bar singers."
@@ -319,21 +235,6 @@
 	icon_state = "red_evening_gown"
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/under/dress.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_inv_hide = HIDESHOES
-
-/obj/item/clothing/under/bastion/dress/ribbondress
-	name = "ribboned gown"
-	desc = "A classy and elegant gown with ribbon sleeves. It has the initials 'VA' stitched on the back hem."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "ribbondress_845faad5a6f4"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
 	)
@@ -371,31 +272,6 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
-/obj/item/clothing/under/bastion/dress/skirt/plaid
-	name = "plaid skirt"
-	desc = "A preppy plaid skirt with a white blouse."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "plaidskirt_cc2102"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-
-/obj/item/clothing/under/bastion/dress/skirt/turtleskirt
-	name = "turtleneck skirt"
-	desc = "A casual turtleneck skirt."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "turtleskirt_cc00005f5f5f"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-
 /obj/item/clothing/under/bastion/dress/striped
 	name = "striped dress"
 	desc = "Fashion in space."
@@ -409,59 +285,6 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-
-/obj/item/clothing/under/bastion/dress/sundress
-	name = "sundress"
-	desc = "Makes you want to frolic in a field of daisies."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "sundress_ffe60f9194a51f243c"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-
-/obj/item/clothing/under/bastion/dress/tango
-	name = "tango dress"
-	desc = "Filled with Latin fire."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "tango_ff00001c1c1c"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-
-/obj/item/clothing/under/bastion/dress/wlpinafore
-	name = "wonderland pinafore"
-	desc = "An adorable pinafore, just don't chase any white rabbits down any holes this time. It has the initials 'VA' embroidered on the skirt hem."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "wlpinafore_5190c8ffffff"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-
-/obj/item/clothing/under/bastion/ethereal_tunic
-	name = "ethereal tunic"
-	desc = "A simple sleeveless tunic worn over an undersuit, it glows in the dark!"
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "eth_tunic_4e7cc7"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
 
 /obj/item/clothing/under/bastion/guardmanuniform
 	name = "guardman's uniform"
@@ -497,48 +320,6 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
 	)
-
-/obj/item/clothing/under/bastion/pants/camo
-	name = "camo pants"
-	desc = "A pair of woodland camouflage pants. Probably not the best choice for a space station."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "camopants_69704c6e5b4c343741"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_cold_protection = BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_heat_protection = BODY_FLAG_GROIN|BODY_FLAG_LEGS
-
-/obj/item/clothing/under/bastion/pants/jeans
-	name = "jeans"
-	desc = "A nondescript pair of tough jeans."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "jeans_787878723e0e4d7eac"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_cold_protection = BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_heat_protection = BODY_FLAG_GROIN|BODY_FLAG_LEGS
-
-/obj/item/clothing/under/bastion/pants/slacks
-	name = "slacks"
-	desc = "A pair of comfy slacks."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "slacks_5757573e3e3e75634f"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_cold_protection = BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_heat_protection = BODY_FLAG_GROIN|BODY_FLAG_LEGS
 
 /obj/item/clothing/under/bastion/pants/track
 	name = "track pants"
@@ -968,17 +749,6 @@
 	icon_state = "greenclown"
 	item_state = "greenclown"
 
-/obj/item/clothing/under/bastion/rank/civilian/clown/jester
-	name = "jester suit"
-	desc = "A jolly dress, well suited to entertain your master, nuncle."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "jester_51e33fff1f1f"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-
 /obj/item/clothing/under/bastion/rank/civilian/clown/jester2
 	name = "alternate jester suit"
 	desc = "Smells like burgers and fries."
@@ -1030,23 +800,6 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
 	)
-
-/obj/item/clothing/under/bastion/rank/civilian/curator/nasa
-	name = "\improper NASA jumpsuit"
-	desc = "It has a NASA logo on it and is made of space-proofed materials."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "jumpsuit_3f3f3f"
-	item_state = "jumpsuit_3f3f3f"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/under_left.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/under_right.dmi',
-	)
-	armor_bio = 95
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
-	w_class = SIZE_LARGE
 
 /obj/item/clothing/under/bastion/rank/civilian/curator/skirt
 	name = "sensible suitskirt"
@@ -1563,37 +1316,6 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
-/obj/item/clothing/under/bastion/rank/prisoner
-	name = "prison jumpsuit"
-	desc = "It's standardised Nanotrasen prisoner-wear. Its suit sensors are stuck in the \"Fully On\" position."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "jumpsuit_ff8300"
-	item_state = "jumpsuit_ff8300"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/under_left.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/under_right.dmi',
-	)
-
-/obj/item/clothing/under/bastion/rank/prisoner/skirt
-	name = "prison jumpskirt"
-	icon_state = "jumpskirt_ff8300"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-
-/obj/item/clothing/under/bastion/rank/prisoner/skirt/syndicate
-	name = "syndicate prisoner jumpskirt"
-	desc = "A crimson red jumpskirt worn by syndicate captives. Its sensors have been shorted out."
-	icon_state = "jumpskirt_992300"
-	item_state = "jumpsuit_992300"
-
-/obj/item/clothing/under/bastion/rank/prisoner/syndicate
-	name = "syndicate prisoner jumpsuit"
-	desc = "A crimson red jumpsuit worn by syndicate captives. Its sensors have been shorted out."
-	icon_state = "jumpsuit_992300"
-	item_state = "jumpsuit_992300"
-
 /obj/item/clothing/under/bastion/rank/rnd
 	icon = 'icons/obj/items/clothing/bastion/under/rnd.dmi'
 	item_icons = list(
@@ -1957,25 +1679,6 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-
-/obj/item/clothing/under/bastion/shorts
-	name = "shorts"
-	desc = "A pair of comfy shorts."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/under.dmi'
-	icon_state = "shorts_5757573e3e3e75634f"
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/bastion/greyscale/under.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_righthand.dmi',
-	)
-	flags_armor_protection = BODY_FLAG_GROIN
-	flags_cold_protection = BODY_FLAG_GROIN
-	flags_heat_protection = BODY_FLAG_GROIN
-
-/obj/item/clothing/under/bastion/shorts/jeanshorts
-	name = "jean shorts"
-	desc = "A nondescript pair of tough jean shorts."
-	icon_state = "jeanshorts_787878723e0e4d7eac"
 
 /obj/item/clothing/under/bastion/suit/black
 	name = "black suit"

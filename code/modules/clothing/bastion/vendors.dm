@@ -5,14 +5,11 @@
 	product_ads = "Beat perps in style!;It's red so you can't see the blood!;You have the right to be fashionable!;Now you can be the fashion police you always wanted to be!"
 	vend_reply = "Thank you for using the SecDrobe!"
 	products = list(
-		/obj/item/clothing/head/bastion/beret/sec = 3,
 		/obj/item/clothing/head/bastion/soft/sec = 3,
 		/obj/item/clothing/head/bastion/soft/sec/blue = 3,
 		/obj/item/clothing/head/bastion/hats/security_peaked_cap = 3,
 		/obj/item/clothing/head/bastion/hats/security_peaked_cap/blue = 3,
-		/obj/item/clothing/mask/bastion/bandana/striped/security = 3,
 		/obj/item/clothing/head/bastion/helmet/blueshirt = 2,
-		/obj/item/clothing/head/bastion/beret/sec/navyofficer = 3,
 		/obj/item/clothing/mask/bastion/balaclava = 6,
 		/obj/item/clothing/under/bastion/rank/security/officer = 3,
 		/obj/item/clothing/under/bastion/rank/security/officer/skirt = 3,
@@ -32,7 +29,6 @@
 		/obj/item/clothing/gloves/bastion/color/black/security/blu = 4,
 		/obj/item/clothing/shoes/bastion/jackboots = 4,
 		/obj/item/clothing/shoes/bastion/jackboots/sec = 4,
-		/obj/item/clothing/shoes/bastion/sneakers/secred = 3,
 		/obj/item/storage/backpack/bastion/security = 3,
 		/obj/item/storage/backpack/bastion/satchel/sec = 3,
 		/obj/item/storage/backpack/bastion/duffelbag/sec = 3,
@@ -46,7 +42,6 @@
 		/obj/item/clothing/suit/bastion/toggle/labcoat/secmed/old = 2,
 		/obj/item/clothing/suit/bastion/toggle/labcoat/secmed/alt = 2,
 		/obj/item/clothing/head/bastion/soft/sec/medical = 2,
-		/obj/item/clothing/shoes/bastion/sneakers/white = 2,
 		/obj/item/storage/backpack/bastion/secmed = 1,
 		/obj/item/storage/backpack/bastion/satchel/secmed = 1,
 		/obj/item/storage/backpack/bastion/duffelbag/secmed = 1,
@@ -79,11 +74,9 @@
 		/obj/item/clothing/under/bastion/rank/medical/paramedic = 4,
 		/obj/item/clothing/under/bastion/rank/medical/paramedic/skirt = 4,
 		/obj/item/clothing/head/bastion/costume/nursehat = 4,
-		/obj/item/clothing/head/bastion/beret/medical = 4,
 		/obj/item/clothing/head/bastion/utility/surgerycap = 4,
 		/obj/item/clothing/head/bastion/utility/surgerycap/purple = 4,
 		/obj/item/clothing/head/bastion/utility/surgerycap/green = 4,
-		/obj/item/clothing/mask/bastion/bandana/striped/medical = 4,
 		/obj/item/clothing/under/bastion/rank/medical/doctor = 4,
 		/obj/item/clothing/under/bastion/rank/medical/doctor/skirt = 4,
 		/obj/item/clothing/suit/bastion/toggle/labcoat/medical = 4,
@@ -93,10 +86,7 @@
 		/obj/item/clothing/under/bastion/rank/medical/doctor/utility = 4,
 		/obj/item/clothing/suit/bastion/toggle/labcoat = 4,
 		/obj/item/clothing/suit/bastion/toggle/labcoat/paramedic = 4,
-		/obj/item/clothing/shoes/bastion/sneakers/white = 4,
-		/obj/item/clothing/head/bastion/beret/medical/paramedic = 4,
 		/obj/item/clothing/head/bastion/soft/paramedic = 4,
-		/obj/item/clothing/shoes/bastion/sneakers/blue = 4,
 		/obj/item/clothing/shoes/bastion/workboots/black = 4,
 		/obj/item/clothing/suit/bastion/apron/surgical = 4,
 		/obj/item/clothing/mask/bastion/surgical = 4,
@@ -115,8 +105,6 @@
 		/obj/item/clothing/suit/bastion/hooded/wintercoat/engineering/atmos = 3,
 		/obj/item/clothing/under/bastion/rank/engineering/atmospheric_technician = 3,
 		/obj/item/clothing/under/bastion/rank/engineering/atmospheric_technician/skirt = 3,
-		/obj/item/clothing/shoes/bastion/sneakers/black = 3,
-		/obj/item/clothing/head/bastion/beret/atmos = 3,
 	)
 
 /obj/structure/machinery/vending/bastion/robo_wardrobe
@@ -131,11 +119,8 @@
 		/obj/item/clothing/under/bastion/rank/rnd/roboticist/skirt = 2,
 		/obj/item/clothing/suit/bastion/toggle/labcoat/roboticist = 2,
 		/obj/item/clothing/suit/bastion/hooded/wintercoat/science/robotics = 3,
-		/obj/item/clothing/shoes/bastion/sneakers/black = 2,
 		/obj/item/clothing/gloves/bastion/fingerless = 2,
 		/obj/item/clothing/head/bastion/soft/black = 2,
-		/obj/item/clothing/mask/bastion/bandana/skull/black = 2,
-		/obj/item/clothing/head/bastion/beret/science/robo = 2,
 	)
 
 /obj/structure/machinery/vending/bastion/science_wardrobe
@@ -148,8 +133,6 @@
 		/obj/item/storage/backpack/bastion/science = 3,
 		/obj/item/storage/backpack/bastion/satchel/science = 3,
 		/obj/item/storage/backpack/bastion/duffelbag/science = 3,
-		/obj/item/clothing/head/bastion/beret/science = 3,
-		/obj/item/clothing/mask/bastion/bandana/striped/science = 3,
 		/obj/item/clothing/suit/bastion/hooded/wintercoat/science = 3,
 		/obj/item/clothing/under/bastion/rank/rnd/scientist = 3,
 		/obj/item/clothing/under/bastion/rank/rnd/scientist/skirt = 3,
@@ -157,7 +140,6 @@
 		/obj/item/clothing/under/bastion/rank/rnd/scientist/hlscience = 3,
 		/obj/item/clothing/under/bastion/rank/rnd/scientist/utility = 3,
 		/obj/item/clothing/suit/bastion/toggle/jacket/sci = 3,
-		/obj/item/clothing/shoes/bastion/sneakers/white = 3,
 		/obj/item/clothing/mask/bastion/gas = 3,
 	)
 
@@ -177,7 +159,6 @@
 		/obj/item/clothing/suit/bastion/apron/waders = 3,
 		/obj/item/clothing/under/bastion/rank/civilian/hydroponics = 3,
 		/obj/item/clothing/under/bastion/rank/civilian/hydroponics/skirt = 3,
-		/obj/item/clothing/mask/bastion/bandana/striped/botany = 3,
 	)
 
 /obj/structure/machinery/vending/bastion/curator_wardrobe
@@ -210,17 +191,10 @@
 		/obj/item/clothing/under/bastion/rank/civilian/bartender = 2,
 		/obj/item/clothing/under/bastion/rank/civilian/bartender/purple = 2,
 		/obj/item/clothing/under/bastion/rank/civilian/bartender/skirt = 2,
-		/obj/item/clothing/under/bastion/costume/playbunny = 2,
 		/obj/item/clothing/suit/bastion/apron/purple_bartender = 2,
 		/obj/item/clothing/head/bastion/soft/black = 2,
-		/obj/item/clothing/head/bastion/playbunnyears = 2,
-		/obj/item/clothing/shoes/bastion/sneakers/black = 2,
-		/obj/item/clothing/shoes/bastion/heels = 2,
 		/obj/item/clothing/suit/bastion/armor/vest/alt = 1,
 		/obj/item/clothing/glasses/bastion/sunglasses/reagent = 1,
-	)
-	premium = list(
-		/obj/item/clothing/suit/bastion/jacket/tailcoat/bartender = 2,
 	)
 
 /obj/structure/machinery/vending/bastion/chef_wardrobe
@@ -255,7 +229,6 @@
 		/obj/item/clothing/suit/bastion/hooded/wintercoat/janitor = 3,
 		/obj/item/clothing/gloves/bastion/color/black = 3,
 		/obj/item/clothing/head/bastion/soft/purple = 3,
-		/obj/item/clothing/mask/bastion/bandana/purple = 3,
 		/obj/item/clothing/suit/bastion/caution = 8,
 		/obj/item/clothing/shoes/bastion/galoshes = 3,
 	)
@@ -287,7 +260,6 @@
 		/obj/item/clothing/under/bastion/rank/civilian/lawyer/black = 1,
 		/obj/item/clothing/under/bastion/rank/civilian/lawyer/black/skirt = 1,
 		/obj/item/clothing/shoes/bastion/laceup = 2,
-		/obj/item/clothing/shoes/bastion/heels = 2,
 	)
 
 /obj/structure/machinery/vending/bastion/chap_wardrobe
@@ -300,7 +272,6 @@
 		/obj/item/storage/backpack/bastion/cultpack = 1,
 		/obj/item/clothing/under/bastion/rank/civilian/chaplain = 1,
 		/obj/item/clothing/under/bastion/rank/civilian/chaplain/skirt = 2,
-		/obj/item/clothing/shoes/bastion/sneakers/black = 1,
 		/obj/item/clothing/suit/bastion/chaplainsuit/nun = 1,
 		/obj/item/clothing/head/bastion/chaplain/nun_hood = 1,
 		/obj/item/clothing/suit/bastion/chaplainsuit/holidaypriest = 1,
@@ -329,14 +300,11 @@
 	products = list(
 		/obj/item/clothing/under/bastion/rank/medical/chemist = 2,
 		/obj/item/clothing/under/bastion/rank/medical/chemist/skirt = 2,
-		/obj/item/clothing/head/bastion/beret/medical = 2,
-		/obj/item/clothing/shoes/bastion/sneakers/white = 2,
 		/obj/item/clothing/suit/bastion/toggle/labcoat/chemist = 2,
 		/obj/item/clothing/suit/bastion/hooded/wintercoat/medical/chemistry = 2,
 		/obj/item/storage/backpack/bastion/chemistry = 2,
 		/obj/item/storage/backpack/bastion/satchel/chem = 2,
 		/obj/item/storage/backpack/bastion/duffelbag/chemistry = 2,
-		/obj/item/clothing/head/bastion/beret/medical/chemist = 2,
 	)
 
 /obj/structure/machinery/vending/bastion/gene_wardrobe
@@ -348,7 +316,6 @@
 	products = list(
 		/obj/item/clothing/under/bastion/rank/rnd/geneticist = 2,
 		/obj/item/clothing/under/bastion/rank/rnd/geneticist/skirt = 2,
-		/obj/item/clothing/shoes/bastion/sneakers/white = 2,
 		/obj/item/clothing/suit/bastion/toggle/labcoat/genetics = 2,
 		/obj/item/clothing/suit/bastion/hooded/wintercoat/science/genetics = 2,
 		/obj/item/storage/backpack/bastion/genetics = 2,
@@ -365,8 +332,6 @@
 	products = list(
 		/obj/item/clothing/under/bastion/rank/medical/virologist = 2,
 		/obj/item/clothing/under/bastion/rank/medical/virologist/skirt = 2,
-		/obj/item/clothing/head/bastion/beret/medical = 2,
-		/obj/item/clothing/shoes/bastion/sneakers/white = 2,
 		/obj/item/clothing/suit/bastion/toggle/labcoat/virologist = 2,
 		/obj/item/clothing/suit/bastion/hooded/wintercoat/medical/viro = 2,
 		/obj/item/clothing/mask/bastion/surgical = 2,
@@ -374,7 +339,6 @@
 		/obj/item/storage/backpack/bastion/satchel/vir = 2,
 		/obj/item/storage/backpack/bastion/duffelbag/virology = 2,
 		/obj/item/clothing/gloves/bastion/latex/nitrile = 2,
-		/obj/item/clothing/head/bastion/beret/medical/virologist = 2,
 	)
 
 /obj/structure/machinery/vending/bastion/det_wardrobe
@@ -386,7 +350,6 @@
 	products = list(
 		/obj/item/clothing/under/bastion/rank/security/detective = 2,
 		/obj/item/clothing/under/bastion/rank/security/detective/skirt = 2,
-		/obj/item/clothing/shoes/bastion/sneakers/brown = 2,
 		/obj/item/clothing/suit/bastion/jacket/det_suit = 2,
 		/obj/item/clothing/head/bastion/fedora/det_hat = 2,
 		/obj/item/clothing/under/bastion/rank/security/detective/noir = 2,
@@ -406,9 +369,6 @@
 		/obj/item/clothing/gloves/bastion/kim = 1,
 		/obj/item/clothing/glasses/bastion/regular/kim = 1,
 	)
-	premium = list(
-		/obj/item/clothing/head/bastion/flatcap = 1,
-	)
 
 /obj/structure/machinery/vending/bastion/clothing
 	name = "ClothesMate"
@@ -417,12 +377,6 @@
 	vend_reply = "Thank you for using the ClothesMate!"
 	products = list(
 		/obj/item/clothing/head/bastion/wig/natural = 4,
-		/obj/item/clothing/head/bastion/costume/fancy = 4,
-		/obj/item/clothing/head/bastion/beanie = 8,
-		/obj/item/clothing/head/bastion/beret = 10,
-		/obj/item/clothing/mask/bastion/bandana = 3,
-		/obj/item/clothing/mask/bastion/bandana/striped = 3,
-		/obj/item/clothing/mask/bastion/bandana/skull = 3,
 		/obj/item/clothing/head/bastion/rasta = 3,
 		/obj/item/clothing/head/bastion/chaplain/kippah = 3,
 		/obj/item/clothing/head/bastion/chaplain/taqiyah/red = 3,
@@ -431,31 +385,14 @@
 		/obj/item/clothing/head/bastion/hats/bowler = 3,
 		/obj/item/clothing/head/bastion/cowboy/white = 1,
 		/obj/item/clothing/head/bastion/cowboy/grey = 1,
-		/obj/item/clothing/head/bastion/costume/sombrero/green = 1,
 		/obj/item/clothing/head/bastion/hats/fez = 3,
-		/obj/item/clothing/suit/bastion/toggle/suspenders = 4,
 		/obj/item/clothing/glasses/bastion/regular = 2,
 		/obj/item/clothing/glasses/bastion/regular/jamjar = 1,
 		/obj/item/clothing/glasses/bastion/orange = 1,
 		/obj/item/clothing/glasses/bastion/red = 1,
 		/obj/item/clothing/glasses/bastion/monocle = 1,
 		/obj/item/clothing/gloves/bastion/fingerless = 2,
-		/obj/item/clothing/under/bastion/pants/slacks = 5,
-		/obj/item/clothing/under/bastion/shorts = 5,
-		/obj/item/clothing/under/bastion/pants/jeans = 5,
-		/obj/item/clothing/under/bastion/shorts/jeanshorts = 5,
-		/obj/item/clothing/under/bastion/costume/buttondown/slacks = 4,
-		/obj/item/clothing/under/bastion/costume/buttondown/shorts = 4,
-		/obj/item/clothing/under/bastion/dress/sundress = 2,
-		/obj/item/clothing/under/bastion/dress/tango = 2,
-		/obj/item/clothing/under/bastion/dress/ballgown = 2,
-		/obj/item/clothing/under/bastion/dress/wlpinafore = 2,
-		/obj/item/clothing/under/bastion/dress/ribbondress = 2,
-		/obj/item/clothing/under/bastion/dress/skirt/plaid = 4,
-		/obj/item/clothing/under/bastion/costume/donatorgrayscaleturtleneck/nondonator = 4,
-		/obj/item/clothing/under/bastion/dress/skirt/turtleskirt = 4,
 		/obj/item/clothing/under/bastion/misc/overalls = 2,
-		/obj/item/clothing/under/bastion/pants/camo = 2,
 		/obj/item/clothing/under/bastion/pants/track = 2,
 		/obj/item/clothing/under/bastion/costume/kilt = 1,
 		/obj/item/clothing/under/bastion/dress/striped = 1,
@@ -463,9 +400,6 @@
 		/obj/item/clothing/under/bastion/dress/redeveninggown = 1,
 		/obj/item/clothing/suit/bastion/apron/purple_bartender = 2,
 		/obj/item/clothing/under/bastion/costume/citizen_uniform = 4,
-		/obj/item/clothing/suit/bastion/toggle/jacket/sweater = 4,
-		/obj/item/clothing/suit/bastion/jacket/oversized = 4,
-		/obj/item/clothing/suit/bastion/jacket/fancy = 4,
 		/obj/item/clothing/under/bastion/suit/navy = 1,
 		/obj/item/clothing/under/bastion/suit/black_really = 1,
 		/obj/item/clothing/under/bastion/suit/burgundy = 1,
@@ -484,7 +418,6 @@
 		/obj/item/clothing/under/bastion/rank/civilian/head_of_personnel/suit/skirt = 2,
 		/obj/item/clothing/under/bastion/rank/civilian/bartender/purple = 2,
 		/obj/item/clothing/suit/bastion/jacket/miljacket = 1,
-		/obj/item/clothing/shoes/bastion/sneakers/black = 4,
 		/obj/item/clothing/shoes/bastion/sandal = 2,
 		/obj/item/clothing/shoes/bastion/laceup = 2,
 		/obj/item/clothing/shoes/bastion/winterboots = 2,
@@ -492,14 +425,7 @@
 		/obj/item/clothing/shoes/bastion/cowboy = 2,
 		/obj/item/clothing/shoes/bastion/cowboy/white = 2,
 		/obj/item/clothing/shoes/bastion/cowboy/black = 2,
-		/obj/item/clothing/head/bastion/costume/football_helmet = 6,
-		/obj/item/clothing/under/bastion/costume/football_suit = 6,
-		/obj/item/clothing/suit/bastion/costume/football_armor = 6,
-		/obj/item/clothing/suit/bastion/mothcoat = 3,
-		/obj/item/clothing/suit/bastion/mothcoat/winter = 3,
 		/obj/item/clothing/head/bastion/mothcap = 3,
-		/obj/item/clothing/suit/bastion/hooded/ethereal_raincoat = 3,
-		/obj/item/clothing/under/bastion/ethereal_tunic = 3,
 		/obj/item/clothing/head/bastion/costume/hairpin = 2,
 		/obj/item/clothing/under/bastion/costume/yukata = 2,
 		/obj/item/clothing/under/bastion/costume/yukata/green = 2,
@@ -508,8 +434,6 @@
 		/obj/item/clothing/under/bastion/costume/kimono/red = 2,
 		/obj/item/clothing/under/bastion/costume/kimono/purple = 2,
 		/obj/item/clothing/shoes/bastion/sandal/alt = 4,
-		/obj/item/clothing/mask/bastion/kitsune = 3,
-		/obj/item/clothing/mask/bastion/rebellion = 6,
 		/obj/item/clothing/suit/bastion/costume/ianshirt = 1,
 		/obj/item/clothing/suit/bastion/hooded/dinojammies = 3,
 		/obj/item/clothing/suit/bastion/costume/irs = 20,
@@ -573,10 +497,7 @@
 		/obj/item/clothing/suit/bastion/hazardvest = 6,
 		/obj/item/clothing/under/bastion/rank/cargo/tech = 3,
 		/obj/item/clothing/under/bastion/rank/cargo/tech/skirt = 3,
-		/obj/item/clothing/shoes/bastion/sneakers/black = 3,
 		/obj/item/clothing/gloves/bastion/fingerless = 3,
-		/obj/item/clothing/head/bastion/beret/cargo = 3,
-		/obj/item/clothing/mask/bastion/bandana/striped/cargo = 3,
 		/obj/item/clothing/head/bastion/soft = 3,
 		/obj/item/storage/backpack/bastion = 3,
 		/obj/item/storage/backpack/bastion/satchel = 3,
@@ -603,8 +524,6 @@
 		/obj/item/clothing/under/bastion/rank/engineering/engineer/hazard = 3,
 		/obj/item/clothing/suit/bastion/hazardvest = 3,
 		/obj/item/clothing/shoes/bastion/workboots = 3,
-		/obj/item/clothing/head/bastion/beret/engi = 3,
-		/obj/item/clothing/mask/bastion/bandana/striped/engineering = 3,
 		/obj/item/clothing/head/bastion/utility/hardhat = 3,
 		/obj/item/clothing/head/bastion/utility/hardhat/welding = 3,
 		/obj/item/clothing/under/bastion/rank/engineering/engineer/nova/trouser = 3,

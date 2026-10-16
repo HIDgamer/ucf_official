@@ -61,17 +61,6 @@
 	desc = "t3h c00L3st sh03z j00'LL 3v3r f1nd."
 	icon_state = "glow_shoes"
 
-/obj/item/clothing/shoes/bastion/heels
-	name = "heels"
-	desc = "A both professional and stylish pair of footwear that are difficult to walk in."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/shoes.dmi'
-	icon_state = "heels_39393f"
-	item_icons = list(
-		WEAR_FEET = 'icons/mob/humans/onmob/clothing/bastion/greyscale/shoes.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/shoes_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/shoes_righthand.dmi',
-	)
-
 /obj/item/clothing/shoes/bastion/jackboots
 	name = "jackboots"
 	desc = "Nanotrasen-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
@@ -114,67 +103,6 @@
 	desc = "A pair of shiny black wooden sandals."
 	icon_state = "blacksandals"
 	item_state = "blacksandals"
-
-/obj/item/clothing/shoes/bastion/sneakers/black
-	name = "black shoes"
-	desc = "A pair of black shoes."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/shoes.dmi'
-	icon_state = "sneakers_2d2d33ffffff"
-	item_state = "sneakers_back_2d2d33ffffff"
-	item_icons = list(
-		WEAR_FEET = 'icons/mob/humans/onmob/clothing/bastion/greyscale/shoes.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/shoes_left.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/shoes_right.dmi',
-	)
-
-/obj/item/clothing/shoes/bastion/sneakers/blue
-	name = "blue shoes"
-	icon = 'icons/obj/items/clothing/bastion/greyscale/shoes.dmi'
-	icon_state = "sneakers_4f88dfffffff"
-	item_state = "sneakers_back_4f88dfffffff"
-	item_icons = list(
-		WEAR_FEET = 'icons/mob/humans/onmob/clothing/bastion/greyscale/shoes.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/shoes_left.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/shoes_right.dmi',
-	)
-	armor_bio = 95
-
-/obj/item/clothing/shoes/bastion/sneakers/brown
-	name = "brown shoes"
-	desc = "A pair of brown shoes."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/shoes.dmi'
-	icon_state = "sneakers_472c21ffffff"
-	item_state = "sneakers_back_472c21ffffff"
-	item_icons = list(
-		WEAR_FEET = 'icons/mob/humans/onmob/clothing/bastion/greyscale/shoes.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/shoes_left.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/shoes_right.dmi',
-	)
-
-/obj/item/clothing/shoes/bastion/sneakers/secred
-	name = "security red sneakers"
-	desc = "A nice set of sneakers in security red. These even have the custom fabric used by medical white! Sweet!"
-	icon = 'icons/obj/items/clothing/bastion/greyscale/shoes.dmi'
-	icon_state = "sneakers_a52f29918f8c"
-	item_state = "sneakers_back_a52f29918f8c"
-	item_icons = list(
-		WEAR_FEET = 'icons/mob/humans/onmob/clothing/bastion/greyscale/shoes.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/shoes_left.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/shoes_right.dmi',
-	)
-	armor_bio = 95
-
-/obj/item/clothing/shoes/bastion/sneakers/white
-	name = "white shoes"
-	icon = 'icons/obj/items/clothing/bastion/greyscale/shoes.dmi'
-	icon_state = "sneakers_ffffffffffff"
-	item_state = "sneakers_back_ffffffffffff"
-	item_icons = list(
-		WEAR_FEET = 'icons/mob/humans/onmob/clothing/bastion/greyscale/shoes.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/shoes_left.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/shoes_right.dmi',
-	)
-	armor_bio = 95
 
 /obj/item/clothing/shoes/bastion/swagshoes
 	name = "swag shoes"

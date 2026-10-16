@@ -55,7 +55,7 @@
 	arm_equipment(shield, /datum/equipment_preset/other/mann_shield, FALSE, FALSE)
 	TEST_ASSERT(istype(shield.w_uniform, /obj/item/clothing/under/bastion/rank/blueshield), "No blueshield uniform")
 	TEST_ASSERT(istype(shield.wear_suit, /obj/item/clothing/suit/bastion/armor/vest/blueshield/jacket), "No blueshield jacket")
-	TEST_ASSERT(istype(shield.head, /obj/item/clothing/head/bastion/beret/blueshield), "No blueshield beret")
+	TEST_ASSERT(istype(shield.head, /obj/item/clothing/head/beret/marine/commander/council), "No blue beret")
 	TEST_ASSERT(istype(shield.back, /obj/item/storage/backpack/bastion/blueshield), "No blueshield backpack")
 	TEST_ASSERT(istype(shield.belt, /obj/item/storage/belt/security/MP/full/blueshield), "No blueshield belt")
 	TEST_ASSERT(istype(shield.gloves, /obj/item/clothing/gloves/bastion/combat), "No combat gloves")

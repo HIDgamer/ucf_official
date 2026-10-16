@@ -10,102 +10,6 @@
 	w_class = SIZE_MEDIUM
 	slowdown = 0
 
-/obj/item/clothing/head/bastion/beanie
-	name = "beanie"
-	desc = "A stylish beanie. The perfect winter accessory for those with a keen fashion sense, and those who just can't handle a cold breeze on their heads."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/head.dmi'
-	icon_state = "beanie_eeeeeeeeeeee"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/greyscale/head.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
-	)
-
-/obj/item/clothing/head/bastion/beret
-	name = "beret"
-	desc = "A beret, a mime's favorite headwear."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/head.dmi'
-	icon_state = "beret_972a2a"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/greyscale/head.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
-	)
-
-/obj/item/clothing/head/bastion/beret/atmos
-	name = "atmospheric beret"
-	desc = "While \"pipes\" and \"style\" might not rhyme, this beret sure makes you feel like they should!"
-	icon_state = "beret_59d7ff"
-
-/obj/item/clothing/head/bastion/beret/blueshield
-	name = "blueshield's beret"
-	desc = "A blue beret made of durathread with a genuine golden badge, denoting its owner as a Blueshield Lieuteneant.It seems to be padded with nano-kevlar, making it tougher than standard reinforced berets."
-	icon_state = "beret_badge_3a4e7ddeb63d"
-	armor_melee = 35
-	armor_bullet = 30
-	armor_laser = 30
-	armor_energy = 40
-	armor_bomb = 25
-
-/obj/item/clothing/head/bastion/beret/blueshield/navy
-	name = "navy blueshield's beret"
-	desc = "A navy-blue beret made of durathread with a silver badge, denoting its owner as a Blueshield Lieuteneant. It seems to be padded with nano-kevlar, making it tougher than standard reinforced berets."
-	icon_state = "beret_badge_3c485abbbbbb"
-
-/obj/item/clothing/head/bastion/beret/cargo
-	name = "cargo beret"
-	desc = "No need to compensate when you can wear this beret!"
-	icon_state = "beret_b7723d"
-
-/obj/item/clothing/head/bastion/beret/centcom_formal
-	name = "\improper CentCom Formal Beret"
-	desc = "Sometimes, a compromise between fashion and defense needs to be made. Thanks to Nanotrasen's most recent nano-fabric durability enhancements, this time, it's not the case."
-	icon_state = "beret_badge_46b946f2c42e"
-	armor_melee = 80
-	armor_bullet = 80
-	armor_laser = 50
-	armor_energy = 50
-	armor_bomb = 100
-	armor_bio = 100
-
-/obj/item/clothing/head/bastion/beret/durathread
-	name = "durathread beret"
-	desc = "A beret made from durathread, its resilient fibers provide some protection to the wearer."
-	icon_state = "beret_badge_c5d4f3ecf1f8"
-	armor_melee = 15
-	armor_bullet = 5
-	armor_laser = 15
-	armor_energy = 25
-	armor_bomb = 10
-
-/obj/item/clothing/head/bastion/beret/engi
-	name = "engineering beret"
-	desc = "Might not protect you from radiation, but definitely will protect you from looking unfashionable!"
-	icon_state = "beret_ffbc30"
-
-/obj/item/clothing/head/bastion/beret/engi/ce
-	name = "chief engineer's beret"
-	desc = "A fancy beret designed exactly to the Chief Engineer's tastes, minus the LEDs."
-	icon_state = "beret_badge_ffffff2e992e"
-
-/obj/item/clothing/head/bastion/beret/highlander
-	desc = "That was white fabric. <i>Was.</i>"
-
-/obj/item/clothing/head/bastion/beret/medical
-	name = "medical beret"
-	desc = "A medical-flavored beret for the doctor in you!"
-	icon_state = "beret_ffffff"
-
-/obj/item/clothing/head/bastion/beret/medical/chemist
-	name = "chemist beret"
-	desc = "Not acid-proof!"
-	icon_state = "beret_d15b1b"
-
-/obj/item/clothing/head/bastion/beret/medical/cmo
-	name = "chief medical officer beret"
-	desc = "A beret in a distinct surgical turquoise!"
-	icon_state = "beret_badge_5eb8b8c9cbcb"
-
 /obj/item/clothing/head/bastion/beret/medical/deforest
 	name = "Deforest Beret"
 	desc = "A Deforest Medical beret, velvet fabrics and directly infused dyes prevent age from tarnishing the striking presence of Deforest rescue personnel."
@@ -116,70 +20,9 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
 	)
-
-/obj/item/clothing/head/bastion/beret/medical/paramedic
-	name = "paramedic beret"
-	desc = "For finding corpses in style!"
-	icon_state = "beret_16313d"
-
-/obj/item/clothing/head/bastion/beret/medical/virologist
-	name = "virologist beret"
-	desc = "Sneezing in this expensive beret would be a waste of a good beret."
-	icon_state = "beret_198019"
-
-/obj/item/clothing/head/bastion/beret/militia
-	name = "\improper Militia General's Beret"
-	desc = "A rallying cry for the inhabitants of the Spinward Sector, the heroes that wear this keep the horrors of the galaxy at bay. Call them, and they'll be there in a minute!"
-	icon_state = "beret_badge_43523da2abb0"
-	armor_melee = 35
-	armor_bullet = 30
-	armor_laser = 30
-	armor_energy = 40
-	armor_bomb = 25
-
-/obj/item/clothing/head/bastion/beret/science
-	name = "science beret"
-	desc = "A science-themed beret for our hardworking scientists."
-	icon_state = "beret_8d008f"
-
-/obj/item/clothing/head/bastion/beret/science/rd
-	desc = "A purple badge with the insignia of the Research Director attached. For the paper-shuffler in you!"
-	icon_state = "beret_badge_7e1980c9cbcb"
-
-/obj/item/clothing/head/bastion/beret/science/robo
-	name = "robotics beret"
-	desc = "A sleek black beret designed with high-durability nano-mesh fiber - or so the roboticists claim."
-	icon_state = "beret_3e3e48"
-
-/obj/item/clothing/head/bastion/beret/sec
-	name = "security beret"
-	desc = "A robust beret with the security insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
-	icon_state = "beret_badge_a52f29f2f2f2"
-	armor_melee = 35
-	armor_bullet = 30
-	armor_laser = 30
-	armor_energy = 40
-	armor_bomb = 25
-
-/obj/item/clothing/head/bastion/beret/sec/navyofficer
-	desc = "A special beret with the security insignia emblazoned on it. For officers with class."
-	icon_state = "beret_badge_638799a52f29"
-
-/obj/item/clothing/head/bastion/beret/sec/navywarden
-	name = "warden's beret"
-	desc = "A special beret with the Warden's insignia emblazoned on it. For wardens with class."
-	icon_state = "beret_badge_638799ebebeb"
-
-/obj/item/clothing/head/bastion/caphat/beret
-	name = "captain's beret"
-	desc = "For the Captains known for their sense of fashion."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/head.dmi'
-	icon_state = "beret_badge_41579ae6a345"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/greyscale/head.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
-	)
+	flags_armor_protection = BODY_FLAG_HEAD
+	w_class = SIZE_MEDIUM
+	slowdown = 0
 
 /obj/item/clothing/head/bastion/chaplain/bishopmitre
 	name = "bishop mitre"
@@ -304,26 +147,6 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
 	)
 
-/obj/item/clothing/head/bastion/costume/fancy
-	name = "fancy hat"
-	icon = 'icons/obj/items/clothing/bastion/greyscale/head.dmi'
-	icon_state = "fancy_hat_e3c937782a81"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/greyscale/head.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
-	)
-
-/obj/item/clothing/head/bastion/costume/football_helmet
-	name = "football helmet"
-	icon = 'icons/obj/items/clothing/bastion/greyscale/head.dmi'
-	icon_state = "football_helmet_d74722"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/greyscale/head.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
-	)
-
 /obj/item/clothing/head/bastion/costume/hairpin
 	name = "fancy hairpin"
 	desc = "A delicate hairpin normally paired with traditional clothing"
@@ -368,19 +191,6 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
 	)
-
-/obj/item/clothing/head/bastion/costume/sombrero/green
-	name = "green sombrero"
-	desc = "As elegant as a dancing cactus."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/head.dmi'
-	icon_state = "sombrero_13d968ffffff"
-	item_state = "sombrero_13d968ffffff"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/greyscale/head.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/head_left.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/greyscale/head_right.dmi',
-	)
-	flags_inv_hide = HIDETOPHAIR|HIDEFACE|HIDEEARS
 
 /obj/item/clothing/head/bastion/costume/tmc
 	name = "Lost M.C. bandana"
@@ -487,17 +297,6 @@
 	armor_bullet = 5
 	armor_laser = 25
 	armor_energy = 35
-
-/obj/item/clothing/head/bastion/flatcap
-	name = "flat cap"
-	desc = "A working man's cap."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/head.dmi'
-	icon_state = "beret_flat_8f7654"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/greyscale/head.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
-	)
 
 /obj/item/clothing/head/bastion/hats/bowler
 	name = "bowler-hat"
@@ -627,26 +426,6 @@
 	armor_energy = 35
 	armor_bomb = 25
 	armor_bio = 10
-
-/obj/item/clothing/head/bastion/hats/hos/beret
-	name = "head of security's beret"
-	desc = "A robust beret for the Head of Security, for looking stylish while not sacrificing protection."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/head.dmi'
-	icon_state = "beret_badge_39393ff0cc8f"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/greyscale/head.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
-	)
-
-/obj/item/clothing/head/bastion/hats/hos/beret/navyhos
-	name = "head of security's formal beret"
-	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
-	icon_state = "beret_badge_638799f0cc8f"
-
-/obj/item/clothing/head/bastion/hats/hos/beret/syndicate
-	name = "syndicate beret"
-	desc = "A black beret with thick armor padding inside. Stylish and robust."
 
 /obj/item/clothing/head/bastion/hats/hos/cap
 	name = "head of security cap"
@@ -1128,17 +907,6 @@
 	armor_energy = 40
 	armor_bomb = 25
 
-/obj/item/clothing/head/bastion/hopcap/beret
-	name = "head of personnel's beret"
-	desc = "A fancy beret designed by NT's Personnel division for their favorite head's head."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/head.dmi'
-	icon_state = "beret_badge_3e5c8888242d"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/greyscale/head.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
-	)
-
 /obj/item/clothing/head/bastion/mothcap
 	name = "mothic softcap"
 	desc = "A padded leather cap with goggles, standard issue aboard the moth fleet. Keeps your head warm and debris away from those big eyes."
@@ -1150,17 +918,6 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
 	)
 	flags_inv_hide = HIDETOPHAIR
-
-/obj/item/clothing/head/bastion/playbunnyears
-	name = "bunny ears headband"
-	desc = "A pair of bunny ears attached to a headband. One of the ears is already crooked."
-	icon = 'icons/obj/items/clothing/bastion/greyscale/head.dmi'
-	icon_state = "playbunny_ears_39393f"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/bastion/greyscale/head.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/bastion/hats_righthand.dmi',
-	)
 
 /obj/item/clothing/head/bastion/playbunnyears/hos
 	name = "head of security's bunny ears"
@@ -1178,6 +935,9 @@
 	armor_energy = 35
 	armor_bomb = 25
 	armor_bio = 10
+	flags_armor_protection = BODY_FLAG_HEAD
+	w_class = SIZE_MEDIUM
+	slowdown = 0
 
 /obj/item/clothing/head/bastion/rasta
 	name = "rastacap"
