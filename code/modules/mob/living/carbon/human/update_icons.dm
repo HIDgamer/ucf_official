@@ -228,6 +228,13 @@ There are several things that need to be remembered:
 		update_body_sprite_damage_overlay()
 		return
 
+	var/damage_key = ""
+	for(var/obj/limb/part as anything in limbs)
+		damage_key += (part.status & LIMB_DESTROYED) ? "--" : part.damage_state_text()
+	if(damage_key == last_damage_overlay_key && overlays_standing[DAMAGE_LAYER])
+		return
+	last_damage_overlay_key = damage_key
+
 	remove_overlay(DAMAGE_LAYER)
 
 	var/list/damage_overlays = list()
