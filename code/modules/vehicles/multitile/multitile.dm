@@ -269,6 +269,12 @@
 /obj/vehicle/multitile/get_explosion_resistance()
 	return explosive_resistance
 
+/// Wheels and treads are drawn under mobs standing beside the vehicle
+/obj/vehicle/multitile/proc/get_hardpoint_layer(obj/item/hardpoint/hardpoint)
+	if(istype(hardpoint, /obj/item/hardpoint/locomotion))
+		return BELOW_MOB_LAYER
+	return layer + hardpoint.hdpt_layer * 0.1
+
 /obj/vehicle/multitile/update_icon()
 	overlays.Cut()
 
@@ -282,11 +288,11 @@
 		for(var/obj/item/hardpoint/hardpoint in hardpoints)
 			var/image/hardpoint_image = hardpoint.get_hardpoint_image()
 			if(istype(hardpoint_image))
-				hardpoint_image.layer = layer + hardpoint.hdpt_layer * 0.1
+				hardpoint_image.layer = get_hardpoint_layer(hardpoint)
 			else if(islist(hardpoint_image))
 				var/list/image/hardpoint_image_list = hardpoint_image // Linter will complain about iterating on "an image" otherwise
 				for(var/image/subimage in hardpoint_image_list)
-					subimage.layer = layer + hardpoint.hdpt_layer * 0.1
+					subimage.layer = get_hardpoint_layer(hardpoint)
 			overlays += hardpoint_image
 
 	if(clamped)
