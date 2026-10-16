@@ -6,15 +6,28 @@
 /// Tiles the shooter can be from the target without losing the aim
 #define GUNPOINT_RANGE 5
 #define GUNPOINT_FLINCH_CHANCE 50
+#define GUNPOINT_MAX_DUMP_ROUNDS 40
 
-/// A shooter holding a human at gunpoint, the shot fires and hits harder when the target acts
+/// Red crosshair over a person held at gunpoint, everyone can see it
+/obj/effect/gunpoint_marker
+	icon = 'icons/effects/Targeted.dmi'
+	icon_state = "sniper_lockon"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	anchored = TRUE
+	vis_flags = VIS_INHERIT_PLANE
+	layer = ABOVE_MOB_LAYER
+	pixel_y = 4
+
+/// A shooter holding a human at gunpoint, the target acting makes the gun empty into them
 /datum/component/gunpoint
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 
 	var/mob/living/carbon/human/target
 	var/obj/item/weapon/gun/weapon
+	var/obj/effect/gunpoint_marker/marker
 	var/stage = 1
 	var/damage_mult = GUNPOINT_MULT_STAGE_1
+	var/triggers = GUNPOINT_TRIGGER_MOVE
 	var/point_of_no_return = FALSE
 
 /datum/component/gunpoint/Initialize(mob/living/carbon/human/target, obj/item/weapon/gun/weapon)
@@ -23,9 +36,21 @@
 	src.target = target
 	src.weapon = weapon
 	var/mob/living/carbon/human/shooter = parent
-	RegisterSignal(target, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_FIRED_GUN, COMSIG_MOB_ITEM_ATTACK_SELF), PROC_REF(target_acted))
+	triggers = shooter.gunpoint_triggers
+	RegisterSignal(target, COMSIG_MOB_FIRED_GUN, PROC_REF(target_acted))
+	if(triggers & GUNPOINT_TRIGGER_MOVE)
+		RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(target_moved))
+	if(triggers & GUNPOINT_TRIGGER_ITEMS)
+		RegisterSignal(target, list(COMSIG_MOB_ITEM_ATTACK_SELF, COMSIG_MOB_PICKUP_ITEM, COMSIG_MOB_ATTEMPTING_EQUIP, COMSIG_MOB_SWAPPED_HAND), PROC_REF(target_acted))
+	if(triggers & GUNPOINT_TRIGGER_COMMS)
+		RegisterSignal(target, COMSIG_LIVING_SPEAK, PROC_REF(target_spoke))
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(cancel))
 	RegisterSignal(weapon, list(COMSIG_ITEM_DROPPED, COMSIG_ITEM_EQUIPPED), PROC_REF(cancel))
+	marker = new(null)
+	target.vis_contents += marker
+	target.add_filter("gunpoint_outline", 2, list("type" = "outline", "color" = "#FF0000", "alpha" = 0, "size" = 1))
+	animate(target.get_filter("gunpoint_outline"), alpha = 255, time = 0.6 SECONDS, loop = -1)
+	animate(alpha = 80, time = 0.6 SECONDS)
 	shooter.visible_message(SPAN_DANGER("[shooter] aims [weapon] at [target]!"), SPAN_DANGER("You aim [weapon] at [target]!"))
 	to_chat(target, SPAN_DANGER("[shooter] is holding you at gunpoint, don't move or act!"))
 	if(target.client)
@@ -34,7 +59,11 @@
 
 /datum/component/gunpoint/Destroy(force)
 	if(target)
-		UnregisterSignal(target, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_FIRED_GUN, COMSIG_MOB_ITEM_ATTACK_SELF, COMSIG_PARENT_QDELETING))
+		UnregisterSignal(target, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_FIRED_GUN, COMSIG_MOB_ITEM_ATTACK_SELF, COMSIG_MOB_PICKUP_ITEM, COMSIG_MOB_ATTEMPTING_EQUIP, COMSIG_MOB_SWAPPED_HAND, COMSIG_LIVING_SPEAK, COMSIG_PARENT_QDELETING))
+		if(marker)
+			target.vis_contents -= marker
+		target.remove_filter("gunpoint_outline")
+	QDEL_NULL(marker)
 	if(weapon)
 		UnregisterSignal(weapon, list(COMSIG_ITEM_DROPPED, COMSIG_ITEM_EQUIPPED, COMSIG_GUN_BEFORE_FIRE))
 	target = null
@@ -70,20 +99,38 @@
 		cancel()
 		return TRUE
 
+/datum/component/gunpoint/proc/target_moved(datum/source, turf/oldloc, direction, forced)
+	SIGNAL_HANDLER
+	if(forced)
+		return
+	INVOKE_ASYNC(src, PROC_REF(fire_shot), TRUE)
+
 /datum/component/gunpoint/proc/target_acted(datum/source, ...)
 	SIGNAL_HANDLER
-	if(length(args) >= 5 && args[5])
-		return
-	INVOKE_ASYNC(src, PROC_REF(fire_shot))
+	INVOKE_ASYNC(src, PROC_REF(fire_shot), TRUE)
 
-/datum/component/gunpoint/proc/fire_shot()
+/datum/component/gunpoint/proc/target_spoke(datum/source, ...)
+	SIGNAL_HANDLER
+	if(!target.speaking_over_radio)
+		return
+	INVOKE_ASYNC(src, PROC_REF(fire_shot), TRUE)
+
+/// Fires the charged shot, emptying the magazine into the target after it when dump is set
+/datum/component/gunpoint/proc/fire_shot(dump = FALSE)
 	if(point_of_no_return || QDELETED(src))
 		return
 	point_of_no_return = TRUE
 	var/mob/living/carbon/human/shooter = parent
-	RegisterSignal(weapon, COMSIG_GUN_BEFORE_FIRE, PROC_REF(boost_shot))
+	var/obj/item/weapon/gun/shooting_gun = weapon
+	var/mob/living/carbon/human/victim = target
+	var/rounds = 1
+	if(dump)
+		rounds = clamp(shooting_gun.current_mag?.current_rounds, 1, GUNPOINT_MAX_DUMP_ROUNDS)
+	RegisterSignal(shooting_gun, COMSIG_GUN_BEFORE_FIRE, PROC_REF(boost_shot))
 	addtimer(CALLBACK(src, PROC_REF(cancel_quietly)), 3 SECONDS)
-	weapon.Fire(target, shooter, null, TRUE)
+	shooting_gun.Fire(victim, shooter, null, TRUE)
+	if(rounds > 1)
+		gunpoint_dump(shooter, shooting_gun, victim, rounds - 1)
 
 /datum/component/gunpoint/proc/boost_shot(obj/item/weapon/gun/source, obj/projectile/projectile_to_fire)
 	SIGNAL_HANDLER
@@ -104,14 +151,25 @@
 		shooter.visible_message(SPAN_DANGER("[shooter] breaks [shooter.p_their()] aim on [target]!"), SPAN_DANGER("You are no longer aiming [weapon] at [target]."))
 	qdel(src)
 
-/// A hit shooter may flinch and fire
+/// A hit shooter may flinch and fire once
 /datum/component/gunpoint/proc/flinch(datum/source, list/damagedata, damagetype)
 	SIGNAL_HANDLER
 	if(!prob(GUNPOINT_FLINCH_CHANCE))
 		return
 	var/mob/living/carbon/human/shooter = parent
 	shooter.visible_message(SPAN_DANGER("[shooter] flinches!"), SPAN_DANGER("You flinch!"))
-	INVOKE_ASYNC(src, PROC_REF(fire_shot))
+	INVOKE_ASYNC(src, PROC_REF(fire_shot), FALSE)
+
+/// Keeps firing at the target until the rounds run out or the shooter can no longer fire
+/proc/gunpoint_dump(mob/living/carbon/human/shooter, obj/item/weapon/gun/shooting_gun, mob/living/carbon/human/victim, rounds)
+	set waitfor = FALSE
+	for(var/shot in 1 to rounds)
+		sleep(max(shooting_gun.fire_delay, 1))
+		if(QDELETED(shooter) || QDELETED(shooting_gun) || QDELETED(victim) || victim.stat == DEAD)
+			return
+		if(shooter.stat != CONSCIOUS || shooter.get_active_hand() != shooting_gun || !shooting_gun.current_mag?.current_rounds)
+			return
+		shooting_gun.Fire(victim, shooter, null, TRUE)
 
 #undef GUNPOINT_DELAY_STAGE_2
 #undef GUNPOINT_DELAY_STAGE_3
@@ -120,3 +178,4 @@
 #undef GUNPOINT_MULT_STAGE_3
 #undef GUNPOINT_RANGE
 #undef GUNPOINT_FLINCH_CHANCE
+#undef GUNPOINT_MAX_DUMP_ROUNDS

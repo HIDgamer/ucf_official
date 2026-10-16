@@ -15,3 +15,25 @@
 	var/datum/component/gunpoint/aim = GetComponent(/datum/component/gunpoint)
 	if(aim)
 		qdel(aim)
+
+/// Picks which actions of someone held at gunpoint make this human mag dump
+/mob/living/carbon/human/proc/choose_gunpoint_triggers()
+	var/list/options = list(
+		"Moving" = GUNPOINT_TRIGGER_MOVE,
+		"Drawing or using items" = GUNPOINT_TRIGGER_ITEMS,
+		"Using the radio" = GUNPOINT_TRIGGER_COMMS,
+	)
+	var/list/labels = list()
+	for(var/option in options)
+		labels["[option]: [(gunpoint_triggers & options[option]) ? "on" : "off"]"] = options[option]
+	var/picked = tgui_input_list(src, "Which actions of someone you hold at gunpoint make you open fire? Fire from their own gun always does.", "Gunpoint Triggers", labels)
+	if(!picked)
+		return
+	gunpoint_triggers ^= labels[picked]
+	to_chat(src, SPAN_NOTICE("Gunpoint triggers are now: [gunpoint_triggers & GUNPOINT_TRIGGER_MOVE ? "moving " : ""][gunpoint_triggers & GUNPOINT_TRIGGER_ITEMS ? "items " : ""][gunpoint_triggers & GUNPOINT_TRIGGER_COMMS ? "radio " : ""]. They apply the next time you hold someone up."))
+
+/mob/living/carbon/human/verb/gunpoint_triggers_verb()
+	set name = "Gunpoint Triggers"
+	set category = "IC"
+
+	choose_gunpoint_triggers()

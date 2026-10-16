@@ -93,6 +93,7 @@
 	. = ..()
 	if(src == user)
 		.["Check injuries"] = list("radial_examine2", CALLBACK(src, PROC_REF(check_for_injuries)))
+		.["Gunpoint triggers"] = list("radial_use", CALLBACK(src, PROC_REF(choose_gunpoint_triggers)))
 	else if(ishuman(user) && stat != DEAD)
 		var/mob/living/carbon/human/shooter = user
 		var/datum/component/gunpoint/aim = shooter.GetComponent(/datum/component/gunpoint)

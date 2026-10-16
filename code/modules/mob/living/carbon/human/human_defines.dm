@@ -74,6 +74,7 @@
 	var/sprint_streak = 0
 	var/sprint_dir = 0
 	var/last_damage_overlay_key
+	var/gunpoint_triggers = GUNPOINT_TRIGGER_MOVE
 	var/thirst_state = THIRST_QUENCHED
 	var/obj/effect/sprint_dust/sprint_dust
 	var/obj/item/r_store = null
