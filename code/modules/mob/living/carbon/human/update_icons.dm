@@ -92,9 +92,7 @@ There are several things that need to be remembered:
 		overlays_standing[cache_index] = null
 
 /mob/living/carbon/human/UpdateDamageIcon()
-	for(var/obj/limb/O in limbs)
-		if(!(O.status & LIMB_DESTROYED))
-			O.update_icon()
+	update_damage_overlays()
 
 /mob/proc/AddSleepingIcon()
 	return

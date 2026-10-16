@@ -407,7 +407,7 @@
 	src.update_damages()
 	owner.updatehealth()
 
-	update_icon()
+	owner.update_damage_overlays()
 
 /*
 This function completely restores a damaged organ to perfect condition.
