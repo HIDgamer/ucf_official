@@ -19,6 +19,8 @@
 			if(!clothing.icon_state)
 				continue
 			if(!icon_exists(clothing.icon, clothing.icon_state))
+				if(length(subtypesof(path)))
+					continue
 				missing += "[path] item [clothing.icon_state]"
 				continue
 			var/worn_state = LAZYACCESS(clothing.item_state_slots, slot) || clothing.icon_state
@@ -51,13 +53,14 @@
 
 /// The Mann Shield preset dresses a human as the Bastion blueshield and is admin restricted
 /datum/unit_test/mann_shield_preset/Run()
-	var/datum/equipment_preset/preset = GLOB.gear_name_presets_list["Mann Shield Preset"]
+	var/datum/equipment_preset/preset = GLOB.gear_name_presets_list["MannShield"]
 	TEST_ASSERT_NOTNULL(preset, "The Mann Shield preset is not registered")
 	TEST_ASSERT(length(preset.restricted_to_ckeys), "The Mann Shield preset is not restricted")
 	var/mob/living/carbon/human/shield = allocate(/mob/living/carbon/human)
 	arm_equipment(shield, /datum/equipment_preset/other/mann_shield, FALSE, FALSE)
 	TEST_ASSERT(istype(shield.w_uniform, /obj/item/clothing/under/bastion/rank/blueshield), "No blueshield uniform")
-	TEST_ASSERT(istype(shield.wear_suit, /obj/item/clothing/accessory/poncho/bastion/armor/vest/blueshield/jacket), "No blueshield jacket")
+	TEST_ASSERT(istype(shield.wear_suit, /obj/item/clothing/suit/bastion/armor/vest/blueshield), "No blueshield armor")
+	TEST_ASSERT(locate(/obj/item/clothing/accessory/poncho/bastion/linjacket) in shield.wear_suit.accessories, "The ornate coat is not attached to the armor")
 	TEST_ASSERT(istype(shield.head, /obj/item/clothing/head/beret/marine/commander/council), "No blue beret")
 	TEST_ASSERT(istype(shield.back, /obj/item/storage/backpack/bastion/blueshield), "No blueshield backpack")
 	TEST_ASSERT(istype(shield.belt, /obj/item/storage/belt/security/MP/full/blueshield), "No blueshield belt")

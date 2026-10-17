@@ -1796,6 +1796,7 @@
 #include "code\modules\clothing\bastion\gloves.dm"
 #include "code\modules\clothing\bastion\head.dm"
 #include "code\modules\clothing\bastion\mask.dm"
+#include "code\modules\clothing\bastion\neck.dm"
 #include "code\modules\clothing\bastion\shoes.dm"
 #include "code\modules\clothing\bastion\suits.dm"
 #include "code\modules\clothing\bastion\under.dm"

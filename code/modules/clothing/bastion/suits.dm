@@ -271,6 +271,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST
 	flags_cold_protection = BODY_FLAG_CHEST
 	flags_heat_protection = BODY_FLAG_CHEST
+	valid_accessory_slots = list(ACCESSORY_SLOT_PONCHO)
 
 /obj/item/clothing/accessory/poncho/bastion/armor/vest/blueshield/jacket
 	name = "blueshield's jacket"
