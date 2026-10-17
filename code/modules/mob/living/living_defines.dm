@@ -142,3 +142,6 @@
 	/// flipped icon_states for weed_food (needs to be the same length as weed_food_states)
 	var/list/weed_food_states_flipped = list("human_1_f","human_2_f","human_3_f","human_4_f","human_5_f")
 
+
+	///for water_overlays
+	var/datum/water_overlay_config/water_config = /datum/water_overlay_config

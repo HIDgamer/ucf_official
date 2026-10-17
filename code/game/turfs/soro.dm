@@ -82,11 +82,15 @@
 	icon_state = "beach"
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
+	water_type = /turf/open/gm/river/soro
+	turf_flags = TURF_WATER
 
 /turf/open/gm/coast/dirt/north
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/coast/dirt/south
 	dir = 1
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/dirt/west
 	dir = 4
@@ -104,17 +108,21 @@
 
 /turf/open/gm/coast/dirt/beachcorner/south_east
 	dir = 4
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/dirt/beachcorner/south_west
 	dir = 8
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/dirt/beachcorner2
 	icon_state = "beachcorner2"
 
 /turf/open/gm/coast/dirt/beachcorner2/north_west
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/coast/dirt/beachcorner2/north_east
 	dir = 1
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/coast/dirt/beachcorner2/south_west
 	dir = 4
@@ -146,3 +154,6 @@
 
 /turf/open/gm/river/soro
 	icon = 'icons/turf/floors/ground_map_dirt.dmi'
+	depth = WATER_DEPTH_SHALLOW
+	water_type = /turf/open/gm/river/soro
+	turf_flags = TURF_WATER

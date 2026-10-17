@@ -101,3 +101,6 @@
 
 /// From /mob/living/carbon/human/proc/check_hive_xeno_count() when humans become visible on xeno tacmap during hijack: ()
 #define COMSIG_XENO_REVEAL_TACMAP "xeno_reveal_tacmap"
+
+///from /datum/action/xeno_action/activable/pounce/use_ability()
+#define COMSIG_XENO_POUNCE_STARTED "xeno_pounce_start"

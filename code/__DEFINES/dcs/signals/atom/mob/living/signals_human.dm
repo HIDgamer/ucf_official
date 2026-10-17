@@ -91,3 +91,6 @@
 
 /// From /mob/living/carbon/human/hud_set_holocard()
 #define COMSIG_HUMAN_TRIAGE_CARD_UPDATED "human_triage_card_updated"
+
+//from /mob/living/carbon/human/proc/handle_haul()
+#define COMSIG_HUMAN_HAULED "human_hauled"

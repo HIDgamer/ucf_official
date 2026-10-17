@@ -216,6 +216,9 @@
 
 	var/next_haul_resist = 0
 
+	// water overlays config
+	water_config = /datum/water_overlay_config/human
+
 /client/var/cached_human_playtime
 
 /client/proc/get_total_human_playtime(skip_cache = FALSE)
