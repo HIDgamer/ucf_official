@@ -87,6 +87,7 @@
 #include "..\modules\unit_tests\bastion_food.dm"
 #include "..\modules\unit_tests\xeno_action_icons.dm"
 #include "..\modules\unit_tests\check_runtimes.dm"
+#include "..\modules\unit_tests\clown_waddle.dm"
 #include "..\modules\unit_tests\create_and_destroy.dm"
 #include "..\modules\unit_tests\duplicate_sprite_accessories.dm"
 #include "..\modules\unit_tests\emote_panels.dm"

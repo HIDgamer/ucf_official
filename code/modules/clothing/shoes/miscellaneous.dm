@@ -74,7 +74,30 @@
 	item_state = "clown_shoes"
 	slowdown = SHOES_SLOWDOWN+1
 	black_market_value = 25
-	var/footstep = 1 //used for squeeks whilst walking
+	var/enabled_waddle = TRUE
+
+/obj/item/clothing/shoes/clown_shoes/equipped(mob/user, slot, silent)
+	. = ..()
+	if(slot != WEAR_FEET || !enabled_waddle)
+		return
+	user.AddElement(/datum/element/waddling)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(honk_step), override = TRUE)
+
+/obj/item/clothing/shoes/clown_shoes/unequipped(mob/user, slot)
+	. = ..()
+	if(slot != WEAR_FEET || !enabled_waddle)
+		return
+	user.RemoveElement(/datum/element/waddling)
+	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
+
+/obj/item/clothing/shoes/clown_shoes/proc/honk_step(mob/living/source)
+	SIGNAL_HANDLER
+	if(source.buckled || source.throwing || source.is_ventcrawling || source.stat == DEAD || (source.life_steps_total % 2))
+		return
+	var/turf/step_turf = get_turf(source)
+	if(!istype(step_turf, /turf/open))
+		return
+	playsound(step_turf, "clownstep", 10, FALSE, 4, VOLUME_FOOTSTEPS, falloff = 4)
 
 /obj/item/clothing/shoes/jackboots
 	name = "jackboots"
