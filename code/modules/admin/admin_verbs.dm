@@ -399,7 +399,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	set name = "OOC Text Color - Self"
 	if(!admin_holder && !donator)
 		return
-	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color") as color|null
+	var/new_ooccolor = tgui_color_picker(src, "Please select your OOC color.", "OOC color")
 	if(new_ooccolor)
 		prefs.ooccolor = new_ooccolor
 		prefs.save_preferences()
@@ -495,19 +495,19 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	switch(alert("Are you sure you wish to edit this mob's appearance?",,"Yes","No"))
 		if("No")
 			return
-	var/new_facial = input("Please select facial hair color.", "Character Generation") as color
+	var/new_facial = tgui_color_picker(usr, "Please select facial hair color.", "Character Generation")
 	if(new_facial)
 		M.r_facial = hex2num(copytext(new_facial, 2, 4))
 		M.g_facial = hex2num(copytext(new_facial, 4, 6))
 		M.b_facial = hex2num(copytext(new_facial, 6, 8))
 
-	var/new_hair = input("Please select hair color.", "Character Generation") as color
-	if(new_facial)
+	var/new_hair = tgui_color_picker(usr, "Please select hair color.", "Character Generation")
+	if(new_hair)
 		M.r_hair = hex2num(copytext(new_hair, 2, 4))
 		M.g_hair = hex2num(copytext(new_hair, 4, 6))
 		M.b_hair = hex2num(copytext(new_hair, 6, 8))
 
-	var/new_eyes = input("Please select eye color.", "Character Generation") as color
+	var/new_eyes = tgui_color_picker(usr, "Please select eye color.", "Character Generation")
 	if(new_eyes)
 		M.r_eyes = hex2num(copytext(new_eyes, 2, 4))
 		M.g_eyes = hex2num(copytext(new_eyes, 4, 6))

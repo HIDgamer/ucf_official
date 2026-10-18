@@ -285,11 +285,7 @@ GLOBAL_DATUM_INIT(clan_menu, /datum/clan_menu, new)
 				if(!C.has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY))
 					return TRUE
 
-				// No tgui-native color picker exists in this codebase (only text/number/list inputs) —
-				// keeping the native color-picker dialog here is a deliberate exception, not a missed
-				// conversion; a text-entry hex-code substitute would be a worse experience for this
-				// specific widget type.
-				var/color = input(user, "Input a new color", "Set Color", target_clan.color) as color|null
+				var/color = tgui_color_picker(user, "Input a new color", "Set Color", target_clan.color)
 
 				if(!color)
 					return TRUE

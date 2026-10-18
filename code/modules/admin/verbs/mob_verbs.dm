@@ -198,7 +198,7 @@
 			if(!message)
 				return
 
-			var/new_color = input(src, "Input your message color:", "Color Selector") as color|null
+			var/new_color = tgui_color_picker(src, "Input your message color:", "Color Selector")
 			if(!new_color)
 				return
 

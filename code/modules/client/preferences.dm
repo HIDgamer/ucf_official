@@ -1405,7 +1405,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 						return
 					predator_cape_type = options[new_cape]
 				if("pred_cape_color")
-					var/new_cape_color = input(user, "Choose your cape color:", "Cape Color", predator_cape_color) as color|null
+					var/new_cape_color = tgui_color_picker(user, "Choose your cape color:", "Cape Color", predator_cape_color)
 					if(!new_cape_color)
 						return
 					predator_cape_color = new_cape_color
@@ -1591,7 +1591,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				if("hair")
 					if(species == "Human")
-						var/new_hair = input(user, "Choose your character's hair color:", "Character Preference", rgb(r_hair, g_hair, b_hair)) as color|null
+						var/new_hair = tgui_color_picker(user, "Choose your character's hair color:", "Character Preference", rgb(r_hair, g_hair, b_hair))
 						if(new_hair)
 							r_hair = hex2num(copytext(new_hair, 2, 4))
 							g_hair = hex2num(copytext(new_hair, 4, 6))
@@ -1615,7 +1615,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				if("grad")
 					if(species == "Human")
-						var/new_hair_grad = input(user, "Choose your character's hair gradient color:", "Character Preference", rgb(r_gradient, g_gradient, b_gradient)) as color|null
+						var/new_hair_grad = tgui_color_picker(user, "Choose your character's hair gradient color:", "Character Preference", rgb(r_gradient, g_gradient, b_gradient))
 						if(new_hair_grad)
 							r_gradient = hex2num(copytext(new_hair_grad, 2, 4))
 							g_gradient = hex2num(copytext(new_hair_grad, 4, 6))
@@ -1686,7 +1686,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 						preview_voice(user)
 
 				if("facial")
-					var/new_facial = input(user, "Choose your character's facial-hair color:", "Character Preference", rgb(r_facial, g_facial, b_facial)) as color|null
+					var/new_facial = tgui_color_picker(user, "Choose your character's facial-hair color:", "Character Preference", rgb(r_facial, g_facial, b_facial))
 					if(new_facial)
 						r_facial = hex2num(copytext(new_facial, 2, 4))
 						g_facial = hex2num(copytext(new_facial, 4, 6))
@@ -1733,7 +1733,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					ShowChoices(user)
 
 				if("eyes")
-					var/new_eyes = input(user, "Choose your character's eye color:", "Character Preference", rgb(r_eyes, g_eyes, b_eyes)) as color|null
+					var/new_eyes = tgui_color_picker(user, "Choose your character's eye color:", "Character Preference", rgb(r_eyes, g_eyes, b_eyes))
 					if(new_eyes)
 						r_eyes = hex2num(copytext(new_eyes, 2, 4))
 						g_eyes = hex2num(copytext(new_eyes, 4, 6))
@@ -1741,7 +1741,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 
 				if("ooccolor")
-					var/new_ooccolor = input(user, "Choose your OOC color:", "Game Preference", ooccolor) as color|null
+					var/new_ooccolor = tgui_color_picker(user, "Choose your OOC color:", "Game Preference", ooccolor)
 					if(new_ooccolor)
 						ooccolor = new_ooccolor
 
@@ -1905,7 +1905,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 						UI_style = ui_style_choice
 
 				if("UIcolor")
-					var/UI_style_color_new = input(user, "Choose your UI color, dark colors are not recommended!", UI_style_color) as color|null
+					var/UI_style_color_new = tgui_color_picker(user, "Choose your UI color, dark colors are not recommended!", "UI Color", UI_style_color)
 					if(UI_style_color_new)
 						UI_style_color = UI_style_color_new
 

@@ -1670,7 +1670,7 @@
 			OBShell.fire_color = null
 			if(OBShell.fire_type == "custom")
 				OBShell.fire_type = "dynamic"
-				OBShell.fire_color = input(src, "Please select Fire color.", "Fire color") as color|null
+				OBShell.fire_color = tgui_color_picker(src, "Please select Fire color.", "Fire color")
 				if(isnull(OBShell.fire_color))
 					return
 			statsmessage = "Custom Incendiary OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Fire Distance: [OBShell.distance], Fire Duration: [OBShell.fire_level], Fire Strength: [OBShell.burn_level]."

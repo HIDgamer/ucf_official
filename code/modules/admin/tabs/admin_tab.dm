@@ -306,7 +306,7 @@
 	var/message = input(src, "Input your custom admin alert text:", "Message") as text|null
 	if(!message)
 		return
-	var/color = input(src, "Input your message color:", "Color Selector") as color|null
+	var/color = tgui_color_picker(src, "Input your message color:", "Color Selector")
 	if(!color)
 		return
 

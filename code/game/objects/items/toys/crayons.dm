@@ -119,8 +119,8 @@
 
 /obj/item/toy/crayon/rainbow/attack_self(mob/living/user)
 	..()
-	crayon_color = input(user, "Please select the main color.", "Crayon color") as color
-	shade_color = input(user, "Please select the shade color.", "Crayon color") as color
+	crayon_color = tgui_color_picker(user, "Please select the main color.", "Crayon color", crayon_color) || crayon_color
+	shade_color = tgui_color_picker(user, "Please select the shade color.", "Crayon color", shade_color) || shade_color
 
 /obj/item/toy/crayon/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
