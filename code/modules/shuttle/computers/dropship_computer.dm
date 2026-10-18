@@ -455,6 +455,7 @@ GLOBAL_LIST_EMPTY(dropship_flight_consoles)
 	var/obj/docking_port/stationary/marine_dropship/airlock/inner/airlock = get_linked_airlock()
 	.["airlock_data"] = null
 	if(airlock)
+		.["can_fly_by"] = FALSE
 		.["airlock_data"] = list(
 			"processing" = airlock.processing,
 			"playing_alarm" = airlock.playing_airlock_alarm,
@@ -471,7 +472,7 @@ GLOBAL_LIST_EMPTY(dropship_flight_consoles)
 			list(
 				"id" = DROPSHIP_FLYBY_ID,
 				"name" = "Flyby",
-				"available" = TRUE,
+				"available" = !airlock,
 				"error" = FALSE
 			)
 		)
@@ -491,6 +492,8 @@ GLOBAL_LIST_EMPTY(dropship_flight_consoles)
 			if(outer_dock.linked_inner?.get_docked())
 				bay_occupied = TRUE
 		var/can_dock = shuttle?.canDock(dock)
+		if(airlock && can_dock == SHUTTLE_CAN_DOCK)
+			can_dock = SHUTTLE_AIRLOCK_CEREMONY_REQUIRED
 		var/list/dockinfo = list(
 			"id" = dock.id,
 			"name" = dock.name,
@@ -530,6 +533,9 @@ GLOBAL_LIST_EMPTY(dropship_flight_consoles)
 				return FALSE
 			if(shuttle.mode != SHUTTLE_IDLE && (shuttle.mode != SHUTTLE_CALL && !shuttle.destination))
 				to_chat(usr, SPAN_WARNING("You can't move to a new destination right now."))
+				return TRUE
+			if(get_linked_airlock())
+				to_chat(user, SPAN_WARNING("The dropship is held in a hangar airlock. Run the airlock sequence and disengage the clamps to launch it."))
 				return TRUE
 
 			var/is_optimised = FALSE
