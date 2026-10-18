@@ -10,6 +10,7 @@
 	var/list/debris
 	var/unslashable = FALSE
 	var/wrenchable = FALSE
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	health = 100
 	anchored = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM

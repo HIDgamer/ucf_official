@@ -188,8 +188,8 @@
 	if(isnull(preview_dummy))
 		preview_dummy = new()
 
-	preview_dummy.blocks_emissive = FALSE
-	preview_dummy.update_emissive_block()
+	preview_dummy.blocks_emissive = EMISSIVE_BLOCK_NONE
+	preview_dummy.refresh_emissive_block()
 
 	clear_equipment()
 	if(refresh_limb_status)
@@ -197,6 +197,8 @@
 			L.status = LIMB_ORGANIC
 	preview_dummy.set_species()
 	copy_appearance_to(preview_dummy)
+	for(var/obj/limb/limb as anything in preview_dummy.limbs)
+		limb.blocks_emissive = EMISSIVE_BLOCK_NONE
 	preview_dummy.update_body()
 	preview_dummy.update_hair()
 	for (var/datum/character_trait/character_trait as anything in preview_dummy.traits)
