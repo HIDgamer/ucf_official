@@ -21,12 +21,12 @@ if ! { [ -x "$has_python" ] && [ -x "$has_pip" ] && [ -x "$has_git" ];  }; then
 fi
 
 echo "Installing pip dependencies..."
-pip3 install PyYaml beautifulsoup4
+pip3 install PyYaml beautifulsoup4 --break-system-packages
 
 cd $1
 
 echo "Running changelog script..."
-python3 tools/ss13_genchangelog.py html/changelogs
+python3 .github/ss13_genchangelog.py html/changelogs
 
 echo "Committing changes..."
 git add html

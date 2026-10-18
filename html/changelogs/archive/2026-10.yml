@@ -1,0 +1,8 @@
+2026-10-18:
+  Chrismmar:
+  - rscadd: Added something
+  Zonespace27:
+  - rscadd: Valkyries can now see how much damage they have mitigated through use
+      of their Tantrum ability.
+  hry-gh:
+  - ui: unban panel is now tgui, less laggy on the whole entire server

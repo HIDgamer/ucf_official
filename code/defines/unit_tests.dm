@@ -84,6 +84,7 @@
 #include "..\modules\unit_tests\areas_unpowered.dm"
 #include "..\modules\unit_tests\autowiki.dm"
 #include "..\modules\unit_tests\bastion_clothing.dm"
+#include "..\modules\unit_tests\bastion_food.dm"
 #include "..\modules\unit_tests\xeno_action_icons.dm"
 #include "..\modules\unit_tests\check_runtimes.dm"
 #include "..\modules\unit_tests\create_and_destroy.dm"
