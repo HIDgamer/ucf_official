@@ -254,7 +254,8 @@
 	if(!brain.shots_fired)
 		problems += "[gun_type]: never fired, intent [brain.intent], state [state], target [brain.get_target()], blocked [brain.gun_blocked_until]"
 	else if(damage <= 0)
-		problems += "[gun_type]: fired [brain.shots_fired] shots but did no damage, state [state], intent [brain.intent], reload phase [brain.reload_phase], last decisions [brain.decision_log.Copy(max(1, length(brain.decision_log) - 8)).Join(" | ")]"
+		var/list/recent_decisions = brain.decision_log.Copy(max(1, length(brain.decision_log) - 8))
+		problems += "[gun_type]: fired [brain.shots_fired] shots but did no damage, state [state], intent [brain.intent], reload phase [brain.reload_phase], last decisions [recent_decisions.Join(" | ")]"
 	if(brain.shots_fired > 0 && state == HAI_WEAPON_EMPTY && brain.has_spare_ammo(gun) && brain.reload_phase == HAI_RELOAD_NONE)
 		problems += "[gun_type]: sat empty beside spare ammunition"
 	detach_human_ai(shooter)

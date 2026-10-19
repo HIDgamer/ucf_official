@@ -4,6 +4,8 @@
  * @license MIT
  */
 
+import { describe, expect, test } from 'bun:test';
+
 import { classes } from './react';
 
 describe('classes', () => {

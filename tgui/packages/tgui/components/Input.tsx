@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -8,9 +7,14 @@
 import { KEY } from 'common/keys';
 import { classes } from 'common/react';
 import { debounce } from 'common/timer';
-import { KeyboardEvent, SyntheticEvent, useEffect, useRef } from 'react';
+import {
+  type KeyboardEvent,
+  type SyntheticEvent,
+  useEffect,
+  useRef,
+} from 'react';
 
-import { Box, BoxProps } from './Box';
+import { Box, type BoxProps } from './Box';
 
 type ConditionalProps =
   | {

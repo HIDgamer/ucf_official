@@ -89,7 +89,7 @@
 	TEST_ASSERT(!brain.express(HAI_EXPR_FRAG), "An unconscious body spoke")
 	body.set_stat(CONSCIOUS)
 	var/mob/living/carbon/human/dead_man = allocate(/mob/living/carbon/human, run_loc_floor_bottom_left)
-	dead_man.death()
+	dead_man.death(create_cause_data("unit test"))
 	var/datum/human_ai_brain/ghost_brain = new(dead_man)
 	TEST_ASSERT(!ghost_brain.express(HAI_EXPR_FRAG), "A dead body spoke")
 	qdel(ghost_brain)
@@ -227,7 +227,7 @@
 	reset()
 	var/mob/living/carbon/human/friend = make_soldier(locate(start.x + 1, start.y + 1, start.z), FACTION_MARINE, FALSE, "friendly")
 	var/datum/human_ai_brain/friends_brain = friend.ai_brain
-	friend.death()
+	friend.death(create_cause_data("unit test"))
 	for(var/attempt in 1 to 20)
 		if(said(HAI_EXPR_MAN_DOWN))
 			break

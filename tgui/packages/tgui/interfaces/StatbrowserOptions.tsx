@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 
 import { useBackend } from '../backend';
 import { Flex, NumberInput, Section } from '../components';
@@ -51,7 +51,10 @@ const Options = (props: { readonly children: ReactNode }) => {
   );
 };
 
-const Option = (props: { readonly category: ReactNode; readonly input: ReactNode }) => {
+const Option = (props: {
+  readonly category: ReactNode;
+  readonly input: ReactNode;
+}) => {
   const { category, input } = props;
 
   return (

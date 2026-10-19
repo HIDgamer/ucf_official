@@ -159,7 +159,8 @@ GLOBAL_LIST_EMPTY(ice_cream_flavours)
 			selected_flavour = new_flavour
 			visible_message(SPAN_NOTICE("[user] sets \the [src] to [selected_flavour]."))
 	else if(istext(choice))
-		make(user, choice, get_ice_cream_flavours()[choice].ingredients)
+		var/datum/ice_cream_flavour/chosen_flavour = get_ice_cream_flavours()[choice]
+		make(user, choice, chosen_flavour.ingredients)
 	else if(ispath(choice))
 		if(product_stock[choice] <= 0)
 			to_chat(user, SPAN_WARNING("There are none left."))

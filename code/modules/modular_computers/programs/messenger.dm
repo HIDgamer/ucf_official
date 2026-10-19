@@ -201,6 +201,9 @@ GLOBAL_LIST_EMPTY(pda_messengers)
 	return data
 
 /datum/computer_file/program/messenger/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
 	var/mob/user = ui.user
 	switch(action)
 		if("PDA_toggleAlerts")

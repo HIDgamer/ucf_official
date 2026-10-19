@@ -370,6 +370,10 @@
 	name = "USCM patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
 	icon_state = "uscmpatch"
+	item_state_slots = list(WEAR_AS_GARB = "uscmpatch_right_shoulder")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/patches_flairs.dmi',
+	)
 	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
 /obj/item/clothing/accessory/patch/falcon
@@ -787,23 +791,23 @@
 /obj/item/storage/internal/accessory/tool_webbing/equipped
 
 /obj/item/storage/internal/accessory/tool_webbing/small
-  storage_slots = 3
-  can_hold = list(
-    /obj/item/tool/screwdriver,
-    /obj/item/tool/wrench,
-    /obj/item/tool/weldingtool,
-  )
+	storage_slots = 3
+	can_hold = list(
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/wrench,
+		/obj/item/tool/weldingtool,
+	)
 
 /obj/item/storage/internal/accessory/tool_webbing/small/equipped
 
 /obj/item/clothing/accessory/storage/tool_webbing/small
-  hold = /obj/item/storage/internal/accessory/tool_webbing/small
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small
 
 /obj/item/clothing/accessory/storage/tool_webbing/small/equipped
-  hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped
 
 /obj/item/clothing/accessory/storage/tool_webbing/equipped
-  hold = /obj/item/storage/internal/accessory/tool_webbing/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/equipped
 
 /obj/item/storage/internal/accessory/tool_webbing/equipped/fill_preset_inventory()
 	new /obj/item/tool/screwdriver(src)
@@ -972,6 +976,7 @@
 /obj/item/clothing/accessory/storage/knifeharness/duelling
 	name = "decorated harness"
 	desc = "A heavily decorated harness of sinew and leather with two knife-loops."
+	icon = 'icons/obj/items/clothing/ties.dmi'
 	icon_state = "unathiharness2"
 	hold = /obj/item/storage/internal/accessory/knifeharness/duelling
 

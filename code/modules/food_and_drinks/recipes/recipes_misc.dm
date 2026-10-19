@@ -7,17 +7,18 @@
 	name = "Candied apple"
 	reqs = list(
 		"sugar" = 5,
-		/obj/item/food/grown/apple = 1
+		/obj/item/food/grown/apple = 1,
 	)
 	result = /obj/item/food/candiedapple
 	category = CAT_MISCFOOD
 
 /datum/crafting_recipe/food/spiderlollipop
 	name = "Spider Lollipop"
-	reqs = list(/obj/item/stack/rods = 1,
+	reqs = list(
+		/obj/item/stack/rods = 1,
 		"sugar" = 5,
 		"water" = 5,
-		/obj/item/food/spiderling = 1
+		/obj/item/food/spiderling = 1,
 	)
 	result = /obj/item/food/spiderlollipop
 	category = CAT_MISCFOOD
@@ -44,7 +45,7 @@
 	name = "Cheesy fries"
 	reqs = list(
 		/obj/item/food/fries = 1,
-		/obj/item/food/cheese/wedge = 1
+		/obj/item/food/cheese/wedge = 1,
 	)
 	result = /obj/item/food/cheesyfries
 	category = CAT_MISCFOOD
@@ -52,8 +53,9 @@
 /datum/crafting_recipe/food/beans
 	name = "Beans"
 	time = 40
-	reqs = list("ketchup" = 5,
-		/obj/item/food/grown/soybeans = 2
+	reqs = list(
+		"ketchup" = 5,
+		/obj/item/food/grown/soybeans = 2,
 	)
 	result = /obj/item/food/canned/beans
 	category = CAT_MISCFOOD
@@ -62,7 +64,7 @@
 	name ="Eggplant parmigiana"
 	reqs = list(
 		/obj/item/food/cheese/wedge = 2,
-		/obj/item/food/grown/eggplant = 1
+		/obj/item/food/grown/eggplant = 1,
 	)
 	result = /obj/item/food/eggplantparm
 	category = CAT_MISCFOOD
@@ -91,7 +93,7 @@
 		/obj/item/trash/snack_bowl = 1,
 		"milk" = 5,
 		"sugar" = 5,
-		/obj/item/food/boiledrice = 1
+		/obj/item/food/boiledrice = 1,
 	)
 	result = /obj/item/food/salad/ricepudding
 	category = CAT_MISCFOOD
@@ -103,7 +105,7 @@
 		/obj/item/food/cheese/wedge = 1,
 		"wine" = 5,
 		/obj/item/food/boiledrice = 1,
-		/obj/item/food/grown/mushroom/chanterelle = 1
+		/obj/item/food/grown/mushroom/chanterelle = 1,
 	)
 	result = /obj/item/food/salad/risotto
 	category = CAT_MISCFOOD
@@ -114,7 +116,7 @@
 		/obj/item/food/doughslice = 1,
 		"cream" = 5,
 		/obj/item/food/cheese/wedge = 1,
-		/obj/item/food/meat/slab/rawcrab = 1
+		/obj/item/food/meat/slab/rawcrab = 1,
 	)
 	result = /obj/item/food/crab_rangoon
 	category = CAT_MISCFOOD
@@ -127,7 +129,7 @@
 		/obj/item/food/grown/herbs = 2,
 		/obj/item/food/grown/garlic = 1,
 		"cornoil" = 5,
-		/obj/item/food/canned/pine_nuts = 1
+		/obj/item/food/canned/pine_nuts = 1,
 	)
 	result = /obj/item/food/pesto
 	category = CAT_MISCFOOD
@@ -148,7 +150,7 @@
 	reqs = list(
 		"milk" = 10,
 		"flour" = 5,
-		/obj/item/food/butterslice = 1
+		/obj/item/food/butterslice = 1,
 	)
 	result = /obj/item/food/bechamel_sauce
 	category = CAT_MISCFOOD

@@ -149,7 +149,7 @@ GLOBAL_VAR_INIT(npc_roster_sort_key, "name")
 	return data
 
 /datum/npc_command_console/proc/roster_data()
-	var/list/rows = get_view()
+	var/list/list/rows = get_view()
 	var/pages = max(1, -round(-length(rows) / HAI_COMMAND_PAGE_SIZE))
 	page = clamp(page, 1, pages)
 	var/list/shown = list()

@@ -1,5 +1,5 @@
 import { addZeros } from 'common/math';
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 
 import { useBackend } from '../backend';
 import {
@@ -210,7 +210,7 @@ const IncidentDetails = (props) => {
           value={progress}
           p="1.25rem"
           color="average"
-          style={{ border: 'none', margin: 0 }}
+          style={{ border: 'none', margin: '0' }}
         >
           <Flex justify="center" fontSize="2rem" bold>
             {time_left_pretty}

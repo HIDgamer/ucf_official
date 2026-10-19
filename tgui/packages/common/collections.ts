@@ -42,6 +42,16 @@ type MapFunction = {
     collection: Record<K, T>,
     iterateeFn: (value: T, index: K, collection: Record<K, T>) => U,
   ): U[];
+
+  <T, U>(
+    collection: T[] | null | undefined,
+    iterateeFn: (value: T, index: number, collection: T[]) => U,
+  ): U[] | null | undefined;
+
+  <T, U, K extends string | number>(
+    collection: Record<K, T> | null | undefined,
+    iterateeFn: (value: T, index: K, collection: Record<K, T>) => U,
+  ): U[] | null | undefined;
 };
 
 /**

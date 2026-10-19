@@ -1,6 +1,6 @@
 import { playClickBlip } from 'common/audio';
-import { BooleanLike } from 'common/react';
-import { useEffect, useState } from 'react';
+import { type BooleanLike } from 'common/react';
+import { type CSSProperties, useEffect, useState } from 'react';
 
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
@@ -57,7 +57,7 @@ const SPAWN_MODES_HUMAN: ModeOption[] = [
     value: 'ai',
     label: 'AI',
     icon: 'microchip',
-    desc: 'AI-piloted (moves, hunts and fights on its own, still ghost-joinable at any time).',
+    desc: 'AI-piloted - zombies only for now (moves, hunts and attacks on its own, still ghost-joinable at any time). No-op for a regular job spawn until human AI exists.',
   },
   {
     value: 'freed',
@@ -121,10 +121,7 @@ const searchInputStyle = (accent: string): React.CSSProperties => ({
   fontFamily: 'monospace',
 });
 
-const modePickerStyle = (
-  active: boolean,
-  accent: string,
-): Partial<CSSStyleDeclaration> => ({
+const modePickerStyle = (active: boolean, accent: string): CSSProperties => ({
   flex: '1',
   padding: '6px 4px',
   border: active ? `1px solid ${accent}` : '1px solid rgba(255,255,255,0.15)',
@@ -377,167 +374,167 @@ const HumanPanel = () => {
       </Stack.Item>
 
       {mode === 'spawn' && (
-      <>
-      <Stack.Item>
-        <Section title="Job / Equipment Preset">
-          <input
-            placeholder="Search presets…"
-            value={search}
-            onInput={(e) => setSearch(e.currentTarget.value)}
-            style={searchInputStyle(ACCENT)}
-          />
-          <Box
-            style={{
-              maxHeight: '220px',
-              overflowY: 'auto',
-              border: `1px solid ${ACCENT}44`,
-              borderRadius: '3px',
-            }}
-          >
-            {filtered.map((p) => (
-              <PickerRow
-                key={p}
-                label={p}
-                selected={selected === p}
-                accent={ACCENT}
-                onClick={() => selectPreset(p)}
+        <>
+          <Stack.Item>
+            <Section title="Job / Equipment Preset">
+              <input
+                placeholder="Search presets…"
+                value={search}
+                onInput={(e) => setSearch(e.currentTarget.value)}
+                style={searchInputStyle(ACCENT)}
               />
-            ))}
-            {filtered.length === 0 && (
               <Box
                 style={{
-                  padding: '1rem',
-                  textAlign: 'center',
-                  color: 'rgba(255,255,255,0.3)',
-                  fontStyle: 'italic',
+                  maxHeight: '220px',
+                  overflowY: 'auto',
+                  border: `1px solid ${ACCENT}44`,
+                  borderRadius: '3px',
                 }}
               >
-                No presets match
-              </Box>
-            )}
-          </Box>
-        </Section>
-      </Stack.Item>
-
-      <Stack.Item>
-        <Section title="Spawn Options">
-          <Stack>
-            <Stack.Item>
-              <Box
-                style={{
-                  fontSize: '0.75rem',
-                  color: 'rgba(255,255,255,0.5)',
-                  marginBottom: '3px',
-                }}
-              >
-                Count
-              </Box>
-              <NumberInput
-                value={count}
-                minValue={1}
-                maxValue={100}
-                step={1}
-                width="4rem"
-                onChange={(v) => setCount(v)}
-              />
-            </Stack.Item>
-            <Stack.Item>
-              <Box
-                style={{
-                  fontSize: '0.75rem',
-                  color: 'rgba(255,255,255,0.5)',
-                  marginBottom: '3px',
-                }}
-              >
-                Range
-              </Box>
-              <NumberInput
-                value={range}
-                minValue={0}
-                maxValue={10}
-                step={1}
-                width="4rem"
-                onChange={(v) => setRange(v)}
-              />
-            </Stack.Item>
-            <Stack.Item grow>
-              <Box style={{ marginBottom: '3px' }}>&nbsp;</Box>
-              <Button
-                fluid
-                icon="plus"
-                disabled={!selected}
-                onClick={addToQueue}
-              >
-                Add to Queue
-              </Button>
-            </Stack.Item>
-          </Stack>
-        </Section>
-      </Stack.Item>
-
-      {queue.length > 0 && (
-        <Stack.Item>
-          <Section title={`Queue (${totalQueued} total)`}>
-            <Box style={{ maxHeight: '120px', overflowY: 'auto' }}>
-              {queue.map((row, index) => (
-                <Box
-                  key={index}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '3px 6px',
-                    fontSize: '0.82rem',
-                    borderBottom: '1px solid rgba(255,255,255,0.06)',
-                  }}
-                >
-                  <Box>
-                    {row.count}× {row.job}
-                  </Box>
+                {filtered.map((p) => (
+                  <PickerRow
+                    key={p}
+                    label={p}
+                    selected={selected === p}
+                    accent={ACCENT}
+                    onClick={() => selectPreset(p)}
+                  />
+                ))}
+                {filtered.length === 0 && (
                   <Box
-                    as="button"
-                    onClick={() => removeFromQueue(index)}
                     style={{
-                      background: 'transparent',
-                      border: 'none',
-                      color: 'rgba(255,255,255,0.4)',
-                      cursor: 'pointer',
+                      padding: '1rem',
+                      textAlign: 'center',
+                      color: 'rgba(255,255,255,0.3)',
+                      fontStyle: 'italic',
                     }}
                   >
-                    <Icon name="times" />
+                    No presets match
                   </Box>
-                </Box>
-              ))}
-            </Box>
-          </Section>
-        </Stack.Item>
-      )}
-
-      <Stack.Item>
-        <Section title="Spawn As">
-          <Box style={{ display: 'flex', gap: '4px' }}>
-            {SPAWN_MODES_HUMAN.map((m) => (
-              <Box
-                key={m.value}
-                as="button"
-                onClick={() => setSpawnAs(m.value)}
-                style={modePickerStyle(spawnAs === m.value, ACCENT)}
-              >
-                <Icon
-                  name={m.icon}
-                  style={{
-                    display: 'block',
-                    margin: '0 auto 3px',
-                    fontSize: '1rem',
-                  }}
-                />
-                {m.label}
+                )}
               </Box>
-            ))}
-          </Box>
-        </Section>
-      </Stack.Item>
-      </>
+            </Section>
+          </Stack.Item>
+
+          <Stack.Item>
+            <Section title="Spawn Options">
+              <Stack>
+                <Stack.Item>
+                  <Box
+                    style={{
+                      fontSize: '0.75rem',
+                      color: 'rgba(255,255,255,0.5)',
+                      marginBottom: '3px',
+                    }}
+                  >
+                    Count
+                  </Box>
+                  <NumberInput
+                    value={count}
+                    minValue={1}
+                    maxValue={100}
+                    step={1}
+                    width="4rem"
+                    onChange={(v) => setCount(v)}
+                  />
+                </Stack.Item>
+                <Stack.Item>
+                  <Box
+                    style={{
+                      fontSize: '0.75rem',
+                      color: 'rgba(255,255,255,0.5)',
+                      marginBottom: '3px',
+                    }}
+                  >
+                    Range
+                  </Box>
+                  <NumberInput
+                    value={range}
+                    minValue={0}
+                    maxValue={10}
+                    step={1}
+                    width="4rem"
+                    onChange={(v) => setRange(v)}
+                  />
+                </Stack.Item>
+                <Stack.Item grow>
+                  <Box style={{ marginBottom: '3px' }}>&nbsp;</Box>
+                  <Button
+                    fluid
+                    icon="plus"
+                    disabled={!selected}
+                    onClick={addToQueue}
+                  >
+                    Add to Queue
+                  </Button>
+                </Stack.Item>
+              </Stack>
+            </Section>
+          </Stack.Item>
+
+          {queue.length > 0 && (
+            <Stack.Item>
+              <Section title={`Queue (${totalQueued} total)`}>
+                <Box style={{ maxHeight: '120px', overflowY: 'auto' }}>
+                  {queue.map((row, index) => (
+                    <Box
+                      key={index}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: '3px 6px',
+                        fontSize: '0.82rem',
+                        borderBottom: '1px solid rgba(255,255,255,0.06)',
+                      }}
+                    >
+                      <Box>
+                        {row.count}× {row.job}
+                      </Box>
+                      <Box
+                        as="button"
+                        onClick={() => removeFromQueue(index)}
+                        style={{
+                          background: 'transparent',
+                          border: 'none',
+                          color: 'rgba(255,255,255,0.4)',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <Icon name="times" />
+                      </Box>
+                    </Box>
+                  ))}
+                </Box>
+              </Section>
+            </Stack.Item>
+          )}
+
+          <Stack.Item>
+            <Section title="Spawn As">
+              <Box style={{ display: 'flex', gap: '4px' }}>
+                {SPAWN_MODES_HUMAN.map((m) => (
+                  <Box
+                    key={m.value}
+                    as="button"
+                    onClick={() => setSpawnAs(m.value)}
+                    style={modePickerStyle(spawnAs === m.value, ACCENT)}
+                  >
+                    <Icon
+                      name={m.icon}
+                      style={{
+                        display: 'block',
+                        margin: '0 auto 3px',
+                        fontSize: '1rem',
+                      }}
+                    />
+                    {m.label}
+                  </Box>
+                ))}
+              </Box>
+            </Section>
+          </Stack.Item>
+        </>
       )}
 
       {mode === 'infect' && (

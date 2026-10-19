@@ -1,7 +1,7 @@
 import { useBackend } from '../backend';
 import { Box, Button, LabeledList, Section, Stack, Table } from '../components';
 import { NtosWindow } from '../layouts';
-import { NTOSData } from '../layouts/NtosWindow';
+import { type NTOSData } from '../layouts/NtosWindow';
 
 export const NtosMain = (props) => {
   const { act, data } = useBackend<NTOSData>();

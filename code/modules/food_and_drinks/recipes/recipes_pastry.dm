@@ -8,7 +8,7 @@
 	name = "Donut"
 	reqs = list(
 		"sugar" = 5,
-		/obj/item/food/pastrybase = 1
+		/obj/item/food/pastrybase = 1,
 	)
 	result = /obj/item/food/donut/plain
 	category = CAT_PASTRY
@@ -19,7 +19,7 @@
 	reqs = list(
 		"frostoil" = 5,
 		"capsaicin" = 5,
-		/obj/item/food/pastrybase = 1
+		/obj/item/food/pastrybase = 1,
 	)
 	result = /obj/item/food/donut/chaos
 
@@ -28,7 +28,7 @@
 	name = "Meat donut"
 	reqs = list(
 		/obj/item/food/meat/rawcutlet = 1,
-		/obj/item/food/pastrybase = 1
+		/obj/item/food/pastrybase = 1,
 	)
 	result = /obj/item/food/donut/meat
 
@@ -36,7 +36,7 @@
 	name = "Jelly donut"
 	reqs = list(
 		"berryjuice" = 5,
-		/obj/item/food/pastrybase = 1
+		/obj/item/food/pastrybase = 1,
 	)
 	result = /obj/item/food/donut/jelly/plain
 
@@ -44,7 +44,7 @@
 	name = "Berry Donut"
 	reqs = list(
 		"berryjuice" = 5,
-		/obj/item/food/donut/plain = 1
+		/obj/item/food/donut/plain = 1,
 	)
 	result = /obj/item/food/donut/berry
 
@@ -52,7 +52,7 @@
 	name = "Apple Donut"
 	reqs = list(
 		"applejuice" = 5,
-		/obj/item/food/donut/plain = 1
+		/obj/item/food/donut/plain = 1,
 	)
 	result = /obj/item/food/donut/apple
 
@@ -60,7 +60,7 @@
 	name = "Caramel Donut"
 	reqs = list(
 		"sugar" = 5,
-		/obj/item/food/donut/plain = 1
+		/obj/item/food/donut/plain = 1,
 	)
 	result = /obj/item/food/donut/caramel
 
@@ -68,7 +68,7 @@
 	name = "Chocolate Donut"
 	reqs = list(
 		/obj/item/food/chocolatebar = 1,
-		/obj/item/food/donut/plain = 1
+		/obj/item/food/donut/plain = 1,
 	)
 	result = /obj/item/food/donut/choco
 
@@ -76,7 +76,7 @@
 	name = "Berry Jelly Donut"
 	reqs = list(
 		"berryjuice" = 5,
-		/obj/item/food/donut/jelly/plain = 1
+		/obj/item/food/donut/jelly/plain = 1,
 	)
 	result = /obj/item/food/donut/jelly/berry
 
@@ -84,7 +84,7 @@
 	name = "Apple Jelly Donut"
 	reqs = list(
 		"applejuice" = 5,
-		/obj/item/food/donut/jelly/plain = 1
+		/obj/item/food/donut/jelly/plain = 1,
 	)
 	result = /obj/item/food/donut/jelly/apple
 
@@ -92,7 +92,7 @@
 	name = "Caramel Jelly Donut"
 	reqs = list(
 		"sugar" = 5,
-		/obj/item/food/donut/jelly/plain = 1
+		/obj/item/food/donut/jelly/plain = 1,
 	)
 	result = /obj/item/food/donut/jelly/caramel
 
@@ -100,7 +100,7 @@
 	name = "Chocolate Jelly Donut"
 	reqs = list(
 		/obj/item/food/chocolatebar = 1,
-		/obj/item/food/donut/jelly/plain = 1
+		/obj/item/food/donut/jelly/plain = 1,
 	)
 	result = /obj/item/food/donut/jelly/choco
 
@@ -108,7 +108,7 @@
 	name = "Berry Slime Donut"
 	reqs = list(
 		"berryjuice" = 5,
-		/obj/item/food/donut/jelly/slimejelly/plain = 1
+		/obj/item/food/donut/jelly/slimejelly/plain = 1,
 	)
 	result = /obj/item/food/donut/jelly/slimejelly/berry
 
@@ -116,7 +116,7 @@
 	name = "Apple Slime Donut"
 	reqs = list(
 		"applejuice" = 5,
-		/obj/item/food/donut/jelly/slimejelly/plain = 1
+		/obj/item/food/donut/jelly/slimejelly/plain = 1,
 	)
 	result = /obj/item/food/donut/jelly/slimejelly/apple
 
@@ -124,7 +124,7 @@
 	name = "Caramel Slime Donut"
 	reqs = list(
 		"sugar" = 5,
-		/obj/item/food/donut/jelly/slimejelly/plain = 1
+		/obj/item/food/donut/jelly/slimejelly/plain = 1,
 	)
 	result = /obj/item/food/donut/jelly/slimejelly/caramel
 
@@ -132,7 +132,7 @@
 	name = "Chocolate Slime Donut"
 	reqs = list(
 		/obj/item/food/chocolatebar = 1,
-		/obj/item/food/donut/jelly/slimejelly/plain = 1
+		/obj/item/food/donut/jelly/slimejelly/plain = 1,
 	)
 	result = /obj/item/food/donut/jelly/slimejelly/choco
 
@@ -140,7 +140,7 @@
 	time = 15
 	name = "Waffles"
 	reqs = list(
-		/obj/item/food/pastrybase = 2
+		/obj/item/food/pastrybase = 2,
 	)
 	result = /obj/item/food/waffles
 	category = CAT_PASTRY
@@ -150,7 +150,7 @@
 	name = "Soylent viridians"
 	reqs = list(
 		/obj/item/food/pastrybase = 2,
-		/obj/item/food/grown/soybeans = 1
+		/obj/item/food/grown/soybeans = 1,
 	)
 	result = /obj/item/food/soylenviridians
 	category = CAT_PASTRY
@@ -159,7 +159,7 @@
 	name = "Soylent green"
 	reqs = list(
 		/obj/item/food/pastrybase = 2,
-		/obj/item/food/meat/slab/human = 2
+		/obj/item/food/meat/slab/human = 2,
 	)
 	result = /obj/item/food/soylentgreen
 	category = CAT_PASTRY
@@ -170,7 +170,7 @@
 	name = "Donk-pocket"
 	reqs = list(
 		/obj/item/food/pastrybase = 1,
-		/obj/item/food/meatball = 1
+		/obj/item/food/meatball = 1,
 	)
 	result = /obj/item/food/donkpocket
 	category = CAT_PASTRY
@@ -181,7 +181,7 @@
 	reqs = list(
 		/obj/item/food/pastrybase = 1,
 		/obj/item/food/meatball = 1,
-		/obj/item/food/grown/chili = 1
+		/obj/item/food/grown/chili = 1,
 	)
 	result = /obj/item/food/donkpocket/spicy
 	category = CAT_PASTRY
@@ -203,7 +203,7 @@
 	reqs = list(
 		/obj/item/food/pastrybase = 1,
 		/obj/item/food/meatball = 1,
-		/obj/item/food/grown/tomato = 1
+		/obj/item/food/grown/tomato = 1,
 	)
 	result = /obj/item/food/donkpocket/pizza
 	category = CAT_PASTRY
@@ -224,7 +224,7 @@
 	name = "Berry-pocket"
 	reqs = list(
 		/obj/item/food/pastrybase = 1,
-		/obj/item/food/grown/berries = 1
+		/obj/item/food/grown/berries = 1,
 	)
 	result = /obj/item/food/donkpocket/berry
 	category = CAT_PASTRY
@@ -236,7 +236,7 @@
 		/obj/item/food/pastrybase = 1,
 		/obj/item/food/boiledrice = 1,
 		/obj/item/food/grown/bell_pepper = 1,
-		/obj/item/food/tofu = 2
+		/obj/item/food/tofu = 2,
 	)
 	result = /obj/item/food/donkpocket/deluxe/vegan
 	category = CAT_PASTRY
@@ -248,7 +248,7 @@
 	name = "Muffin"
 	reqs = list(
 		"milk" = 5,
-		/obj/item/food/pastrybase = 1
+		/obj/item/food/pastrybase = 1,
 	)
 	result = /obj/item/food/muffin
 	category = CAT_PASTRY
@@ -258,7 +258,7 @@
 	reqs = list(
 		"milk" = 5,
 		/obj/item/food/pastrybase = 1,
-		/obj/item/food/grown/berries = 1
+		/obj/item/food/grown/berries = 1,
 	)
 	result = /obj/item/food/muffin/berry
 	category = CAT_PASTRY
@@ -271,7 +271,7 @@
 	reqs = list(
 		"egg" = 6,
 		/obj/item/food/cheese/wedge = 1,
-		/obj/item/food/bread/plain = 1
+		/obj/item/food/bread/plain = 1,
 	)
 	result = /obj/item/food/khachapuri
 	category = CAT_PASTRY
@@ -281,7 +281,7 @@
 	name = "Sugar cookie"
 	reqs = list(
 		"sugar" = 5,
-		/obj/item/food/pastrybase = 1
+		/obj/item/food/pastrybase = 1,
 	)
 	result = /obj/item/food/cookie/sugar
 	category = CAT_PASTRY
@@ -291,10 +291,10 @@
 	name = "Fortune cookie"
 	reqs = list(
 		/obj/item/food/pastrybase = 1,
-		/obj/item/paper = 1
+		/obj/item/paper = 1,
 	)
 	parts = list(
-		/obj/item/paper = 1
+		/obj/item/paper = 1,
 	)
 	result = /obj/item/food/fortunecookie
 	category = CAT_PASTRY
@@ -304,7 +304,7 @@
 	name = "Plumphelmet biscuit"
 	reqs = list(
 		/obj/item/food/pastrybase = 1,
-		/obj/item/food/grown/mushroom/plumphelmet = 1
+		/obj/item/food/grown/mushroom/plumphelmet = 1,
 	)
 	result = /obj/item/food/plumphelmetbiscuit
 	category = CAT_PASTRY
@@ -324,7 +324,7 @@
 	reqs = list(
 		"sodiumchloride" = 5,
 		/obj/item/food/pastrybase = 1,
-		/obj/item/food/chocolatebar = 1
+		/obj/item/food/chocolatebar = 1,
 	)
 	result = /obj/item/food/chococornet
 	category = CAT_PASTRY
@@ -333,7 +333,7 @@
 	name = "Oatmeal cookie"
 	reqs = list(
 		/obj/item/food/pastrybase = 1,
-		/obj/item/food/grown/oat = 1
+		/obj/item/food/grown/oat = 1,
 	)
 	result = /obj/item/food/cookie/oatmeal
 	category = CAT_PASTRY
@@ -343,7 +343,7 @@
 	reqs = list(
 		/obj/item/food/no_raisin = 1,
 		/obj/item/food/pastrybase = 1,
-		/obj/item/food/grown/oat = 1
+		/obj/item/food/grown/oat = 1,
 	)
 	result = /obj/item/food/cookie/raisin
 	category = CAT_PASTRY
@@ -352,7 +352,7 @@
 	name = "Cherry cupcake"
 	reqs = list(
 		/obj/item/food/pastrybase = 1,
-		/obj/item/food/grown/cherries = 1
+		/obj/item/food/grown/cherries = 1,
 	)
 	result = /obj/item/food/cherrycupcake
 	category = CAT_PASTRY
@@ -361,7 +361,7 @@
 	name = "Blue cherry cupcake"
 	reqs = list(
 		/obj/item/food/pastrybase = 1,
-		/obj/item/food/grown/bluecherries = 1
+		/obj/item/food/grown/bluecherries = 1,
 	)
 	result = /obj/item/food/cherrycupcake/blue
 	category = CAT_PASTRY
@@ -389,7 +389,7 @@
 	name = "Peanut butter cookie"
 	reqs = list(
 		"peanut_butter" = 5,
-		/obj/item/food/pastrybase = 1
+		/obj/item/food/pastrybase = 1,
 	)
 	result = /obj/item/food/cookie/peanut_butter
 	category = CAT_PASTRY
@@ -401,7 +401,7 @@
 		"sugar" = 5,
 		/obj/item/food/egg = 2,
 		"coco" = 5,
-		/obj/item/food/butterslice = 1
+		/obj/item/food/butterslice = 1,
 	)
 	result = /obj/item/food/raw_brownie_batter
 	category = CAT_PASTRY
@@ -414,7 +414,7 @@
 		/obj/item/food/egg = 2,
 		"coco" = 5,
 		"peanut_butter" = 5,
-		/obj/item/food/butterslice = 1
+		/obj/item/food/butterslice = 1,
 	)
 	result = /obj/item/food/peanut_butter_brownie_batter
 	category = CAT_PASTRY

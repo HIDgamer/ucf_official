@@ -47,7 +47,13 @@ type StatusInfo = {
 // Fallback color for any department key the frontend doesn't have a
 // dedicated color for (e.g. non-marine factions' keys).
 const DEFAULT_DEPT_COLOR = '#777';
-const ALL_TAB: DeptGroup = { key: 'all', label: 'ALL', min: 0, max: 0, color: '#888' };
+const ALL_TAB: DeptGroup = {
+  key: 'all',
+  label: 'ALL',
+  min: 0,
+  max: 0,
+  color: '#888',
+};
 const UNKNOWN_DEPT: DeptGroup = {
   key: 'unknown',
   label: 'UNK',
@@ -267,7 +273,10 @@ const VitalNums = (props: {
   );
 };
 
-const CrewRow = (props: { readonly sensor: Sensor; readonly deptGroups: DeptGroup[] }) => {
+const CrewRow = (props: {
+  readonly sensor: Sensor;
+  readonly deptGroups: DeptGroup[];
+}) => {
   const { sensor, deptGroups } = props;
   const statusInfo = getStatusInfo(sensor);
   const dept = getDeptForJob(sensor.ijob, deptGroups);
@@ -291,7 +300,11 @@ const CrewRow = (props: { readonly sensor: Sensor; readonly deptGroups: DeptGrou
           : 'none',
       }}
     >
-      <Portrait ijob={sensor.ijob} statusInfo={statusInfo} deptGroups={deptGroups} />
+      <Portrait
+        ijob={sensor.ijob}
+        statusInfo={statusInfo}
+        deptGroups={deptGroups}
+      />
 
       {/* Name & assignment */}
       <Box style={{ flex: 1, minWidth: 0 }}>
@@ -389,11 +402,7 @@ const CrewRow = (props: { readonly sensor: Sensor; readonly deptGroups: DeptGrou
 
 export const CrewConsole = () => {
   const { data } = useBackend<Data>();
-  const {
-    sensors = [],
-    department_groups,
-    sensors_age_s = 0,
-  } = data;
+  const { sensors = [], department_groups, sensors_age_s = 0 } = data;
   const [search, setSearch] = useState('');
   const [activeTab, setActiveTab] = useState('all');
 
@@ -402,7 +411,10 @@ export const CrewConsole = () => {
     [department_groups],
   );
 
-  const sorted = useMemo(() => sortBy(sensors, (s: Sensor) => s.ijob), [sensors]);
+  const sorted = useMemo(
+    () => sortBy(sensors, (s: Sensor) => s.ijob),
+    [sensors],
+  );
 
   // Build tab list: only show tabs with entries
   const availableTabs = useMemo(() => {
@@ -547,7 +559,11 @@ export const CrewConsole = () => {
                 </Box>
               ) : (
                 filtered.map((sensor) => (
-                  <CrewRow key={sensor.ref} sensor={sensor} deptGroups={deptGroups} />
+                  <CrewRow
+                    key={sensor.ref}
+                    sensor={sensor}
+                    deptGroups={deptGroups}
+                  />
                 ))
               )}
             </Section>
@@ -568,9 +584,7 @@ export const CrewConsole = () => {
               <Box
                 style={{
                   color:
-                    sensors_age_s > 20
-                      ? '#ffaa44'
-                      : 'rgba(255,255,255,0.35)',
+                    sensors_age_s > 20 ? '#ffaa44' : 'rgba(255,255,255,0.35)',
                 }}
                 title="Sensor data refreshes periodically, not live"
               >

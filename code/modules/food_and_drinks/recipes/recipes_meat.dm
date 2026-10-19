@@ -6,7 +6,7 @@
 	name = "Human kebab"
 	reqs = list(
 		/obj/item/stack/rods = 1,
-		/obj/item/food/meat/steak/plain/human = 2
+		/obj/item/food/meat/steak/plain/human = 2,
 	)
 	result = /obj/item/food/kebab/human
 	category = CAT_MEAT
@@ -15,7 +15,7 @@
 	name = "Kebab"
 	reqs = list(
 		/obj/item/stack/rods = 1,
-		/obj/item/food/meat/steak = 2
+		/obj/item/food/meat/steak = 2,
 	)
 	result = /obj/item/food/kebab/monkey
 	category = CAT_MEAT
@@ -24,7 +24,7 @@
 	name = "Tofu kebab"
 	reqs = list(
 		/obj/item/stack/rods = 1,
-		/obj/item/food/tofu = 2
+		/obj/item/food/tofu = 2,
 	)
 	result = /obj/item/food/kebab/tofu
 	category = CAT_MEAT
@@ -36,7 +36,7 @@
 		/obj/item/food/grown/chili = 1,
 		/obj/item/food/meat/cutlet = 1,
 		/obj/item/food/grown/corn = 1,
-		/obj/item/food/grown/tomato = 1
+		/obj/item/food/grown/tomato = 1,
 	)
 	result = /obj/item/food/kebab/fiesta
 	category = CAT_MEAT
@@ -48,7 +48,7 @@
 	reqs = list(
 		"sodiumchloride" = 5,
 		/obj/item/food/spidereggs = 1,
-		/obj/item/food/meat/cutlet/spider = 2
+		/obj/item/food/meat/cutlet/spider = 2,
 	)
 	result = /obj/item/food/spidereggsham
 	category = CAT_MEAT
@@ -60,7 +60,7 @@
 	reqs = list(
 		"sodiumchloride" = 5,
 		/obj/item/food/meat/steak = 1,
-		/obj/item/food/grown/cabbage = 2
+		/obj/item/food/grown/cabbage = 2,
 	)
 	result = /obj/item/food/cornedbeef
 	category = CAT_MEAT
@@ -70,7 +70,7 @@
 	reqs = list(
 		/obj/item/food/soydope = 2,
 		/obj/item/food/grown/carrot = 1,
-		/obj/item/food/grown/tomato = 1
+		/obj/item/food/grown/tomato = 1,
 	)
 	result = /obj/item/food/stewedsoymeat
 	category = CAT_MEAT
@@ -79,7 +79,7 @@
 	name = "Raw sausage"
 	reqs = list(
 		/obj/item/food/raw_meatball = 1,
-		/obj/item/food/meat/rawcutlet = 2
+		/obj/item/food/meat/rawcutlet = 2,
 	)
 	result = /obj/item/food/raw_sausage
 	category = CAT_MEAT
@@ -87,7 +87,7 @@
 /datum/crafting_recipe/food/nugget
 	name = "Chicken nugget"
 	reqs = list(
-		/obj/item/food/meat/cutlet = 1
+		/obj/item/food/meat/cutlet = 1,
 	)
 	result = /obj/item/food/nugget
 	category = CAT_MEAT
@@ -97,7 +97,7 @@
 	reqs = list(
 		/obj/item/food/doughslice = 1,
 		/obj/item/food/grown/garlic = 1,
-		/obj/item/food/meatball = 1
+		/obj/item/food/meatball = 1,
 	)
 	result = /obj/item/food/rawkhinkali
 	category = CAT_MEAT
@@ -108,7 +108,7 @@
 		"soysauce" = 5,
 		/obj/item/food/bun = 1,
 		/obj/item/food/meatball = 1,
-		/obj/item/food/grown/cabbage = 1
+		/obj/item/food/grown/cabbage = 1,
 	)
 	result = /obj/item/food/meatbun
 	category = CAT_MEAT
@@ -118,7 +118,7 @@
 	reqs = list(
 		/obj/item/food/bun = 1,
 		/obj/item/food/butterslice = 1,
-		/obj/item/food/meat/cutlet = 1
+		/obj/item/food/meat/cutlet = 1,
 	)
 	result = /obj/item/food/pigblanket
 	category = CAT_MEAT
@@ -128,7 +128,7 @@
 	reqs = list(
 		/obj/item/trash/snack_bowl = 1,
 		/obj/item/food/boiledrice = 1,
-		/obj/item/food/meat/cutlet = 2
+		/obj/item/food/meat/cutlet = 2,
 	)
 	result = /obj/item/food/salad/ricepork
 	category = CAT_MEAT
@@ -138,7 +138,7 @@
 	reqs = list(
 		"bbqsauce" = 5,
 		/obj/item/food/meat/steak = 2,
-		/obj/item/stack/rods = 2
+		/obj/item/stack/rods = 2,
 	)
 	result = /obj/item/food/bbqribs
 	category = CAT_MEAT
@@ -147,7 +147,7 @@
 	name = "Meat Clown"
 	reqs = list(
 		/obj/item/food/meat/steak = 1,
-		/obj/item/food/grown/banana = 1
+		/obj/item/food/grown/banana = 1,
 	)
 	result = /obj/item/food/meatclown
 	category = CAT_MEAT
@@ -158,7 +158,7 @@
 		/obj/item/food/meat/cutlet = 2,
 		/obj/item/food/grown/tomato = 1,
 		/obj/item/food/cheese/wedge = 2,
-		/obj/item/food/spaghetti/raw = 1
+		/obj/item/food/spaghetti/raw = 1,
 	)
 	result = /obj/item/food/lasagna
 	category = CAT_MEAT
@@ -170,7 +170,7 @@
 		/obj/item/food/boiledrice = 1,
 		/obj/item/food/grown/peas = 1,
 		/obj/item/food/grown/chili = 1,
-		/obj/item/food/meat/cutlet = 1
+		/obj/item/food/meat/cutlet = 1,
 	)
 	result = /obj/item/food/salad/gumbo
 	category = CAT_MEAT
@@ -215,7 +215,7 @@
 		/obj/item/food/grown/mushroom = 1,
 		/obj/item/food/grown/tomato = 1,
 		/obj/item/food/canned/beans = 1,
-		/obj/item/food/butteredtoast = 1
+		/obj/item/food/butteredtoast = 1,
 	)
 	result = /obj/item/food/full_english
 	category = CAT_MEAT

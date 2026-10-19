@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { useBackend, useSharedState } from '../../backend';
 import { Box, Icon, Stack } from '../../components';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import {
   mfdState,
   useFiremissionXOffsetValue,
@@ -11,10 +11,10 @@ import {
   useLazeTarget,
 } from './stateManagers';
 import {
-  CasFiremission,
-  EquipmentContext,
-  FiremissionContext,
-  TargetContext,
+  type CasFiremission,
+  type EquipmentContext,
+  type FiremissionContext,
+  type TargetContext,
 } from './types';
 
 const directionLookup = new Map<string, number>();

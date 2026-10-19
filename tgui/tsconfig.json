@@ -3,17 +3,11 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "checkJs": false,
-    "ignoreDeprecations": "6.0",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": false,
     "jsx": "preserve",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext",
-      "ScriptHost"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext", "ScriptHost"],
     "module": "ESNext",
     "moduleResolution": "Node",
     "noEmit": true,
@@ -21,10 +15,12 @@
     "skipLibCheck": true,
     "strict": false,
     "strictNullChecks": true,
-    "target": "ES5"
+    "target": "ESNext",
+    "baseUrl": ".",
+    "paths": {
+      "tgui/*": ["packages/tgui/*"],
+      "common/*": ["packages/common/*"]
+    }
   },
-  "include": [
-    "./*.d.ts",
-    "./packages"
-  ]
+  "include": ["./*.d.ts", "./packages"]
 }

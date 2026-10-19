@@ -16,6 +16,9 @@
 	return data
 
 /datum/computer_file/program/themeify/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
 	switch(action)
 		if("PRG_change_theme")
 			var/theme = GLOB.pda_themes[params["selected_theme"]]

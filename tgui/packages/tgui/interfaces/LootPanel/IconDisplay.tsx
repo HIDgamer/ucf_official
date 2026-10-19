@@ -1,6 +1,5 @@
-/* eslint-disable func-style */
 import { DmIcon, Icon, Image } from '../../components';
-import { SearchItem } from './types';
+import { type SearchItem } from './types';
 
 type Props = {
   readonly item: SearchItem;

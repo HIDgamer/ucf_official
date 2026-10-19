@@ -207,7 +207,7 @@
 	var/mob/living/carbon/human/friend = make_soldier(locate(start.x + 1, start.y, start.z), FACTION_MARINE, FALSE)
 	var/mob/living/carbon/human/victim = make_soldier(locate(start.x + 2, start.y, start.z), FACTION_MARINE, FALSE)
 	friend.ai_brain.stress = 0
-	victim.death()
+	victim.death(create_cause_data("unit test"))
 	TEST_ASSERT(ai_wait(CALLBACK(src, PROC_REF(stressed), friend.ai_brain), 5), "A friend's death did not shake the brain beside it")
 	TEST_ASSERT_EQUAL(brain.error_total + friend.ai_brain.error_total, 0, "A brain threw errors")
 	detach_human_ai(friend)

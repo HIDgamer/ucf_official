@@ -8,7 +8,7 @@
 	reqs = list(
 		"cream" = 5,
 		"ice" = 5,
-		/obj/item/food/icecream = 1
+		/obj/item/food/icecream = 1,
 	)
 	result = /obj/item/food/icecreamsandwich
 	category = CAT_ICE
@@ -19,7 +19,7 @@
 		"cream" = 5,
 		"ice" = 5,
 		/obj/item/food/grown/berries = 2,
-		/obj/item/food/icecream = 1
+		/obj/item/food/icecream = 1,
 	)
 	result = /obj/item/food/strawberryicecreamsandwich
 	category = CAT_ICE
@@ -29,7 +29,7 @@
 	reqs = list(
 		"bluecherryjelly" = 5,
 		"spacemountainwind" = 15,
-		/obj/item/food/icecream = 1
+		/obj/item/food/icecream = 1,
 	)
 	result = /obj/item/food/spacefreezy
 	category = CAT_ICE
@@ -40,7 +40,7 @@
 		"cream" = 5,
 		/obj/item/food/grown/cherries = 1,
 		/obj/item/food/grown/banana = 1,
-		/obj/item/food/icecream = 1
+		/obj/item/food/icecream = 1,
 	)
 	result = /obj/item/food/sundae
 	category = CAT_ICE
@@ -52,7 +52,7 @@
 		/obj/item/clothing/mask/gas/clown_hat = 1,
 		/obj/item/food/grown/cherries = 1,
 		/obj/item/food/grown/banana = 2,
-		/obj/item/food/icecream = 1
+		/obj/item/food/icecream = 1,
 	)
 	result = /obj/item/food/honkdae
 	category = CAT_ICE
@@ -64,7 +64,7 @@
 		"cream" = 5,
 		"ice" = 5,
 		"sugar" = 5,
-		/obj/item/food/icecream = 1
+		/obj/item/food/icecream = 1,
 	)
 	result = /obj/item/food/cornuto
 	category = CAT_ICE

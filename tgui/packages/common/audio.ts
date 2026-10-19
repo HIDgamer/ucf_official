@@ -51,9 +51,15 @@ export const playBlip = (options: BlipOptions) => {
     gainNode.connect(ctx.destination);
     osc.type = type;
     osc.frequency.setValueAtTime(freq, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(freqEnd, ctx.currentTime + duration * 0.67);
+    osc.frequency.exponentialRampToValueAtTime(
+      freqEnd,
+      ctx.currentTime + duration * 0.67,
+    );
     gainNode.gain.setValueAtTime(gain, ctx.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+    gainNode.gain.exponentialRampToValueAtTime(
+      0.001,
+      ctx.currentTime + duration,
+    );
     osc.start(ctx.currentTime);
     osc.stop(ctx.currentTime + duration);
   } catch {
@@ -67,4 +73,10 @@ export const playClickBlip = () =>
 
 /** A slightly lower, longer tone for error/rejection feedback. */
 export const playErrorBlip = () =>
-  playBlip({ freq: 220, freqEnd: 110, duration: 0.12, gain: 0.05, type: 'sawtooth' });
+  playBlip({
+    freq: 220,
+    freqEnd: 110,
+    duration: 0.12,
+    gain: 0.05,
+    type: 'sawtooth',
+  });

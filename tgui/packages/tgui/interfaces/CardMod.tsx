@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { useState } from 'react';
 
 import { useBackend } from '../backend';
@@ -57,7 +57,7 @@ export const CardMod = () => {
   const { data } = useBackend<Data>();
 
   return (
-    <Window width={450} height={560} resizable theme={data.theme}>
+    <Window width={450} height={560} theme={data.theme}>
       <Window.Content scrollable>
         <CardContent />
       </Window.Content>
@@ -96,7 +96,13 @@ export const CardContent = () => {
   return (
     <>
       {!!notice_text && (
-        <NoticeBox danger={notice_severity === 'danger'} info={notice_severity === 'info'}>
+        <NoticeBox
+          {...(notice_severity === 'danger'
+            ? { danger: true }
+            : notice_severity === 'info'
+              ? { info: true }
+              : {})}
+        >
           {notice_text}
         </NoticeBox>
       )}

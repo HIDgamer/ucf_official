@@ -16,7 +16,7 @@
 	name = "Omelette"
 	reqs = list(
 		/obj/item/food/egg = 2,
-		/obj/item/food/cheese/wedge = 2
+		/obj/item/food/cheese/wedge = 2,
 	)
 	result = /obj/item/food/omelette
 	category = CAT_EGG
@@ -25,7 +25,7 @@
 	name = "Chocolate egg"
 	reqs = list(
 		/obj/item/food/boiledegg = 1,
-		/obj/item/food/chocolatebar = 1
+		/obj/item/food/chocolatebar = 1,
 	)
 	result = /obj/item/food/chocolateegg
 	category = CAT_EGG
@@ -47,14 +47,15 @@
 		/obj/item/food/boiledrice = 1,
 		/obj/item/food/boiledegg = 1,
 		/obj/item/food/grown/carrot = 1,
-		/obj/item/food/grown/corn = 1
+		/obj/item/food/grown/corn = 1,
 	)
 	result = /obj/item/food/salad/eggbowl
 	category = CAT_EGG
 
 /datum/crafting_recipe/food/wrap
 	name = "Egg Wrap"
-	reqs = list("soysauce" = 10,
+	reqs = list(
+		"soysauce" = 10,
 		/obj/item/food/friedegg = 1,
 		/obj/item/food/grown/cabbage = 1,
 	)
@@ -67,7 +68,7 @@
 		"water" = 5,
 		"soysauce" = 5,
 		/obj/item/food/boiledegg = 2,
-		/obj/item/food/grown/mushroom/chanterelle = 1
+		/obj/item/food/grown/mushroom/chanterelle = 1,
 	)
 	result = /obj/item/food/chawanmushi
 	category = CAT_EGG

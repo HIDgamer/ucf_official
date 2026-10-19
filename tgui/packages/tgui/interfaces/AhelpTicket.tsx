@@ -56,7 +56,6 @@ const InteractionLog = (props: { readonly interactions: string[] }) => {
             key={i}
             mb={0.5}
             // Lines come pre-formatted with color/emphasis markup from the DM side.
-            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: line }}
           />
         ))

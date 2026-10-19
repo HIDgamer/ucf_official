@@ -1,7 +1,6 @@
-/* eslint-disable func-style */
 import { KEY } from 'common/keys';
-import { BooleanLike } from 'common/react';
-import { KeyboardEvent, useState } from 'react';
+import { type BooleanLike } from 'common/react';
+import { type KeyboardEvent, useState } from 'react';
 
 import { useBackend } from '../backend';
 import { Autofocus, Box, Button, Section, Stack } from '../components';

@@ -29,6 +29,7 @@ GLOBAL_LIST_EMPTY(human_ai_gun_appraisals)
 	var/suppressive = FALSE
 
 /proc/get_human_ai_gun_appraisal(obj/item/weapon/gun/gun)
+	RETURN_TYPE(/datum/human_ai_gun_appraisal)
 	var/datum/human_ai_gun_appraisal/appraisal = GLOB.human_ai_gun_appraisals[gun.type]
 	if(!appraisal)
 		appraisal = new
@@ -41,7 +42,7 @@ GLOBAL_LIST_EMPTY(human_ai_gun_appraisals)
 	two_handed = (gun.flags_item & TWOHANDED) && !(gun.flags_gun_features & GUN_ONE_HAND_WIELDED)
 	wield_only = !!(gun.flags_gun_features & GUN_WIELDED_FIRING_ONLY)
 	fire_delay = max(gun.get_fire_delay(), 1)
-	burst_amount = max(gun.burst_amount, 1)
+	burst_amount = max(gun.get_burst_amount(), 1)
 	can_semi = !!(GUN_FIREMODE_SEMIAUTO in gun.gun_firemode_list)
 	can_burst = burst_amount > 1 && (GUN_FIREMODE_BURSTFIRE in gun.gun_firemode_list)
 	can_auto = !!(GUN_FIREMODE_AUTOMATIC in gun.gun_firemode_list)

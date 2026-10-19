@@ -1,4 +1,4 @@
-import { Component, createRef, RefObject } from 'react';
+import { Component, createRef, type RefObject } from 'react';
 
 import { Box, Icon, Tooltip } from '../components';
 

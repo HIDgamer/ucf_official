@@ -61,13 +61,18 @@ export const JobSlots = () => {
   const groups = groupByDepartment(jobs);
 
   return (
-    <Window title="Job Slot Assignment" theme="crtlobby" width={700} height={650}>
+    <Window
+      title="Job Slot Assignment"
+      theme="crtlobby"
+      width={700}
+      height={650}
+    >
       <Window.Content scrollable>
         <Stack vertical>
           <Stack.Item>
             <Box color="label" fontSize="0.85rem">
-              Assign a specific character slot to be used for each job, instead of your
-              currently-loaded character.
+              Assign a specific character slot to be used for each job, instead
+              of your currently-loaded character.
             </Box>
           </Stack.Item>
           <Stack.Item>
@@ -87,7 +92,9 @@ export const JobSlots = () => {
                       color="label"
                       fontSize="0.95rem"
                       mb={0.5}
-                      style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.15)' }}
+                      style={{
+                        borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
+                      }}
                     >
                       {group.department}
                     </Box>
@@ -99,17 +106,26 @@ export const JobSlots = () => {
                               width="220px"
                               style={
                                 job.status !== 'available'
-                                  ? { textDecoration: 'line-through', opacity: 0.5 }
+                                  ? {
+                                      textDecoration: 'line-through',
+                                      opacity: 0.5,
+                                    }
                                   : undefined
                               }
                             >
                               {job.disp_title}
                             </Stack.Item>
                             {job.status !== 'available' ? (
-                              <Stack.Item color="bad">{STATUS_LABEL[job.status]}</Stack.Item>
+                              <Stack.Item color="bad">
+                                {STATUS_LABEL[job.status]}
+                              </Stack.Item>
                             ) : (
                               <Stack.Item>
-                                <Button onClick={() => act('assign', { title: job.title })}>
+                                <Button
+                                  onClick={() =>
+                                    act('assign', { title: job.title })
+                                  }
+                                >
                                   {job.slot_name}
                                 </Button>
                               </Stack.Item>

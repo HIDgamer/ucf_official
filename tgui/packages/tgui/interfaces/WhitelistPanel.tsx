@@ -42,7 +42,7 @@ export const WhitelistPanel = () => {
   const PageComponent = PAGES[current_menu]();
 
   return (
-    <Window theme={'crtblue'} width={1100} height={750} resizable>
+    <Window theme={'crtblue'} width={1100} height={750}>
       <Window.Content scrollable>
         <PageComponent />
       </Window.Content>
@@ -75,7 +75,7 @@ const PlayerList = () => {
           />
         </Flex.Item>
         <Flex.Item mr="1rem" width="90%">
-          <h1 align="center">Whitelist Panel</h1>
+          <h1 style={{ textAlign: 'center' }}>Whitelist Panel</h1>
         </Flex.Item>
       </Flex>
       {!!whitelisted_players.length && (
@@ -139,9 +139,11 @@ const StatusUpdate = () => {
           onClick={() => act('go_back')}
         />
       </Flex>
-      <h1 align="center">Whitelists for: {viewed_player.ckey}</h1>
+      <h1 style={{ textAlign: 'center' }}>
+        Whitelists for: {viewed_player.ckey}
+      </h1>
       <Section title="Commanding Officer">
-        <Stack align="right" grow={1}>
+        <Stack align="right">
           {co_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
             return (
@@ -157,7 +159,7 @@ const StatusUpdate = () => {
             );
           })}
         </Stack>
-        <Stack align="right" grow={1}>
+        <Stack align="right">
           {co_flags.map((bit, i) => {
             const new_state = new_rights && new_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;
@@ -184,7 +186,7 @@ const StatusUpdate = () => {
         </Stack>
       </Section>
       <Section title="Synthetic">
-        <Stack align="right" grow={1}>
+        <Stack align="right">
           {syn_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
             return (
@@ -200,7 +202,7 @@ const StatusUpdate = () => {
             );
           })}
         </Stack>
-        <Stack align="right" grow={1}>
+        <Stack align="right">
           {syn_flags.map((bit, i) => {
             const new_state = new_rights && new_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;
@@ -227,7 +229,7 @@ const StatusUpdate = () => {
         </Stack>
       </Section>
       <Section title="Yautja">
-        <Stack align="right" grow={1}>
+        <Stack align="right">
           {yaut_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
             return (
@@ -243,7 +245,7 @@ const StatusUpdate = () => {
             );
           })}
         </Stack>
-        <Stack align="right" grow={1}>
+        <Stack align="right">
           {yaut_flags.map((bit, i) => {
             const new_state = new_rights && new_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;
@@ -270,7 +272,7 @@ const StatusUpdate = () => {
         </Stack>
       </Section>
       <Section title="Misc">
-        <Stack align="right" grow={1}>
+        <Stack align="right">
           {misc_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
             return (
@@ -286,7 +288,7 @@ const StatusUpdate = () => {
             );
           })}
         </Stack>
-        <Stack align="right" grow={1}>
+        <Stack align="right">
           {misc_flags.map((bit, i) => {
             const new_state = new_rights && new_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;

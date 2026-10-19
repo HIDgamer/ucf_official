@@ -27,6 +27,8 @@
 	return istype(src, /obj/item/clothing/accessory/storage)
 
 /obj/item/clothing/accessory/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
+	if(slot == WEAR_AS_GARB && LAZYISIN(item_icons, slot))
+		return ..()
 	var/bodytype = default_bodytype
 	if(ishuman(user_mob))
 		var/mob/living/carbon/human/user_human = user_mob

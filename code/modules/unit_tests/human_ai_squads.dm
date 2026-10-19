@@ -40,7 +40,7 @@
 
 	var/datum/human_ai_brain/old_leader = squad.leader
 	var/mob/living/carbon/human/old_body = old_leader.body
-	old_body.death()
+	old_body.death(create_cause_data("unit test"))
 	TEST_ASSERT(ai_wait(CALLBACK(src, PROC_REF(leader_changed), squad, old_leader), 8), "The squad did not pick a new leader after the old one died")
 	TEST_ASSERT(squad.member_valid(squad.leader), "The new leader is not able")
 	TEST_ASSERT_EQUAL(squad.casualties, 1, "The loss was not counted")

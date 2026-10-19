@@ -15,6 +15,7 @@
 /obj/item/clothing/accessory/poncho/bastion
 	name = "suit"
 	icon = 'icons/obj/items/clothing/bastion/suits/default.dmi'
+	icon_state = ""
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/bastion/suits/default.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/bastion/suits_lefthand.dmi',

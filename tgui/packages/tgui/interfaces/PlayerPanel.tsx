@@ -72,9 +72,7 @@ const hasPermission = (data: Data, action: string): boolean => {
   if (!(action in data.glob_pp_actions)) return false;
 
   const action_data = data.glob_pp_actions[action];
-  return !!(
-    action_data.permissions_required & (data.current_permissions ?? 0)
-  );
+  return !!(action_data.permissions_required & (data.current_permissions ?? 0));
 };
 
 type Page = {
@@ -286,7 +284,7 @@ export const PlayerPanel = (props) => {
             )}
           </Table>
         </Section>
-        <Stack grow={1}>
+        <Stack>
           <Stack.Item>
             <Section fitted>
               <Tabs vertical>
@@ -325,8 +323,8 @@ const GeneralActions = (props) => {
   const { mob_sleeping, mob_frozen } = data;
   return (
     <Section fill>
-      <Section level={2} title="Damage">
-        <Stack align="right" grow={1}>
+      <Section title="Damage">
+        <Stack align="right">
           <Button.Confirm
             width="100%"
             icon="first-aid"
@@ -360,8 +358,8 @@ const GeneralActions = (props) => {
         </Stack>
       </Section>
 
-      <Section level={2} title="Teleportation">
-        <Stack align="right" grow={1}>
+      <Section title="Teleportation">
+        <Stack align="right">
           <Button.Confirm
             width="100%"
             icon="reply"
@@ -388,8 +386,8 @@ const GeneralActions = (props) => {
         </Stack>
       </Section>
 
-      <Section level={2} title="Miscellaneous">
-        <Stack align="right" grow={1}>
+      <Section title="Miscellaneous">
+        <Stack align="right">
           <Button.Checkbox
             width="100%"
             checked={mob_sleeping > 500}
@@ -420,28 +418,26 @@ const GeneralActions = (props) => {
           </Button>
         </Stack>
         {hasPermission(data, 'mob_force_emote') && (
-          <Stack align="right" grow={1} mt={2}>
+          <Stack align="right" mt={2}>
             <Stack.Item width="100px" align="left" color="label">
               Force Say:
             </Stack.Item>
             <Stack.Item align="right" grow={1}>
               <Input
                 width="100%"
-                grow={1}
                 onEnter={(e, value) => act('mob_force_say', { to_say: value })}
               />
             </Stack.Item>
           </Stack>
         )}
         {hasPermission(data, 'mob_force_emote') && (
-          <Stack align="right" grow={1} mt={2}>
+          <Stack align="right" mt={2}>
             <Stack.Item width="100px" align="left" color="label">
               Force Emote:
             </Stack.Item>
             <Stack.Item align="right" grow={1}>
               <Input
                 width="100%"
-                grow={1}
                 onEnter={(e, value) =>
                   act('mob_force_emote', { to_emote: value })
                 }
@@ -459,8 +455,8 @@ const PunishmentActions = (props) => {
   const { glob_mute_bits, client_muted = 0 } = data;
   return (
     <Section fill>
-      <Section level={2} title="Banishment">
-        <Stack align="right" grow={1}>
+      <Section title="Banishment">
+        <Stack align="right">
           <Button.Confirm
             width="100%"
             icon="gavel"
@@ -491,8 +487,8 @@ const PunishmentActions = (props) => {
         </Stack>
       </Section>
 
-      <Section level={2} title="Permanent Banishment">
-        <Stack align="right" grow={1}>
+      <Section title="Permanent Banishment">
+        <Stack align="right">
           <Button.Confirm
             width="100%"
             icon="gavel"
@@ -514,8 +510,8 @@ const PunishmentActions = (props) => {
         </Stack>
       </Section>
 
-      <Section level={2} title="Record-keeping">
-        <Stack align="right" grow={1}>
+      <Section title="Record-keeping">
+        <Stack align="right">
           <Button
             width="100%"
             icon="clipboard-list"
@@ -537,8 +533,8 @@ const PunishmentActions = (props) => {
         </Stack>
       </Section>
 
-      <Section level={2} title="Mute">
-        <Stack align="right" grow={1}>
+      <Section title="Mute">
+        <Stack align="right">
           {glob_mute_bits.map((bit, i) => {
             const isMuted = client_muted && client_muted & bit.bitflag;
             return (
@@ -563,8 +559,8 @@ const PunishmentActions = (props) => {
         </Stack>
       </Section>
 
-      <Section level={2} title="Human Name">
-        <Stack align="right" grow={1}>
+      <Section title="Human Name">
+        <Stack align="right">
           <Button
             width="100%"
             icon="clipboard-list"
@@ -587,8 +583,8 @@ const PunishmentActions = (props) => {
           </Button>
         </Stack>
       </Section>
-      <Section level={2} title="Xenomorph Name">
-        <Stack align="right" grow={1}>
+      <Section title="Xenomorph Name">
+        <Stack align="right">
           <Button
             width="100%"
             icon="clipboard-list"
@@ -619,8 +615,8 @@ const TransformActions = (props) => {
   return (
     <Section fill>
       {Object.keys(glob_pp_transformables).map((element, i) => (
-        <Section level={2} title={element} key={i}>
-          <Stack align="right" grow={1}>
+        <Section title={element} key={i}>
+          <Stack align="right">
             {glob_pp_transformables[element].map((option, optionIndex) => (
               <Button.Confirm
                 key={optionIndex}
@@ -651,8 +647,8 @@ const FunActions = (props) => {
   return (
     <Section fill>
       {hasPermission(data, 'mob_narrate') && (
-        <Section level={2} title="Narrate">
-          <Stack align="right" grow={1}>
+        <Section title="Narrate">
+          <Stack align="right">
             {glob_span.map((spanData, i) => (
               <Button.Checkbox
                 key={i}
@@ -663,14 +659,13 @@ const FunActions = (props) => {
               </Button.Checkbox>
             ))}
           </Stack>
-          <Stack align="right" grow={1} mt={2}>
+          <Stack align="right" mt={2}>
             <Stack.Item width="100px" align="left" color="label">
               Narrate:
             </Stack.Item>
             <Stack.Item align="right" grow={1}>
               <Input
                 width="100%"
-                grow={1}
                 onEnter={(e, value) =>
                   act('mob_narrate', {
                     to_narrate: `<span class='${getSpanSetting}'>${value}</span>`,
@@ -685,7 +680,6 @@ const FunActions = (props) => {
       {hasPermission(data, 'mob_explode') && (
         <Section
           title="Explosion"
-          level={2}
           buttons={
             <Button
               ml={1}
@@ -697,7 +691,7 @@ const FunActions = (props) => {
             </Button>
           }
         >
-          <Stack align="right" grow={1} mt={1}>
+          <Stack align="right" mt={1}>
             <Stack.Item>
               <Button
                 width="100%"
@@ -757,8 +751,8 @@ const AntagActions = (props) => {
   return (
     <Section fill>
       {!!is_human && (
-        <Section level={2} title="Mutiny">
-          <Stack align="right" grow={1}>
+        <Section title="Mutiny">
+          <Stack align="right">
             <Button
               width="100%"
               icon="chess-pawn"
@@ -781,7 +775,6 @@ const AntagActions = (props) => {
         </Section>
       )}
       <Section
-        level={2}
         title="Xenomorph"
         buttons={
           <Dropdown
@@ -794,7 +787,7 @@ const AntagActions = (props) => {
           />
         }
       >
-        <Stack align="right" grow={1} mt={1}>
+        <Stack align="right" mt={1}>
           {!!is_human && (
             <>
               <Button
@@ -863,7 +856,7 @@ const PhysicalActions = (props) => {
   const [delimbOption, setDelimbOption] = useState(0);
   return (
     <Section fill>
-      <Section level={2} title="Status Flags">
+      <Section title="Status Flags">
         {Object.keys(glob_status_flags).map((val, i) => (
           <Button.Checkbox
             key={i}
@@ -893,10 +886,9 @@ const PhysicalActions = (props) => {
       </Section>
       {!!is_human && (
         <Section
-          level={2}
           title="Limbs"
           buttons={
-            <Stack align="right" grow={1}>
+            <Stack align="right">
               {limbs.map((val, index) => (
                 <Button.Checkbox
                   key={index}
@@ -916,7 +908,7 @@ const PhysicalActions = (props) => {
             </Stack>
           }
         >
-          <Stack align="right" grow={1}>
+          <Stack align="right">
             <Button.Confirm
               width="100%"
               icon="unlink"
@@ -952,7 +944,7 @@ const PhysicalActions = (props) => {
           </Stack>
         </Section>
       )}
-      <Section level={2} title="Game">
+      <Section title="Game">
         <Stack>
           {!!is_human && (
             <Button.Confirm
@@ -1008,8 +1000,8 @@ const PhysicalActions = (props) => {
           )}
         </Stack>
       </Section>
-      <Section title="Equipment" level={2}>
-        <Stack align="right" grow={1}>
+      <Section title="Equipment">
+        <Stack align="right">
           <Button
             width="100%"
             icon="user-tie"

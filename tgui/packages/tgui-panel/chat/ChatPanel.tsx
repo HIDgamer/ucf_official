@@ -10,7 +10,10 @@ import { Button } from 'tgui/components';
 
 import { chatRenderer } from './renderer';
 
-export class ChatPanel extends Component {
+export class ChatPanel extends Component<any, any> {
+  ref: any;
+  handleScrollTrackingChange: (value: boolean) => void;
+
   constructor(props) {
     super(props);
     this.ref = createRef();
@@ -42,7 +45,7 @@ export class ChatPanel extends Component {
     );
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps?: any) {
     requestAnimationFrame(() => {
       chatRenderer.ensureScrollTracking();
     });
