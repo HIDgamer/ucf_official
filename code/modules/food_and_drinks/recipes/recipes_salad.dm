@@ -10,8 +10,7 @@
 		/obj/item/food/grown/apple = 1,
 		/obj/item/food/grown/grapes = 1,
 		/obj/item/food/grown/citrus/orange = 1,
-		/obj/item/food/watermelonslice = 2
-
+		/obj/item/food/watermelonslice = 2,
 	)
 	result = /obj/item/food/salad/fruit
 	category = CAT_SALAD
@@ -23,7 +22,6 @@
 		/obj/item/food/grown/apple = 2,
 		/obj/item/food/grown/grapes = 2,
 		/obj/item/food/grown/banana = 2,
-
 	)
 	result = /obj/item/food/salad/jungle
 	category = CAT_SALAD
@@ -34,8 +32,7 @@
 		/obj/item/trash/snack_bowl = 1,
 		/obj/item/food/grown/citrus/lime = 1,
 		/obj/item/food/grown/citrus/lemon = 1,
-		/obj/item/food/grown/citrus/orange = 1
-
+		/obj/item/food/grown/citrus/orange = 1,
 	)
 	result = /obj/item/food/salad/citrusdelight
 	category = CAT_SALAD

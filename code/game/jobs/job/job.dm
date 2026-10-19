@@ -262,6 +262,7 @@
 			job_whitelist = "[title][whitelist_status]"
 
 		human.job = title //TODO Why is this a mob variable at all?
+		human.update_npc_command_verb()
 
 		if(gear_preset_whitelist[job_whitelist])
 			arm_equipment(human, gear_preset_whitelist[job_whitelist], FALSE, TRUE)

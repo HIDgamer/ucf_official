@@ -5,19 +5,16 @@ on:
       - UCFSS13
   pull_request_target:
     types: [ready_for_review, opened, synchronize, reopened]
+permissions:
+  contents: read
+  pull-requests: write
 jobs:
   triage:
     runs-on: [self-hosted, Linux, X64]
     steps:
-      - name: Generate App Token
-        id: app-token-generation
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
       - uses: eps1lon/actions-label-merge-conflict@v2.1.0
         with:
           dirtyLabel: 'Merge Conflict'
           commentOnDirty: "This pull request has conflicts, please resolve those before we can evaluate the pull request."
           commentOnClean: "Conflicts have been resolved. A maintainer will review the pull request shortly."
-          repoToken: ${{ steps.app-token-generation.outputs.token }}
+          repoToken: ${{ secrets.GITHUB_TOKEN }}

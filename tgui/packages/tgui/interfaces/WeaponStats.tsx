@@ -1,5 +1,5 @@
 import { map } from 'common/collections';
-import { BooleanLike, classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 
 import { useBackend } from '../backend';
 import { Box, Divider, Flex, ProgressBar, Section, Table } from '../components';
@@ -106,8 +106,15 @@ export const WeaponStats = (props) => {
 
 const GeneralInfo = (props) => {
   const { data } = useBackend<Data>();
-  const { name, desc, automatic, burst_amount, two_handed_only, auto_only, icon } =
-    data;
+  const {
+    name,
+    desc,
+    automatic,
+    burst_amount,
+    two_handed_only,
+    auto_only,
+    icon,
+  } = data;
   return (
     <Section>
       <Flex direction="column">

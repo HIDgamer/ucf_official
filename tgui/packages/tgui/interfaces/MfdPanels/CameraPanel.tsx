@@ -1,9 +1,9 @@
 import { useBackend } from '../../backend';
 import { ByondUi } from '../../components';
 import { Box } from '../../components';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState } from './stateManagers';
-import { CameraProps } from './types';
+import { type CameraProps } from './types';
 
 export const CameraMfdPanel = (props: MfdProps) => {
   const { act } = useBackend();

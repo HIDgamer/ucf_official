@@ -104,7 +104,9 @@ const CommandPanel = () => {
                     setAnnounceText('');
                   }}
                 >
-                  {data.deployed ? 'Send Local Announcement' : 'Send Announcement'}
+                  {data.deployed
+                    ? 'Send Local Announcement'
+                    : 'Send Announcement'}
                 </Button>
               </Stack.Item>
             </Stack>
@@ -112,7 +114,9 @@ const CommandPanel = () => {
             <Box>
               <Box mb="0.25rem">Announcement recharging..</Box>
               <ProgressBar
-                value={1 - (data.endtime - data.worldtime) / data.cooldown_message}
+                value={
+                  1 - (data.endtime - data.worldtime) / data.cooldown_message
+                }
               >
                 {Math.ceil((data.endtime - data.worldtime) / 10)} secs
               </ProgressBar>
@@ -144,18 +148,13 @@ const CommandPanel = () => {
           <Section title="Evacuation" mt="0.5rem">
             {AlertLevel < 2 && (
               <NoticeBox color="bad" warning={1} textAlign="center">
-                The ship must be under red alert in order to enact
-                evacuation procedures.
+                The ship must be under red alert in order to enact evacuation
+                procedures.
               </NoticeBox>
             )}
             <Flex.Item>
               {!canDistress && (
-                <Button
-                  disabled={1}
-                  tooltip={distress_reason}
-                  fluid
-                  icon="ban"
-                >
+                <Button disabled={1} tooltip={distress_reason} fluid icon="ban">
                   {'Distress Beacon disabled'}
                 </Button>
               )}

@@ -101,8 +101,11 @@ const SendVOX = (props) => {
       currentFaction[val] = true;
       setCurrentFaction({ ...currentFaction });
     } else if (keysDown[KEY_SHIFT]) {
-      let [startSelecting, foundClickedValue, finishedSelecting] =
-        (false, false, false);
+      let [startSelecting, foundClickedValue, finishedSelecting] = [
+        false,
+        false,
+        false,
+      ];
       const toSelect = factions.filter((value) => {
         if (finishedSelecting) return false;
 
@@ -215,7 +218,6 @@ const SendVOX = (props) => {
               stepPixelSize={20}
               minValue={0}
               maxValue={100}
-              fluid
             >
               Volume: {volume}
             </Slider>
@@ -368,11 +370,9 @@ export const ComboBox = (props: ComboBoxProps) => {
           <Section
             scrollable
             fill
-            level={2}
             tabIndex={0}
             onKeyDown={handleCombos}
             onKeyUp={handleCombos}
-            onSelectStart={() => false}
           >
             <Flex direction="column">
               {buttons.map((val) => (

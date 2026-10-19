@@ -420,7 +420,7 @@
 	food_reagents = list(
 		"nutriment" = 13,
 		"bbqsauce" = 1,
-		)
+	)
 	tastes = list("bun" = 2, "pork patty" = 4)
 	foodtypes = GRAIN | MEAT
 	venue_value = FOOD_PRICE_NORMAL

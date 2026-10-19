@@ -77,7 +77,7 @@ export const VehicleStatus = (props) => {
             <NoticeBox danger>Hull destroyed!</NoticeBox>
           )}
           <Box height="5px" />
-          <NoticeBox info={door_locked ? 0 : 1} danger={door_locked ? 1 : 0}>
+          <NoticeBox {...(door_locked ? { danger: true } : { info: true })}>
             {door_locked ? 'Door locks: enabled.' : 'Door locks: disabled.'}
           </NoticeBox>
           <Collapsible title="Current armour resistances">
@@ -120,7 +120,8 @@ const HardpointsView = (props) => {
       {index !== 0 ? <Divider /> : null}
       <Box>{hardpoint.name}</Box>
       <Box width="3px" />
-      {hardpoint.fpw ? null : hardpoint.health != null && hardpoint.health >= 0 ? (
+      {hardpoint.fpw ? null : typeof hardpoint.health === 'number' &&
+        hardpoint.health >= 0 ? (
         <ProgressBar
           value={hardpoint.health!}
           ranges={{

@@ -63,6 +63,8 @@
 	var/list/icon/pipes_shown = list()
 	var/last_played_vent
 	var/is_ventcrawling = 0
+	/// When this mob's last gunshot was passed to the AI humans
+	var/last_ai_gunshot_time = 0
 
 	var/pull_speed = 0 //How much slower or faster this mob drags as a base
 

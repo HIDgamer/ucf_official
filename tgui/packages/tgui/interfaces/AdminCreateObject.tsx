@@ -1,5 +1,5 @@
 import { playClickBlip } from 'common/audio';
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { useState } from 'react';
 
 import { resolveAsset } from '../assets';
@@ -153,7 +153,8 @@ export const AdminCreateObject = () => {
               </Box>
               {!!selected.length && (
                 <Box mt={0.5} color="label" fontSize="0.85em">
-                  Selected ({selected.length}/{MAX_TYPES}): {selected.join(', ')}
+                  Selected ({selected.length}/{MAX_TYPES}):{' '}
+                  {selected.join(', ')}
                 </Box>
               )}
             </Section>
@@ -257,7 +258,9 @@ export const AdminCreateObject = () => {
                   disabled={!selected.length}
                   onClick={handleSpawn}
                   tooltip={
-                    !selected.length ? 'Select at least one object type' : undefined
+                    !selected.length
+                      ? 'Select at least one object type'
+                      : undefined
                   }
                 >
                   Spawn

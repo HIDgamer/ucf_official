@@ -56,10 +56,22 @@ const PRIORITIES = [
 ] as const;
 
 const ALTERNATE_OPTIONS = [
-  { value: 0, label: 'Get random job if preferences unavailable', color: 'green' },
+  {
+    value: 0,
+    label: 'Get random job if preferences unavailable',
+    color: 'green',
+  },
   { value: 1, label: 'Be marine if preference unavailable', color: 'red' },
-  { value: 2, label: 'Return to lobby if preference unavailable', color: 'purple' },
-  { value: 3, label: 'Be Xenomorph if preference unavailable', color: 'orange' },
+  {
+    value: 2,
+    label: 'Return to lobby if preference unavailable',
+    color: 'purple',
+  },
+  {
+    value: 3,
+    label: 'Be Xenomorph if preference unavailable',
+    color: 'orange',
+  },
 ];
 
 const STATUS_LABEL: Record<Job['status'], string> = {
@@ -73,7 +85,9 @@ export const JobPreferences = () => {
   const { act, data } = useBackend<Data>();
   const { jobs = [], alternate_option } = data;
 
-  const currentAlternate = ALTERNATE_OPTIONS.find((o) => o.value === alternate_option);
+  const currentAlternate = ALTERNATE_OPTIONS.find(
+    (o) => o.value === alternate_option,
+  );
   const groups = groupByDepartment(jobs);
 
   return (
@@ -82,7 +96,8 @@ export const JobPreferences = () => {
         <Stack vertical>
           <Stack.Item>
             <Box color="label" fontSize="0.85rem">
-              Choose occupation chances. Unavailable occupations are crossed out.
+              Choose occupation chances. Unavailable occupations are crossed
+              out.
             </Box>
           </Stack.Item>
           <Stack.Item>
@@ -102,7 +117,9 @@ export const JobPreferences = () => {
                       color="label"
                       fontSize="0.95rem"
                       mb={0.5}
-                      style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.15)' }}
+                      style={{
+                        borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
+                      }}
                     >
                       {group.department}
                     </Box>
@@ -114,21 +131,28 @@ export const JobPreferences = () => {
                               width="220px"
                               style={
                                 job.status !== 'available'
-                                  ? { textDecoration: 'line-through', opacity: 0.5 }
+                                  ? {
+                                      textDecoration: 'line-through',
+                                      opacity: 0.5,
+                                    }
                                   : undefined
                               }
                             >
                               {job.disp_title}
                             </Stack.Item>
                             {job.status !== 'available' ? (
-                              <Stack.Item color="bad">{STATUS_LABEL[job.status]}</Stack.Item>
+                              <Stack.Item color="bad">
+                                {STATUS_LABEL[job.status]}
+                              </Stack.Item>
                             ) : (
                               <>
                                 {job.special_option && (
                                   <Stack.Item>
                                     <Button
                                       onClick={() =>
-                                        act('special_option', { title: job.title })
+                                        act('special_option', {
+                                          title: job.title,
+                                        })
                                       }
                                     >
                                       {job.special_option}
@@ -140,7 +164,11 @@ export const JobPreferences = () => {
                                     {PRIORITIES.map((p) => (
                                       <Stack.Item key={p.value}>
                                         <Button
-                                          color={job.priority === p.value ? p.color : 'transparent'}
+                                          color={
+                                            job.priority === p.value
+                                              ? p.color
+                                              : 'transparent'
+                                          }
                                           onClick={() =>
                                             act('set_priority', {
                                               title: job.title,
@@ -171,8 +199,12 @@ export const JobPreferences = () => {
                 {ALTERNATE_OPTIONS.map((o) => (
                   <Stack.Item key={o.value}>
                     <Button
-                      color={o.value === alternate_option ? o.color : 'transparent'}
-                      onClick={() => act('alternate_option', { value: o.value })}
+                      color={
+                        o.value === alternate_option ? o.color : 'transparent'
+                      }
+                      onClick={() =>
+                        act('alternate_option', { value: o.value })
+                      }
                     >
                       {o.label}
                     </Button>

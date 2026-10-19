@@ -120,7 +120,7 @@ export const OrbitalCannonConsole = () => {
                   Unload tray
                 </Button>
               )) || (
-                <NoticeBox fontSize="15px" textAlign="center" fluid danger>
+                <NoticeBox fontSize="15px" textAlign="center" danger>
                   The tray is chambered, you cannot unchamber it.
                 </NoticeBox>
               )}

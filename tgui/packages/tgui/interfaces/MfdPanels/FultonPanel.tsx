@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { useBackend } from '../../backend';
 import { Box, Stack } from '../../components';
 import { Icon } from '../../components';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
-import { FultonProps } from './types';
+import { type FultonProps } from './types';
 
 export const FultonMfdPanel = (props: MfdProps) => {
   const { data, act } = useBackend<FultonProps>();

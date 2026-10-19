@@ -219,6 +219,8 @@
 
 	///the default gun icon_state. change to reskin the gun
 	var/base_gun_icon
+	/// Lineart sprite to show instead of base_gun_icon, for guns that look the same as another
+	var/lineart_state
 	/// whether gun has icon state of (base_gun_icon)_e
 	var/has_empty_icon = TRUE
 	/// whether gun has icon state of (base_gun_icon)_o
@@ -729,7 +731,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	// weapon info
 
-	data["icon"] = base_gun_icon
+	data["icon"] = lineart_state || base_gun_icon
 	data["name"] = name
 	data["desc"] = desc
 	data["two_handed_only"] = (flags_gun_features & GUN_WIELDED_FIRING_ONLY)
@@ -1805,7 +1807,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(flags_gun_features & GUN_AMMO_COUNTER && current_mag)
 		// toggleable spam control.
-		if(user.client.prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
+		if(user.client?.prefs?.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
 			return
 		var/chambered = in_chamber ? TRUE : FALSE
 		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
@@ -2044,6 +2046,10 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/proc/set_burst_amount(value, mob/user)
 	burst_amount = value
 	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED, burst_amount)
+
+/// Getter for burst_amount
+/obj/item/weapon/gun/proc/get_burst_amount()
+	return burst_amount
 
 /// adder for burst_amount
 /obj/item/weapon/gun/proc/modify_burst_amount(value, mob/user)

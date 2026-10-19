@@ -17,7 +17,11 @@ export const VolumeMixer = () => {
   const { categories = [], volumes = {} } = data;
 
   return (
-    <Window title="Volume Mixer" width={380} height={80 + categories.length * 32}>
+    <Window
+      title="Volume Mixer"
+      width={380}
+      height={80 + categories.length * 32}
+    >
       <Window.Content scrollable>
         <Section>
           <LabeledList>

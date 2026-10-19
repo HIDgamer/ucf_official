@@ -52,7 +52,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_mp, list(
 		/obj/item/device/binoculars,
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/rifle
+		/obj/item/ammo_magazine/rifle,
 	)
 
 /obj/effect/essentials_set/mp/l42a
@@ -61,5 +61,5 @@ GLOBAL_LIST_INIT(cm_vending_clothing_mp, list(
 		/obj/item/device/binoculars,
 		/obj/item/ammo_magazine/rifle/l42a,
 		/obj/item/ammo_magazine/rifle/l42a,
-		/obj/item/ammo_magazine/rifle/l42a
+		/obj/item/ammo_magazine/rifle/l42a,
 	)

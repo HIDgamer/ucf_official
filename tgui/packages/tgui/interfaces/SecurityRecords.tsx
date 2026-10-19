@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { useCallback, useEffect, useState } from 'react';
 
 import { useBackend } from '../backend';
@@ -618,7 +618,7 @@ export const SecurityRecords = () => {
         <Input
           placeholder="Search records..."
           value={filterText}
-          onInput={(e) => setFilterText(e.target.value)}
+          onInput={(e) => setFilterText((e.target as HTMLInputElement).value)}
           style={{ flexGrow: 1 }}
         />
       </Flex>
@@ -712,9 +712,10 @@ export const SecurityRecords = () => {
                 autoFocus
                 autoSelect
                 width="100%"
-                type={currentField?.type === 'number' ? 'number' : 'text'}
                 value={editValue}
-                onInput={(e) => setEditValue(e.target.value)}
+                onInput={(e) =>
+                  setEditValue((e.target as HTMLInputElement).value)
+                }
                 onKeyDown={handleKeyDown}
               />
             )}
@@ -743,7 +744,7 @@ export const SecurityRecords = () => {
           <Input
             width="100%"
             value={newComment}
-            onInput={(e) => setNewComment(e.target.value)}
+            onInput={(e) => setNewComment((e.target as HTMLInputElement).value)}
             placeholder="Enter your comment..."
           />
           <Flex justify="space-between" mt={2}>

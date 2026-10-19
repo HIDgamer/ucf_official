@@ -88,6 +88,9 @@
 	return data
 
 /datum/computer_file/program/supply_request/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
 	switch(action)
 		if("adjust_cart")
 			var/pack_type = text2path(params["pack"])

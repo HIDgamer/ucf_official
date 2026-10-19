@@ -262,7 +262,7 @@
 		"nutriment" = 1,
 		"iron" = 10,
 		"sugar" = 5,
-		 //psicodine instead of omnizine, because the latter was making coders freak out
+		//psicodine instead of omnizine, because the latter was making coders freak out
 	)
 
 /obj/item/food/spiderlollipop
@@ -294,7 +294,7 @@
 	inhand_icon_state = "swirl_lollipop"
 	food_reagents = list(
 		"sugar" = 30,
-		 //swirl lollipops make everyone happy!
+		//swirl lollipops make everyone happy!
 		"tricordrazine" = 2,
 	)
 	tastes = list("whimsical joy" = 1, "sugar" = 2)

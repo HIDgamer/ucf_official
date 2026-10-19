@@ -6,10 +6,10 @@
 
 import { clamp01, keyOfMatchingRange, scale, toFixed } from 'common/math';
 import { classes } from 'common/react';
-import { PropsWithChildren } from 'react';
+import { type CSSProperties, type PropsWithChildren } from 'react';
 
 import { CSS_COLORS } from '../constants';
-import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
+import { type BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
 type Props = {
   readonly value: number;
@@ -21,7 +21,7 @@ type Props = {
   maxValue: number;
   minValue: number;
   ranges: Record<string, [number, number]>;
-  style: Partial<HTMLDivElement['style']>;
+  style: CSSProperties;
   title: string;
   width: string | number;
 }> &

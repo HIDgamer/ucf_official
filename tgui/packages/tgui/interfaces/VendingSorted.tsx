@@ -15,7 +15,7 @@ import {
   Section,
   Tooltip,
 } from '../components';
-import { BoxProps } from '../components/Box';
+import { type BoxProps } from '../components/Box';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
 

@@ -44,7 +44,7 @@ export const AhelpTicketList = (props) => {
                 <Tabs.Tab
                   key={t.id}
                   selected={tab === t.id}
-                  onClick={() => setTab(t.id)}
+                  onClick={() => setTab(t.id as Data['initial_tab'])}
                   rightSlot={
                     <Box className="Tab__right" opacity={0.7}>
                       {(data[t.key] ?? []).length}

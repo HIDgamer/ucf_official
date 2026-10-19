@@ -10,6 +10,9 @@
 	COOLDOWN_DECLARE(last_print)
 
 /datum/computer_file/program/notepad/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
 	switch(action)
 		if("UpdateNote")
 			written_note = copytext(params["newnote"], 1, 4096)

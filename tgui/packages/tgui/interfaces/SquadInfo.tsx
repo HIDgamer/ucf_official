@@ -2,7 +2,7 @@ import { classes } from 'common/react';
 
 import { useBackend } from '../backend';
 import { Box, Button, Flex, Section, Stack, Table } from '../components';
-import { BoxProps } from '../components/Box';
+import { type BoxProps } from '../components/Box';
 import { TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
 

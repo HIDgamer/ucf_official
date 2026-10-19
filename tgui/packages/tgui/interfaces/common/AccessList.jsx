@@ -84,7 +84,9 @@ export const AccessList = (props) => {
               const icon = isIff
                 ? 'flag'
                 : diffMap[checkAccessIcon(entries)].icon;
-              const color = isIff ? null : diffMap[checkAccessIcon(entries)].color;
+              const color = isIff
+                ? null
+                : diffMap[checkAccessIcon(entries)].color;
               return (
                 <Tabs.Tab
                   key={access.name}

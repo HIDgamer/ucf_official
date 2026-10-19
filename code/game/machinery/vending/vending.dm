@@ -963,12 +963,12 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	return 1
 
 /obj/structure/machinery/vending/proc/get_wire_descriptions()
-    var/list/descriptions = list()
-    descriptions["[VENDING_WIRE_EXTEND]"] = "Inventory control computer"
-    descriptions["[VENDING_WIRE_IDSCAN]"] = "ID scanner"
-    descriptions["[VENDING_WIRE_SHOCK]"] = "Ground safety"
-    descriptions["[VENDING_WIRE_SHOOT_INV]"] = "Dispenser motor control"
-    return descriptions
+	var/list/descriptions = list()
+	descriptions["[VENDING_WIRE_EXTEND]"] = "Inventory control computer"
+	descriptions["[VENDING_WIRE_IDSCAN]"] = "ID scanner"
+	descriptions["[VENDING_WIRE_SHOCK]"] = "Ground safety"
+	descriptions["[VENDING_WIRE_SHOOT_INV]"] = "Dispenser motor control"
+	return descriptions
 
 /obj/structure/machinery/vending/proc/isWireCut(wire)
 	return !(wires & getWireFlag(wire))

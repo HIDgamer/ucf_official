@@ -200,7 +200,7 @@
 	saved_job = job_name || computer_id_slot?.assignment
 	for(var/datum/computer_file/program/program as anything in stored_files)
 		program.on_imprint()
-	update_open_uis()
+	INVOKE_ASYNC(src, PROC_REF(update_open_uis))
 
 /obj/item/modular_computer/proc/turn_on(mob/user, open_ui = TRUE)
 	if(enabled)

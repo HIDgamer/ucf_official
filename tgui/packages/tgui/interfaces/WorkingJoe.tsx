@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 
 import { useBackend } from '../backend';
 import { Box, Button, Flex, Section, Stack } from '../components';
@@ -73,7 +73,7 @@ export const WorkingJoe = () => {
   }
 
   return (
-    <Window theme={themecolor} width={1250} height={725} resizable>
+    <Window theme={themecolor} width={1250} height={725}>
       <Window.Content scrollable>
         <PageComponent />
       </Window.Content>
@@ -182,7 +182,7 @@ const MainMenu = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Navigation Menu</h1>
+        <h1 style={{ textAlign: 'center' }}>Navigation Menu</h1>
         <Stack>
           <Stack.Item grow>
             <h3>Request Submission</h3>
@@ -301,7 +301,7 @@ const MainMenu = () => {
       </Section>
       {local_access_level >= 5 && (
         <Section>
-          <h1 align="center">Core Security Protocols</h1>
+          <h1 style={{ textAlign: 'center' }}>Core Security Protocols</h1>
           <Stack>
             <Stack.Item grow>
               <Button
@@ -389,7 +389,7 @@ const ApolloLog = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Apollo Log</h1>
+        <h1 style={{ textAlign: 'center' }}>Apollo Log</h1>
 
         {apollo_log.map((apollo_message, i) => {
           return (
@@ -452,7 +452,7 @@ const LoginRecords = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Login Records</h1>
+        <h1 style={{ textAlign: 'center' }}>Login Records</h1>
 
         {apollo_access_log.map((login, i) => {
           return (
@@ -514,7 +514,7 @@ const MaintReports = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Maintenance Reports</h1>
+        <h1 style={{ textAlign: 'center' }}>Maintenance Reports</h1>
         <Flex
           direction="column"
           justify="center"
@@ -668,7 +668,7 @@ const MaintManagement = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Maintenance Reports Management</h1>
+        <h1 style={{ textAlign: 'center' }}>Maintenance Reports Management</h1>
 
         {!!maintenance_tickets.length && (
           <Flex
@@ -822,7 +822,7 @@ const AccessRequests = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Request Access</h1>
+        <h1 style={{ textAlign: 'center' }}>Request Access</h1>
         <Flex
           direction="column"
           justify="center"
@@ -984,7 +984,7 @@ const AccessTickets = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Access Ticket Management</h1>
+        <h1 style={{ textAlign: 'center' }}>Access Ticket Management</h1>
         {!!access_tickets.length && (
           <Flex
             mt="2rem"
@@ -1083,7 +1083,6 @@ const AccessTickets = () => {
                   <Button.Confirm
                     icon="user-minus"
                     tooltip="Reject Ticket"
-                    disabled={can_reject === 'No'}
                     onClick={() => act('reject_access', { ticket: ticket.ref })}
                   />
                 )}
@@ -1146,7 +1145,7 @@ const CoreSecGas = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Nerve Gas Release</h1>
+        <h1 style={{ textAlign: 'center' }}>Nerve Gas Release</h1>
         {security_vents.map((vent, i) => {
           return (
             <Button.Confirm

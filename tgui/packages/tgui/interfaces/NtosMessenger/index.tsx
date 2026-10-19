@@ -1,12 +1,20 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { createSearch } from 'common/string';
 import { useState } from 'react';
 
 import { useBackend } from '../../backend';
-import { Box, Button, Dimmer, Icon, Input, Section, Stack } from '../../components';
+import {
+  Box,
+  Button,
+  Dimmer,
+  Icon,
+  Input,
+  Section,
+  Stack,
+} from '../../components';
 import { NtosWindow } from '../../layouts';
 import { ChatScreen } from './ChatScreen';
-import { NtChat, NtMessenger } from './types';
+import { type NtChat, type NtMessenger } from './types';
 
 type NtosMessengerData = {
   owner?: NtMessenger;
@@ -212,9 +220,9 @@ const ContactsScreen = (props) => {
 };
 
 type ChatButtonProps = {
-  name: string;
-  unreads: number;
-  chatRef: string;
+  readonly name: string;
+  readonly unreads: number;
+  readonly chatRef: string;
 };
 
 const ChatButton = (props: ChatButtonProps) => {

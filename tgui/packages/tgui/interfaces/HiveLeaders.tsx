@@ -18,13 +18,7 @@ export const HiveLeaders = (props) => {
   const { act, data } = useBackend<Data>();
   const { queens, leaders } = data;
   return (
-    <Window
-      title={'Hive Leaders'}
-      theme="hive_status"
-      resizable
-      width={250}
-      height={350}
-    >
+    <Window title={'Hive Leaders'} theme="hive_status" width={250} height={350}>
       <Window.Content scrollable>
         <Section>
           <Table className="xeno_list">
@@ -40,7 +34,7 @@ export const HiveLeaders = (props) => {
               height="25px"
               lineHeight="5px"
             >
-              <Table.Cell colspan={3} p={1}>
+              <Table.Cell colSpan={3} p={1}>
                 Queen
               </Table.Cell>
             </Table.Row>
@@ -63,7 +57,7 @@ export const HiveLeaders = (props) => {
               height="25px"
               lineHeight="5px"
             >
-              <Table.Cell colspan={3} p={1}>
+              <Table.Cell colSpan={3} p={1}>
                 Leaders
               </Table.Cell>
             </Table.Row>

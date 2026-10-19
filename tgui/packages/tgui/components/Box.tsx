@@ -4,13 +4,15 @@
  * @license MIT
  */
 
-import { BooleanLike, classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 import {
   createElement,
-  KeyboardEventHandler,
-  MouseEventHandler,
-  ReactNode,
-  UIEventHandler,
+  type CSSProperties,
+  type FocusEventHandler,
+  type KeyboardEventHandler,
+  type MouseEventHandler,
+  type ReactNode,
+  type UIEventHandler,
 } from 'react';
 
 import { CSS_COLORS } from '../constants';
@@ -32,13 +34,16 @@ export type EventHandlers = Partial<{
   onMouseOver: MouseEventHandler<HTMLDivElement>;
   onMouseUp: MouseEventHandler<HTMLDivElement>;
   onScroll: UIEventHandler<HTMLDivElement>;
+  onFocus: FocusEventHandler<HTMLDivElement>;
+  onBlur: FocusEventHandler<HTMLDivElement>;
 }>;
 
 export type BoxProps = Partial<{
   as: string;
   children: ReactNode;
   className: string | BooleanLike;
-  style: Partial<CSSStyleDeclaration>;
+  style: CSSProperties;
+  tabIndex: number;
 }> &
   BooleanProps &
   StringProps &
@@ -123,6 +128,7 @@ const stringStyleMap = {
   bottom: mapUnitPropTo('bottom', unit),
   fontFamily: mapRawPropTo('fontFamily'),
   fontSize: mapUnitPropTo('fontSize', unit),
+  fontStyle: mapRawPropTo('fontStyle'),
   fontWeight: mapRawPropTo('fontWeight'),
   height: mapUnitPropTo('height', unit),
   left: mapUnitPropTo('left', unit),
@@ -235,7 +241,9 @@ export const computeBoxClassName = (props: BoxProps) => {
   ]);
 };
 
-export const Box = (props: BoxProps & DangerDoNotUse) => {
+export const Box = (
+  props: BoxProps & DangerDoNotUse & { readonly title?: string },
+) => {
   const { as = 'div', className, children, ...rest } = props;
 
   // Compute class name and styles

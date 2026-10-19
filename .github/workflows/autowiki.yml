@@ -27,19 +27,23 @@ jobs:
       with:
         path: ~/BYOND
         key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
-    - name: Install rust-g
+    - name: Install system libraries
       if: steps.secrets_set.outputs.SECRETS_ENABLED
       run: |
-        sudo dpkg --add-architecture i386
-        sudo apt update || true
-        sudo apt install -y -o APT::Immediate-Configure=false zlib1g-dev:i386 libssl-dev:i386
-        bash tools/ci/install_rust_g.sh
+        if sudo -n true 2>/dev/null; then
+          sudo dpkg --add-architecture i386
+          sudo apt update || true
+          sudo apt install -y -o APT::Immediate-Configure=false zlib1g-dev:i386 libssl-dev:i386
+        fi
+    - name: Build rust-g
+      if: steps.secrets_set.outputs.SECRETS_ENABLED
+      run: bash tools/ci/build_rust_g.sh
     - name: Compile and generate Autowiki files
       if: steps.secrets_set.outputs.SECRETS_ENABLED
       run: |
         bash tools/ci/install_byond.sh
         source $HOME/BYOND/byond/bin/byondsetup
-        tools/build/build --ci autowiki
+        tools/build/build.sh --ci autowiki
     - name: Run Autowiki
       if: steps.secrets_set.outputs.SECRETS_ENABLED
       env:

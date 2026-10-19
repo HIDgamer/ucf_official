@@ -111,7 +111,7 @@ export const PersonalComputer = () => {
   }
 
   return (
-    <Window width={500} height={550} resizable theme={data.theme}>
+    <Window width={500} height={550} theme={data.theme}>
       <style>{PAPER_FIELD_STYLES}</style>
       <Window.Content scrollable>{body}</Window.Content>
     </Window>
@@ -119,9 +119,9 @@ export const PersonalComputer = () => {
 };
 
 const InboxView = (props: {
-  onOpen: (ref: string) => void;
-  onOutbox: () => void;
-  onCompose: () => void;
+  readonly onOpen: (ref: string) => void;
+  readonly onOutbox: () => void;
+  readonly onCompose: () => void;
 }) => {
   const { data } = useBackend<Data>();
   const { own_address, messages, worldtime } = data;
@@ -181,9 +181,9 @@ const InboxView = (props: {
 };
 
 const MessageView = (props: {
-  messageRef: string;
-  onBack: () => void;
-  onReply: (recipient: string, subject: string) => void;
+  readonly messageRef: string;
+  readonly onBack: () => void;
+  readonly onReply: (recipient: string, subject: string) => void;
 }) => {
   const { act, data } = useBackend<Data>();
   const { messages } = data;
@@ -211,10 +211,10 @@ const MessageView = (props: {
 };
 
 const MessageBody = (props: {
-  message: Message;
-  onBack: () => void;
-  onReply: (recipient: string, subject: string) => void;
-  onOpen: () => void;
+  readonly message: Message;
+  readonly onBack: () => void;
+  readonly onReply: (recipient: string, subject: string) => void;
+  readonly onOpen: () => void;
 }) => {
   const { act } = useBackend<Data>();
   const { message } = props;
@@ -225,7 +225,6 @@ const MessageBody = (props: {
     if (!message.read) {
       props.onOpen();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [message.ref]);
 
   return (
@@ -236,7 +235,9 @@ const MessageBody = (props: {
           {!message.system && (
             <Button
               icon="reply"
-              onClick={() => props.onReply(message.sender, `RE: ${message.subject}`)}
+              onClick={() =>
+                props.onReply(message.sender, `RE: ${message.subject}`)
+              }
             >
               Reply
             </Button>
@@ -266,7 +267,6 @@ const MessageBody = (props: {
         backgroundColor="white"
         color="black"
         p="0.75rem"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
           __html: sanitizeText(message.body ?? '', true),
         }}
@@ -276,9 +276,9 @@ const MessageBody = (props: {
 };
 
 const OutboxView = (props: {
-  onOpen: (ref: string) => void;
-  onInbox: () => void;
-  onCompose: () => void;
+  readonly onOpen: (ref: string) => void;
+  readonly onInbox: () => void;
+  readonly onCompose: () => void;
 }) => {
   const { data } = useBackend<Data>();
   const { own_address, outbox, worldtime } = data;
@@ -328,7 +328,10 @@ const OutboxView = (props: {
   );
 };
 
-const SentMessageView = (props: { messageRef: string; onBack: () => void }) => {
+const SentMessageView = (props: {
+  readonly messageRef: string;
+  readonly onBack: () => void;
+}) => {
   const { act, data } = useBackend<Data>();
   const { outbox } = data;
   const message = outbox.find((m) => m.ref === props.messageRef);
@@ -374,7 +377,6 @@ const SentMessageView = (props: { messageRef: string; onBack: () => void }) => {
         backgroundColor="white"
         color="black"
         p="0.75rem"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
           __html: sanitizeText(message.body ?? '', true),
         }}
@@ -384,9 +386,9 @@ const SentMessageView = (props: { messageRef: string; onBack: () => void }) => {
 };
 
 const ComposeView = (props: {
-  initialRecipient?: string;
-  initialSubject?: string;
-  onBack: () => void;
+  readonly initialRecipient?: string;
+  readonly initialSubject?: string;
+  readonly onBack: () => void;
 }) => {
   const { act, data } = useBackend<Data>();
   const { recipient_addresses, relay_offline } = data;
@@ -414,8 +416,8 @@ const ComposeView = (props: {
         {!!relay_offline && (
           <Stack.Item>
             <NoticeBox>
-              Groundside relay offline — only computers on your side of the
-              link are reachable right now.
+              Groundside relay offline — only computers on your side of the link
+              are reachable right now.
             </NoticeBox>
           </Stack.Item>
         )}

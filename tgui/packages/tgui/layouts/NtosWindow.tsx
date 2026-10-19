@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { useEffect, useRef } from 'react';
 
 import { resolveAsset } from '../assets';

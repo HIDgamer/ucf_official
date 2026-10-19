@@ -88,8 +88,7 @@ export const SlotMachine = () => {
         >
           <Section style={{ textAlign: 'left' }}>
             <p>
-              Only <b>{cost}</b> credit{pluralS(cost)} for a chance to win
-              big!
+              Only <b>{cost}</b> credit{pluralS(cost)} for a chance to win big!
             </p>
             <p>
               Available prize money:{' '}
@@ -100,8 +99,7 @@ export const SlotMachine = () => {
             <p>
               Current jackpot:{' '}
               <b>
-                {prize_money + jackpot} credit{pluralS(prize_money + jackpot)}
-                !
+                {prize_money + jackpot} credit{pluralS(prize_money + jackpot)}!
               </b>
             </p>
             <p>

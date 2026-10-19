@@ -166,7 +166,7 @@
 /proc/gunpoint_dump(mob/living/carbon/human/shooter, obj/item/weapon/gun/shooting_gun, mob/living/carbon/human/victim, rounds)
 	set waitfor = FALSE
 	for(var/shot in 1 to rounds)
-		sleep(max(shooting_gun.fire_delay, 1))
+		sleep(max(shooting_gun.get_fire_delay(), 1))
 		if(QDELETED(shooter) || QDELETED(shooting_gun) || QDELETED(victim) || victim.stat == DEAD)
 			return
 		if(shooter.stat != CONSCIOUS || shooter.get_active_hand() != shooting_gun || !shooting_gun.current_mag?.current_rounds)

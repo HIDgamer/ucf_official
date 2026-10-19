@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { storage } from 'common/storage';
 import { useEffect, useState } from 'react';
 
@@ -128,7 +128,7 @@ export const HealthScan = () => {
 
   useEffect(() => {
     storage
-      .get<boolean>('healthscan-color-disabled')
+      .get('healthscan-color-disabled')
       .then((disabled) => setColorEnabled(!disabled));
   }, []);
 
@@ -447,7 +447,7 @@ const Patient = () => {
           ) : null}
           <LabeledList.Item label="Damage">
             <Box inline>
-              <ProgressBar>
+              <ProgressBar value={0}>
                 Brute:{' '}
                 <Box inline bold color={'red'}>
                   {total_brute}
@@ -456,7 +456,7 @@ const Patient = () => {
             </Box>
             <Box inline width={'5px'} />
             <Box inline>
-              <ProgressBar>
+              <ProgressBar value={0}>
                 Burn:{' '}
                 <Box inline bold color={'#ffb833'}>
                   {total_burn}
@@ -465,7 +465,7 @@ const Patient = () => {
             </Box>
             <Box inline width={'5px'} />
             <Box inline>
-              <ProgressBar>
+              <ProgressBar value={0}>
                 Toxin:{' '}
                 <Box inline bold color={'green'}>
                   {toxin}
@@ -474,7 +474,7 @@ const Patient = () => {
             </Box>
             <Box inline width={'5px'} />
             <Box inline>
-              <ProgressBar>
+              <ProgressBar value={0}>
                 Oxygen:{' '}
                 <Box inline bold color={'blue'}>
                   {oxy}
@@ -484,7 +484,7 @@ const Patient = () => {
             <Box inline width={'5px'} />
             {!!clone && (
               <Box inline>
-                <ProgressBar>
+                <ProgressBar value={0}>
                   Clone:{' '}
                   <Box inline color={'teal'}>
                     {clone}

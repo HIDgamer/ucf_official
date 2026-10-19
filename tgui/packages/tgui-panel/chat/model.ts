@@ -11,7 +11,7 @@ import { MESSAGE_TYPE_INTERNAL, MESSAGE_TYPES } from './constants';
 export const canPageAcceptType = (page, type) =>
   type.startsWith(MESSAGE_TYPE_INTERNAL) || page.acceptedTypes[type];
 
-export const createPage = (obj) => {
+export const createPage = (obj?: any) => {
   let acceptedTypes = {};
 
   for (let typeDef of MESSAGE_TYPES) {
