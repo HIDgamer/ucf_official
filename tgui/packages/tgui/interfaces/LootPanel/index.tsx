@@ -1,6 +1,5 @@
-/* eslint-disable func-style */
 import { KEY } from 'common/keys';
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { useState } from 'react';
 
 import { useBackend } from '../../backend';
@@ -8,7 +7,7 @@ import { Button, Input, Section, Stack } from '../../components';
 import { Window } from '../../layouts';
 import { GroupedContents } from './GroupedContents';
 import { RawContents } from './RawContents';
-import { SearchItem } from './types';
+import { type SearchItem } from './types';
 
 type Data = {
   contents: SearchItem[];

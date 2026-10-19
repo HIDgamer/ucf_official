@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { capitalizeFirst } from 'common/string';
 import { useState } from 'react';
 
@@ -28,13 +28,14 @@ type Filters = {
   use_params: boolean;
 };
 
-const FILTER_BUTTONS: { key: keyof Filters; icon: string; tooltip: string }[] = [
-  { key: 'visible', icon: 'eye', tooltip: 'Visible' },
-  { key: 'audible', icon: 'comment', tooltip: 'Audible' },
-  { key: 'sound', icon: 'volume-up', tooltip: 'Sound' },
-  { key: 'hands', icon: 'hand-paper', tooltip: 'Hands' },
-  { key: 'use_params', icon: 'crosshairs', tooltip: 'Params' },
-];
+const FILTER_BUTTONS: { key: keyof Filters; icon: string; tooltip: string }[] =
+  [
+    { key: 'visible', icon: 'eye', tooltip: 'Visible' },
+    { key: 'audible', icon: 'comment', tooltip: 'Audible' },
+    { key: 'sound', icon: 'volume-up', tooltip: 'Sound' },
+    { key: 'hands', icon: 'hand-paper', tooltip: 'Hands' },
+    { key: 'use_params', icon: 'crosshairs', tooltip: 'Params' },
+  ];
 
 export const EmotePanel = () => {
   const { act, data } = useBackend<EmotePanelData>();
@@ -87,13 +88,18 @@ export const EmotePanel = () => {
           />
         </Section>
         <Section
-          title={searchText ? `Search results of "${searchText}"` : 'All Emotes'}
+          title={
+            searchText ? `Search results of "${searchText}"` : 'All Emotes'
+          }
           buttons={
             <>
               <Button onClick={() => setShowNames(!showNames)}>
                 {showNames ? 'Show Names' : 'Show Keys'}
               </Button>
-              <Button selected={showIcons} onClick={() => setShowIcons(!showIcons)}>
+              <Button
+                selected={showIcons}
+                onClick={() => setShowIcons(!showIcons)}
+              >
                 Show Icons
               </Button>
               <Button
@@ -111,7 +117,9 @@ export const EmotePanel = () => {
               <Flex.Item key={emote.key}>
                 <Button
                   width={showIcons ? 16 : 8}
-                  tooltip={showIcons ? '' : <EmoteIcons emote={emote} margin={0.5} />}
+                  tooltip={
+                    showIcons ? '' : <EmoteIcons emote={emote} margin={0.5} />
+                  }
                   onClick={() =>
                     act('play_emote', {
                       emote_key: emote.key,
@@ -135,7 +143,10 @@ export const EmotePanel = () => {
   );
 };
 
-const EmoteIcons = (props: { readonly emote: Emote; readonly margin: number }) => {
+const EmoteIcons = (props: {
+  readonly emote: Emote;
+  readonly margin: number;
+}) => {
   const { emote, margin } = props;
 
   return (

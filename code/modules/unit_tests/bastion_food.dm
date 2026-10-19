@@ -319,10 +319,12 @@
 		var/obj/structure/machinery/vending/bastion/vendor_path = path
 		if(!findtext("[path]", "/vending/bastion/") || !initial(vendor_path.icon_state))
 			continue
-		var/list/all_products = initial(vendor_path.products) + initial(vendor_path.contraband) + initial(vendor_path.premium)
+		var/obj/structure/machinery/vending/bastion/vendor = allocate(path)
+		var/list/all_products = list()
+		for(var/list/stock in list(vendor.products, vendor.contraband, vendor.premium))
+			all_products += stock
 		if(!length(all_products))
 			continue
-		var/obj/structure/machinery/vending/bastion/vendor = allocate(path)
 		count++
 		if(!icon_exists(vendor.icon, vendor.icon_state))
 			problems += "[path] icon [vendor.icon_state]"

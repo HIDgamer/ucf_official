@@ -1,13 +1,13 @@
 import { KEY } from 'common/keys';
 import { clamp } from 'common/math';
-import { BooleanLike, classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 import {
   Component,
   createRef,
-  FocusEventHandler,
-  KeyboardEventHandler,
-  MouseEventHandler,
-  RefObject,
+  type FocusEventHandler,
+  type KeyboardEventHandler,
+  type MouseEventHandler,
+  type RefObject,
 } from 'react';
 
 import { AnimatedNumber } from './AnimatedNumber';
@@ -66,6 +66,8 @@ export class NumberInput extends Component<Props, State> {
     suppressingFlicker: false,
   };
   static defaultProps: {
+    minValue: number;
+    maxValue: number;
     step: number;
     stepPixelSize: number;
     suppressFlicker: number;
@@ -372,6 +374,8 @@ export class NumberInput extends Component<Props, State> {
 }
 
 NumberInput.defaultProps = {
+  minValue: -Infinity,
+  maxValue: Infinity,
   step: 1,
   stepPixelSize: 1,
   suppressFlicker: 50,

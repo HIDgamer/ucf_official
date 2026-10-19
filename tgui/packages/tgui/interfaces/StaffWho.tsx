@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 import { useBackend } from '../backend';
 import { Button, Collapsible, Stack } from '../components';
 import { Window } from '../layouts';
 
 type AdminPayload = {
-  readonly category: string;
   readonly special_color?: string;
   readonly special_text?: string;
   readonly text: string;
@@ -43,7 +42,7 @@ export const StaffWho = () => {
   );
 
   return (
-    <Window resizable width={600} height={600}>
+    <Window width={600} height={600}>
       <Window.Content scrollable>
         {base_data ? (
           <Stack fill vertical>

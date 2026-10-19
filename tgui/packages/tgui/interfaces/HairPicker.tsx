@@ -1,6 +1,7 @@
 import { hexToHsva, type HsvaColor, hsvaToHex } from 'common/color';
 import { type BooleanLike, classes } from 'common/react';
 import { createRef, useState } from 'react';
+
 import { useBackend } from '../backend';
 import {
   Box,
@@ -15,7 +16,6 @@ import {
   Tooltip,
 } from '../components';
 import { Window } from '../layouts';
-
 import { ColorSelector } from './ColorPickerModal';
 
 type HairPickerData = {

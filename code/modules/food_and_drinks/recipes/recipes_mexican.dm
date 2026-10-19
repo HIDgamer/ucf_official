@@ -7,7 +7,7 @@
 	name ="Burrito"
 	reqs = list(
 		/obj/item/food/tortilla = 1,
-		/obj/item/food/grown/soybeans = 2
+		/obj/item/food/grown/soybeans = 2,
 	)
 	result = /obj/item/food/burrito
 	category = CAT_MEXICAN
@@ -17,7 +17,7 @@
 	reqs = list(
 		/obj/item/food/cheese/wedge = 2,
 		/obj/item/food/tortilla = 1,
-		/obj/item/food/grown/soybeans = 1
+		/obj/item/food/grown/soybeans = 1,
 	)
 	result = /obj/item/food/cheesyburrito
 	category = CAT_MEXICAN
@@ -27,7 +27,7 @@
 	reqs = list(
 		/obj/item/food/tortilla = 1,
 		/obj/item/food/meat/cutlet = 2,
-		/obj/item/food/grown/soybeans = 1
+		/obj/item/food/grown/soybeans = 1,
 	)
 	result = /obj/item/food/carneburrito
 	category = CAT_MEXICAN
@@ -37,7 +37,7 @@
 	reqs = list(
 		/obj/item/food/tortilla = 1,
 		/obj/item/food/grown/ghost_chili = 2,
-		/obj/item/food/grown/soybeans = 1
+		/obj/item/food/grown/soybeans = 1,
 	)
 	result = /obj/item/food/fuegoburrito
 	category = CAT_MEXICAN
@@ -46,7 +46,7 @@
 	name ="Nachos"
 	reqs = list(
 		"sodiumchloride" = 5,
-		/obj/item/food/tortilla = 1
+		/obj/item/food/tortilla = 1,
 	)
 	result = /obj/item/food/nachos
 	category = CAT_MEXICAN
@@ -56,7 +56,7 @@
 	reqs = list(
 		"sodiumchloride" = 5,
 		/obj/item/food/cheese/wedge = 1,
-		/obj/item/food/tortilla = 1
+		/obj/item/food/tortilla = 1,
 	)
 	result = /obj/item/food/cheesynachos
 	category = CAT_MEXICAN
@@ -66,7 +66,7 @@
 	reqs = list(
 		"ketchup" = 5,
 		/obj/item/food/grown/chili = 2,
-		/obj/item/food/tortilla = 1
+		/obj/item/food/tortilla = 1,
 	)
 	result = /obj/item/food/cubannachos
 	category = CAT_MEXICAN
@@ -97,7 +97,7 @@
 	reqs = list(
 		/obj/item/food/meat/cutlet = 2,
 		/obj/item/food/grown/chili = 2,
-		/obj/item/food/tortilla = 2
+		/obj/item/food/tortilla = 2,
 	)
 	result = /obj/item/food/enchiladas
 	category = CAT_MEXICAN
@@ -108,7 +108,7 @@
 		/obj/item/food/cornchips = 1,
 		/obj/item/food/grown/chili = 1,
 		/obj/item/food/grown/onion = 1,
-		/obj/item/food/grown/tomato = 1
+		/obj/item/food/grown/tomato = 1,
 	)
 	result = /obj/item/food/chipsandsalsa
 	category = CAT_MEXICAN

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useBackend } from '../backend';
 import { Box, Button, Flex, Section, Stack, Tabs } from '../components';
-import { BoxProps } from '../components/Box';
+import { type BoxProps } from '../components/Box';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
 

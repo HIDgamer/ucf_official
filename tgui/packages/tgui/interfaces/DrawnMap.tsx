@@ -1,4 +1,4 @@
-import { Component, createRef, RefObject } from 'react';
+import { Component, createRef, type RefObject } from 'react';
 
 import { Box } from '../components';
 
@@ -65,9 +65,7 @@ export class DrawnMap extends Component<Props, State> {
     };
   }
 
-  parseSvgData(
-    svgDataArray?: (number | string)[] | null,
-  ): SvgLine[] | null {
+  parseSvgData(svgDataArray?: (number | string)[] | null): SvgLine[] | null {
     if (!svgDataArray) return null;
     let lines: SvgLine[] = [];
     for (let i = 0; i < svgDataArray.length; i += 5) {

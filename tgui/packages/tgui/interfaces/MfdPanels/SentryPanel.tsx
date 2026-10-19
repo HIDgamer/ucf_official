@@ -1,9 +1,9 @@
 import { useBackend } from '../../backend';
 import { Box, Stack } from '../../components';
-import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { type DropshipEquipment } from '../DropshipWeaponsConsole';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
-import { EquipmentContext, SentrySpec } from './types';
+import { type EquipmentContext, type SentrySpec } from './types';
 
 const SentryPanel = (props: DropshipEquipment) => {
   const sentryData = props.data as SentrySpec;

@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -9,7 +8,7 @@ import { classes } from 'common/react';
 import { useEffect, useRef } from 'react';
 
 import {
-  BoxProps,
+  type BoxProps,
   computeBoxClassName,
   computeBoxProps,
 } from '../components/Box';

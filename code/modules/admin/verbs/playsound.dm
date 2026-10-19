@@ -133,7 +133,7 @@
 
 	switch (action)
 		if ("open_file_picker")
-			INVOKE_ASYNC(src, .proc/upload_and_play, params["audience"], params["target_ref"], params["sound_type"], params["show_title"])
+			INVOKE_ASYNC(src, PROC_REF(upload_and_play), params["audience"], params["target_ref"], params["sound_type"], params["show_title"])
 			return TRUE
 
 		if ("play_direct")

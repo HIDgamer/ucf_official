@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { useState } from 'react';
 
 import { useBackend } from '../backend';
@@ -53,7 +53,11 @@ export const FaxMachine = () => {
   const body = idcard ? <FaxMain /> : <FaxEmpty />;
 
   return (
-    <Window width={idcard ? 800 : 400} height={idcard ? 560 : 215} resizable theme={theme}>
+    <Window
+      width={idcard ? 800 : 400}
+      height={idcard ? 560 : 215}
+      theme={theme}
+    >
       <Window.Content scrollable={!!idcard}>{body}</Window.Content>
     </Window>
   );
@@ -120,9 +124,9 @@ const FaxId = () => {
 };
 
 const InlinePicker = (props: {
-  options: string[];
-  placeholder: string;
-  onSelect: (option: string) => void;
+  readonly options: string[];
+  readonly placeholder: string;
+  readonly onSelect: (option: string) => void;
 }) => {
   const { options, placeholder, onSelect } = props;
   const [search, setSearch] = useState('');
@@ -316,7 +320,7 @@ const ConfirmSend = () => {
                 {!!paper_icon && (
                   <DmIcon
                     icon={paper_icon}
-                    icon_state={paper_icon_state}
+                    icon_state={paper_icon_state ?? ''}
                     mr={1}
                   />
                 )}
@@ -365,8 +369,8 @@ const ConfirmSend = () => {
       </Stack>
       {!!is_jammed && (
         <NoticeBox danger>
-          The bundle is jammed — this machine can only send up to five pages
-          at once. Remove some pages before sending.
+          The bundle is jammed — this machine can only send up to five pages at
+          once. Remove some pages before sending.
         </NoticeBox>
       )}
     </Section>
@@ -413,8 +417,8 @@ const FaxEmpty = () => {
   return (
     <Section textAlign="center" fill>
       <Flex height="100%">
-        <Flex.Item grow="1" align="center" color="red">
-          <Icon name="times-circle" mb="0.5rem" size="5" color="red" />
+        <Flex.Item grow={1} align="center" color="red">
+          <Icon name="times-circle" mb="0.5rem" size={5} color="red" />
           <br />
           No ID card detected.
           <br />

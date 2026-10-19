@@ -143,7 +143,9 @@ export const ClanMenu = (props) => {
                     <Table.Cell color="label">Name</Table.Cell>
                     <Table.Cell color="label">Rank</Table.Cell>
                     <Table.Cell color="label">Honor</Table.Cell>
-                    {(player_purge || player_move_clans || player_modify_ranks) && (
+                    {(player_purge ||
+                      player_move_clans ||
+                      player_modify_ranks) && (
                       <Table.Cell color="label">Actions</Table.Cell>
                     )}
                   </Table.Row>
@@ -157,7 +159,9 @@ export const ClanMenu = (props) => {
                         <Table.Cell>{member.name}</Table.Cell>
                         <Table.Cell>{member.rank}</Table.Cell>
                         <Table.Cell>{member.honor}</Table.Cell>
-                        {(player_purge || player_move_clans || player_modify_ranks) && (
+                        {(player_purge ||
+                          player_move_clans ||
+                          player_modify_ranks) && (
                           <Table.Cell>
                             {canTarget && (
                               <Stack>

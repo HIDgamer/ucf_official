@@ -42,7 +42,6 @@ export const MedalsPanel = (props) => {
       width={600}
       height={400}
       theme={pageIndex === 0 ? 'ntos' : 'hive_status'}
-      resizable
     >
       <Window.Content scrollable>
         <Stack direction="column" fill>

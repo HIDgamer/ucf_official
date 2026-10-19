@@ -1,4 +1,4 @@
-import { BooleanLike, classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 import { createSearch } from 'common/string';
 import { Fragment, useState } from 'react';
 
@@ -103,8 +103,14 @@ const filterXenos = (data: {
   xeno_vitals: Record<string, XenoVitals>;
   xeno_info: Record<string, XenoInfo>;
 }) => {
-  const { searchKey, searchFilters, maxHealth, xeno_keys, xeno_vitals, xeno_info } =
-    data;
+  const {
+    searchKey,
+    searchFilters,
+    maxHealth,
+    xeno_keys,
+    xeno_vitals,
+    xeno_info,
+  } = data;
   const xeno_entries: XenoEntry[] = [];
 
   xeno_keys.map((key, i) => {
@@ -172,7 +178,6 @@ export const HiveStatus = (props) => {
     <Window
       title={hive_name + ' Status'}
       theme="hive_status"
-      resizable
       width={600}
       height={680}
     >
@@ -381,7 +386,8 @@ const StructuresAndBuffs = (props) => {
             return (
               <div key={stat_name}>
                 {stat_name}: x{mod.multiplier}
-                {mod.flat !== 0 && (mod.flat > 0 ? ` +${mod.flat}` : ` ${mod.flat}`)}
+                {mod.flat !== 0 &&
+                  (mod.flat > 0 ? ` +${mod.flat}` : ` ${mod.flat}`)}
               </div>
             );
           })}

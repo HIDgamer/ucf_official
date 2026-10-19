@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { useState } from 'react';
 
 import { useBackend } from '../backend';
@@ -81,7 +81,7 @@ export const XenomorphExtractor = () => {
               Recepticle is empty, analyzing is impossible!
             </NoticeBox>
           ) : (
-            <NoticeBox notice>Biomass accepted. Ready to analyze.</NoticeBox>
+            <NoticeBox>Biomass accepted. Ready to analyze.</NoticeBox>
           )}
         </Section>
         <Divider />

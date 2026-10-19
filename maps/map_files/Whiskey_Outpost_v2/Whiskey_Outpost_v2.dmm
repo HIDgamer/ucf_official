@@ -2115,8 +2115,7 @@
 /area/whiskey_outpost/outside/lane/four_south)
 "jg" = (
 /obj/structure/machinery/door/poddoor/two_tile/four_tile{
-	breakable = 0;
-	indestructible = 1
+	breakable = 0
 	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/south/very_far)

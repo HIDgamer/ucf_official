@@ -17,4 +17,7 @@
 	return data
 
 /datum/computer_file/program/crew_manifest/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
 	return FALSE

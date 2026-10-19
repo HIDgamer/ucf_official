@@ -177,7 +177,7 @@ const ApcContent = (props) => {
                 <Button
                   icon={data.malfStatus.icon}
                   color="bad"
-                  onClick={() => act(data.malfStatus.action)}
+                  onClick={() => act(data.malfStatus!.action)}
                 >
                   {data.malfStatus.content}
                 </Button>

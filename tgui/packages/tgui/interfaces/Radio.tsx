@@ -68,7 +68,6 @@ export const Radio = (props) => {
                 </Box>
               )) || (
                 <NumberInput
-                  animate
                   unit="kHz"
                   step={0.2}
                   stepPixelSize={10}

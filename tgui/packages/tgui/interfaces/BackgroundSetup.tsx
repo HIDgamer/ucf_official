@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 
 import { useBackend } from '../backend';
 import { Button, LabeledList, Section, Stack } from '../components';
@@ -40,7 +40,12 @@ export const BackgroundSetup = () => {
   } = data;
 
   return (
-    <Window title="Background & Records" theme="crtlobby" width={480} height={640}>
+    <Window
+      title="Background & Records"
+      theme="crtlobby"
+      width={480}
+      height={640}
+    >
       <Window.Content scrollable>
         <Stack vertical>
           <Stack.Item>
@@ -53,10 +58,14 @@ export const BackgroundSetup = () => {
                   <Button onClick={() => act('religion')}>{religion}</Button>
                 </LabeledList.Item>
                 <LabeledList.Item label="Corporate Relation">
-                  <Button onClick={() => act('nt_relation')}>{nanotrasen_relation}</Button>
+                  <Button onClick={() => act('nt_relation')}>
+                    {nanotrasen_relation}
+                  </Button>
                 </LabeledList.Item>
                 <LabeledList.Item label="Preferred Squad">
-                  <Button onClick={() => act('prefsquad')}>{preferred_squad}</Button>
+                  <Button onClick={() => act('prefsquad')}>
+                    {preferred_squad}
+                  </Button>
                 </LabeledList.Item>
               </LabeledList>
             </Section>
@@ -68,13 +77,17 @@ export const BackgroundSetup = () => {
                   <Button onClick={() => act('underwear')}>{underwear}</Button>
                 </LabeledList.Item>
                 <LabeledList.Item label="Undershirt">
-                  <Button onClick={() => act('undershirt')}>{undershirt}</Button>
+                  <Button onClick={() => act('undershirt')}>
+                    {undershirt}
+                  </Button>
                 </LabeledList.Item>
                 <LabeledList.Item label="Backpack">
                   <Button onClick={() => act('bag')}>{backbag}</Button>
                 </LabeledList.Item>
                 <LabeledList.Item label="Preferred Armor">
-                  <Button onClick={() => act('prefarmor')}>{preferred_armor}</Button>
+                  <Button onClick={() => act('prefarmor')}>
+                    {preferred_armor}
+                  </Button>
                 </LabeledList.Item>
                 <LabeledList.Item label="Show Job Gear on Preview">
                   <Button

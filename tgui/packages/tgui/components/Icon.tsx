@@ -6,10 +6,10 @@
  * @license MIT
  */
 
-import { BooleanLike, classes } from 'common/react';
-import { ReactNode } from 'react';
+import { type BooleanLike, classes } from 'common/react';
+import { type CSSProperties, type ReactNode } from 'react';
 
-import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
+import { type BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
 const FA_OUTLINE_REGEX = /-o$/;
 
@@ -18,7 +18,7 @@ type IconPropsUnique = { readonly name: string } & Partial<{
   spin: BooleanLike;
   className: string;
   rotation: number;
-  style: Partial<HTMLDivElement['style']>;
+  style: CSSProperties;
 }>;
 
 export type IconProps = IconPropsUnique & BoxProps;

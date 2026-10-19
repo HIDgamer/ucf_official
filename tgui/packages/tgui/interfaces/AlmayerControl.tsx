@@ -55,9 +55,7 @@ export const AlmayerControl = () => {
 };
 
 const ShipControlPanel = () => {
-  const [category, setCategory] = useState<'routine' | 'emergency'>(
-    'routine',
-  );
+  const [category, setCategory] = useState<'routine' | 'emergency'>('routine');
 
   return (
     <Section title="Ship Control" buttons={<AlertLevelControl />}>
@@ -84,8 +82,12 @@ const ShipControlPanel = () => {
 
 const AlertLevelControl = () => {
   const { act, data } = useBackend<Data>();
-  const { alert_level, alert_level_string, alert_level_color, selectable_levels } =
-    data;
+  const {
+    alert_level,
+    alert_level_string,
+    alert_level_color,
+    selectable_levels,
+  } = data;
 
   if (alert_level === 3) {
     return (
@@ -322,8 +324,8 @@ const EmergencyActions = () => {
       </Stack.Item>
       <Stack.Item>
         <NoticeBox warning>
-          Distress beacon transmissions are unencrypted and can be picked up
-          by anyone listening, friendly or not.
+          Distress beacon transmissions are unencrypted and can be picked up by
+          anyone listening, friendly or not.
         </NoticeBox>
       </Stack.Item>
     </Stack>

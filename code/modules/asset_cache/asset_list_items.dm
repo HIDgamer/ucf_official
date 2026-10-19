@@ -443,7 +443,7 @@
 		if(initial(current_gun.flags_gun_features) & GUN_UNUSUAL_DESIGN)
 			continue // These don't have a way to inspect weapon stats
 		var/obj/item/weapon/gun/temp_gun = new current_gun
-		var/icon_state = temp_gun.base_gun_icon // base_gun_icon is set in Initialize generally
+		var/icon_state = temp_gun.lineart_state || temp_gun.base_gun_icon // base_gun_icon is set in Initialize generally
 		qdel(temp_gun)
 		if(icon_state && isnull(sprites[icon_state]))
 			// downgrade this to a log_debug if we don't want missing lineart to be a lint

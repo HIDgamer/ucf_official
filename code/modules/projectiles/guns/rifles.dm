@@ -2437,7 +2437,7 @@
 	name = "\improper L36 Halberd assault rifle"
 	desc = "One of the fastest-firing rifles in service, and also one of the most accurate and longest ranged. Paired with reasonable recoil and a large magazine, it's easy to see why the Halberd became so popular. It is the Three World Empire Royal Marines Commandos' answer to the M41A pulse rifle, kept in service for its superior armor penetration and stopping power. Uses 8.88x51mm ammunition."
 	desc_lore = "Designed by Weyland-Yutani's UK Weapons Division to the standards of the Three World Empire's 2170 Military Procurement Plan and released in 2172 for the Royal Marines Commandos and the empire's national services, the Halberd was also taken up by the Colonial Marines, private military contractors and colonial militias. Armat Battlefield Systems hotly contested the contract, claiming their own submission met every requirement while coming in twenty percent cheaper. Most Halberds were replaced by the burst-fire LEM StG24 Storm Rifle in 2185 and passed to reserve units or sold on to the civilian market, but the Royal Marines Commandos never let go of theirs."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/l36.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "l36"
 	item_state = "l36"
 	fire_sound = 'sound/weapons/gun_l36.ogg'
@@ -2475,6 +2475,12 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_SMOKE_PARTICLES
 	start_semiauto = FALSE
 	start_automatic = TRUE
+
+/obj/item/weapon/gun/rifle/l36/pmc
+	name = "\improper PMC L36 Halberd assault rifle"
+	icon_state = "l36_p"
+	item_state = "l36_p"
+	lineart_state = "l36"
 
 /obj/item/weapon/gun/rifle/l36/Initialize(mapload, spawn_empty)
 	. = ..()

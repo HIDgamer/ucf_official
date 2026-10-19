@@ -1,19 +1,23 @@
 /datum/bastion_processor_recipe/meat
 	input = /obj/item/food/meat/slab
 	output = /obj/item/food/raw_meatball
-	blacklist = list(/obj/item/food/meat/slab/human,
+	blacklist = list(
+		/obj/item/food/meat/slab/human,
 		/obj/item/food/meat/slab/corgi,
 		/obj/item/food/meat/slab/xeno,
 		/obj/item/food/meat/slab/bear,
-		/obj/item/food/meat/slab/chicken)
+		/obj/item/food/meat/slab/chicken,
+	)
 	food_multiplier = 3
 
 /datum/bastion_processor_recipe/cutlet
 	input = /obj/item/food/meat/cutlet/plain
-	blacklist = list(/obj/item/food/meat/cutlet/plain/human,
+	blacklist = list(
+		/obj/item/food/meat/cutlet/plain/human,
 		/obj/item/food/meat/cutlet/xeno,
 		/obj/item/food/meat/cutlet/bear,
-		/obj/item/food/meat/cutlet/chicken)
+		/obj/item/food/meat/cutlet/chicken,
+	)
 	output = /obj/item/food/raw_meatball
 
 /datum/bastion_processor_recipe/meat/human

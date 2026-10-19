@@ -73,7 +73,7 @@ type Data = {
 
 export const PodLauncher = (props) => {
   return (
-    <Window title="Supply Pod Menu" width={730} height={500} resizable>
+    <Window title="Supply Pod Menu" width={730} height={500}>
       <PodLauncherContent />
     </Window>
   );
@@ -594,7 +594,7 @@ class PresetsPage extends Component<{}, PresetsPageState> {
 
   async componentDidMount() {
     // This warning is generally considered OK to ignore in this context
-    // eslint-disable-next-line react/no-did-mount-set-state
+
     this.setState({
       presets: await this.getPresets(),
     });
@@ -644,8 +644,7 @@ class PresetsPage extends Component<{}, PresetsPageState> {
     });
   }
   render() {
-    const { presets, presetIndex, settingName, newNameText, hue } =
-      this.state;
+    const { presets, presetIndex, settingName, newNameText, hue } = this.state;
     const { act, data } = useBackend<Data>();
     return (
       <Section
@@ -714,7 +713,6 @@ class PresetsPage extends Component<{}, PresetsPageState> {
             />
             <span color="label"> Hue: </span>
             <NumberInput
-              inline
               animated
               width="40px"
               step={5}
@@ -726,11 +724,11 @@ class PresetsPage extends Component<{}, PresetsPageState> {
             />
             <Input
               inline
-              autofocus
+              autoFocus
               placeholder="Preset Name"
               onChange={(e, value) => this.setState({ newNameText: value })}
             />
-            <Divider horizontal />
+            <Divider />
           </>
         )}
         {(!presets || presets.length === 0) && (
@@ -757,7 +755,7 @@ class PresetsPage extends Component<{}, PresetsPageState> {
                         borderStyle: 'solid',
                         borderColor: `hsl(${preset.hue}, 80%, 80%)`,
                       }
-                    : ''
+                    : undefined
                 }
               >
                 {preset.title}
@@ -829,7 +827,7 @@ const Timing = (props) => {
       <DelayHelper delay_list={DELAYS} title="Normal Timers" />
       {!!data.should_recall && (
         <>
-          <Divider horizontal />
+          <Divider />
           <DelayHelper
             delay_list={reverse_delays}
             reverse

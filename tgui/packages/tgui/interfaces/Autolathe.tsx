@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { capitalize } from 'common/string';
 import { Fragment, useState } from 'react';
 
@@ -151,7 +151,7 @@ const QueueList = () => {
 };
 
 const MaterialsTooltip = (props: {
-  materials: Record<string, string> | string;
+  readonly materials: Record<string, string> | string;
 }) => {
   const { materials } = props;
   return (

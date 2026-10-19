@@ -1,5 +1,5 @@
 import { round } from 'common/math';
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 
 import { useBackend } from '../backend';
 import {
@@ -96,7 +96,7 @@ export const Sleeper = () => {
   const body = hasOccupant ? <SleeperMain /> : <SleeperEmpty />;
   const windowHeight = hasOccupant ? 850 : 150;
   return (
-    <Window resizable width={500} height={windowHeight}>
+    <Window width={500} height={windowHeight}>
       <Window.Content scrollable className="Layout__content--flexColumn">
         {body}
       </Window.Content>

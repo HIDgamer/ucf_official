@@ -39,7 +39,7 @@
     $with: (
       'text-color': base.$color-fg,
       'background-color': rgba(0, 0, 0, 0.25),
-      'border-color': rgba(base.$color-fg, 0.25),
+      'border-color': rgba(base.$color-fg, 0.25)
     )
   );
 
@@ -48,7 +48,7 @@
     $with: (
       'text-color': base.$color-fg,
       'background-color': rgba(0, 0, 0, 0.25),
-      'border-color': rgba(base.$color-fg, 0.25),
+      'border-color': rgba(base.$color-fg, 0.25)
     )
   );
 
@@ -62,16 +62,13 @@
     $with: (
       'title-text-color': base.$color-fg,
       'background-color': rgba(0, 0, 0, 0.2),
-      'separator-color': colors.$primary,
+      'separator-color': colors.$primary
     )
   );
 
   @include meta.load-css(
     '../components/Button.scss',
-    $with: (
-      'color-default': colors.$primary,
-      'color-disabled': #4a555c,
-    )
+    $with: ('color-default': colors.$primary, 'color-disabled': #4a555c)
   );
 
   @include meta.load-css(
@@ -81,7 +78,7 @@
       'text-color': rgba(base.$color-fg, 0.7),
       'text-color-selected': base.$color-fg,
       'tab-color-hovered': rgba(colors.$primary, 0.15),
-      'tab-color-selected': rgba(colors.$primary, 0.35),
+      'tab-color-selected': rgba(colors.$primary, 0.35)
     )
   );
 

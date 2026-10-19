@@ -25,10 +25,10 @@ export const SavedMessages = () => {
         <Stack vertical>
           <Stack.Item>
             <Box color="label" fontSize="0.85rem">
-              Pre-compose up to {data.max_slots} messages and fire any of them instantly,
-              whenever you want, without retyping. Bind a key to each slot from Settings &amp;
-              Special &gt; View Keybinds (&quot;Send Saved Message N&quot;) to fire it without
-              opening this panel.
+              Pre-compose up to {data.max_slots} messages and fire any of them
+              instantly, whenever you want, without retyping. Bind a key to each
+              slot from Settings &amp; Special &gt; View Keybinds (&quot;Send
+              Saved Message N&quot;) to fire it without opening this panel.
             </Box>
           </Stack.Item>
           {slots.map((slot, index) => (

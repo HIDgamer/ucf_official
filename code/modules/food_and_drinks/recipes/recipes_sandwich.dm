@@ -11,7 +11,7 @@
 	reqs = list(
 		/obj/item/food/breadslice/plain = 2,
 		/obj/item/food/meat/steak = 1,
-		/obj/item/food/cheese/wedge = 1
+		/obj/item/food/cheese/wedge = 1,
 	)
 	result = /obj/item/food/sandwich
 	category = CAT_SANDWICH
@@ -20,7 +20,7 @@
 	name = "Cheese sandwich"
 	reqs = list(
 		/obj/item/food/breadslice/plain = 2,
-		/obj/item/food/cheese/wedge = 2
+		/obj/item/food/cheese/wedge = 2,
 	)
 	result = /obj/item/food/sandwich/cheese
 	category = CAT_SANDWICH
@@ -38,7 +38,7 @@
 	name = "Not a sandwich"
 	reqs = list(
 		/obj/item/food/breadslice/plain = 2,
-		/obj/item/clothing/mask/fakemoustache = 1
+		/obj/item/clothing/mask/fakemoustache = 1,
 	)
 	result = /obj/item/food/sandwich/notasandwich
 	category = CAT_SANDWICH
@@ -48,7 +48,7 @@
 	reqs = list(
 		"ketchup" = 5,
 		/obj/item/food/bun = 1,
-		/obj/item/food/sausage = 1
+		/obj/item/food/sausage = 1,
 	)
 	result = /obj/item/food/hotdog
 	category = CAT_SANDWICH
@@ -71,7 +71,7 @@
 		/obj/item/food/breadslice/plain = 2,
 		/obj/item/food/meat/bacon = 2,
 		/obj/item/food/grown/cabbage = 1,
-		/obj/item/food/grown/tomato = 1
+		/obj/item/food/grown/tomato = 1,
 	)
 	result = /obj/item/food/sandwich/blt
 	category = CAT_SANDWICH
@@ -91,7 +91,7 @@
 	reqs = list(
 		/obj/item/food/breadslice/plain = 2,
 		"peanut_butter" = 5,
-		/obj/item/food/grown/banana = 1
+		/obj/item/food/grown/banana = 1,
 	)
 	result = /obj/item/food/sandwich/peanut_butter_banana
 	category = CAT_SANDWICH
