@@ -26,7 +26,15 @@ def _self_test():
     # Assumption: origin on the runner is what we'd normally call upstream
     head = repo.head.target
     initial_head_commit = repo[head]
-    upstream = repo.revparse_single("refs/remotes/origin/master").id
+    upstream = None
+    for branch in ("UCFSS13", "master"):
+        try:
+            upstream = repo.revparse_single("refs/remotes/origin/" + branch).id
+            break
+        except KeyError:
+            continue
+    if upstream is None:
+        raise KeyError("no origin/UCFSS13 or origin/master to compare against")
     ancestor = repo.merge_base(head, upstream)
     ancestor_commit = None
     if len(initial_head_commit.parent_ids) != 1: # if HEAD is a merge commit:

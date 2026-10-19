@@ -23,22 +23,15 @@ jobs:
         with:
           path: ~/BYOND
           key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
-      - name: Install rust-g
+      - name: Install system libraries
         run: |
-          sudo dpkg --add-architecture i386
-          sudo apt update || true
-          sudo apt install -y -o APT::Immediate-Configure=false zlib1g-dev:i386 libssl-dev:i386
-          bash tools/ci/install_rust_g.sh
-      - name: Install Rust toolchain
-        run: |
-          if ! command -v cargo >/dev/null 2>&1; then
-            curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          if sudo -n true 2>/dev/null; then
+            sudo dpkg --add-architecture i386
+            sudo apt update || true
+            sudo apt install -y -o APT::Immediate-Configure=false zlib1g-dev:i386 libssl-dev:i386
           fi
-          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
-      - name: Build xeno_pathfind native library
-        run: |
-          cargo build --release --manifest-path tools/rust/xeno_pathfind/Cargo.toml
-          cp tools/rust/xeno_pathfind/target/release/libxeno_pathfind.so ./libxeno_pathfind.so
+      - name: Build rust-g
+        run: bash tools/ci/build_rust_g.sh
       - name: Configure version
         run: |
           echo "BYOND_MAJOR=${{ inputs.major }}" >> $GITHUB_ENV
@@ -48,7 +41,7 @@ jobs:
         run: |
           bash tools/ci/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
-          tools/build/build --ci dm -DCIBUILDING -DANSICOLORS -Werror
+          tools/build/build.sh --ci dm -DCIBUILDING -DANSICOLORS -Werror
       - name: Run Tests
         run: |
           source $HOME/BYOND/byond/bin/byondsetup
