@@ -3,7 +3,7 @@
 	reqs = list(
 		"flour" = 5,
 		/obj/item/food/grown/chili = 1,
-		/obj/item/food/fishmeat/carp = 1
+		/obj/item/food/fishmeat/carp = 1,
 	)
 	result = /obj/item/food/cubancarp
 	category = CAT_SEAFOOD
@@ -12,7 +12,7 @@
 	name = "Fish and chips"
 	reqs = list(
 		/obj/item/food/fries = 1,
-		/obj/item/food/fishmeat = 1
+		/obj/item/food/fishmeat = 1,
 	)
 	result = /obj/item/food/fishandchips
 	category = CAT_SEAFOOD
@@ -22,7 +22,7 @@
 	reqs = list(
 		"flour" = 5,
 		/obj/item/food/bun = 1,
-		/obj/item/food/fishmeat = 1
+		/obj/item/food/fishmeat = 1,
 	)
 	result = /obj/item/food/fishfingers
 	category = CAT_SEAFOOD
@@ -32,7 +32,7 @@
 	reqs = list(
 		/obj/item/food/grown/corn = 1,
 		/obj/item/food/grown/peas = 1,
-		/obj/item/food/fishmeat = 1
+		/obj/item/food/fishmeat = 1,
 	)
 	result = /obj/item/food/fishfry
 	category = CAT_SEAFOOD
@@ -42,7 +42,7 @@
 	reqs = list(
 		"soysauce" = 5,
 		/obj/item/food/spidereggs = 1,
-		/obj/item/food/fishmeat = 1
+		/obj/item/food/fishmeat = 1,
 	)
 	result = /obj/item/food/sashimi
 	category = CAT_SEAFOOD
@@ -53,7 +53,7 @@
 		/obj/item/food/tortilla = 1,
 		/obj/item/food/cheese/wedge = 1,
 		/obj/item/food/fishmeat = 1,
-		/obj/item/food/grown/cabbage = 1
+		/obj/item/food/grown/cabbage = 1,
 	)
 	result = /obj/item/food/taco/fish
 	category = CAT_SEAFOOD
@@ -64,7 +64,7 @@
 		/obj/item/food/seaweedsheet = 1,
 		/obj/item/food/boiledrice = 1,
 		/obj/item/food/grown/carrot = 1,
-		/obj/item/food/grown/potato = 1
+		/obj/item/food/grown/potato = 1,
 	)
 	result = /obj/item/food/vegetariansushiroll
 	category = CAT_SEAFOOD
@@ -76,7 +76,7 @@
 		/obj/item/food/boiledrice = 1,
 		/obj/item/food/fishmeat = 1,
 		/obj/item/food/grown/chili = 1,
-		/obj/item/food/grown/onion = 1
+		/obj/item/food/grown/onion = 1,
 	)
 	result = /obj/item/food/spicyfiletsushiroll
 	category = CAT_SEAFOOD

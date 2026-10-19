@@ -40,9 +40,9 @@ SUBSYSTEM_DEF(xeno_pathfinding)
 	// Partial availability is fine - a route on an unloaded z just returns
 	// "" and that mob falls back to the bounded local solver; demanding every
 	// z-level meant one oddball level silently disabled routing everywhere.
-	available = loaded_count > 0 && __xeno_pathfind_persistent_available
+	available = loaded_count > 0 && GLOB.__xeno_pathfind_persistent_available
 	if(!available)
-		log_debug("SSxeno_pathfinding: native grid unavailable ([loaded_count]/[world.maxz] z-levels loaded, persistent_available=[__xeno_pathfind_persistent_available]) - AI falls back to bounded local pathfinding.")
+		log_debug("SSxeno_pathfinding: native grid unavailable ([loaded_count]/[world.maxz] z-levels loaded, persistent_available=[GLOB.__xeno_pathfind_persistent_available]) - AI falls back to bounded local pathfinding.")
 
 	// Threat layer: every xeno death marks its tile (radius-2 falloff,
 	// native side) as costly to route through, decaying via fire() below -

@@ -12,7 +12,7 @@
 /datum/unit_test/xeno_pathfind_native/Run()
 	var/result = rust_xeno_pathfind("5,5,0,0,4,0", "0000000000000000000000000")
 
-	if(!__xeno_pathfind_available)
+	if(!GLOB.__xeno_pathfind_available)
 		Warn("Native xeno_pathfind functions not found/loadable on this host's rust-g build - AI xeno movement will fall back to the greedy step_towards() behavior instead of real pathfinding. Rebuild librust_g.so from tools/rust/rust-g (feature \"xeno_pathfind\") for this platform to enable it.")
 		return
 

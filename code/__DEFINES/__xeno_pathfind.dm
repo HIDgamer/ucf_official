@@ -17,11 +17,6 @@
 // below and degrades to the bounded local solver, same as if native
 // pathfinding were absent entirely).
 
-/// Set once the first call either succeeds or fails, so a missing library is only probed once instead of retried every AI tick.
-/var/__xeno_pathfind_checked = FALSE
-/// Whether the native library is actually present and callable on this host.
-/var/__xeno_pathfind_available = FALSE
-
 /**
  * Calls the native A* solver. grid_desc is
  * "width,height,start_x,start_y,end_x,end_y" (grid-local coordinates);
@@ -41,7 +36,7 @@
 	// blacklisting a perfectly good library for the rest of the round.
 	if(!grid_desc || !blocked_map)
 		return ""
-	if(__xeno_pathfind_checked && !__xeno_pathfind_available)
+	if(GLOB.__xeno_pathfind_checked && !GLOB.__xeno_pathfind_available)
 		return ""
 	. = ""
 	try
@@ -51,19 +46,19 @@
 		// actually working" signal as a thrown exception.
 		if(!istext(.))
 			. = ""
-		__xeno_pathfind_available = TRUE
+		GLOB.__xeno_pathfind_available = TRUE
 	catch(var/exception/error)
 		// "Native grid unavailable" used to be the whole story in the log -
 		// the actual DM exception (wrong architecture, missing symbol, lib
 		// not found at this working directory, ABI mismatch) was thrown away
 		// right here. Logged once, on the very first failure only - this proc
-		// is only ever reached before __xeno_pathfind_checked latches, so
+		// is only ever reached before GLOB.__xeno_pathfind_checked latches, so
 		// there's no risk of spamming this every AI tick for the rest of the
 		// round.
 		. = ""
-		__xeno_pathfind_available = FALSE
+		GLOB.__xeno_pathfind_available = FALSE
 		log_debug("SSxeno_pathfinding: rust_xeno_pathfind() native call failed - [error]")
-	__xeno_pathfind_checked = TRUE
+	GLOB.__xeno_pathfind_checked = TRUE
 
 // ---------------------------------------------------------------------------
 // Persistent full-map grid entry points (see SSxeno_pathfinding,
@@ -75,14 +70,9 @@
 // availability flag below, and degrades to the bounded local solver.
 // ---------------------------------------------------------------------------
 
-/// Set once the first persistent-grid call either succeeds or fails - separate from __xeno_pathfind_available since an older DLL can support the bounded solver but not these.
-/var/__xeno_pathfind_persistent_checked = FALSE
-/// Whether the persistent-grid entry points are present and callable on this host.
-/var/__xeno_pathfind_persistent_available = FALSE
-
 /// Shared call/harden/blacklist tail for every persistent-grid entry point.
 /proc/__xeno_pathfind_persistent_call(func_name, arg1, arg2)
-	if(__xeno_pathfind_persistent_checked && !__xeno_pathfind_persistent_available)
+	if(GLOB.__xeno_pathfind_persistent_checked && !GLOB.__xeno_pathfind_persistent_available)
 		return ""
 	. = ""
 	try
@@ -92,18 +82,18 @@
 			. = RUSTG_CALL(RUST_G, func_name)(arg1, arg2)
 		if(!istext(.))
 			. = ""
-		__xeno_pathfind_persistent_available = TRUE
+		GLOB.__xeno_pathfind_persistent_available = TRUE
 	catch(var/exception/error)
 		// Same reasoning as rust_xeno_pathfind()'s catch above - this is the
 		// one that was actually silently failing in production (missing
 		// libxeno_pathfind.so on a Linux host), and "failed to load z-level
 		// N" with no further detail was the entire diagnostic trail left
 		// behind. Logged once per round (first call only, before
-		// __xeno_pathfind_persistent_checked latches).
+		// GLOB.__xeno_pathfind_persistent_checked latches).
 		. = ""
-		__xeno_pathfind_persistent_available = FALSE
+		GLOB.__xeno_pathfind_persistent_available = FALSE
 		log_debug("SSxeno_pathfinding: native call to [func_name] failed - [error]")
-	__xeno_pathfind_persistent_checked = TRUE
+	GLOB.__xeno_pathfind_persistent_checked = TRUE
 
 /// Bulk-loads one z-level's walkability. z_desc is "z,width,height"; packed_cells is width*height chars of '0' open / '1' blocked / '2' closed door / '3' breakable obstacle / '4' ON_BORDER structure, row-major from tile (1,1). Returns "ok" or "".
 /proc/rust_xeno_pathfind_init_z(z_desc, packed_cells)

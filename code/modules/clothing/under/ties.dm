@@ -787,23 +787,23 @@
 /obj/item/storage/internal/accessory/tool_webbing/equipped
 
 /obj/item/storage/internal/accessory/tool_webbing/small
-  storage_slots = 3
-  can_hold = list(
-    /obj/item/tool/screwdriver,
-    /obj/item/tool/wrench,
-    /obj/item/tool/weldingtool,
-  )
+	storage_slots = 3
+	can_hold = list(
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/wrench,
+		/obj/item/tool/weldingtool,
+	)
 
 /obj/item/storage/internal/accessory/tool_webbing/small/equipped
 
 /obj/item/clothing/accessory/storage/tool_webbing/small
-  hold = /obj/item/storage/internal/accessory/tool_webbing/small
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small
 
 /obj/item/clothing/accessory/storage/tool_webbing/small/equipped
-  hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped
 
 /obj/item/clothing/accessory/storage/tool_webbing/equipped
-  hold = /obj/item/storage/internal/accessory/tool_webbing/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/equipped
 
 /obj/item/storage/internal/accessory/tool_webbing/equipped/fill_preset_inventory()
 	new /obj/item/tool/screwdriver(src)

@@ -176,7 +176,7 @@
 	if(user.action_busy)
 		return FALSE
 
-	INVOKE_ASYNC(src, .proc/complete_apc_charge, user, apc)
+	INVOKE_ASYNC(src, PROC_REF(complete_apc_charge), user, apc)
 
 	return FALSE
 
