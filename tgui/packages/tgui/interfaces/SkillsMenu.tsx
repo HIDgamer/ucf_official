@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { capitalizeAll } from 'common/string';
 import { Fragment } from 'react';
 

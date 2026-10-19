@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { useEffect, useRef, useState } from 'react';
 
 import { useBackend } from '../../backend';
@@ -11,15 +11,15 @@ import {
   Stack,
   Tooltip,
 } from '../../components';
-import { NtMessage, NtMessenger } from './types';
+import { type NtMessage, type NtMessenger } from './types';
 
 type ChatScreenProps = {
-  canReply: BooleanLike;
-  chatRef: string;
-  draft: string;
-  messages: NtMessage[];
-  recipient: NtMessenger;
-  unreads: number;
+  readonly canReply: BooleanLike;
+  readonly chatRef: string;
+  readonly draft: string;
+  readonly messages: NtMessage[];
+  readonly recipient: NtMessenger;
+  readonly unreads: number;
 };
 
 const READ_UNREADS_TIME_MS = 1000;
@@ -186,9 +186,9 @@ export const ChatScreen = (props: ChatScreenProps) => {
 };
 
 type ChatMessageProps = {
-  outgoing: BooleanLike;
-  message: string;
-  timestamp: string;
+  readonly outgoing: BooleanLike;
+  readonly message: string;
+  readonly timestamp: string;
 };
 
 const ChatMessage = (props: ChatMessageProps) => {

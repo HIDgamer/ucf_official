@@ -70,11 +70,7 @@ type Data = {
   complexity_list?: string[];
 };
 
-type InfoPanelProps = {
-  readonly selectedMode?: number | null;
-};
-
-export const InfoPanel = (props: InfoPanelProps) => {
+export const InfoPanel = () => {
   const { data } = useBackend<Data>();
   const {
     credits,
@@ -693,7 +689,7 @@ export const ChemSimulator = () => {
       <Window.Content scrollable>
         <Flex m={1}>
           <Flex.Item>
-            <InfoPanel selectedMode={selectedMode} />
+            <InfoPanel />
           </Flex.Item>
           <Flex.Item mx={2}>
             {(!is_picking_recipe && (

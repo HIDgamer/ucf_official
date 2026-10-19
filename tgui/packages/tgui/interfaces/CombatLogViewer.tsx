@@ -21,7 +21,7 @@ export const CombatLogViewer = (props) => {
             </Box>
           ) : (
             logs.map((entry, i) => (
-              // eslint-disable-next-line react/no-danger
+               
               <Box key={i} mb={0.25} dangerouslySetInnerHTML={{ __html: entry }} />
             ))
           )}

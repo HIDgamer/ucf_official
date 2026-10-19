@@ -1,7 +1,7 @@
 import { useBackend } from '../backend';
 import { Section, Stack } from '../components';
 import { Window } from '../layouts';
-import { CompoundTable, DocumentLog, DocumentRecord } from './ResearchTerminal';
+import { CompoundTable, type DocumentLog, type DocumentRecord } from './ResearchTerminal';
 
 interface TerminalProps {
   published_documents: DocumentLog;

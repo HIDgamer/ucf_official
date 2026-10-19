@@ -12,7 +12,7 @@ import { Window } from 'tgui/layouts';
 import { CameraContent } from './CameraConsole';
 import {
   DropshipDisabledScreen,
-  DropshipNavigationProps,
+  type DropshipNavigationProps,
   RenderScreen,
 } from './DropshipFlightControl';
 import { GeneralPanel } from './PhoneMenu';

@@ -9,15 +9,15 @@ import { KEY } from 'common/keys';
 import { classes } from 'common/react';
 import {
   forwardRef,
-  RefObject,
+  type RefObject,
   useEffect,
   useImperativeHandle,
   useRef,
   useState,
 } from 'react';
-import { KeyboardEvent, SyntheticEvent } from 'react';
+import { type KeyboardEvent, type SyntheticEvent } from 'react';
 
-import { Box, BoxProps } from './Box';
+import { Box, type BoxProps } from './Box';
 import { toInputValue } from './Input';
 
 type Props = Partial<{

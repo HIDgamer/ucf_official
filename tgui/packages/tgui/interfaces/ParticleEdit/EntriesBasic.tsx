@@ -10,16 +10,16 @@ import {
   Stack,
 } from '../../components';
 import {
-  EntryCoordProps,
-  EntryFloatProps,
-  EntryGradientProps,
-  EntryIconStateProps,
-  EntryTransformProps,
+  type EntryCoordProps,
+  type EntryFloatProps,
+  type EntryGradientProps,
+  type EntryIconStateProps,
+  type EntryTransformProps,
   MatrixTypes,
   P_DATA_ICON_ADD,
   P_DATA_ICON_REMOVE,
   P_DATA_ICON_WEIGHT,
-  ParticleUIData,
+  type ParticleUIData,
   SpaceToNum,
   SpaceTypes,
 } from './data';

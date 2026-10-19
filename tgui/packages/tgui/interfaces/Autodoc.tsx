@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 
 import { useBackend } from '../backend';
 import {
@@ -92,7 +92,7 @@ export const Autodoc = () => {
   );
 };
 
-const AutodocEmpty = (props: { text: string }) => {
+const AutodocEmpty = (props: { readonly text: string }) => {
   const { text } = props;
   return (
     <Section textAlign="center" fill>

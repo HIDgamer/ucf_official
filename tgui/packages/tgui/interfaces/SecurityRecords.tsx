@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { useCallback, useEffect, useState } from 'react';
 
 import { useBackend } from '../backend';

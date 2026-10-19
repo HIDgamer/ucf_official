@@ -1,24 +1,24 @@
-/* eslint-disable func-style */
+ 
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
  * @license MIT
  */
 
-import { Placement } from '@popperjs/core';
+import { type Placement } from '@popperjs/core';
 import { KEY } from 'common/keys';
-import { BooleanLike, classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 import {
-  ChangeEvent,
+  type ChangeEvent,
   createRef,
-  MouseEvent,
-  ReactNode,
+  type MouseEvent,
+  type ReactNode,
   useEffect,
   useRef,
   useState,
 } from 'react';
 
-import { Box, BoxProps, computeBoxClassName, computeBoxProps } from './Box';
+import { Box, type BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { Icon } from './Icon';
 import { Tooltip } from './Tooltip';
 

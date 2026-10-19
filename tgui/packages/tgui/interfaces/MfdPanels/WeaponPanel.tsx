@@ -2,8 +2,8 @@ import { range } from 'common/collections';
 
 import { useBackend } from '../../backend';
 import { Box, Icon, Stack } from '../../components';
-import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { type DropshipEquipment } from '../DropshipWeaponsConsole';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useWeaponState } from './stateManagers';
 import {
   getLastTargetName,
@@ -11,7 +11,7 @@ import {
   TargetLines,
   useTargetOffset,
 } from './TargetAquisition';
-import { LazeTarget } from './types';
+import { type LazeTarget } from './types';
 
 const EmptyWeaponPanel = (props) => {
   return <div>Nothing Listed</div>;

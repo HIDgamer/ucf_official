@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { useBackend } from '../../backend';
 import { Box, Divider, Flex, Stack } from '../../components';
 import { Icon } from '../../components';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
-import { MedevacContext, MedevacTargets } from './types';
+import { type MedevacContext, type MedevacTargets } from './types';
 
 const MedevacOccupant = (props: { readonly data: MedevacTargets }) => (
   <Box>

@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { useState } from 'react';
 
 import { useBackend } from '../backend';
@@ -120,9 +120,9 @@ const FaxId = () => {
 };
 
 const InlinePicker = (props: {
-  options: string[];
-  placeholder: string;
-  onSelect: (option: string) => void;
+  readonly options: string[];
+  readonly placeholder: string;
+  readonly onSelect: (option: string) => void;
 }) => {
   const { options, placeholder, onSelect } = props;
   const [search, setSearch] = useState('');

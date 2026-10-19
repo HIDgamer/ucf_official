@@ -1,7 +1,7 @@
 import { classes } from 'common/react';
 
 import { Box } from '../components';
-import { BoxProps } from '../components/Box';
+import { type BoxProps } from '../components/Box';
 interface CrtPanelProps extends BoxProps {
   readonly color: 'green' | 'yellow' | 'blue';
 }

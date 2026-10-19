@@ -1,10 +1,10 @@
-/* eslint-disable func-style */
+ 
 import { createSearch } from 'common/string';
 import { useMemo } from 'react';
 
 import { Flex } from '../../components';
 import { LootBox } from './LootBox';
-import { SearchGroup, SearchItem } from './types';
+import { type SearchGroup, type SearchItem } from './types';
 
 type Props = {
   readonly contents: SearchItem[];

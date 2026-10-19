@@ -1,6 +1,5 @@
+import { type BooleanLike } from 'common/react';
 import { useState } from 'react';
-
-import { BooleanLike } from 'common/react';
 
 import { useBackend } from '../backend';
 import {
@@ -95,6 +94,46 @@ const percentColor = (percent: number) => {
 const titleCase = (text: string) =>
   text.replace(/\w\S*/g, (word) => word[0].toUpperCase() + word.slice(1));
 
+type LzAttackOrderProps = {
+  readonly landingZones: { id: string; name: string }[];
+  readonly selectedLz: string;
+  readonly onSelectLz: (id: string) => void;
+};
+
+const LzAttackOrder = (props: LzAttackOrderProps) => {
+  const { landingZones, selectedLz, onSelectLz } = props;
+  const { act } = useBackend();
+  const selectedLzEntry = landingZones.find((lz) => lz.id === selectedLz);
+
+  return (
+    <Stack>
+      {landingZones.length > 1 && (
+        <Stack.Item grow>
+          <Dropdown
+            width="100%"
+            selected={selectedLzEntry?.name || 'Designated LZ'}
+            options={landingZones.map((lz) => lz.name)}
+            onSelected={(name) => {
+              const entry = landingZones.find((lz) => lz.name === name);
+              onSelectLz(entry?.id || '');
+            }}
+          />
+        </Stack.Item>
+      )}
+      <Stack.Item grow>
+        <Button
+          fluid
+          onClick={() =>
+            act('order_attack_lz', selectedLz ? { lz: selectedLz } : {})
+          }
+        >
+          Attack the LZ
+        </Button>
+      </Stack.Item>
+    </Stack>
+  );
+};
+
 export const XenoCommandConsole = () => {
   const { act, data } = useBackend<Data>();
   const {
@@ -122,7 +161,6 @@ export const XenoCommandConsole = () => {
   } = data;
 
   const [selectedLz, setSelectedLz] = useState('');
-  const selectedLzEntry = landing_zones.find((lz) => lz.id === selectedLz);
 
   return (
     <Window
@@ -265,36 +303,11 @@ export const XenoCommandConsole = () => {
                 <Stack.Item>
                   <Stack>
                     <Stack.Item grow>
-                      <Stack>
-                        {landing_zones.length > 1 && (
-                          <Stack.Item grow>
-                            <Dropdown
-                              width="100%"
-                              selected={selectedLzEntry?.name || 'Designated LZ'}
-                              options={landing_zones.map((lz) => lz.name)}
-                              onSelected={(name) => {
-                                const entry = landing_zones.find(
-                                  (lz) => lz.name === name,
-                                );
-                                setSelectedLz(entry?.id || '');
-                              }}
-                            />
-                          </Stack.Item>
-                        )}
-                        <Stack.Item grow>
-                          <Button
-                            fluid
-                            onClick={() =>
-                              act(
-                                'order_attack_lz',
-                                selectedLz ? { lz: selectedLz } : {},
-                              )
-                            }
-                          >
-                            Attack the LZ
-                          </Button>
-                        </Stack.Item>
-                      </Stack>
+                      <LzAttackOrder
+                        landingZones={landing_zones}
+                        selectedLz={selectedLz}
+                        onSelectLz={setSelectedLz}
+                      />
                     </Stack.Item>
                     <Stack.Item grow>
                       <Button fluid onClick={() => act('order_gather_here')}>

@@ -1,13 +1,13 @@
 import { KEY } from 'common/keys';
 import { clamp } from 'common/math';
-import { BooleanLike, classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 import {
   Component,
   createRef,
-  FocusEventHandler,
-  KeyboardEventHandler,
-  MouseEventHandler,
-  RefObject,
+  type FocusEventHandler,
+  type KeyboardEventHandler,
+  type MouseEventHandler,
+  type RefObject,
 } from 'react';
 
 import { AnimatedNumber } from './AnimatedNumber';

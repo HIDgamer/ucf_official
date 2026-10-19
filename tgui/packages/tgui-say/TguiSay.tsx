@@ -1,9 +1,9 @@
 import { KEY } from 'common/keys';
-import { BooleanLike } from 'common/react';
-import { Component, createRef, RefObject } from 'react';
+import { type BooleanLike } from 'common/react';
+import { Component, createRef, type RefObject } from 'react';
 import { dragStartHandler } from 'tgui/drag';
 
-import { Channel, ChannelIterator } from './ChannelIterator';
+import { type Channel, ChannelIterator } from './ChannelIterator';
 import { ChatHistory } from './ChatHistory';
 import { LINE_LENGTHS, RADIO_PREFIXES, WINDOW_SIZES } from './constants';
 import { windowClose, windowOpen, windowSet } from './helpers';

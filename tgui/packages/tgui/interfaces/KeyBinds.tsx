@@ -1,4 +1,4 @@
-import { Component, ComponentProps, useState } from 'react';
+import { Component, type ComponentProps, useState } from 'react';
 
 import { useBackend } from '../backend';
 import { Box, Button, Dropdown, Flex, Input, Section } from '../components';

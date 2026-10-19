@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 import { useBackend } from '../backend';
 import { Button, Collapsible, Stack } from '../components';
 import { Window } from '../layouts';
 
 type AdminPayload = {
-  readonly category: string;
   readonly special_color?: string;
   readonly special_text?: string;
   readonly text: string;

@@ -1,5 +1,5 @@
 import { playClickBlip } from 'common/audio';
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { useEffect, useState } from 'react';
 
 import { resolveAsset } from '../assets';

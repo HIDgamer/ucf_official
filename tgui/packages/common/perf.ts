@@ -1,4 +1,4 @@
-/* eslint-disable func-style */
+ 
 /**
  * Ghetto performance measurement tools.
  *

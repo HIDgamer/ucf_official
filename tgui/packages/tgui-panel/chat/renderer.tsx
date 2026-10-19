@@ -10,6 +10,7 @@ import { createRoot } from 'react-dom/client';
 import { Tooltip } from 'tgui/components';
 import { createLogger } from 'tgui/logging';
 
+import { DEFAULT_HIGHLIGHT_SOUND } from '../settings/constants';
 import {
   COMBINE_MAX_MESSAGES,
   COMBINE_MAX_TIME_WINDOW,
@@ -25,7 +26,6 @@ import {
   RENDERER_RELOAD_WAIT,
   RENDERER_RELOAD_WAIT_TRIDENT,
 } from './constants';
-import { DEFAULT_HIGHLIGHT_SOUND } from '../settings/constants';
 import { canPageAcceptType, createMessage, isSameMessage } from './model';
 import { highlightNode, linkifyNode } from './replaceInTextNode';
 
@@ -554,6 +554,7 @@ class ChatRenderer {
           flushSync(() => {
             reactRoot.render(
               <Element {...outputProps}>
+                {/* eslint-disable-next-line react/no-danger */}
                 <span dangerouslySetInnerHTML={oldHtml} />
               </Element>,
             );

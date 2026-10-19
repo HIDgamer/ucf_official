@@ -1,4 +1,4 @@
-/* eslint-disable func-style */
+ 
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -9,7 +9,7 @@ import { classes } from 'common/react';
 
 import { useBackend } from '../backend';
 import { Box } from '../components';
-import { BoxProps } from '../components/Box';
+import { type BoxProps } from '../components/Box';
 import { useDebug } from '../debug';
 import { Layout } from './Layout';
 

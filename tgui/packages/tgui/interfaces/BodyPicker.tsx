@@ -1,4 +1,4 @@
-import { hexToHsva, HsvaColor, hsvaToHex } from 'common/color';
+import { hexToHsva, type HsvaColor, hsvaToHex } from 'common/color';
 import { useState } from 'react';
 
 import { useBackend } from '../backend';

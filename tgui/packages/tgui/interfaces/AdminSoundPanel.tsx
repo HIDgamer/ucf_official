@@ -161,7 +161,7 @@ export const AdminSoundPanel = () => {
                           checked={showBlurb}
                           onClick={() => setShowBlurb(!showBlurb)}
                         >
-                          Show title/artist blurb on players' screens
+                          Show title/artist blurb on players&apos; screens
                         </Button.Checkbox>
                       </LabeledList.Item>
                     </LabeledList>

@@ -77,7 +77,6 @@ const HtmlLinkArea = (props: { readonly html: string }) => {
           clickHref(href);
         }
       }}
-      // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: props.html }}
     />
   );
