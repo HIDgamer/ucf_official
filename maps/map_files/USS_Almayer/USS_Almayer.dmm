@@ -33414,7 +33414,7 @@
 	vector_x = -19;
 	vector_y = 98
 	},
-/turf/open/floor/plating/almayer/no_build,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/starboard_aft)
 "iTt" = (
 /obj/structure/machinery/medical_pod/bodyscanner{
@@ -54008,6 +54008,14 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/upper/u_a_p)
+"qLl" = (
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_Up1";
+	vector_x = -19;
+	vector_y = 98
+	},
+/turf/open/floor/almayer/no_build,
+/area/almayer/stair_clone/lower/starboard_aft)
 "qLs" = (
 /obj/effect/landmark/start/maint,
 /turf/open/floor/plating/plating_catwalk,
@@ -113760,8 +113768,8 @@ aab
 emA
 ikT
 wDr
-iTq
-iTq
+qLl
+qLl
 iTq
 iFp
 iFp
@@ -113963,8 +113971,8 @@ aab
 emA
 ikT
 wDr
-iTq
-iTq
+qLl
+qLl
 iTq
 iFp
 iFp
@@ -114166,8 +114174,8 @@ aab
 emA
 ikT
 wDr
-iTq
-iTq
+qLl
+qLl
 iTq
 iFp
 iFp
