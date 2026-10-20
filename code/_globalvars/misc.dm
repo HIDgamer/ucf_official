@@ -8,6 +8,10 @@ GLOBAL_VAR_INIT(__xeno_pathfind_available, FALSE)
 GLOBAL_VAR_INIT(__xeno_pathfind_persistent_checked, FALSE)
 /// Whether the persistent-grid entry points are present and callable on this host
 GLOBAL_VAR_INIT(__xeno_pathfind_persistent_available, FALSE)
+/// Set once the capabilities probe has run
+GLOBAL_VAR_INIT(__xeno_pathfind_profiles_checked, FALSE)
+/// Whether the loaded library understands route profiles, secure doors and the danger layer
+GLOBAL_VAR_INIT(__xeno_pathfind_profiles_available, FALSE)
 
 GLOBAL_VAR_INIT(ooc_allowed, TRUE)
 GLOBAL_VAR_INIT(looc_allowed, TRUE)
