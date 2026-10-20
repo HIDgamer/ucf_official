@@ -132,7 +132,7 @@
 /// What the loaded library supports, e.g. "profiles=xeno,human;cells=0-5;danger=1;diagonals=human". "" on a library that predates it.
 /proc/rust_xeno_pathfind_capabilities()
 	. = ""
-	if(__xeno_pathfind_persistent_checked && !__xeno_pathfind_persistent_available)
+	if(GLOB.__xeno_pathfind_persistent_checked && !GLOB.__xeno_pathfind_persistent_available)
 		return
 	try
 		. = RUSTG_CALL(RUST_G, "xeno_pathfind_capabilities")("")
