@@ -14,6 +14,7 @@
 		return FALSE
 	if(get_dist(here, goal_turf) <= arrive_distance)
 		move_state = HAI_MOVE_ARRIVED
+		climb_detours = 0
 		set_sprint(FALSE)
 		return FALSE
 	if(!move_goal || get_dist(move_goal, goal_turf) > 2)
@@ -68,6 +69,7 @@
 	last_progress_time = world.time
 	stuck_recoveries = 0
 	route_retries = 0
+	climb_detours = 0
 	path = null
 
 /// Gets the body onto its feet, false while that takes the turn

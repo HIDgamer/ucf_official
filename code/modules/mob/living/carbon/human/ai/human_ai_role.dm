@@ -57,6 +57,10 @@ GLOBAL_LIST_INIT(human_ai_roles, init_human_ai_roles())
 		brain.give_kit_item(/obj/item/stack/medical/ointment)
 	if(!length(supplies[HAI_MED_SPLINT]))
 		brain.give_kit_item(/obj/item/stack/medical/splint)
+	if(!length(supplies[HAI_MED_INJECTOR]))
+		brain.give_kit_item(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless)
+		brain.give_kit_item(/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless)
+		brain.give_kit_item(/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless)
 	brain.med_cache = null
 
 /datum/human_ai_role/engineer

@@ -133,6 +133,8 @@ type Data = {
   last_report: string | null;
   paused: BooleanLike;
   brains: number;
+  restricted?: BooleanLike;
+  faction_scope?: string | null;
   page_size: number;
   roster?: RosterRow[];
   roster_total?: number;
@@ -207,6 +209,9 @@ const TABS = [
   ['debug', 'Debug'],
 ];
 
+// The faction commanders who are not admins only get the tabs that command their own units
+const COMMANDER_TABS = ['roster', 'squads', 'orders'];
+
 const ROE_NAMES: Record<number, string> = {
   1: 'Weapons free',
   2: 'Weapons tight',
@@ -274,10 +279,18 @@ const stressColor = (stress: number) => {
 
 export const NpcCommandConsole = () => {
   const { act, data } = useBackend<Data>();
-  const { tab, paused } = data;
+  const { tab, paused, restricted, faction_scope } = data;
+  const visibleTabs = restricted
+    ? TABS.filter(([key]) => COMMANDER_TABS.includes(key))
+    : TABS;
 
   return (
-    <Window title="NPC Command" theme="admin" width={1040} height={780}>
+    <Window
+      title={faction_scope ? `NPC Command - ${faction_scope}` : 'NPC Command'}
+      theme="admin"
+      width={1040}
+      height={780}
+    >
       <Window.Content scrollable>
         <Stack vertical>
           <Stack.Item>
@@ -285,7 +298,7 @@ export const NpcCommandConsole = () => {
           </Stack.Item>
           <Stack.Item>
             <Tabs>
-              {TABS.map(([key, label]) => (
+              {visibleTabs.map(([key, label]) => (
                 <Tabs.Tab
                   key={key}
                   selected={tab === key}
@@ -532,6 +545,7 @@ const RosterTab = () => {
     filter_role = '',
     factions,
     roles,
+    restricted,
   } = data;
 
   const setFilter = (next: Record<string, string>) =>
@@ -646,37 +660,41 @@ const RosterTab = () => {
                   {row.refused ? `refused ${row.refused}` : row.order || '-'}
                 </Table.Cell>
                 <Table.Cell collapsing>
-                  <Button
-                    compact
-                    icon="location-arrow"
-                    tooltip="Jump to"
-                    onClick={() => act('jump', { ref: row.ref })}
-                  />
-                  <Button
-                    compact
-                    icon="eye"
-                    tooltip="Observe"
-                    onClick={() => act('observe', { ref: row.ref })}
-                  />
-                  <Button
-                    compact
-                    icon="gamepad"
-                    tooltip="Take control"
-                    onClick={() => act('claim', { ref: row.ref })}
-                  />
-                  <Button
-                    compact
-                    icon="search"
-                    tooltip="Inspect on the debug tab"
-                    onClick={() => act('inspect', { ref: row.ref })}
-                  />
-                  <Button.Confirm
-                    compact
-                    color="bad"
-                    icon="trash"
-                    tooltip="Delete"
-                    onClick={() => act('delete', { ref: row.ref })}
-                  />
+                  {!restricted && (
+                    <>
+                      <Button
+                        compact
+                        icon="location-arrow"
+                        tooltip="Jump to"
+                        onClick={() => act('jump', { ref: row.ref })}
+                      />
+                      <Button
+                        compact
+                        icon="eye"
+                        tooltip="Observe"
+                        onClick={() => act('observe', { ref: row.ref })}
+                      />
+                      <Button
+                        compact
+                        icon="gamepad"
+                        tooltip="Take control"
+                        onClick={() => act('claim', { ref: row.ref })}
+                      />
+                      <Button
+                        compact
+                        icon="search"
+                        tooltip="Inspect on the debug tab"
+                        onClick={() => act('inspect', { ref: row.ref })}
+                      />
+                      <Button.Confirm
+                        compact
+                        color="bad"
+                        icon="trash"
+                        tooltip="Delete"
+                        onClick={() => act('delete', { ref: row.ref })}
+                      />
+                    </>
+                  )}
                 </Table.Cell>
               </Table.Row>
             ))}

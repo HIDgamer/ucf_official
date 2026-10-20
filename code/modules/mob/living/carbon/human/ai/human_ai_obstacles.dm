@@ -35,8 +35,8 @@
 			found = list(kind, edge)
 	return found
 
-/datum/human_ai_brain/proc/remember_blocked(turf/blocked, reason)
-	blocked_turfs[blocked] = world.time + HAI_BLOCK_MEMORY
+/datum/human_ai_brain/proc/remember_blocked(turf/blocked, reason, memory = HAI_BLOCK_MEMORY)
+	blocked_turfs[blocked] = world.time + memory
 	path = null
 	next_path_request = 0
 	log_decision("blocked at [blocked.x],[blocked.y]: [reason]")
@@ -59,7 +59,7 @@
 		if(HAI_OBS_DOOR)
 			return handle_door(blocker, next_turf)
 		if(HAI_OBS_CLIMB)
-			return start_vault(blocker)
+			return handle_climb(blocker, next_turf)
 		if(HAI_OBS_MOB)
 			next_step_time = world.time + 3
 			return sidestep(get_dir(body, next_turf))
@@ -75,12 +75,14 @@
 	var/obj/structure/machinery/door/airlock/airlock = door
 	if(istype(airlock))
 		if(airlock.locked || airlock.welded || airlock.isElectrified())
-			remember_blocked(next_turf, "[door] is shut for good")
+			remember_blocked(next_turf, "[door] is shut for good", HAI_DOOR_DENIED_MEMORY)
 			return FALSE
 		if(!airlock.arePowerSystemsOn())
 			return start_pry(door, next_turf)
 	if(!door.allowed(body))
-		remember_blocked(next_turf, "no access to [door]")
+		if(can_hack_doors())
+			return start_hack(door, next_turf)
+		remember_blocked(next_turf, "no access to [door]", HAI_DOOR_DENIED_MEMORY)
 		return FALSE
 	door.open()
 	next_step_time = world.time + door.openspeed + 2
@@ -104,6 +106,32 @@
 	if(!QDELETED(door) && !QDELETED(crowbar) && body)
 		door.attackby(crowbar, body)
 	acting_until = 0
+
+/// Whether getting over something climbable is worth the time right now: the brain is under fire, hurt for time or running
+/datum/human_ai_brain/proc/climb_urgent()
+	if(get_target() && world.time <= target_seen_time + 40)
+		return TRUE
+	return suppressed() || broken_kind || hazard_turf || world.time < panic_until || current_order?.hard
+
+/**
+ * Climbing is the last resort. A brain with nothing pressing never climbs, it takes another way or gives the goal up. One that has a goal to
+ * reach looks for a way round a couple of times first, and even when it does climb it will not hop one table after another.
+ */
+/datum/human_ai_brain/proc/handle_climb(obj/structure/structure, turf/next_turf)
+	var/urgent = climb_urgent()
+	if(!urgent && !current_order && !follow_ref && !(intent in list(HAI_INTENT_ENGAGE, HAI_INTENT_ADVANCE, HAI_INTENT_FALLBACK)))
+		remember_blocked(next_turf, "no reason to climb [structure]", HAI_DETOUR_MEMORY)
+		return FALSE
+	if(world.time < next_vault_time)
+		next_step_time = world.time + 5
+		return TRUE
+	if(!urgent && climb_detours < HAI_CLIMB_DETOURS)
+		climb_detours++
+		remember_blocked(next_turf, "would rather go round [structure]", HAI_DETOUR_MEMORY)
+		return FALSE
+	next_vault_time = world.time + HAI_VAULT_COOLDOWN
+	vaults++
+	return start_vault(structure)
 
 /datum/human_ai_brain/proc/start_vault(obj/structure/structure)
 	if(!structure.can_climb(body))

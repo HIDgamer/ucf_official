@@ -161,6 +161,27 @@
 	var/turf/idle_goal
 	var/next_idle_time = 0
 	var/idle_wanders = 0
+	/// The spot an idle armed brain stands watch from, the way it faces there, when it weighs spots again and how many it has taken
+	var/turf/post_turf
+	var/post_dir
+	var/next_post_search = 0
+	var/posts_taken = 0
+	/// Looking for a way round something climbable before climbing it, when the next vault is allowed and how many were made
+	var/climb_detours = 0
+	var/next_vault_time = 0
+	var/vaults = 0
+	/// Shots held back for a friend in the way, steps taken backing off, the window those steps are counted in and the time of the next one
+	var/ff_holds = 0
+	var/kites = 0
+	var/kite_steps = 0
+	var/kite_window_end = 0
+	var/next_kite_time = 0
+	var/turf/kite_goal_turf
+	/// Patient reference text to chemical id to when it was last injected, and how many injections were given
+	var/list/inject_times = list()
+	var/injections = 0
+	/// Doors hacked open
+	var/hacks = 0
 	var/next_convo_time = 0
 	var/convos_started = 0
 	var/convo_answers = 0
@@ -254,6 +275,9 @@
 	flee_goal = null
 	home_turf = null
 	idle_goal = null
+	release_post()
+	kite_goal_turf = null
+	inject_times = null
 	patient_ref = null
 	utility_ref = null
 	displace_goal = null
@@ -285,6 +309,7 @@
 		return
 	stopped = TRUE
 	stop_reason = reason
+	release_post()
 	current_order?.finish(HAI_ORDER_CANCELLED)
 	squad?.remove_member(src, reason)
 	if(reason == HAI_STOP_DEAD)

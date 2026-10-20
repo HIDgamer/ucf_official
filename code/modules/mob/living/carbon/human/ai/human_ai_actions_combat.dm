@@ -146,6 +146,9 @@
 	if(gun && brain.weapon_state(gun) != HAI_WEAPON_EMPTY)
 		if(distance <= brain.engage_range(gun) && world.time <= brain.target_seen_time + 20 && !brain.berserk_until)
 			return 0
+		// Something that wins by getting close is let come, shot at on the way, never walked up to
+		if(brain.melee_threat(target) && distance <= brain.shooting_range(gun) && world.time <= brain.target_seen_time + 20 && !brain.berserk_until)
+			return 0
 		if(brain.cover_enabled && distance <= brain.shooting_range(gun) && world.time <= brain.target_seen_time + 20)
 			if(brain.in_good_cover(get_turf(target)))
 				return 0

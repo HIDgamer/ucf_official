@@ -77,10 +77,22 @@ GLOBAL_LIST_INIT(npc_command_orders, list(
 	roster_view = null
 	return ..()
 
-/datum/npc_command_console/proc/has_access(mob/user)
+/datum/npc_command_console/proc/is_admin(mob/user)
 	if(access_override)
 		return TRUE
 	return user?.client && check_client_rights(user.client, R_SPAWN, FALSE)
+
+/**
+ * Admins command every AI human. Anyone else gets in only as the senior staff of a faction, and the selection is then held to that faction,
+ * which is checked here on every use so a commander who dies or changes job loses the panel at once.
+ */
+/datum/npc_command_console/proc/has_access(mob/user)
+	if(is_admin(user))
+		selection.faction_scope = null
+		return TRUE
+	var/scope = human_ai_command_faction(user)
+	selection.faction_scope = scope || HAI_COMMAND_NO_SCOPE
+	return !!scope
 
 /datum/npc_command_console/proc/owner_client()
 	return ckey ? GLOB.directory[ckey] : null
@@ -304,19 +316,32 @@ GLOBAL_LIST_INIT(npc_command_orders, list(
 	var/mob/living/carbon/human/human = locate(ref) in GLOB.ai_human_list
 	return selection.valid(human) ? human : null
 
+/// Whether the squad is one this panel may see: all of them for an admin, otherwise those with a member of the faction the panel is held to
+/datum/npc_command_console/proc/squad_in_scope(datum/human_ai_squad/squad)
+	if(!selection.faction_scope)
+		return TRUE
+	for(var/datum/human_ai_brain/member as anything in squad.members)
+		if(!QDELETED(member.body) && member.body.faction == selection.faction_scope)
+			return TRUE
+	return FALSE
+
 /datum/npc_command_console/proc/resolve_squad(ref)
 	RETURN_TYPE(/datum/human_ai_squad)
-	return locate(ref) in GLOB.human_ai_squads
+	var/datum/human_ai_squad/squad = locate(ref) in GLOB.human_ai_squads
+	return (squad && squad_in_scope(squad)) ? squad : null
 
 /// Every control on the panel comes through here, the rights are checked again on each one
 /datum/npc_command_console/proc/handle_action(mob/user, action, list/params)
 	if(!has_access(user))
 		return FALSE
+	var/admin = is_admin(user)
+	if(!admin && (action in GLOB.npc_command_admin_actions))
+		return FALSE
 	if(!islist(params))
 		params = list()
 	switch(action)
 		if("set_tab")
-			if(params["tab"] in list("roster", "squads", "orders", "personality", "relations", "population", "spawner", "difficulty", "debug"))
+			if(params["tab"] in (admin ? list("roster", "squads", "orders", "personality", "relations", "population", "spawner", "difficulty", "debug") : GLOB.npc_command_commander_tabs))
 				tab = params["tab"]
 			return TRUE
 		if("toggle_select")

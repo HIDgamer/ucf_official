@@ -34,9 +34,6 @@ GLOBAL_LIST_INIT(human_ai_expressions, list(
 	HAI_EXPR_RALLY = list(120, TRUE, null),
 ))
 
-/// Emotes an idle brain picks from when it has nothing to say
-GLOBAL_LIST_INIT(human_ai_idle_emotes, list("stretch", "yawn", "whistle", "sigh", "cough", "sniff", "hum", "shrug"))
-
 /// Whether the body is in a state to talk or emote at all
 /datum/human_ai_brain/proc/can_express()
 	if(QDELETED(body) || body.stat != CONSCIOUS || body.is_mob_incapacitated() || body.silent)
@@ -56,10 +53,11 @@ GLOBAL_LIST_INIT(human_ai_idle_emotes, list("stretch", "yawn", "whistle", "sigh"
 	var/critical = rule[2]
 	if(strained && !critical)
 		return FALSE
-	var/cooldown = rule[1] * personality.scaled("chattiness", 1.8, 0.6) * (strained ? 2 : 1)
-	if(world.time < talk_times[kind] + cooldown || world.time < last_talk_time + HAI_TALK_MIN_GAP)
+	var/cooldown = rule[1] * personality.scaled("chattiness", 1.8, 0.6) * (strained ? 2 : 1) * (critical ? 1 : HAI_TALK_ROUTINE_COOLDOWN_MULT)
+	var/last_said = talk_times[kind]
+	if((!isnull(last_said) && world.time < last_said + cooldown) || (last_talk_time && world.time < last_talk_time + (critical ? HAI_TALK_CRITICAL_GAP : HAI_TALK_MIN_GAP)))
 		return FALSE
-	if(!critical && !prob(20 + personality.trait("chattiness") * 0.6))
+	if(!critical && !prob(HAI_TALK_ROLL_BASE + personality.trait("chattiness") * HAI_TALK_ROLL_PER_CHATTINESS))
 		talk_times[kind] = world.time
 		return FALSE
 	var/area/here = get_area(body)
@@ -68,9 +66,6 @@ GLOBAL_LIST_INIT(human_ai_idle_emotes, list("stretch", "yawn", "whistle", "sigh"
 	var/datum/human_ai_voice/voice = get_human_ai_voice(body.faction)
 	var/line = voice.line(kind, personality.id)
 	var/emote = emote_override || rule[3]
-	if(kind == HAI_EXPR_IDLE && !emote && prob(50))
-		emote = pick(GLOB.human_ai_idle_emotes)
-		line = null
 	if(!line && !emote)
 		return FALSE
 	if(line)
@@ -85,7 +80,7 @@ GLOBAL_LIST_INIT(human_ai_idle_emotes, list("stretch", "yawn", "whistle", "sigh"
 		GLOB.human_ai_medic_calls[REF(body)] = list(world.time, get_turf(body), body.faction)
 	if(line)
 		INVOKE_ASYNC(body, TYPE_PROC_REF(/mob, say), line)
-	if(emote && (!line || prob(60)))
+	if(emote && (!line || prob(HAI_TALK_EMOTE_CHANCE)))
 		INVOKE_ASYNC(body, TYPE_PROC_REF(/mob, emote), emote, null, null, FALSE, TRUE)
 		emotes_made++
 	return TRUE
@@ -95,7 +90,7 @@ GLOBAL_LIST_INIT(human_ai_idle_emotes, list("stretch", "yawn", "whistle", "sigh"
 	if(!can_express() || !line)
 		return FALSE
 	var/area/here = get_area(body)
-	if(world.time < last_talk_time + HAI_TALK_MIN_GAP || !SShuman_ai.talk_allowed(here))
+	if((last_talk_time && world.time < last_talk_time + HAI_TALK_MIN_GAP) || !SShuman_ai.talk_allowed(here))
 		return FALSE
 	talk_times[kind] = world.time
 	last_talk_time = world.time

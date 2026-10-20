@@ -10,6 +10,7 @@ GLOBAL_LIST_EMPTY(ai_human_list)
 	if(!SShuman_ai.has_room())
 		return FALSE
 
+	human.forget_human_ai()
 	var/datum/human_ai_brain/brain = new(human, personality_id)
 	human.ai_brain = brain
 	human.is_human_ai_controlled = TRUE
@@ -29,6 +30,8 @@ GLOBAL_LIST_EMPTY(ai_human_list)
 	var/datum/human_ai_brain/brain = human?.ai_brain
 	if(!brain)
 		return FALSE
+	if(reason == HAI_STOP_DEAD)
+		human.remember_human_ai(brain.revival_memory())
 	brain.wind_down(reason)
 	human.ai_brain = null
 	human.is_human_ai_controlled = FALSE

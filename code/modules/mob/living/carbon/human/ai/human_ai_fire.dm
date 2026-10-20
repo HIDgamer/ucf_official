@@ -29,6 +29,37 @@
 				return FALSE
 	return TRUE
 
+/// A living mob that a stray bullet must not reach: anyone who is not an enemy
+/datum/human_ai_brain/proc/is_protected(mob/living/candidate)
+	return candidate != body && candidate.stat != DEAD && !is_valid_target(candidate)
+
+/**
+ * Whether a bullet aimed at the point could hit someone who is not an enemy: on the line to it, past it where a shot that misses carries on,
+ * or beside it where the aim can wander to. spread is how many tiles the aim may be off, nothing is looked for beside the point below the tolerated amount.
+ */
+/datum/human_ai_brain/proc/friendly_in_lane(atom/aim, spread = 0)
+	var/turf/here = get_turf(body)
+	var/turf/aim_turf = get_turf(aim)
+	if(!here || !aim_turf || here == aim_turf)
+		return FALSE
+	var/offset_x = aim_turf.x - here.x
+	var/offset_y = aim_turf.y - here.y
+	var/steps = max(abs(offset_x), abs(offset_y))
+	var/turf/far_turf = locate(clamp(here.x + round(offset_x * (steps + HAI_FF_OVERSHOOT) / steps), 1, world.maxx), clamp(here.y + round(offset_y * (steps + HAI_FF_OVERSHOOT) / steps), 1, world.maxy), here.z)
+	for(var/turf/lane_turf as anything in get_line(here, far_turf || aim_turf))
+		if(lane_turf == here)
+			continue
+		if(lane_turf.density)
+			break
+		for(var/mob/living/occupant in lane_turf)
+			if(is_protected(occupant))
+				return TRUE
+	if(spread >= HAI_FF_SPREAD)
+		for(var/mob/living/bystander in range(max(1, round(spread + 0.5)), aim_turf))
+			if(is_protected(bystander))
+				return TRUE
+	return FALSE
+
 /// Whether shooting at the target is safe for the body and for everyone who is not an enemy
 /datum/human_ai_brain/proc/safe_to_fire(obj/item/weapon/gun/gun, atom/target)
 	var/datum/human_ai_gun_appraisal/appraisal = get_human_ai_gun_appraisal(gun)
@@ -39,7 +70,7 @@
 		for(var/mob/living/bystander in view(HAI_AREA_SAFE_RADIUS, get_turf(target)))
 			if(bystander != body && bystander.stat != DEAD && get_disposition(bystander) <= HAI_DISP_FRIEND)
 				return FALSE
-	return has_clear_line(target)
+	return !friendly_in_lane(target, aim_error(target, gun))
 
 /// The time before which the gun will not fire again
 /datum/human_ai_brain/proc/gun_ready_time(obj/item/weapon/gun/gun)
@@ -160,10 +191,22 @@
 	if(body.a_intent != INTENT_HARM)
 		body.a_intent_change(INTENT_HARM)
 
+	// The aim wanders a little, so roll it a few times and take one that does not put a friend in the line, holding fire when none is safe
+	var/atom/aimed
+	for(var/attempt in 1 to HAI_FF_AIM_TRIES)
+		var/atom/rolled = aim_point(target, gun)
+		if(!friendly_in_lane(rolled))
+			aimed = rolled
+			break
+	if(!aimed)
+		ff_holds++
+		volley_pause_until = world.time + HAI_FF_HOLD
+		return FALSE
+
 	var/noise_before = SShuman_ai.noise_cost_ms
 	var/started = TICK_USAGE
 	var/shot_before = gun.last_fired
-	gun.Fire(aim_point(target, gun), body)
+	gun.Fire(aimed, body)
 	SShuman_ai.gun_cost_ms += max(0, TICK_USAGE_TO_MS(started) - (SShuman_ai.noise_cost_ms - noise_before))
 
 	if(gun.last_fired == shot_before)

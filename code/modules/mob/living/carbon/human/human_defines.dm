@@ -119,6 +119,8 @@
 	var/is_human_ai_controlled = FALSE
 	/// Set once at attach time, a body that started AI driven returns to AI when its player pilot leaves
 	var/was_human_ai_spawned = FALSE
+	/// What the brain was like when it died, so a revived body takes its AI back. Null while a brain is attached or when the body never had one
+	var/list/human_ai_memory
 	/// World time until which the hive AI leaves this ambient NPC alone
 	var/ai_grace_until = 0
 
