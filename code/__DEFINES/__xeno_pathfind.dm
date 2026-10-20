@@ -118,10 +118,52 @@
 	return __xeno_pathfind_persistent_call("xeno_pathfind_update", deltas)
 
 /// Solves a full-map route. route_desc is "z,sx,sy,ex,ey" (world 1-based coords). Returns ';'-separated "x,y" world coords start-to-end inclusive, or "" (no route / z unloaded / library unavailable - callers always fall back).
-/proc/rust_xeno_pathfind_route(route_desc)
+/proc/rust_xeno_pathfind_route(route_desc, profile)
 	if(!route_desc)
 		return ""
+	if(!isnull(profile))
+		route_desc = "[route_desc],[profile]"
 	return __xeno_pathfind_persistent_call("xeno_pathfind_route", route_desc)
+
+/// Route cost profile ids, the optional second argument of rust_xeno_pathfind_route(). Only pass a profile after xeno_pathfind_profiles_available() is TRUE - an older library treats a profile field as a malformed route and answers "".
+#define XENO_PATHFIND_PROFILE_XENO 0
+#define XENO_PATHFIND_PROFILE_HUMAN 1
+
+/// Adds contact danger at "z,x,y,amount,radius" (radius 1 to 8) - only the human profile reads this layer.
+/proc/rust_xeno_pathfind_danger(danger_desc)
+	if(!danger_desc)
+		return ""
+	return __xeno_pathfind_persistent_call("xeno_pathfind_danger", danger_desc)
+
+/// Halves every danger value on every loaded z-level, independent of the threat decay.
+/proc/rust_xeno_pathfind_decay_danger()
+	return __xeno_pathfind_persistent_call("xeno_pathfind_decay_danger", "")
+
+/// What the loaded library supports, e.g. "profiles=xeno,human;cells=0-5;danger=1;diagonals=human". "" on a library that predates it.
+/proc/rust_xeno_pathfind_capabilities()
+	. = ""
+	if(__xeno_pathfind_persistent_checked && !__xeno_pathfind_persistent_available)
+		return
+	try
+		. = RUSTG_CALL(RUST_G, "xeno_pathfind_capabilities")("")
+		if(!istext(.))
+			. = ""
+	catch
+		. = ""
+
+/// Set once the capabilities probe has run.
+/var/__xeno_pathfind_profiles_checked = FALSE
+/// Whether the loaded library understands route profiles, secure doors and the danger layer.
+/var/__xeno_pathfind_profiles_available = FALSE
+
+/// TRUE if the loaded native library can solve human-profile routes. Probed once, then cached.
+/proc/xeno_pathfind_profiles_available()
+	if(__xeno_pathfind_profiles_checked)
+		return __xeno_pathfind_profiles_available
+	var/capabilities = rust_xeno_pathfind_capabilities()
+	__xeno_pathfind_profiles_available = !!findtext(capabilities, "profiles=xeno,human")
+	__xeno_pathfind_profiles_checked = TRUE
+	return __xeno_pathfind_profiles_available
 
 /// Adds decaying threat cost at "z,x,y,amount" with radius-2 falloff - routes bend away from hot cells until xeno_pathfind_decay() cools them.
 /proc/rust_xeno_pathfind_threat(threat_desc)

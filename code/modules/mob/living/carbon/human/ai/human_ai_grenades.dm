@@ -1,0 +1,137 @@
+/// What the brain does with a grenade, from its type
+/proc/human_ai_grenade_kind(obj/item/explosive/grenade/grenade)
+	if(grenade.active || !grenade.hand_throwable)
+		return HAI_GRENADE_NONE
+	if(istype(grenade, /obj/item/explosive/grenade/smokebomb))
+		return HAI_GRENADE_SMOKE
+	if(istype(grenade, /obj/item/explosive/grenade/flashbang))
+		return HAI_GRENADE_FLASH
+	if(istype(grenade, /obj/item/explosive/grenade/high_explosive/starshell) || istype(grenade, /obj/item/explosive/grenade/high_explosive/frag/toy))
+		return HAI_GRENADE_NONE
+	if(istype(grenade, /obj/item/explosive/grenade/high_explosive) || istype(grenade, /obj/item/explosive/grenade/incendiary) || istype(grenade, /obj/item/explosive/grenade/phosphorus))
+		return HAI_GRENADE_LETHAL
+	return HAI_GRENADE_NONE
+
+/// The grenade of a kind that the body carries
+/datum/human_ai_brain/proc/find_grenade(kind)
+	if(world.time >= grenade_cache_time)
+		grenade_cache_time = world.time + HAI_SPARE_CHECK_INTERVAL
+		grenade_cache = list()
+		for(var/obj/item/explosive/grenade/grenade in body.get_contents())
+			var/grenade_kind = human_ai_grenade_kind(grenade)
+			if(grenade_kind != HAI_GRENADE_NONE && !grenade_cache["[grenade_kind]"])
+				grenade_cache["[grenade_kind]"] = grenade
+	var/obj/item/explosive/grenade/found = grenade_cache["[kind]"]
+	if(found && (QDELETED(found) || found.active))
+		grenade_cache_time = 0
+		return null
+	return found
+
+/// True when no one who is not an enemy stands near the point and the body is far enough from it
+/datum/human_ai_brain/proc/grenade_spot_is_safe(turf/spot, kind)
+	var/min_distance = (kind == HAI_GRENADE_LETHAL) ? HAI_GRENADE_LETHAL_RANGE : HAI_GRENADE_SOFT_RANGE
+	if(get_dist(body, spot) < min_distance)
+		return FALSE
+	for(var/mob/living/bystander in view(HAI_GRENADE_SAFE_RADIUS, spot))
+		if(bystander != body && bystander.stat != DEAD && get_disposition(bystander) <= HAI_DISP_FRIEND)
+			return FALSE
+	for(var/turf/line_turf in get_line(get_turf(body), spot))
+		if(line_turf != spot && (line_turf.density || line_turf.opacity))
+			return FALSE
+	return TRUE
+
+/// How many enemies the brain has in view within a couple of tiles of the point
+/datum/human_ai_brain/proc/enemies_near(turf/spot)
+	var/count = 0
+	for(var/key in contacts)
+		var/datum/ai_contact/contact = contacts[key]
+		if(contact.visible && contact.last_turf && get_dist(contact.last_turf, spot) <= 2)
+			count++
+	return count
+
+/// The grenade worth throwing at the target right now, or null
+/datum/human_ai_brain/proc/grenade_for(mob/living/target)
+	if(roe == HAI_ROE_WEAPONS_HOLD || world.time < next_grenade_time || world.time < grenade_blocked_until)
+		return null
+	if(!target || world.time > target_seen_time + 20)
+		return null
+	if(!find_grenade(HAI_GRENADE_LETHAL) && !find_grenade(HAI_GRENADE_SMOKE) && !find_grenade(HAI_GRENADE_FLASH))
+		return null
+	var/turf/spot = get_turf(target)
+	var/distance = get_dist(body, spot)
+	if(distance > HAI_GRENADE_MAX_RANGE)
+		return null
+	var/datum/ai_contact/contact = get_contact(target)
+	var/threat = contact ? contact.threat : 20
+	var/cluster = enemies_near(spot)
+	var/score = (threat / 60 + (cluster - 1) * 0.5) * personality.scaled("caution", 0.7, 1.4)
+	var/obj/item/weapon/gun/gun = peek_gun()
+	if(gun && !has_clear_line(target))
+		score += 0.5
+	if(score >= 1)
+		var/obj/item/explosive/grenade/lethal = find_grenade(HAI_GRENADE_LETHAL)
+		if(lethal && grenade_spot_is_safe(spot, HAI_GRENADE_LETHAL))
+			return lethal
+	if(stress >= 40 && distance >= HAI_GRENADE_SOFT_RANGE)
+		var/obj/item/explosive/grenade/smoke = find_grenade(HAI_GRENADE_SMOKE)
+		if(smoke && grenade_spot_is_safe(spot, HAI_GRENADE_SMOKE))
+			return smoke
+	if(distance >= HAI_GRENADE_SOFT_RANGE && (cluster >= 2 || score >= 0.7))
+		var/obj/item/explosive/grenade/flash = find_grenade(HAI_GRENADE_FLASH)
+		if(flash && grenade_spot_is_safe(spot, HAI_GRENADE_FLASH))
+			return flash
+	return null
+
+/// Takes the grenade in hand, primes it and throws it at the target
+/datum/human_ai_brain/proc/throw_grenade(obj/item/explosive/grenade/grenade, mob/living/target)
+	var/kind = human_ai_grenade_kind(grenade)
+	next_grenade_time = world.time + HAI_GRENADE_COOLDOWN
+	var/obj/item/weapon/gun/gun = peek_gun()
+	if(gun && (gun.flags_item & WIELDED))
+		gun.unwield(body)
+	var/turf/spot = get_turf(target)
+	take_out_of_holder(grenade)
+	if(!body.put_in_hands(grenade, FALSE))
+		grenade.forceMove(body.loc)
+		return FALSE
+	if(grenade == body.get_inactive_hand())
+		body.swap_hand()
+	body.face_atom(spot)
+	grenade.attack_self(body)
+	if(!grenade.active)
+		grenade_blocked_until = world.time + HAI_GRENADE_BLOCK_TIME
+		log_decision("[grenade.name] would not prime")
+		return FALSE
+	body.throw_item(spot)
+	grenades_thrown++
+	switch(kind)
+		if(HAI_GRENADE_LETHAL)
+			express(HAI_EXPR_FRAG)
+		if(HAI_GRENADE_FLASH)
+			express(HAI_EXPR_FLASH)
+		if(HAI_GRENADE_SMOKE)
+			express(HAI_EXPR_SMOKE)
+	if(gun && gun.loc == body && gun == body.get_inactive_hand())
+		body.swap_hand()
+	log_decision("threw [grenade.name] at [target]")
+	return TRUE
+
+/datum/human_ai_action/throw_grenade
+	id = "throw_grenade"
+	conflicts = HAI_LIMB_HANDS
+	intents = list(HAI_INTENT_ENGAGE)
+
+/datum/human_ai_action/throw_grenade/get_weight(datum/human_ai_brain/brain)
+	if(brain.reload_phase != HAI_RELOAD_NONE)
+		return 0
+	var/mob/living/target = brain.get_target()
+	if(!target || !brain.grenade_for(target))
+		return 0
+	return 75
+
+/datum/human_ai_action/throw_grenade/trigger(datum/human_ai_brain/brain)
+	var/mob/living/target = brain.get_target()
+	var/obj/item/explosive/grenade/grenade = target ? brain.grenade_for(target) : null
+	if(!grenade)
+		return FALSE
+	return brain.throw_grenade(grenade, target)
