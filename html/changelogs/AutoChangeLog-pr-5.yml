@@ -1,0 +1,5 @@
+author: "HIDgamer"
+delete-after: True
+changes:
+  - rscadd: "Added human personalities"
+  - rscadd: "Added human AI"
