@@ -124,7 +124,7 @@ export const PaperEditor = () => {
   const presets = mode === 'pen' ? buildPresets(logo_wy ?? '') : [];
 
   return (
-    <Window width={550} height={600} resizable theme="ntos">
+    <Window width={550} height={600} theme="ntos">
       <Window.Content scrollable>
         <Section
           title="Write on Paper"

@@ -60,7 +60,7 @@ export const SupplyDropConsole = () => {
           </NoticeBox>
         )}
         {!!can_pick_squad && (
-          <Tabs horizontal textAlign="center" fluid>
+          <Tabs textAlign="center" fluid>
             {squads.map((val) => {
               return (
                 <Tabs.Tab

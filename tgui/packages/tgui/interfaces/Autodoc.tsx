@@ -79,12 +79,7 @@ export const Autodoc = () => {
   }
 
   return (
-    <Window
-      resizable
-      width={480}
-      height={hasOccupant ? 700 : 200}
-      theme="weyland"
-    >
+    <Window width={480} height={hasOccupant ? 700 : 200} theme="weyland">
       <Window.Content scrollable className="Layout__content--flexColumn">
         {body}
       </Window.Content>

@@ -48,7 +48,7 @@ export const GroundsideOperations = () => {
   const { hasEchoOption, hasLzSelection, hasSquadOverwatch } = data;
 
   return (
-    <Window width={700} height={620} resizable theme={data.theme}>
+    <Window width={700} height={620} theme={data.theme}>
       <Window.Content scrollable>
         <Stack vertical fill>
           <Stack.Item>

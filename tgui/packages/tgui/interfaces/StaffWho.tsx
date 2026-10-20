@@ -42,7 +42,7 @@ export const StaffWho = () => {
   );
 
   return (
-    <Window resizable width={600} height={600}>
+    <Window width={600} height={600}>
       <Window.Content scrollable>
         {base_data ? (
           <Stack fill vertical>

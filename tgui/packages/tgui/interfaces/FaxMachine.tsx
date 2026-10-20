@@ -56,7 +56,6 @@ export const FaxMachine = () => {
     <Window
       width={idcard ? 800 : 400}
       height={idcard ? 560 : 215}
-      resizable
       theme={theme}
     >
       <Window.Content scrollable={!!idcard}>{body}</Window.Content>

@@ -57,7 +57,7 @@ export const CardMod = () => {
   const { data } = useBackend<Data>();
 
   return (
-    <Window width={450} height={560} resizable theme={data.theme}>
+    <Window width={450} height={560} theme={data.theme}>
       <Window.Content scrollable>
         <CardContent />
       </Window.Content>

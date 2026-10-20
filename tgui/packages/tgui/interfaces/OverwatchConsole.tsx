@@ -727,7 +727,7 @@ const SupplyDrop = (props) => {
         </Stack.Item>
         <SavedCoordinates forSupply />
       </Stack>
-      <Divider horizontal />
+      <Divider />
     </Section>
   );
 };
@@ -800,7 +800,7 @@ const OrbitalBombardment = (props) => {
         </Stack.Item>
         <SavedCoordinates forOB />
       </Stack>
-      <Divider horizontal />
+      <Divider />
     </Section>
   );
 };

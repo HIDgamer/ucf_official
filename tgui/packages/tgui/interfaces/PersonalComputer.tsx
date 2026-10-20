@@ -111,7 +111,7 @@ export const PersonalComputer = () => {
   }
 
   return (
-    <Window width={500} height={550} resizable theme={data.theme}>
+    <Window width={500} height={550} theme={data.theme}>
       <style>{PAPER_FIELD_STYLES}</style>
       <Window.Content scrollable>{body}</Window.Content>
     </Window>

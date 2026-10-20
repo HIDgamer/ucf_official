@@ -123,6 +123,7 @@ const stringStyleMap = {
   bottom: mapUnitPropTo('bottom', unit),
   fontFamily: mapRawPropTo('fontFamily'),
   fontSize: mapUnitPropTo('fontSize', unit),
+  fontStyle: mapRawPropTo('fontStyle'),
   fontWeight: mapRawPropTo('fontWeight'),
   height: mapUnitPropTo('height', unit),
   left: mapUnitPropTo('left', unit),

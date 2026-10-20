@@ -64,7 +64,7 @@ export const KeyBinds = (props) => {
   );
 
   return (
-    <Window width={480} height={550} resizable>
+    <Window width={480} height={550}>
       <Window.Content scrollable>
         <Flex direction="column">
           <Flex.Item>

@@ -368,7 +368,6 @@ export const ComboBox = (props: ComboBoxProps) => {
           <Section
             scrollable
             fill
-            level={2}
             tabIndex={0}
             onKeyDown={handleCombos}
             onKeyUp={handleCombos}

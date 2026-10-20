@@ -73,7 +73,7 @@ type Data = {
 
 export const PodLauncher = (props) => {
   return (
-    <Window title="Supply Pod Menu" width={730} height={500} resizable>
+    <Window title="Supply Pod Menu" width={730} height={500}>
       <PodLauncherContent />
     </Window>
   );
@@ -729,7 +729,7 @@ class PresetsPage extends Component<{}, PresetsPageState> {
               placeholder="Preset Name"
               onChange={(e, value) => this.setState({ newNameText: value })}
             />
-            <Divider horizontal />
+            <Divider />
           </>
         )}
         {(!presets || presets.length === 0) && (
@@ -828,7 +828,7 @@ const Timing = (props) => {
       <DelayHelper delay_list={DELAYS} title="Normal Timers" />
       {!!data.should_recall && (
         <>
-          <Divider horizontal />
+          <Divider />
           <DelayHelper
             delay_list={reverse_delays}
             reverse

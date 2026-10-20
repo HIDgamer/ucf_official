@@ -178,7 +178,6 @@ export const HiveStatus = (props) => {
     <Window
       title={hive_name + ' Status'}
       theme="hive_status"
-      resizable
       width={600}
       height={680}
     >
