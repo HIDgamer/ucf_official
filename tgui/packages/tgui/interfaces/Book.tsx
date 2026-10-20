@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 import { marked } from 'marked';
 import { createRef, useEffect, useState } from 'react';
 
@@ -37,7 +37,7 @@ export const Book = () => {
       (overrideContents ? overrideContents : contents)
         .trim()
         .replaceAll(replacementRegex, ''),
-    );
+    ) as string;
 
     const matches = Array.from(toParse.matchAll(imageRegex));
     for (const match of matches) {

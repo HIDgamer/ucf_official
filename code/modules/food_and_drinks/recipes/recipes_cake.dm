@@ -7,7 +7,7 @@
 	name = "Carrot cake"
 	reqs = list(
 		/obj/item/food/cake/plain = 1,
-		/obj/item/food/grown/carrot = 2
+		/obj/item/food/grown/carrot = 2,
 	)
 	result = /obj/item/food/cake/carrot
 	category = CAT_CAKE
@@ -16,7 +16,7 @@
 	name = "Cheese cake"
 	reqs = list(
 		/obj/item/food/cake/plain = 1,
-		/obj/item/food/cheese/wedge = 2
+		/obj/item/food/cheese/wedge = 2,
 	)
 	result = /obj/item/food/cake/cheese
 	category = CAT_CAKE
@@ -25,7 +25,7 @@
 	name = "Apple cake"
 	reqs = list(
 		/obj/item/food/cake/plain = 1,
-		/obj/item/food/grown/apple = 2
+		/obj/item/food/grown/apple = 2,
 	)
 	result = /obj/item/food/cake/apple
 	category = CAT_CAKE
@@ -34,7 +34,7 @@
 	name = "Orange cake"
 	reqs = list(
 		/obj/item/food/cake/plain = 1,
-		/obj/item/food/grown/citrus/orange = 2
+		/obj/item/food/grown/citrus/orange = 2,
 	)
 	result = /obj/item/food/cake/orange
 	category = CAT_CAKE
@@ -43,7 +43,7 @@
 	name = "Lime cake"
 	reqs = list(
 		/obj/item/food/cake/plain = 1,
-		/obj/item/food/grown/citrus/lime = 2
+		/obj/item/food/grown/citrus/lime = 2,
 	)
 	result = /obj/item/food/cake/lime
 	category = CAT_CAKE
@@ -52,7 +52,7 @@
 	name = "Lemon cake"
 	reqs = list(
 		/obj/item/food/cake/plain = 1,
-		/obj/item/food/grown/citrus/lemon = 2
+		/obj/item/food/grown/citrus/lemon = 2,
 	)
 	result = /obj/item/food/cake/lemon
 	category = CAT_CAKE
@@ -61,7 +61,7 @@
 	name = "Chocolate cake"
 	reqs = list(
 		/obj/item/food/cake/plain = 1,
-		/obj/item/food/chocolatebar = 2
+		/obj/item/food/chocolatebar = 2,
 	)
 	result = /obj/item/food/cake/chocolate
 	category = CAT_CAKE
@@ -70,7 +70,7 @@
 	name = "Pumpkin spice cake"
 	reqs = list(
 		/obj/item/food/cake/plain = 1,
-		/obj/item/food/grown/pumpkin = 2
+		/obj/item/food/grown/pumpkin = 2,
 	)
 	result = /obj/item/food/cake/pumpkinspice
 	category = CAT_CAKE
@@ -79,7 +79,7 @@
 	name = "Angel food cake"
 	reqs = list(
 		"holywater" = 15,
-		/obj/item/food/cake/plain = 1
+		/obj/item/food/cake/plain = 1,
 	)
 	result = /obj/item/food/cake/holy_cake
 	category = CAT_CAKE
@@ -87,7 +87,7 @@
 /datum/crafting_recipe/food/poundcake
 	name = "Pound cake"
 	reqs = list(
-		/obj/item/food/cake/plain = 4
+		/obj/item/food/cake/plain = 4,
 	)
 	result = /obj/item/food/cake/pound_cake
 	category = CAT_CAKE
@@ -107,7 +107,7 @@
 	reqs = list(
 		/obj/item/food/cake/plain = 1,
 		/obj/item/food/chocolatebar = 2,
-		/obj/item/food/grown/berries = 5
+		/obj/item/food/grown/berries = 5,
 	)
 	result = /obj/item/food/cake/bscc
 	category = CAT_CAKE
@@ -116,7 +116,7 @@
 	name = "blackberry and strawberry vanilla cake"
 	reqs = list(
 		/obj/item/food/cake/plain = 1,
-		/obj/item/food/grown/berries = 5
+		/obj/item/food/grown/berries = 5,
 	)
 	result = /obj/item/food/cake/bsvc
 	category = CAT_CAKE
@@ -136,7 +136,7 @@
 	name = "Plum cake"
 	reqs = list(
 		/obj/item/food/cake/plain = 1,
-		/obj/item/food/grown/plum = 2
+		/obj/item/food/grown/plum = 2,
 	)
 	result = /obj/item/food/cake/plum
 	category = CAT_CAKE

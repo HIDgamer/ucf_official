@@ -575,8 +575,6 @@
 /obj/structure/shuttle/part/dropship3/left_outer_wing_connector,
 /turf/template_noop,
 /area/shuttle/drop3/sulaco)
-"Qp" = (
-)
 "Qy" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -30
@@ -723,7 +721,7 @@ Nf
 SD
 SD
 SD
-Qp
+SD
 "}
 (2,1,1) = {"
 SD
@@ -747,7 +745,7 @@ jI
 SD
 SD
 Sj
-Qp
+SD
 "}
 (3,1,1) = {"
 SD
@@ -771,7 +769,7 @@ nI
 Pb
 SD
 wr
-Qp
+SD
 "}
 (4,1,1) = {"
 Dx
@@ -795,7 +793,7 @@ Pc
 SM
 wY
 PY
-Qp
+SD
 "}
 (5,1,1) = {"
 Tc
@@ -819,7 +817,7 @@ sJ
 Tx
 SD
 SD
-Qp
+SD
 "}
 (6,1,1) = {"
 Tc
@@ -843,7 +841,7 @@ Of
 Cz
 SD
 SD
-Qp
+SD
 "}
 (7,1,1) = {"
 Tc
@@ -867,7 +865,7 @@ sJ
 Cz
 SD
 SD
-Qp
+SD
 "}
 (8,1,1) = {"
 rB
@@ -914,7 +912,7 @@ ul
 OU
 SD
 MM
-Qp
+SD
 "}
 (10,1,1) = {"
 SD
@@ -938,7 +936,7 @@ Nf
 SD
 SD
 uD
-Qp
+SD
 "}
 (11,1,1) = {"
 SD
@@ -962,5 +960,5 @@ jI
 SD
 SD
 SD
-Qp
+SD
 "}

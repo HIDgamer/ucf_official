@@ -1,4 +1,4 @@
-import { Component, ComponentProps, useState } from 'react';
+import { Component, type ComponentProps, useState } from 'react';
 
 import { useBackend } from '../backend';
 import { Box, Button, Dropdown, Flex, Input, Section } from '../components';
@@ -64,7 +64,7 @@ export const KeyBinds = (props) => {
   );
 
   return (
-    <Window width={480} height={550} resizable>
+    <Window width={480} height={550}>
       <Window.Content scrollable>
         <Flex direction="column">
           <Flex.Item>
@@ -390,7 +390,7 @@ export class ButtonKeybind extends Component<
 
     return (
       <Button
-        {...rest}
+        {...(rest as object)}
         selected={focused}
         inline
         onClick={(e) => {

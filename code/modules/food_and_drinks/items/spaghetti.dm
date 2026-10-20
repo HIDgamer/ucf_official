@@ -7,14 +7,6 @@
 	foodtypes = GRAIN
 	venue_value = FOOD_PRICE_CHEAP
 
-// Why are you putting cooked spaghetti in your pockets?
-/obj/item/food/spaghetti/make_microwaveable()
-	var/list/display_message = list(
-		span_notice("Something wet falls out of their pocket and hits the ground. Is that... [name]?"),
-		span_warning("Oh shit! All your pocket [name] fell out!"))
-
-	return ..()
-
 /obj/item/food/spaghetti/raw
 	name = "spaghetti"
 	desc = "Now that's a nic'e pasta!"

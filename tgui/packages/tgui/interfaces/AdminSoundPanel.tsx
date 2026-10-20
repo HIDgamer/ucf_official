@@ -65,7 +65,7 @@ export const AdminSoundPanel = () => {
   const handlePlay = () => {
     const target_ref =
       audience === 'Single Mob'
-        ? cliented_mobs.find((m) => m.key === selectedMobKey)?.ref ?? ''
+        ? (cliented_mobs.find((m) => m.key === selectedMobKey)?.ref ?? '')
         : '';
     if (sourceMode === 'direct') {
       act('play_direct', {
@@ -161,7 +161,7 @@ export const AdminSoundPanel = () => {
                           checked={showBlurb}
                           onClick={() => setShowBlurb(!showBlurb)}
                         >
-                          Show title/artist blurb on players' screens
+                          Show title/artist blurb on players&apos; screens
                         </Button.Checkbox>
                       </LabeledList.Item>
                     </LabeledList>
@@ -173,8 +173,8 @@ export const AdminSoundPanel = () => {
                   onClick={() => {
                     const target_ref =
                       audience === 'Single Mob'
-                        ? cliented_mobs.find((m) => m.key === selectedMobKey)
-                            ?.ref ?? ''
+                        ? (cliented_mobs.find((m) => m.key === selectedMobKey)
+                            ?.ref ?? '')
                         : '';
                     act('open_file_picker', {
                       audience,

@@ -372,3 +372,15 @@
 /obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod
 /obj/structure/terminal
 /obj/structure/window/framed/corsat/indestructible
+
+// Structures and items placed by the Sorokyne, UPP station and Chinook maps
+/obj/structure/sign/calendar/upp
+/obj/item/reagent_container/food/snacks/upp
+/obj/item/paper/soro/clf
+/obj/effect/decal/floor_symbol/uscm_3x3/northface/northwest
+
+// Sorokyne CLF camp survivor spawners
+/obj/effect/landmark/survivor_spawner/clf/soro
+/obj/effect/landmark/survivor_spawner/clf_medic/soro
+/obj/effect/landmark/survivor_spawner/clf_lead/soro
+/obj/effect/landmark/survivor_spawner/clf_engi/soro

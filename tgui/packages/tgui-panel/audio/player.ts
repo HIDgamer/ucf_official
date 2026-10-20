@@ -9,6 +9,14 @@ import { createLogger } from 'tgui/logging';
 const logger = createLogger('AudioPlayer');
 
 export class AudioPlayer {
+  node: HTMLAudioElement | null;
+  playing: boolean;
+  volume: number;
+  options: any;
+  onPlaySubscribers: Array<() => void>;
+  onStopSubscribers: Array<() => void>;
+  playbackInterval: ReturnType<typeof setInterval> | null;
+
   constructor() {
     // A fresh Audio object is created per play() call below - reassigning .src on an
     // already-used media element doesn't reliably re-fire a load in every embedded-webview
@@ -75,7 +83,9 @@ export class AudioPlayer {
   }
 
   stop() {
-    clearInterval(this.playbackInterval);
+    if (this.playbackInterval) {
+      clearInterval(this.playbackInterval);
+    }
     this.playbackInterval = null;
     if (!this.node) {
       return;

@@ -1,11 +1,11 @@
 import { classes } from 'common/react';
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 import { useBackend } from '../../backend';
 import { Button, Flex } from '../../components';
 import { Table, TableCell, TableRow } from '../../components/Table';
 import { CrtPanel } from '../CrtPanel';
-import { ButtonProps } from './types';
+import { type ButtonProps } from './types';
 
 export interface MfdProps {
   readonly panelStateId: string; // eslint-disable-line

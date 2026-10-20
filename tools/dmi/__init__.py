@@ -68,6 +68,8 @@ class Dmi:
         for line in line_iter:
             if line == "# END DMI":
                 break
+            if not line.strip():
+                continue
             key, value = line.lstrip().split(" = ")
             if key == 'width':
                 dmi.width = int(value)

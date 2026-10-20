@@ -50,7 +50,7 @@
 /// plain data field (see debug_variable() in debug_variables.dm) instead of embedding it in HTML.
 /// Using VV_HREF_TARGET_1V directly here was a real bug: its "<a href='...'>text</a>" output was
 /// getting stored as the click_href action's href param verbatim, so client.Topic()/params2list()
-/// received the literal string "<a href='?_src_=vars;...'>E</a>" instead of a parseable query
+/// received the literal string "<a href='byond://?_src_=vars;...'>E</a>" instead of a parseable query
 /// string — every VV row button fired an action (visible in tgui.log) that silently did nothing.
 #define VV_HREF_TARGET_1V_INTERNAL(target, href_key, varname) "[VV_HREF_TARGET_INTERNAL(target, href_key)];[VV_HK_VARNAME]=[varname]"
 /// Navigate the VV window to a different datum/list by ref — same href shape debug_variable() used to embed in every <a href='...Vars=...'> link.

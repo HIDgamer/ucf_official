@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { type BooleanLike } from 'common/react';
 
 import { useBackend } from '../backend';
 import { Box, Button, Flex, Section, Stack } from '../components';
@@ -85,7 +85,7 @@ type Data = {
   local_last_page: string;
   local_admin_login: string;
   ares_logged_in: string;
-  ares_sudo: BooleanLike;
+  ares_sudo: number;
   ares_access_text: string;
   local_spying_conversation: string[];
   local_active_convo: string[];
@@ -250,7 +250,7 @@ const MainMenu = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Navigation Menu</h1>
+        <h1 style={{ textAlign: 'center' }}>Navigation Menu</h1>
 
         <Stack>
           <Stack.Item grow>
@@ -469,7 +469,7 @@ const MainMenu = () => {
                 px="2rem"
                 width="25vw"
                 bold
-                disabled={ares_access_text}
+                disabled={!!ares_access_text}
               >
                 Sudo Login
               </Button>
@@ -484,7 +484,7 @@ const MainMenu = () => {
                 px="2rem"
                 width="25vw"
                 bold
-                disabled={ares_access_text}
+                disabled={!!ares_access_text}
               >
                 Sudo Logout
               </Button>
@@ -493,7 +493,7 @@ const MainMenu = () => {
         </Stack>
       </Section>
       <Section>
-        <h1 align="center">Core Security Protocols</h1>
+        <h1 style={{ textAlign: 'center' }}>Core Security Protocols</h1>
         <Stack>
           <Stack.Item grow>
             <Button
@@ -619,7 +619,7 @@ const AnnouncementLogs = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Announcement Logs</h1>
+        <h1 style={{ textAlign: 'center' }}>Announcement Logs</h1>
 
         {!!records_announcement.length && (
           <Flex
@@ -655,7 +655,7 @@ const AnnouncementLogs = () => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="You cannot do this via remote console."
-                  disabled={ares_access_text}
+                  disabled={!!ares_access_text}
                 />
               </Flex.Item>
             </Flex>
@@ -718,7 +718,7 @@ const BioscanLogs = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Bioscan Logs</h1>
+        <h1 style={{ textAlign: 'center' }}>Bioscan Logs</h1>
 
         {!!records_bioscan.length && (
           <Flex
@@ -754,7 +754,7 @@ const BioscanLogs = () => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="You cannot do this via remote console."
-                  disabled={ares_access_text}
+                  disabled={!!ares_access_text}
                 />
               </Flex.Item>
             </Flex>
@@ -817,7 +817,7 @@ const BombardmentLogs = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Orbital Bombardment Logs</h1>
+        <h1 style={{ textAlign: 'center' }}>Orbital Bombardment Logs</h1>
 
         {!!records_bombardment.length && (
           <Flex
@@ -857,7 +857,7 @@ const BombardmentLogs = () => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="You cannot do this via remote console."
-                  disabled={ares_access_text}
+                  disabled={!!ares_access_text}
                 />
               </Flex.Item>
             </Flex>
@@ -920,7 +920,7 @@ const ApolloLog = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Apollo Log</h1>
+        <h1 style={{ textAlign: 'center' }}>Apollo Log</h1>
 
         {apollo_log.map((apollo_message, i) => {
           return (
@@ -986,7 +986,7 @@ const AccessLogs = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Access Log</h1>
+        <h1 style={{ textAlign: 'center' }}>Access Log</h1>
 
         {ares_access_log.map((login, i) => {
           return (
@@ -1052,7 +1052,7 @@ const DeletionLogs = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Deletion Log</h1>
+        <h1 style={{ textAlign: 'center' }}>Deletion Log</h1>
 
         {!!records_deletion.length && (
           <Flex
@@ -1149,7 +1149,7 @@ const ARESTalk = () => {
       </Section>
 
       <Section>
-        <h1 align="center">ARES Communication</h1>
+        <h1 style={{ textAlign: 'center' }}>ARES Communication</h1>
       </Section>
 
       <Section align="center">
@@ -1277,7 +1277,7 @@ const DeletedTalks = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Deletion 1:1 Log</h1>
+        <h1 style={{ textAlign: 'center' }}>Deletion 1:1 Log</h1>
         {!!deleted_discussions.length && (
           <Flex
             className="candystripe"
@@ -1372,7 +1372,7 @@ const ActiveTalks = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Active 1:1 Records</h1>
+        <h1 style={{ textAlign: 'center' }}>Active 1:1 Records</h1>
         {!!records_discussions.length && (
           <Flex
             className="candystripe"
@@ -1467,7 +1467,7 @@ const ReadingTalks = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Deleted Conversation</h1>
+        <h1 style={{ textAlign: 'center' }}>Deleted Conversation</h1>
         {local_spying_conversation.map((message, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
@@ -1532,7 +1532,7 @@ const Requisitions = () => {
       </Section>
 
       <Section>
-        <h1 align="center">ASRS Audit Log</h1>
+        <h1 style={{ textAlign: 'center' }}>ASRS Audit Log</h1>
         {!!records_requisition.length && (
           <Flex
             className="candystripe"
@@ -1629,7 +1629,7 @@ const FlightLogs = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Flight Control Logs</h1>
+        <h1 style={{ textAlign: 'center' }}>Flight Control Logs</h1>
         {!!records_flight.length && (
           <Flex
             className="candystripe"
@@ -1664,7 +1664,7 @@ const FlightLogs = () => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={ares_access_text}
+                  disabled={!!ares_access_text}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>
@@ -1728,7 +1728,7 @@ const Security = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Security Updates</h1>
+        <h1 style={{ textAlign: 'center' }}>Security Updates</h1>
         {!!records_security.length && (
           <Flex
             className="candystripe"
@@ -1763,7 +1763,7 @@ const Security = () => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="You cannot do this via remote console."
-                  disabled={ares_access_text}
+                  disabled={!!ares_access_text}
                 />
               </Flex.Item>
             </Flex>
@@ -1824,7 +1824,7 @@ const Emergency = () => {
         </Flex>
       </Section>
 
-      <h1 align="center">Emergency Protocols</h1>
+      <h1 style={{ textAlign: 'center' }}>Emergency Protocols</h1>
       <Flex align="center" justify="center" height="50%" direction="column">
         <Button.Confirm
           tooltip="You cannot do this via remote console."
@@ -1836,7 +1836,7 @@ const Emergency = () => {
           p="1rem"
           mt="5rem"
           bold
-          disabled={ares_access_text}
+          disabled={!!ares_access_text}
         >
           Call General Quarters
         </Button.Confirm>
@@ -1850,7 +1850,7 @@ const Emergency = () => {
           p="1rem"
           mt="5rem"
           bold
-          disabled={ares_access_text}
+          disabled={!!ares_access_text}
         >
           Initiate Evacuation
         </Button.Confirm>
@@ -1864,7 +1864,7 @@ const Emergency = () => {
           p="1rem"
           mt="5rem"
           bold
-          disabled={ares_access_text}
+          disabled={!!ares_access_text}
         >
           Launch Distress Beacon
         </Button.Confirm>
@@ -1878,7 +1878,7 @@ const Emergency = () => {
           p="1rem"
           mt="5rem"
           bold
-          disabled={ares_access_text}
+          disabled={!!ares_access_text}
         >
           Request Nuclear Device
         </Button.Confirm>
@@ -1939,7 +1939,7 @@ const TechLogs = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Tech Control Logs</h1>
+        <h1 style={{ textAlign: 'center' }}>Tech Control Logs</h1>
         {!!records_tech.length && (
           <Flex
             className="candystripe"
@@ -1993,7 +1993,7 @@ const TechLogs = () => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={local_current_menu}
+                  disabled={!!local_current_menu}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>
@@ -2057,10 +2057,10 @@ const CoreSec = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Core Security Protocols</h1>
+        <h1 style={{ textAlign: 'center' }}>Core Security Protocols</h1>
       </Section>
       <Section>
-        <h1 align="center">Nerve Gas Release</h1>
+        <h1 style={{ textAlign: 'center' }}>Nerve Gas Release</h1>
         {security_vents.map((vent, i) => {
           return (
             <Button.Confirm
@@ -2131,7 +2131,7 @@ const AdminAccessLogs = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Access Log</h1>
+        <h1 style={{ textAlign: 'center' }}>Access Log</h1>
 
         {admin_access_log.map((login, i) => {
           return (
@@ -2191,7 +2191,7 @@ const AccessManagement = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Access Ticket Management</h1>
+        <h1 style={{ textAlign: 'center' }}>Access Ticket Management</h1>
         {!!access_tickets.length && (
           <Flex
             mt="2rem"
@@ -2247,7 +2247,7 @@ const AccessManagement = () => {
             update_tooltip =
               'Access self-returned. No further changes possible.';
           }
-          let can_reject = 'Yes';
+          let can_reject: 'Yes' | 'No' = 'Yes';
           if (can_update === 'No') {
             can_reject = 'No';
           }
@@ -2284,7 +2284,6 @@ const AccessManagement = () => {
                   <Button.Confirm
                     icon="user-minus"
                     tooltip="Reject Ticket"
-                    disabled={can_reject === 'No'}
                     onClick={() => act('reject_access', { ticket: ticket.ref })}
                   />
                 )}
@@ -2343,7 +2342,7 @@ const MaintManagement = () => {
       </Section>
 
       <Section>
-        <h1 align="center">Maintenance Reports Management</h1>
+        <h1 style={{ textAlign: 'center' }}>Maintenance Reports Management</h1>
 
         <Flex
           direction="column"

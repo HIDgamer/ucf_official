@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 
 import { useBackend } from '../backend';
 import {
@@ -62,7 +62,7 @@ export const Who = () => {
   const filteredTotalPlayers = searchPlayers();
 
   return (
-    <Window resizable width={800} height={600}>
+    <Window width={800} height={600}>
       <Window.Content scrollable>
         <Stack fill vertical>
           <Stack.Item>

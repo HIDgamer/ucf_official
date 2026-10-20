@@ -32,7 +32,7 @@
 	return
 
 /datum/computer_file/program/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	return
+	return ..()
 
 /datum/computer_file/program/proc/can_run(mob/user, loud = FALSE)
 	if(!length(run_access))

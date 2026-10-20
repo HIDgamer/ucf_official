@@ -36,7 +36,7 @@ export const IcMedalsPanel = (props) => {
   >([]);
 
   return (
-    <Window width={600} height={400} theme={'ntos'} resizable>
+    <Window width={600} height={400} theme={'ntos'}>
       <Window.Content scrollable>
         <NoticeBox textAlign="center">
           <Button

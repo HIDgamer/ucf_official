@@ -53,13 +53,13 @@ export type Preset = {
 };
 
 type Props = {
-  mode: 'pen' | 'crayon';
-  logos?: Logo[];
-  presets?: Preset[];
-  minHeight?: string;
+  readonly mode: 'pen' | 'crayon';
+  readonly logos?: Logo[];
+  readonly presets?: Preset[];
+  readonly minHeight?: string;
   /** Loaded into the surface once on mount - not re-applied on later prop changes, so it never
    * clobbers in-progress edits when the backend's data poll refreshes. */
-  initialHtml?: string;
+  readonly initialHtml?: string;
 };
 
 const FIELD_HTML = '<span class="paper_field"></span>';
@@ -97,7 +97,6 @@ export const RichTextEditor = forwardRef<RichTextEditorHandle, Props>(
       // logos/images, with no custom drag/resize UI of our own to build or maintain.
       document.execCommand('enableObjectResizing', false, 'true');
       // Intentionally empty deps - load once on mount only, see the initialHtml prop doc above.
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useImperativeHandle(forwardedRef, () => ({
@@ -134,7 +133,11 @@ export const RichTextEditor = forwardRef<RichTextEditorHandle, Props>(
 
     const saveSelection = () => {
       const sel = window.getSelection();
-      if (sel && sel.rangeCount > 0 && surfaceRef.current?.contains(sel.anchorNode)) {
+      if (
+        sel &&
+        sel.rangeCount > 0 &&
+        surfaceRef.current?.contains(sel.anchorNode)
+      ) {
         savedRangeRef.current = sel.getRangeAt(0).cloneRange();
       }
     };
@@ -165,7 +168,10 @@ export const RichTextEditor = forwardRef<RichTextEditorHandle, Props>(
       sel.removeAllRanges();
       sel.addRange(range);
       const font = document.createElement('font');
-      font.setAttribute('face', mode === 'crayon' ? 'Comic Sans MS' : 'Verdana');
+      font.setAttribute(
+        'face',
+        mode === 'crayon' ? 'Comic Sans MS' : 'Verdana',
+      );
       font.setAttribute('color', color);
       font.appendChild(range.extractContents());
       range.insertNode(font);
@@ -322,7 +328,6 @@ export const RichTextEditor = forwardRef<RichTextEditorHandle, Props>(
                   <Dropdown
                     icon="palette"
                     displayText="Text Color"
-                    tooltip="Select text first, then pick a color"
                     selected={null}
                     options={TEXT_COLORS.map((c) => c.label)}
                     onSelected={(label) => {

@@ -12,7 +12,7 @@ import { Window } from 'tgui/layouts';
 import { CameraContent } from './CameraConsole';
 import {
   DropshipDisabledScreen,
-  DropshipNavigationProps,
+  type DropshipNavigationProps,
   RenderScreen,
 } from './DropshipFlightControl';
 import { GeneralPanel } from './PhoneMenu';
@@ -957,12 +957,25 @@ const MaintReportsPage = () => {
   const { maintenance_tickets, local_logged_in } = data;
   return (
     <Section title="Maintenance Reports" fill scrollable>
-      <Button icon="exclamation-circle" mb={1} onClick={() => act('new_report')}>
+      <Button
+        icon="exclamation-circle"
+        mb={1}
+        onClick={() => act('new_report')}
+      >
         New Report
       </Button>
       {maintenance_tickets.map((ticket) => (
-        <Flex key={ticket.ref} className="candystripe" p="0.5rem" align="center">
-          <Flex.Item bold width="3rem" color={ticket.priority_status ? 'bad' : undefined}>
+        <Flex
+          key={ticket.ref}
+          className="candystripe"
+          p="0.5rem"
+          align="center"
+        >
+          <Flex.Item
+            bold
+            width="3rem"
+            color={ticket.priority_status ? 'bad' : undefined}
+          >
             #{ticket.id}
           </Flex.Item>
           <Flex.Item grow>{ticket.details}</Flex.Item>
@@ -992,8 +1005,17 @@ const MaintManagementPage = () => {
   return (
     <Section title="Maintenance Ticket Management" fill scrollable>
       {maintenance_tickets.map((ticket) => (
-        <Flex key={ticket.ref} className="candystripe" p="0.5rem" align="center">
-          <Flex.Item bold width="3rem" color={ticket.priority_status ? 'bad' : undefined}>
+        <Flex
+          key={ticket.ref}
+          className="candystripe"
+          p="0.5rem"
+          align="center"
+        >
+          <Flex.Item
+            bold
+            width="3rem"
+            color={ticket.priority_status ? 'bad' : undefined}
+          >
             #{ticket.id}
           </Flex.Item>
           <Flex.Item grow>{ticket.details}</Flex.Item>
@@ -1015,7 +1037,8 @@ const MaintManagementPage = () => {
               tooltip="Mark Ticket"
               disabled={
                 ticket.lock_status === 'CLOSED' ||
-                (ticket.assignee !== local_logged_in && ticket.assignee !== null)
+                (ticket.assignee !== local_logged_in &&
+                  ticket.assignee !== null)
               }
               onClick={() => act('mark_ticket', { ticket: ticket.ref })}
             />
@@ -1040,7 +1063,12 @@ const AccessRequestsPage = () => {
         Create Ticket
       </Button>
       {access_tickets.map((ticket) => (
-        <Flex key={ticket.ref} className="candystripe" p="0.5rem" align="center">
+        <Flex
+          key={ticket.ref}
+          className="candystripe"
+          p="0.5rem"
+          align="center"
+        >
           <Flex.Item bold width="3rem">
             #{ticket.id}
           </Flex.Item>

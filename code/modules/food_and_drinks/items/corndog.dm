@@ -8,7 +8,7 @@
 	icon = 'icons/obj/food/corndog.dmi'
 	icon_state = "rawsausage_stick"
 	food_reagents = list(
-	"nutriment" = 7,
+		"nutriment" = 7,
 	)
 	tastes = list("meat" = 1)
 	foodtypes = MEAT | RAW
@@ -90,7 +90,7 @@
 	name = "Nar’Dog"
 	icon_state = "demondog"
 	food_reagents = list(
-	"nutriment" = 25,
+		"nutriment" = 25,
 	)
 	desc = "A demonic corndog of occult origin, <font color=#ae0000>it glows with an unholy power...</font>"
 	tastes = list("brimstone" = 1, "the souls of the damned" = 1)

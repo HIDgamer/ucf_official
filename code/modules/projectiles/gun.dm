@@ -219,6 +219,8 @@
 
 	///the default gun icon_state. change to reskin the gun
 	var/base_gun_icon
+	/// Lineart sprite to show instead of base_gun_icon, for guns that look the same as another
+	var/lineart_state
 	/// whether gun has icon state of (base_gun_icon)_e
 	var/has_empty_icon = TRUE
 	/// whether gun has icon state of (base_gun_icon)_o
@@ -729,7 +731,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	// weapon info
 
-	data["icon"] = base_gun_icon
+	data["icon"] = lineart_state || base_gun_icon
 	data["name"] = name
 	data["desc"] = desc
 	data["two_handed_only"] = (flags_gun_features & GUN_WIELDED_FIRING_ONLY)

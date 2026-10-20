@@ -12,7 +12,12 @@ export const CombatLogViewer = (props) => {
   const { target_name, logs = [] } = data;
 
   return (
-    <Window title={`Combat Logs: ${target_name}`} width={600} height={480} theme="admin">
+    <Window
+      title={`Combat Logs: ${target_name}`}
+      width={600}
+      height={480}
+      theme="admin"
+    >
       <Window.Content scrollable>
         <Section fill>
           {logs.length === 0 ? (
@@ -21,8 +26,11 @@ export const CombatLogViewer = (props) => {
             </Box>
           ) : (
             logs.map((entry, i) => (
-              // eslint-disable-next-line react/no-danger
-              <Box key={i} mb={0.25} dangerouslySetInnerHTML={{ __html: entry }} />
+              <Box
+                key={i}
+                mb={0.25}
+                dangerouslySetInnerHTML={{ __html: entry }}
+              />
             ))
           )}
         </Section>

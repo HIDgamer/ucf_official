@@ -86,8 +86,8 @@ const loadChatFromStorage = async (store) => {
 export const chatMiddleware = (store) => {
   let initialized = false;
   let loaded = false;
-  const sequences = [];
-  const sequences_requested = [];
+  const sequences: number[] = [];
+  const sequences_requested: number[] = [];
   chatRenderer.events.on('batchProcessed', (countByType) => {
     // Use this flag to workaround unread messages caused by
     // loading them from storage. Side effect of that, is that

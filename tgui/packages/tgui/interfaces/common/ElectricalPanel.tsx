@@ -2,7 +2,7 @@ import { classes } from 'common/react';
 
 import { useBackend } from '../../backend';
 import { Box, Button, Flex, Icon, NoticeBox, Stack } from '../../components';
-import { BoxProps } from '../../components/Box';
+import { type BoxProps } from '../../components/Box';
 import { Table, TableRow } from '../../components/Table';
 
 interface ElectricalData {

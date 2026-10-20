@@ -1639,6 +1639,7 @@
 				to_chat(user, SPAN_WARNING("There are no splints to remove."))
 
 /mob/living/carbon/human/yautja/Initialize(mapload)
+	ethnicity = "tan"
 	. = ..(mapload, new_species = "Yautja")
 
 /mob/living/carbon/human/monkey/Initialize(mapload)

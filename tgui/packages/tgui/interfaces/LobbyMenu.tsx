@@ -1,11 +1,11 @@
 import { playClickBlip } from 'common/audio';
 import { randomInteger } from 'common/random';
-import { BooleanLike, classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 import { storage } from 'common/storage';
 import {
   createContext,
-  PropsWithChildren,
-  ReactNode,
+  type PropsWithChildren,
+  type ReactNode,
   useContext,
   useEffect,
   useRef,
@@ -22,7 +22,7 @@ import {
   Section,
   Stack,
 } from '../components';
-import { BoxProps } from '../components/Box';
+import { type BoxProps } from '../components/Box';
 import { Window } from '../layouts';
 import { LoadingScreen } from './common/LoadingToolbox';
 

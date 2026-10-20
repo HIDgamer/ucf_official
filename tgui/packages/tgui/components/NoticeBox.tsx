@@ -1,13 +1,12 @@
-/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
  * @license MIT
  */
 
-import { classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 
-import { Box, BoxProps } from './Box';
+import { Box, type BoxProps } from './Box';
 
 type Props = ExclusiveProps & BoxProps;
 
@@ -21,16 +20,16 @@ type None = {
 type ExclusiveProps =
   | None
   | (Omit<None, 'info'> & {
-      info: boolean;
+      info: BooleanLike;
     })
   | (Omit<None, 'success'> & {
-      success: boolean;
+      success: BooleanLike;
     })
   | (Omit<None, 'warning'> & {
-      warning: boolean;
+      warning: BooleanLike;
     })
   | (Omit<None, 'danger'> & {
-      danger: boolean;
+      danger: BooleanLike;
     });
 
 export function NoticeBox(props: Props) {

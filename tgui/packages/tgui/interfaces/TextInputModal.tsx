@@ -1,5 +1,5 @@
 import { KEY } from 'common/keys';
-import { KeyboardEvent, useState } from 'react';
+import { type KeyboardEvent, useState } from 'react';
 
 import { useBackend } from '../backend';
 import { Box, Section, Stack, TextArea } from '../components';

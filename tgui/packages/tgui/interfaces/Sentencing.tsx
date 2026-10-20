@@ -392,9 +392,7 @@ const Evidence = (props) => {
                 <Button
                   icon="trash"
                   width="100%"
-                  onClick={() =>
-                    act('remove_evidence', { evidence: item.ref })
-                  }
+                  onClick={() => act('remove_evidence', { evidence: item.ref })}
                 />
               </Flex>
             </Flex>

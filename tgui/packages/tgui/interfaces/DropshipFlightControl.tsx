@@ -14,11 +14,11 @@ import { Window } from '../layouts';
 import {
   CancelLaunchButton,
   DisabledScreen,
-  DockingPort,
+  type DockingPort,
   InFlightCountdown,
   LaunchButton,
   LaunchCountdown,
-  NavigationProps,
+  type NavigationProps,
   ShuttleRecharge,
 } from './NavigationShuttle';
 
@@ -581,7 +581,9 @@ const getWindowHeight = (data: DropshipNavigationProps) => {
     // AutopilotConfig draws the full destinations list twice - a "From" list and a "To" list -
     // plus its own two label/divider Stack.Items.
     height +=
-      SECTION_CHROME + data.destinations.length * ROW_HEIGHT * 2 + ROW_HEIGHT * 2;
+      SECTION_CHROME +
+      data.destinations.length * ROW_HEIGHT * 2 +
+      ROW_HEIGHT * 2;
   }
 
   if (data.shuttle_mode === 'igniting') {
@@ -598,7 +600,8 @@ const getWindowHeight = (data: DropshipNavigationProps) => {
   }
 
   if (data.door_status.length > 0) {
-    height += SECTION_CHROME + Math.ceil(data.door_status.length / 3) * ROW_HEIGHT;
+    height +=
+      SECTION_CHROME + Math.ceil(data.door_status.length / 3) * ROW_HEIGHT;
   }
 
   if (data.airlock_data) {

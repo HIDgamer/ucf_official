@@ -23,9 +23,7 @@ type Data = {
 // any frontend changes needed.
 
 const formatLabel = (key: string) =>
-  key
-    .replace(/_/g, ' ')
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+  key.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 
 const isPrimitive = (value: unknown) =>
   value === null ||
@@ -67,7 +65,10 @@ const StatSummary = (props: { readonly data?: StatRow }) => {
 };
 
 /** Renders an array of stat rows as a table, auto-deriving columns from primitive fields on the first row. */
-const StatTable = (props: { readonly rows?: StatRow[]; readonly sortByValue?: boolean }) => {
+const StatTable = (props: {
+  readonly rows?: StatRow[];
+  readonly sortByValue?: boolean;
+}) => {
   const { rows, sortByValue } = props;
   if (!rows || rows.length === 0) {
     return (
@@ -80,9 +81,7 @@ const StatTable = (props: { readonly rows?: StatRow[]; readonly sortByValue?: bo
     isPrimitive(rows[0][key]),
   );
   const sortedRows = sortByValue
-    ? [...rows].sort(
-        (a, b) => (Number(b.value) || 0) - (Number(a.value) || 0),
-      )
+    ? [...rows].sort((a, b) => (Number(b.value) || 0) - (Number(a.value) || 0))
     : rows;
   return (
     <Table>
@@ -130,7 +129,10 @@ const XENO_TABS = [
   { id: 'medals', label: 'Medals' },
 ];
 
-const GlobalPanel = (props: { readonly category: string; readonly round?: StatRow }) => {
+const GlobalPanel = (props: {
+  readonly category: string;
+  readonly round?: StatRow;
+}) => {
   const { category, round } = props;
   switch (category) {
     case 'participants':
@@ -251,12 +253,18 @@ const PersonalPanel = (props: {
           </Stack.Item>
           <Stack.Item>
             <Section title="Humans Killed">
-              <StatTable rows={faction?.humans_killed as StatRow[]} sortByValue />
+              <StatTable
+                rows={faction?.humans_killed as StatRow[]}
+                sortByValue
+              />
             </Section>
           </Stack.Item>
           <Stack.Item>
             <Section title="Xenos Killed">
-              <StatTable rows={faction?.xenos_killed as StatRow[]} sortByValue />
+              <StatTable
+                rows={faction?.xenos_killed as StatRow[]}
+                sortByValue
+              />
             </Section>
           </Stack.Item>
         </Stack>
@@ -268,9 +276,12 @@ export const StatisticsPanel = (props) => {
   const { act, data } = useBackend<Data>();
   const { menu, subMenu, dataMenu, current_time, round, human, xeno } = data;
 
-  const subTabs = menu === 'personal'
-    ? subMenu === 'xeno' ? XENO_TABS : HUMAN_TABS
-    : GLOBAL_TABS;
+  const subTabs =
+    menu === 'personal'
+      ? subMenu === 'xeno'
+        ? XENO_TABS
+        : HUMAN_TABS
+      : GLOBAL_TABS;
 
   return (
     <Window title="Statistics" width={560} height={620}>
@@ -290,7 +301,13 @@ export const StatisticsPanel = (props) => {
               >
                 Personal
               </Tabs.Tab>
-              <Box position="absolute" right="0.5rem" color="label" fontSize="0.8rem" mt="0.4rem">
+              <Box
+                position="absolute"
+                right="0.5rem"
+                color="label"
+                fontSize="0.8rem"
+                mt="0.4rem"
+              >
                 {current_time}
               </Box>
             </Tabs>
@@ -301,9 +318,7 @@ export const StatisticsPanel = (props) => {
               <Tabs>
                 <Tabs.Tab
                   selected={subMenu === 'human'}
-                  onClick={() =>
-                    act('set_submenu', { submenu: 'human' })
-                  }
+                  onClick={() => act('set_submenu', { submenu: 'human' })}
                 >
                   Human
                 </Tabs.Tab>
@@ -320,7 +335,8 @@ export const StatisticsPanel = (props) => {
           <Stack.Item>
             <Tabs>
               {subTabs.map((tab) => {
-                const stateKey = menu === 'global' ? 'set_submenu' : 'set_datamenu';
+                const stateKey =
+                  menu === 'global' ? 'set_submenu' : 'set_datamenu';
                 const paramKey = menu === 'global' ? 'submenu' : 'datamenu';
                 const active = menu === 'global' ? subMenu : dataMenu;
                 return (

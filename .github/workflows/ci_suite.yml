@@ -42,7 +42,7 @@ jobs:
             ${{ runner.os }}-
       - name: Install Tools
         run: |
-          sudo apt-get install -y python3-venv
+          if sudo -n true 2>/dev/null; then sudo apt-get install -y python3-venv; fi
           pip3 install setuptools --break-system-packages
           bash tools/ci/install_node.sh
           bash tools/ci/install_spaceman_dmm.sh dreamchecker
@@ -55,7 +55,7 @@ jobs:
           bash tools/ci/check_misc.sh
           tools/bootstrap/python tools/ci/validate_dme.py < colonialmarines.dme
           tools/bootstrap/python -m tools.maplint.source --github
-          tools/build/build --ci lint tgui-test
+          tools/build/build.sh --ci lint tgui-test
           tools/bootstrap/python -m dmi.test
           tools/bootstrap/python -m mapmerge2.dmm_test
           ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
@@ -69,20 +69,24 @@ jobs:
   odlint:
     name: Lint with OpenDream
     runs-on: [self-hosted, Linux, X64]
-    env:
-      DOTNET_INSTALL_DIR: ~/.dotnet
     steps:
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 9
       - uses: actions/checkout@v4
+      - name: Install .NET 10 runtime
+        run: |
+          DOTNET_DIR="$HOME/.dotnet"
+          if ! "$DOTNET_DIR/dotnet" --list-runtimes 2>/dev/null | grep -q "Microsoft.NETCore.App 10\."; then
+            curl -sSL https://dot.net/v1/dotnet-install.sh -o "$RUNNER_TEMP/dotnet-install.sh"
+            bash "$RUNNER_TEMP/dotnet-install.sh" --runtime dotnet --channel 10.0 --install-dir "$DOTNET_DIR"
+          fi
+          echo "$DOTNET_DIR" >> "$GITHUB_PATH"
+          echo "DOTNET_ROOT=$DOTNET_DIR" >> "$GITHUB_ENV"
       - uses: robinraju/release-downloader@v1.9
         with:
           repository: "OpenDreamProject/OpenDream"
           tag: "latest"
           fileName: "DMCompiler_linux-x64.tar.gz"
           extract: true
-      - run: ./DMCompiler_linux-x64/DMCompiler --suppress-unimplemented colonialmarines.dme
+      - run: dotnet ./DMCompiler_linux-x64/DMCompiler.dll --suppress-unimplemented colonialmarines.dme
 
   compile_all_maps:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
@@ -99,7 +103,7 @@ jobs:
         run: |
           bash tools/ci/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
-          tools/build/build --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
+          tools/build/build.sh --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
 
   find_all_maps:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
