@@ -71,9 +71,15 @@ jobs:
     runs-on: [self-hosted, Linux, X64]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 10.0.x
+      - name: Install .NET 10 runtime
+        run: |
+          DOTNET_DIR="$HOME/.dotnet"
+          if ! "$DOTNET_DIR/dotnet" --list-runtimes 2>/dev/null | grep -q "Microsoft.NETCore.App 10\."; then
+            curl -sSL https://dot.net/v1/dotnet-install.sh -o "$RUNNER_TEMP/dotnet-install.sh"
+            bash "$RUNNER_TEMP/dotnet-install.sh" --runtime dotnet --channel 10.0 --install-dir "$DOTNET_DIR"
+          fi
+          echo "$DOTNET_DIR" >> "$GITHUB_PATH"
+          echo "DOTNET_ROOT=$DOTNET_DIR" >> "$GITHUB_ENV"
       - uses: robinraju/release-downloader@v1.9
         with:
           repository: "OpenDreamProject/OpenDream"
