@@ -137,7 +137,7 @@
 	target.forceMove(open_turf)
 	var/open = damage_after_volley(shooter, rifle, target, 360)
 	TEST_NOTICE(src, "360 rifle shots: [covered] hits on a target behind a barricade, [open] on one in the open")
-	TEST_ASSERT(open > 0, "No shot landed on the target in the open, gun fired [fired] of 360 times, rounds left [rifle.current_mag?.current_rounds], gun in [rifle.loc], gun user [rifle.gun_user], active hand [shooter.get_active_hand()], shooter at [shooter.x],[shooter.y], target at [target.x],[target.y], stat [target.stat]")
+	TEST_ASSERT(open > 0, "No shot landed on the target in the open, gun fired [fired] of 360 times, rounds left [rifle.current_mag?.current_rounds], gun in [rifle.loc], gun user [rifle.get_gun_user()], active hand [shooter.get_active_hand()], shooter at [shooter.x],[shooter.y], target at [target.x],[target.y], stat [target.stat]")
 	TEST_ASSERT(covered < open * 0.75, "Cover did not help: [covered] hits against [open]")
 	for(var/obj/projectile/bullet in world)
 		qdel(bullet)

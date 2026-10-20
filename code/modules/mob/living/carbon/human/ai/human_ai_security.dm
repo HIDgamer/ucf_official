@@ -91,7 +91,7 @@
 	for(var/mob/living/carbon/human/other in view(HAI_PRISONER_RANGE, body))
 		if(!restraint_candidate(other) || (get_disposition(other) <= HAI_DISP_FRIEND && !other.ai_brain?.surrendered))
 			continue
-		var/list/claim = GLOB.human_ai_patient_claims["cuff[REF(other)]"]
+		var/list/datum/claim = GLOB.human_ai_patient_claims["cuff[REF(other)]"]
 		if(claim && claim[1] != src && claim[2] > world.time && !QDELETED(claim[1]))
 			continue
 		var/distance = get_dist(body, other)

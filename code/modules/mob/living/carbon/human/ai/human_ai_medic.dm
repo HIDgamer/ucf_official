@@ -90,7 +90,7 @@ GLOBAL_LIST_EMPTY(human_ai_medic_calls)
 	for(var/mob/living/carbon/human/other in view(HAI_MEDIC_RANGE, body))
 		if(!will_treat(other))
 			continue
-		var/list/claim = GLOB.human_ai_patient_claims[REF(other)]
+		var/list/datum/claim = GLOB.human_ai_patient_claims[REF(other)]
 		if(claim && claim[1] != src && claim[2] > world.time && !QDELETED(claim[1]))
 			continue
 		var/list/need = patient_need(other)

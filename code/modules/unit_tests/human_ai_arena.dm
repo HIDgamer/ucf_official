@@ -57,8 +57,10 @@
 			marks[char] = built
 
 /datum/human_ai_arena/proc/mark(char)
+	RETURN_TYPE(/turf)
 	return marks[char]
 
 /datum/human_ai_arena/proc/first_door(char)
+	RETURN_TYPE(/obj/structure/machinery/door/airlock)
 	var/list/found = doors[char]
 	return length(found) ? found[1] : null

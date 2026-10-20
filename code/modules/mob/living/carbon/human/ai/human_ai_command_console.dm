@@ -305,6 +305,7 @@ GLOBAL_LIST_INIT(npc_command_orders, list(
 	return selection.valid(human) ? human : null
 
 /datum/npc_command_console/proc/resolve_squad(ref)
+	RETURN_TYPE(/datum/human_ai_squad)
 	return locate(ref) in GLOB.human_ai_squads
 
 /// Every control on the panel comes through here, the rights are checked again on each one

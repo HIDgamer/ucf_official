@@ -24,6 +24,7 @@
 	return notice >= 1
 
 /datum/human_ai_brain/proc/get_contact(mob/living/subject)
+	RETURN_TYPE(/datum/ai_contact)
 	return contacts[REF(subject)]
 
 /datum/human_ai_brain/proc/remove_contact(mob/living/subject)

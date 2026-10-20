@@ -90,7 +90,7 @@
 	var/datum/human_ai_arena/field = new(rows, run_loc_floor_bottom_left)
 	var/mob/living/carbon/human/admin = allocate(/mob/living/carbon/human, locate(field.origin_x + 22, field.origin_y + 4, field.z))
 	console = make_console(admin)
-	var/list/team = list()
+	var/list/mob/living/carbon/human/team = list()
 	for(var/index in 1 to 6)
 		var/mob/living/carbon/human/soldier = make_soldier(locate(field.origin_x + 3, field.origin_y + 1 + index, field.z), FACTION_MARINE, TRUE)
 		team += soldier

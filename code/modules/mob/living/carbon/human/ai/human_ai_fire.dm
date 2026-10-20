@@ -56,7 +56,7 @@
 		return FALSE
 	if(weapon_state(gun) != HAI_WEAPON_READY)
 		return FALSE
-	if(gun.gun_user != body)
+	if(gun.get_gun_user() != body)
 		gun.set_gun_user(body)
 	return !!gun.able_to_fire(body)
 
@@ -146,7 +146,7 @@
 /// Fires at the target with the right mode and an imperfect aim, true when a shot went out
 /datum/human_ai_brain/proc/shoot(obj/item/weapon/gun/gun, atom/target)
 	var/datum/human_ai_gun_appraisal/appraisal = get_human_ai_gun_appraisal(gun)
-	if(gun.gun_user != body)
+	if(gun.get_gun_user() != body)
 		gun.set_gun_user(body)
 	if(appraisal.two_handed && !(gun.flags_item & WIELDED) && !body.get_inactive_hand())
 		gun.wield(body)

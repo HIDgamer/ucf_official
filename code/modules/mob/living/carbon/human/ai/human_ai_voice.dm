@@ -13,6 +13,7 @@ GLOBAL_LIST_INIT(human_ai_voices, init_human_ai_voices())
 
 /// The bank that speaks for a faction
 /proc/get_human_ai_voice(faction)
+	RETURN_TYPE(/datum/human_ai_voice)
 	var/voice_id
 	switch(faction)
 		if(FACTION_MARINE, FACTION_TWE)
