@@ -114,6 +114,14 @@
 	/// that started AI-driven ever falls back to AI on disconnect - mirrors xeno's was_ai_spawned.
 	var/was_zombie_ai_spawned = FALSE
 
+	/// Decision making datum of an NPC piloted human, null for player piloted humans and zombies. See code/modules/mob/living/carbon/human/ai/.
+	var/datum/human_ai_brain/ai_brain
+	var/is_human_ai_controlled = FALSE
+	/// Set once at attach time, a body that started AI driven returns to AI when its player pilot leaves
+	var/was_human_ai_spawned = FALSE
+	/// World time until which the hive AI leaves this ambient NPC alone
+	var/ai_grace_until = 0
+
 	var/holo_card_color = "" //which color type of holocard is printed on us
 	var/holo_card_accuracy = HOLOCARD_ACCURACY_HANDHELD // What placed this holocard on the human
 
