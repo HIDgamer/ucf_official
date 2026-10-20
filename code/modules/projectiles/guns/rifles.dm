@@ -2480,6 +2480,7 @@
 	name = "\improper PMC L36 Halberd assault rifle"
 	icon_state = "l36_p"
 	item_state = "l36_p"
+	lineart_state = "l36"
 
 /obj/item/weapon/gun/rifle/l36/Initialize(mapload, spawn_empty)
 	. = ..()
