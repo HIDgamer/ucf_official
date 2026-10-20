@@ -18,6 +18,7 @@ if [ ! -f "$CACHED" ]; then
 	fi
 	rustup target add i686-unknown-linux-gnu
 	export CARGO_TARGET_DIR="$CACHE_DIR/target"
+	mkdir -p tools/rust/rust-g/target
 	(cd tools/rust/rust-g && env PKG_CONFIG_ALLOW_CROSS=1 cargo build --release --target=i686-unknown-linux-gnu --features redis_pubsub,iconforge)
 	mkdir -p "$CACHE_DIR/$KEY"
 	cp "$CARGO_TARGET_DIR/i686-unknown-linux-gnu/release/librust_g.so" "$CACHED"

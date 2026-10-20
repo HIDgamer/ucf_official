@@ -27,12 +27,7 @@ type Data = {
 
 export const CryopodConsole = (props) => {
   const { act, data } = useBackend<Data>();
-  const {
-    welcome_name,
-    cryotype,
-    frozen_crew = [],
-    frozen_items = [],
-  } = data;
+  const { welcome_name, cryotype, frozen_crew = [], frozen_items = [] } = data;
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredItems = frozen_items.filter((item) =>

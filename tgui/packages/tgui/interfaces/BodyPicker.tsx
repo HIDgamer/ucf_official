@@ -110,7 +110,10 @@ const TypePicker = (props: { readonly close: () => void }) => {
   const { body_type, body_types, skin_color, gender, icon } = data;
 
   return (
-    <Section title="Body Type" buttons={<Button icon="xmark" onClick={close} />}>
+    <Section
+      title="Body Type"
+      buttons={<Button icon="xmark" onClick={close} />}
+    >
       <Stack>
         {body_types.map((type) => (
           <Stack.Item key={type.name}>

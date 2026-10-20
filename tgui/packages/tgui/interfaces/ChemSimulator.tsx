@@ -463,9 +463,7 @@ export const ModeRelate = (props: ModeRelateProps) => {
                       setSelectedReferenceProperty(property.code);
                     }}
                     selected={
-                      selectedReferenceProperty === property.code
-                        ? true
-                        : false
+                      selectedReferenceProperty === property.code ? true : false
                     }
                     disabled={lock_control || property.is_locked}
                     tooltip={property.tooltip}

@@ -53,7 +53,12 @@ export const FaxMachine = () => {
   const body = idcard ? <FaxMain /> : <FaxEmpty />;
 
   return (
-    <Window width={idcard ? 800 : 400} height={idcard ? 560 : 215} resizable theme={theme}>
+    <Window
+      width={idcard ? 800 : 400}
+      height={idcard ? 560 : 215}
+      resizable
+      theme={theme}
+    >
       <Window.Content scrollable={!!idcard}>{body}</Window.Content>
     </Window>
   );
@@ -365,8 +370,8 @@ const ConfirmSend = () => {
       </Stack>
       {!!is_jammed && (
         <NoticeBox danger>
-          The bundle is jammed — this machine can only send up to five pages
-          at once. Remove some pages before sending.
+          The bundle is jammed — this machine can only send up to five pages at
+          once. Remove some pages before sending.
         </NoticeBox>
       )}
     </Section>

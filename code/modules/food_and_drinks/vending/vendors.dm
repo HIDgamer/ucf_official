@@ -72,7 +72,7 @@
 	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one. This model appears to have no access restrictions."
 
 /obj/structure/machinery/vending/bastion/boozeomat/syndicate_access
-	icon_state = "refill_booze"
+	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one. This model has had its access restrictions removed."
 
 /obj/structure/machinery/vending/bastion/cola
 	name = "\improper Robust Softdrinks"

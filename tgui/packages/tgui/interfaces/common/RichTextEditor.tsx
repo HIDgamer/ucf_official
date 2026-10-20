@@ -133,7 +133,11 @@ export const RichTextEditor = forwardRef<RichTextEditorHandle, Props>(
 
     const saveSelection = () => {
       const sel = window.getSelection();
-      if (sel && sel.rangeCount > 0 && surfaceRef.current?.contains(sel.anchorNode)) {
+      if (
+        sel &&
+        sel.rangeCount > 0 &&
+        surfaceRef.current?.contains(sel.anchorNode)
+      ) {
         savedRangeRef.current = sel.getRangeAt(0).cloneRange();
       }
     };
@@ -164,7 +168,10 @@ export const RichTextEditor = forwardRef<RichTextEditorHandle, Props>(
       sel.removeAllRanges();
       sel.addRange(range);
       const font = document.createElement('font');
-      font.setAttribute('face', mode === 'crayon' ? 'Comic Sans MS' : 'Verdana');
+      font.setAttribute(
+        'face',
+        mode === 'crayon' ? 'Comic Sans MS' : 'Verdana',
+      );
       font.setAttribute('color', color);
       font.appendChild(range.extractContents());
       range.insertNode(font);

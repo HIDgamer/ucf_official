@@ -1,4 +1,3 @@
- 
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -18,7 +17,12 @@ import {
   useState,
 } from 'react';
 
-import { Box, type BoxProps, computeBoxClassName, computeBoxProps } from './Box';
+import {
+  Box,
+  type BoxProps,
+  computeBoxClassName,
+  computeBoxProps,
+} from './Box';
 import { Icon } from './Icon';
 import { Tooltip } from './Tooltip';
 

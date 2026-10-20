@@ -96,7 +96,10 @@ export const CardContent = () => {
   return (
     <>
       {!!notice_text && (
-        <NoticeBox danger={notice_severity === 'danger'} info={notice_severity === 'info'}>
+        <NoticeBox
+          danger={notice_severity === 'danger'}
+          info={notice_severity === 'info'}
+        >
           {notice_text}
         </NoticeBox>
       )}

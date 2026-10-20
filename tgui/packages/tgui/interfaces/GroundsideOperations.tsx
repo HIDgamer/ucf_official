@@ -292,7 +292,9 @@ const MarineRoster = () => {
   }
 
   const filtered = marines
-    .filter((marine) => marine.name.toLowerCase().includes(search.toLowerCase()))
+    .filter((marine) =>
+      marine.name.toLowerCase().includes(search.toLowerCase()),
+    )
     .sort(sortByRole);
 
   return (

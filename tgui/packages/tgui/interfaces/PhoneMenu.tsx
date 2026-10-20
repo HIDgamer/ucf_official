@@ -54,7 +54,9 @@ export const GeneralPanel = (props) => {
   // selection self-heals on the next render rather than permanently hiding every phone.
   const [rawCategory, setCategory] = useState<string | undefined>(undefined);
   const currentCategory =
-    rawCategory && categories.includes(rawCategory) ? rawCategory : categories[0];
+    rawCategory && categories.includes(rawCategory)
+      ? rawCategory
+      : categories[0];
 
   let dnd_tooltip = 'Do Not Disturb is DISABLED';
   let dnd_locked = 'No';

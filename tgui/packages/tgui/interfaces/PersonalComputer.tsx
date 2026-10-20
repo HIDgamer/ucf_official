@@ -235,7 +235,9 @@ const MessageBody = (props: {
           {!message.system && (
             <Button
               icon="reply"
-              onClick={() => props.onReply(message.sender, `RE: ${message.subject}`)}
+              onClick={() =>
+                props.onReply(message.sender, `RE: ${message.subject}`)
+              }
             >
               Reply
             </Button>
@@ -326,7 +328,10 @@ const OutboxView = (props: {
   );
 };
 
-const SentMessageView = (props: { readonly messageRef: string; readonly onBack: () => void }) => {
+const SentMessageView = (props: {
+  readonly messageRef: string;
+  readonly onBack: () => void;
+}) => {
   const { act, data } = useBackend<Data>();
   const { outbox } = data;
   const message = outbox.find((m) => m.ref === props.messageRef);
@@ -411,8 +416,8 @@ const ComposeView = (props: {
         {!!relay_offline && (
           <Stack.Item>
             <NoticeBox>
-              Groundside relay offline — only computers on your side of the
-              link are reachable right now.
+              Groundside relay offline — only computers on your side of the link
+              are reachable right now.
             </NoticeBox>
           </Stack.Item>
         )}

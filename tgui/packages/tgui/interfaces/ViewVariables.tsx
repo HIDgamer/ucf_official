@@ -4,9 +4,7 @@ import { useBackend } from '../backend';
 import { Box, Button, Divider, Input, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
-type DropdownEntry =
-  | { separator: true }
-  | { href: string; label: string };
+type DropdownEntry = { separator: true } | { href: string; label: string };
 
 type VVRow = {
   name: string;
@@ -86,14 +84,19 @@ const matchesFilter = (row: VVRow, filter: string): boolean => {
   if (!filter) {
     return true;
   }
-  const haystack = `${row.name} ${row.value_text ?? ''} ${row.value_type ?? ''}`.toLowerCase();
+  const haystack =
+    `${row.name} ${row.value_text ?? ''} ${row.value_type ?? ''}`.toLowerCase();
   if (haystack.includes(filter)) {
     return true;
   }
   return !!row.children?.some((child) => matchesFilter(child, filter));
 };
 
-const VVRowView = (props: { readonly row: VVRow; readonly filter: string; readonly depth: number }) => {
+const VVRowView = (props: {
+  readonly row: VVRow;
+  readonly filter: string;
+  readonly depth: number;
+}) => {
   const { row, filter, depth } = props;
   const clickHref = useClickHref();
 
@@ -146,11 +149,7 @@ const VVRowView = (props: { readonly row: VVRow; readonly filter: string; readon
         )}
         <Stack.Item>
           {row.name_href ? (
-            <Box
-              as="a"
-              color="label"
-              onClick={() => clickHref(row.name_href)}
-            >
+            <Box as="a" color="label" onClick={() => clickHref(row.name_href)}>
               {row.name}
               {row.name_list_length !== undefined &&
                 ` /list (${row.name_list_length})`}
@@ -162,7 +161,9 @@ const VVRowView = (props: { readonly row: VVRow; readonly filter: string; readon
           )}
           {' = '}
           {row.class === 'null' && <Box as="span">null</Box>}
-          {row.class === 'text' && <Box as="span">&quot;{row.value_text}&quot;</Box>}
+          {row.class === 'text' && (
+            <Box as="span">&quot;{row.value_text}&quot;</Box>
+          )}
           {row.class === 'icon' && (
             <Stack inline verticalAlign="middle">
               <Stack.Item>{row.value_text}</Stack.Item>
@@ -176,7 +177,9 @@ const VVRowView = (props: { readonly row: VVRow; readonly filter: string; readon
               )}
             </Stack>
           )}
-          {row.class === 'file' && <Box as="span">&apos;{row.value_text}&apos;</Box>}
+          {row.class === 'file' && (
+            <Box as="span">&apos;{row.value_text}&apos;</Box>
+          )}
           {row.class === 'matrix' && !!row.matrix && (
             <table className="matrix">
               <tbody>

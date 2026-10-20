@@ -51,7 +51,10 @@ const Options = (props: { readonly children: ReactNode }) => {
   );
 };
 
-const Option = (props: { readonly category: ReactNode; readonly input: ReactNode }) => {
+const Option = (props: {
+  readonly category: ReactNode;
+  readonly input: ReactNode;
+}) => {
   const { category, input } = props;
 
   return (

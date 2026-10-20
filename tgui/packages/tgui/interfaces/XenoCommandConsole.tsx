@@ -202,7 +202,8 @@ export const XenoCommandConsole = () => {
                       <Table.Cell
                         bold
                         color={
-                          structure.name === 'hive core' && structure.count === 0
+                          structure.name === 'hive core' &&
+                          structure.count === 0
                             ? 'bad'
                             : undefined
                         }

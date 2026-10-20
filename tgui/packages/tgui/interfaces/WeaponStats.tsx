@@ -106,8 +106,15 @@ export const WeaponStats = (props) => {
 
 const GeneralInfo = (props) => {
   const { data } = useBackend<Data>();
-  const { name, desc, automatic, burst_amount, two_handed_only, auto_only, icon } =
-    data;
+  const {
+    name,
+    desc,
+    automatic,
+    burst_amount,
+    two_handed_only,
+    auto_only,
+    icon,
+  } = data;
   return (
     <Section>
       <Flex direction="column">

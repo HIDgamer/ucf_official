@@ -65,9 +65,7 @@ export class DrawnMap extends Component<Props, State> {
     };
   }
 
-  parseSvgData(
-    svgDataArray?: (number | string)[] | null,
-  ): SvgLine[] | null {
+  parseSvgData(svgDataArray?: (number | string)[] | null): SvgLine[] | null {
     if (!svgDataArray) return null;
     let lines: SvgLine[] = [];
     for (let i = 0; i < svgDataArray.length; i += 5) {

@@ -120,7 +120,8 @@ const HardpointsView = (props) => {
       {index !== 0 ? <Divider /> : null}
       <Box>{hardpoint.name}</Box>
       <Box width="3px" />
-      {hardpoint.fpw ? null : typeof hardpoint.health === 'number' && hardpoint.health >= 0 ? (
+      {hardpoint.fpw ? null : typeof hardpoint.health === 'number' &&
+        hardpoint.health >= 0 ? (
         <ProgressBar
           value={hardpoint.health!}
           ranges={{

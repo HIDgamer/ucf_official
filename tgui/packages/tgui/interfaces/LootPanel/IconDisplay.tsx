@@ -1,4 +1,3 @@
- 
 import { DmIcon, Icon, Image } from '../../components';
 import { type SearchItem } from './types';
 

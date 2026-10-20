@@ -77,12 +77,7 @@ export const TacmapAdminPanel = () => {
   const PageComponent = PAGES[pageIndex].component();
 
   return (
-    <Window
-      width={600}
-      height={800}
-      theme="admin"
-      resizable
-    >
+    <Window width={600} height={800} theme="admin" resizable>
       <Window.Content scrollable>
         <Stack direction="column" fill>
           <Stack.Item basis="content" grow={0} pb={1}>

@@ -103,8 +103,14 @@ const filterXenos = (data: {
   xeno_vitals: Record<string, XenoVitals>;
   xeno_info: Record<string, XenoInfo>;
 }) => {
-  const { searchKey, searchFilters, maxHealth, xeno_keys, xeno_vitals, xeno_info } =
-    data;
+  const {
+    searchKey,
+    searchFilters,
+    maxHealth,
+    xeno_keys,
+    xeno_vitals,
+    xeno_info,
+  } = data;
   const xeno_entries: XenoEntry[] = [];
 
   xeno_keys.map((key, i) => {
@@ -381,7 +387,8 @@ const StructuresAndBuffs = (props) => {
             return (
               <div key={stat_name}>
                 {stat_name}: x{mod.multiplier}
-                {mod.flat !== 0 && (mod.flat > 0 ? ` +${mod.flat}` : ` ${mod.flat}`)}
+                {mod.flat !== 0 &&
+                  (mod.flat > 0 ? ` +${mod.flat}` : ` ${mod.flat}`)}
               </div>
             );
           })}

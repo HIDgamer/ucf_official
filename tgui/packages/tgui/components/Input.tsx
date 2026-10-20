@@ -1,4 +1,3 @@
- 
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -8,7 +7,12 @@
 import { KEY } from 'common/keys';
 import { classes } from 'common/react';
 import { debounce } from 'common/timer';
-import { type KeyboardEvent, type SyntheticEvent, useEffect, useRef } from 'react';
+import {
+  type KeyboardEvent,
+  type SyntheticEvent,
+  useEffect,
+  useRef,
+} from 'react';
 
 import { Box, type BoxProps } from './Box';
 

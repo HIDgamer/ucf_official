@@ -114,8 +114,8 @@ const AutodocMain = () => {
     <>
       {!canOperate && (
         <NoticeBox danger>
-          You have no idea how to operate this equipment. Surgical training
-          is required to queue or perform procedures here.
+          You have no idea how to operate this equipment. Surgical training is
+          required to queue or perform procedures here.
         </NoticeBox>
       )}
       <AutodocOccupant />
@@ -290,9 +290,7 @@ const AutodocProcedures = () => {
                         disabled={!canOperate || !!item.locked}
                         color={recommended ? 'good' : undefined}
                         icon={recommended ? 'star' : undefined}
-                        onClick={() =>
-                          act('queue_surgery', { key: item.key })
-                        }
+                        onClick={() => act('queue_surgery', { key: item.key })}
                       >
                         {item.label}
                         {!!item.locked && (

@@ -1,4 +1,3 @@
- 
 /**
  * Ghetto performance measurement tools.
  *

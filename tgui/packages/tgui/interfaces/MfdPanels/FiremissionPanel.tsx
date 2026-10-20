@@ -3,7 +3,10 @@ import { useState } from 'react';
 
 import { useBackend } from '../../backend';
 import { Box, Button, Divider, Icon, Input, Stack } from '../../components';
-import { type DropshipEquipment, type DropshipProps } from '../DropshipWeaponsConsole';
+import {
+  type DropshipEquipment,
+  type DropshipProps,
+} from '../DropshipWeaponsConsole';
 import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import {
   fmEditState,
@@ -351,7 +354,7 @@ const OffsetOverview = (
     return <>error</>;
   }
   const ammoConsumption = weaponFm.offsets
-    .map((x) => (x !== '-' ? props.equipment.burst ?? 0 : 0))
+    .map((x) => (x !== '-' ? (props.equipment.burst ?? 0) : 0))
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   return (
     <>

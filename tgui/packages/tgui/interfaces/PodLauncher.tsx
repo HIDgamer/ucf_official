@@ -594,7 +594,7 @@ class PresetsPage extends Component<{}, PresetsPageState> {
 
   async componentDidMount() {
     // This warning is generally considered OK to ignore in this context
-     
+
     this.setState({
       presets: await this.getPresets(),
     });
@@ -644,8 +644,7 @@ class PresetsPage extends Component<{}, PresetsPageState> {
     });
   }
   render() {
-    const { presets, presetIndex, settingName, newNameText, hue } =
-      this.state;
+    const { presets, presetIndex, settingName, newNameText, hue } = this.state;
     const { act, data } = useBackend<Data>();
     return (
       <Section

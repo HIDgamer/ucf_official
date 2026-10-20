@@ -3,7 +3,15 @@ import { createSearch } from 'common/string';
 import { useState } from 'react';
 
 import { useBackend } from '../../backend';
-import { Box, Button, Dimmer, Icon, Input, Section, Stack } from '../../components';
+import {
+  Box,
+  Button,
+  Dimmer,
+  Icon,
+  Input,
+  Section,
+  Stack,
+} from '../../components';
 import { NtosWindow } from '../../layouts';
 import { ChatScreen } from './ChatScreen';
 import { type NtChat, type NtMessenger } from './types';

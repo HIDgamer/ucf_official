@@ -76,14 +76,19 @@ export const AdminSpawner = () => {
   };
 
   return (
-    <Window title="Mob Spawner (Any Type)" width={520} height={590} theme="admin">
+    <Window
+      title="Mob Spawner (Any Type)"
+      width={520}
+      height={590}
+      theme="admin"
+    >
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item>
             <NoticeBox>
               For any mob type by exact coordinates — human/xeno job- or
-              hive-configured spawns with click-to-place live in the
-              dedicated Create Humans / Create Xenos tools instead.
+              hive-configured spawns with click-to-place live in the dedicated
+              Create Humans / Create Xenos tools instead.
             </NoticeBox>
           </Stack.Item>
           <Stack.Item>

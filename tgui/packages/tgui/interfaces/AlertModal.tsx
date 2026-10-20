@@ -1,4 +1,3 @@
- 
 import { KEY } from 'common/keys';
 import { type BooleanLike } from 'common/react';
 import { type KeyboardEvent, useState } from 'react';

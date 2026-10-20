@@ -44,17 +44,26 @@ export const WhitelistRoles = () => {
   } = data;
 
   return (
-    <Window title="Whitelist Role Settings" theme="crtlobby" width={480} height={640}>
+    <Window
+      title="Whitelist Role Settings"
+      theme="crtlobby"
+      width={480}
+      height={640}
+    >
       <Window.Content scrollable>
         <Stack vertical>
           <Stack.Item>
             <Section title="Xenomorph">
               <LabeledList>
                 <LabeledList.Item label="Xeno Prefix">
-                  <Button onClick={() => act('xeno_prefix')}>{xeno_prefix || '------'}</Button>
+                  <Button onClick={() => act('xeno_prefix')}>
+                    {xeno_prefix || '------'}
+                  </Button>
                 </LabeledList.Item>
                 <LabeledList.Item label="Xeno Postfix">
-                  <Button onClick={() => act('xeno_postfix')}>{xeno_postfix || '------'}</Button>
+                  <Button onClick={() => act('xeno_postfix')}>
+                    {xeno_postfix || '------'}
+                  </Button>
                 </LabeledList.Item>
                 <LabeledList.Item label="Enable Playtime Perks">
                   <Button
@@ -78,7 +87,10 @@ export const WhitelistRoles = () => {
                   </Button>
                 </LabeledList.Item>
                 <LabeledList.Item label="Be Agent">
-                  <Button color={be_agent ? 'good' : 'bad'} onClick={() => act('be_special', { num: 0 })}>
+                  <Button
+                    color={be_agent ? 'good' : 'bad'}
+                    onClick={() => act('be_special', { num: 0 })}
+                  >
                     {be_agent ? 'Yes' : 'No'}
                   </Button>
                 </LabeledList.Item>
@@ -90,17 +102,25 @@ export const WhitelistRoles = () => {
               {has_co ? (
                 <LabeledList>
                   <LabeledList.Item label="Whitelist Status">
-                    <Button onClick={() => act('commander_status')}>{commander_status}</Button>
+                    <Button onClick={() => act('commander_status')}>
+                      {commander_status}
+                    </Button>
                   </LabeledList.Item>
                   <LabeledList.Item label="Sidearm">
-                    <Button onClick={() => act('co_sidearm')}>{commander_sidearm}</Button>
+                    <Button onClick={() => act('co_sidearm')}>
+                      {commander_sidearm}
+                    </Button>
                   </LabeledList.Item>
                   <LabeledList.Item label="Affiliation">
-                    <Button onClick={() => act('co_affiliation')}>{affiliation}</Button>
+                    <Button onClick={() => act('co_affiliation')}>
+                      {affiliation}
+                    </Button>
                   </LabeledList.Item>
                 </LabeledList>
               ) : (
-                <NoticeBox>You do not have the whitelist for this role.</NoticeBox>
+                <NoticeBox>
+                  You do not have the whitelist for this role.
+                </NoticeBox>
               )}
             </Section>
           </Stack.Item>
@@ -109,17 +129,25 @@ export const WhitelistRoles = () => {
               {has_synth ? (
                 <LabeledList>
                   <LabeledList.Item label="Name">
-                    <Button onClick={() => act('synth_name')}>{synthetic_name}</Button>
+                    <Button onClick={() => act('synth_name')}>
+                      {synthetic_name}
+                    </Button>
                   </LabeledList.Item>
                   <LabeledList.Item label="Type">
-                    <Button onClick={() => act('synth_type')}>{synthetic_type}</Button>
+                    <Button onClick={() => act('synth_type')}>
+                      {synthetic_type}
+                    </Button>
                   </LabeledList.Item>
                   <LabeledList.Item label="Whitelist Status">
-                    <Button onClick={() => act('synth_status')}>{synth_status}</Button>
+                    <Button onClick={() => act('synth_status')}>
+                      {synth_status}
+                    </Button>
                   </LabeledList.Item>
                 </LabeledList>
               ) : (
-                <NoticeBox>You do not have the whitelist for this role.</NoticeBox>
+                <NoticeBox>
+                  You do not have the whitelist for this role.
+                </NoticeBox>
               )}
             </Section>
           </Stack.Item>

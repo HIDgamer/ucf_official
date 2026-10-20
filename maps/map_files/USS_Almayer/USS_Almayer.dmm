@@ -372,6 +372,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/starboard_emb)
+"aaT" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/lower/l_m_s)
 "aaU" = (
 /obj/structure/machinery/shower{
 	pixel_y = 16
@@ -949,6 +953,10 @@
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
 /area/almayer/living/starboard_garden)
+"acw" = (
+/obj/structure/machinery/power/apc/almayer/east,
+/turf/open/floor/prison/kitchen,
+/area/almayer/living/grunt_rnr)
 "acx" = (
 /turf/closed/wall/almayer,
 /area/almayer/lifeboat_pumps/north2)
@@ -967,6 +975,11 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/north2)
+"acB" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/power/apc/almayer/west,
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/lower/cryo_cells)
 "acC" = (
 /obj/structure/sign/banners/united_americas_flag,
 /turf/closed/wall/almayer,
@@ -4480,9 +4493,6 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/north2)
-"azW" = (
-/turf/open/floor/almayer/blue/north,
-/area/almayer/command/cic)
 "azZ" = (
 /obj/structure/machinery/computer/cameras/almayer_brig{
 	pixel_x = 15
@@ -6907,9 +6917,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/offices)
-"aPI" = (
-/turf/open/floor/almayer/blue,
-/area/almayer/command/cic)
 "aPJ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -12493,9 +12500,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
-"bFR" = (
-/turf/open/floor/almayer/sterile_green_side,
-/area/almayer/medical/lower_medical_lobby)
 "bFX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -41935,9 +41939,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower/engine_core)
-"mlH" = (
-/turf/open/floor/almayer/sterile_green_side/north,
-/area/almayer/medical/lower_medical_lobby)
 "mlP" = (
 /obj/structure/machinery/door/airlock/almayer/generic/corporate{
 	dir = 1;
@@ -58131,14 +58132,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/gym)
-"soC" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/cameras/wooden_tv/almayer{
-	dir = 8;
-	pixel_y = 3
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/cic)
 "soK" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/disposalpipe/segment{
@@ -69998,9 +69991,6 @@
 "wIC" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/brig/chief_mp_office)
-"wIQ" = (
-/turf/open/floor/almayer/silvercorner/east,
-/area/almayer/shipboard/brig/cic_hallway)
 "wIX" = (
 /turf/open/floor/almayer/green/east,
 /area/almayer/hallways/lower/port_midship_hallway)
@@ -70659,9 +70649,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/lower_medical_lobby)
-"wVW" = (
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/command/cic)
 "wWg" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
@@ -88344,7 +88331,7 @@ uVA
 uVA
 gde
 uVA
-wIQ
+oQs
 xWv
 aQb
 vka
@@ -88548,7 +88535,7 @@ cZh
 awz
 awz
 jfK
-wIQ
+oQs
 mPj
 omy
 sCQ
@@ -88752,7 +88739,7 @@ oER
 awz
 awz
 mgj
-wIQ
+oQs
 jHh
 jUY
 wIC
@@ -90768,23 +90755,23 @@ xoB
 kzy
 oQs
 aBS
-wVW
-wVW
-wVW
-wVW
-wVW
-wVW
-wVW
+aAq
+aAq
+aAq
+aAq
+aAq
+aAq
+aAq
 aAq
 iah
-wVW
-wVW
-wVW
-wVW
-wVW
-wVW
-wVW
-wVW
+aAq
+aAq
+aAq
+aAq
+aAq
+aAq
+aAq
+aAq
 hvv
 aCk
 ckP
@@ -90971,7 +90958,7 @@ xoB
 xoB
 jRp
 tuC
-wVW
+aAq
 lZs
 lVX
 swH
@@ -90987,7 +90974,7 @@ dNZ
 sEM
 snI
 aGp
-wVW
+aAq
 hvv
 jUY
 xTx
@@ -91174,7 +91161,7 @@ pcc
 xoB
 xDn
 aBS
-wVW
+aAq
 awm
 avS
 sni
@@ -91190,7 +91177,7 @@ aQg
 vpV
 aJG
 rqb
-wVW
+aAq
 hvv
 jUY
 xTx
@@ -91377,7 +91364,7 @@ fYr
 xoB
 aic
 aov
-wVW
+aAq
 jSc
 alZ
 nwD
@@ -91392,8 +91379,8 @@ aVR
 pbV
 aPB
 axp
-aPI
-wVW
+aAC
+aAq
 eMP
 aKz
 xTx
@@ -91580,7 +91567,7 @@ kcH
 kcH
 aic
 aov
-wVW
+aAq
 azZ
 wiN
 atx
@@ -91783,7 +91770,7 @@ eqN
 aBP
 aic
 aov
-wVW
+aAq
 oBA
 aom
 alX
@@ -91986,7 +91973,7 @@ dmA
 hyQ
 aic
 aov
-wVW
+aAq
 dvl
 alX
 alX
@@ -92002,7 +91989,7 @@ avY
 alX
 alX
 omb
-wVW
+aAq
 eMP
 aKz
 tYX
@@ -92189,7 +92176,7 @@ vEj
 hyQ
 aic
 aov
-wVW
+aAq
 feD
 alX
 alX
@@ -92205,7 +92192,7 @@ alX
 alX
 alX
 xlb
-wVW
+aAq
 bPs
 uiZ
 mKq
@@ -92408,7 +92395,7 @@ aqN
 alX
 aqN
 aqF
-wVW
+aAq
 aKn
 aKz
 pQy
@@ -92611,7 +92598,7 @@ gtp
 fHh
 oug
 aHK
-wVW
+aAq
 aKn
 aKy
 mKq
@@ -92798,10 +92785,10 @@ twI
 ufL
 aic
 aov
-wVW
-wVW
+aAq
+aAq
 auQ
-wVW
+aAq
 lQG
 kUv
 aas
@@ -92810,11 +92797,11 @@ alX
 paL
 ewS
 gaQ
-wVW
+aAq
 auQ
-wVW
-wVW
-wVW
+aAq
+aAq
+aAq
 aKn
 iJB
 mKq
@@ -93001,13 +92988,13 @@ cod
 ufL
 aic
 aov
-wVW
+aAq
 arG
 aqN
 aqN
 ixv
 vOf
-soC
+aom
 aIf
 alX
 bZJ
@@ -93017,7 +93004,7 @@ aqN
 aqN
 aVR
 aqN
-wVW
+aAq
 aKi
 amY
 aVg
@@ -93204,7 +93191,7 @@ yff
 ufL
 aic
 aov
-wVW
+aAq
 awG
 aGv
 aqN
@@ -93220,7 +93207,7 @@ alX
 alX
 aGv
 faX
-wVW
+aAq
 aKq
 aKz
 mKq
@@ -93407,7 +93394,7 @@ kcN
 agj
 aic
 aov
-wVW
+aAq
 iur
 aGv
 aqN
@@ -93423,7 +93410,7 @@ alX
 alX
 aGv
 atN
-wVW
+aAq
 aKq
 aKz
 mKq
@@ -93610,7 +93597,7 @@ xpi
 agj
 bFA
 aov
-wVW
+aAq
 arG
 aqN
 aqN
@@ -93626,7 +93613,7 @@ atO
 atO
 cvZ
 asN
-wVW
+aAq
 aTj
 aKz
 mKq
@@ -93813,10 +93800,10 @@ kJW
 agj
 aic
 aoA
-wVW
-wVW
-wVW
-wVW
+aAq
+aAq
+aAq
+aAq
 kcx
 wpt
 abk
@@ -93825,11 +93812,11 @@ aAB
 aBZ
 alX
 awk
-wVW
-wVW
-wVW
-wVW
-wVW
+aAq
+aAq
+aAq
+aAq
+aAq
 aKo
 aKz
 mKq
@@ -94016,23 +94003,23 @@ mXj
 agj
 aic
 aov
-wVW
+aAq
 ssW
 ayr
-wVW
+aAq
 sTo
 asc
-azW
+axp
 aIf
 aAC
 aBZ
 alX
 xUB
-wVW
+aAq
 cWw
 mqh
 vHW
-wVW
+aAq
 aKn
 aKz
 mKq
@@ -94219,10 +94206,10 @@ mXj
 agj
 amI
 aov
-wVW
+aAq
 ssW
 qEk
-wVW
+aAq
 ouW
 asc
 soX
@@ -94231,11 +94218,11 @@ vHt
 aBZ
 alX
 aEC
-wVW
+aAq
 ato
 dmg
 wFn
-wVW
+aAq
 aKn
 aKz
 mKq
@@ -94422,10 +94409,10 @@ gLN
 agj
 aic
 acS
-wVW
+aAq
 asQ
 qEk
-wVW
+aAq
 deD
 wbX
 aAE
@@ -94434,11 +94421,11 @@ aAE
 gkK
 alX
 gvq
-wVW
+aAq
 lrW
 qEk
 iaa
-wVW
+aAq
 ccg
 aKz
 mKq
@@ -94625,7 +94612,7 @@ agc
 agj
 aic
 sxW
-wVW
+aAq
 ssW
 qEk
 atP
@@ -94641,7 +94628,7 @@ atP
 aHR
 qEk
 iaa
-wVW
+aAq
 aKn
 aKz
 mKq
@@ -94828,7 +94815,7 @@ xyk
 mDX
 aTl
 dLe
-wVW
+aAq
 ssW
 qEk
 atP
@@ -94844,7 +94831,7 @@ atP
 ayM
 qEk
 mje
-wVW
+aAq
 aKn
 aKz
 mKq
@@ -95031,10 +95018,10 @@ agc
 agj
 fXP
 aov
-wVW
+aAq
 asQ
 qEk
-wVW
+aAq
 aVG
 rOC
 avY
@@ -95043,11 +95030,11 @@ alX
 avY
 aqN
 aEB
-wVW
+aAq
 aVH
 qEk
 wMS
-wVW
+aAq
 aKn
 aKz
 mKq
@@ -95234,10 +95221,10 @@ iEz
 agj
 aic
 aov
-wVW
+aAq
 ssW
 qEk
-wVW
+aAq
 alX
 rOC
 avY
@@ -95246,11 +95233,11 @@ alX
 avY
 aqN
 oWg
-wVW
+aAq
 fvB
 qEk
 wMS
-wVW
+aAq
 aKn
 aKz
 mKq
@@ -95437,10 +95424,10 @@ mXj
 agj
 aic
 aoA
-wVW
+aAq
 ssW
 nmh
-wVW
+aAq
 uOh
 arP
 arR
@@ -95449,11 +95436,11 @@ alX
 arR
 avY
 aED
-wVW
+aAq
 cWw
 jvX
 ajm
-wVW
+aAq
 aKn
 aKy
 mKq
@@ -95640,23 +95627,23 @@ agj
 agj
 fEk
 hlU
-wVW
-wVW
-wVW
-wVW
+aAq
+aAq
+aAq
+aAq
 aGH
 sOi
-wVW
+aAq
 pON
 ciN
-wVW
+aAq
 ktj
 aCf
-wVW
-wVW
-wVW
-wVW
-wVW
+aAq
+aAq
+aAq
+aAq
+aAq
 fDU
 uiZ
 mKq
@@ -96456,7 +96443,7 @@ awd
 awd
 awd
 awd
-wVW
+aAq
 oqy
 aDK
 aAj
@@ -96464,7 +96451,7 @@ alX
 alX
 aDK
 vpt
-wVW
+aAq
 awF
 aIQ
 awF
@@ -96659,15 +96646,15 @@ tAL
 awX
 tAL
 awX
-wVW
-wVW
-wVW
+aAq
+aAq
+aAq
 lMF
 jnX
 rdz
-wVW
-wVW
-wVW
+aAq
+aAq
+aAq
 cbF
 aGZ
 awF
@@ -100210,7 +100197,7 @@ iey
 gGJ
 kws
 vSn
-mlH
+eyQ
 mvI
 bqL
 bzS
@@ -100815,7 +100802,7 @@ qPk
 hKe
 qPk
 hqW
-mlH
+eyQ
 qjN
 bqR
 ctJ
@@ -101020,7 +101007,7 @@ gyn
 hqW
 eyQ
 qjN
-bFR
+bei
 aog
 kan
 mKw
@@ -101629,7 +101616,7 @@ qPk
 baZ
 bmn
 qjN
-bFR
+bei
 kan
 mTJ
 sYh
@@ -105464,7 +105451,7 @@ bdH
 bdH
 aad
 kyw
-deq
+aaT
 sJa
 bwG
 pGG
@@ -107742,7 +107729,7 @@ ter
 oSM
 jcJ
 bDs
-bDs
+acw
 mGL
 mJO
 mgb
@@ -118695,7 +118682,7 @@ dXb
 ndm
 xss
 iFY
-dXb
+acB
 xss
 xss
 lZM

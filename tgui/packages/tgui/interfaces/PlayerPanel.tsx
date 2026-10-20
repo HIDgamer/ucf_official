@@ -72,9 +72,7 @@ const hasPermission = (data: Data, action: string): boolean => {
   if (!(action in data.glob_pp_actions)) return false;
 
   const action_data = data.glob_pp_actions[action];
-  return !!(
-    action_data.permissions_required & (data.current_permissions ?? 0)
-  );
+  return !!(action_data.permissions_required & (data.current_permissions ?? 0));
 };
 
 type Page = {

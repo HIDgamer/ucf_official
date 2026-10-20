@@ -24,7 +24,13 @@ type ChatScreenProps = {
 
 const READ_UNREADS_TIME_MS = 1000;
 const SEND_COOLDOWN_MS = 1000;
-const QUICK_REPLIES = ['Roger', 'On my way', 'Wait one', 'Negative', 'Need assistance'];
+const QUICK_REPLIES = [
+  'Roger',
+  'On my way',
+  'Wait one',
+  'Negative',
+  'Need assistance',
+];
 
 export const ChatScreen = (props: ChatScreenProps) => {
   const { act } = useBackend();
@@ -150,28 +156,28 @@ export const ChatScreen = (props: ChatScreenProps) => {
                 </Stack>
               </Stack.Item>
               <Stack.Item>
-            <Stack fill align="center">
-              <Stack.Item grow={1}>
-                <Input
-                  key={inputKey}
-                  placeholder={`Send message to ${recipient.name}...`}
-                  fluid
-                  autoFocus
-                  value={message}
-                  maxLength={1024}
-                  onInput={(_, value) => setMessage(value)}
-                  onEnter={(_, value) => sendMessage(value)}
-                />
-              </Stack.Item>
-              <Stack.Item>
-                <Button
-                  tooltip="Send"
-                  icon="arrow-right"
-                  onClick={() => sendMessage()}
-                  disabled={!canSend}
-                />
-              </Stack.Item>
-            </Stack>
+                <Stack fill align="center">
+                  <Stack.Item grow={1}>
+                    <Input
+                      key={inputKey}
+                      placeholder={`Send message to ${recipient.name}...`}
+                      fluid
+                      autoFocus
+                      value={message}
+                      maxLength={1024}
+                      onInput={(_, value) => setMessage(value)}
+                      onEnter={(_, value) => sendMessage(value)}
+                    />
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Button
+                      tooltip="Send"
+                      icon="arrow-right"
+                      onClick={() => sendMessage()}
+                      disabled={!canSend}
+                    />
+                  </Stack.Item>
+                </Stack>
               </Stack.Item>
             </Stack>
           ) : (
