@@ -96,7 +96,7 @@ SUBSYSTEM_DEF(xeno_pathfinding)
 			// the aggregate call failed. Logs the one-shot detail then keeps
 			// going with a safe fallback code so this doesn't also block
 			// every other turf's data from loading.
-			if(length(code) != 1 || !(code in list("0", "1", "2", "3", "4")))
+			if(length(code) != 1 || !(code in list("0", "1", "2", "3", "4", "5")))
 				log_debug("SSxeno_pathfinding: turf_cell_code() returned invalid code [code ? "\"[code]\"" : "null"] for turf ([x],[y],[z]) ([scanned ? "[scanned.type]" : "null turf"]) - substituting \"1\" (blocked) and continuing.")
 				code = "1"
 			cells += code
@@ -162,7 +162,8 @@ SUBSYSTEM_DEF(xeno_pathfinding)
 		if(blocker.unslashable)
 			return "1"
 		if(istype(blocker, /obj/structure/machinery/door))
-			return "2"
+			var/obj/structure/machinery/door/door = blocker
+			return door.path_secure() ? "5" : "2"
 		has_obstacle = TRUE // Dense, non-climbable, forceable (a window, a girder) - real obstacle cost, ON_BORDER or not.
 	if(has_obstacle)
 		return "3"
@@ -187,7 +188,7 @@ SUBSYSTEM_DEF(xeno_pathfinding)
 	if(!available || !changed)
 		return
 	var/code_char = turf_cell_code(changed)
-	var/code = (code_char == "1") ? 1 : ((code_char == "2") ? 2 : ((code_char == "3") ? 3 : ((code_char == "4") ? 4 : 0)))
+	var/code = text2num(code_char) || 0
 	pending_deltas += "[changed.z],[changed.x],[changed.y],[code]"
 	if(length(pending_deltas) >= XENO_PATHFIND_DELTA_FLUSH_AT)
 		flush_deltas()
