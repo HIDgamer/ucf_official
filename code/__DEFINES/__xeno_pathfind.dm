@@ -141,19 +141,14 @@
 	catch
 		. = ""
 
-/// Set once the capabilities probe has run.
-/var/__xeno_pathfind_profiles_checked = FALSE
-/// Whether the loaded library understands route profiles, secure doors and the danger layer.
-/var/__xeno_pathfind_profiles_available = FALSE
-
 /// TRUE if the loaded native library can solve human-profile routes. Probed once, then cached.
 /proc/xeno_pathfind_profiles_available()
-	if(__xeno_pathfind_profiles_checked)
-		return __xeno_pathfind_profiles_available
+	if(GLOB.__xeno_pathfind_profiles_checked)
+		return GLOB.__xeno_pathfind_profiles_available
 	var/capabilities = rust_xeno_pathfind_capabilities()
-	__xeno_pathfind_profiles_available = !!findtext(capabilities, "profiles=xeno,human")
-	__xeno_pathfind_profiles_checked = TRUE
-	return __xeno_pathfind_profiles_available
+	GLOB.__xeno_pathfind_profiles_available = !!findtext(capabilities, "profiles=xeno,human")
+	GLOB.__xeno_pathfind_profiles_checked = TRUE
+	return GLOB.__xeno_pathfind_profiles_available
 
 /// Adds decaying threat cost at "z,x,y,amount" with radius-2 falloff - routes bend away from hot cells until xeno_pathfind_decay() cools them.
 /proc/rust_xeno_pathfind_threat(threat_desc)
