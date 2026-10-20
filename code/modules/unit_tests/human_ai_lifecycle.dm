@@ -70,7 +70,7 @@
 	var/mob/living/carbon/human/dying = make_human()
 	attach_human_ai(dying)
 	var/datum/human_ai_brain/dying_brain = dying.ai_brain
-	dying.death()
+	dying.death(create_cause_data("unit test"))
 	TEST_ASSERT(isnull(dying.ai_brain) && QDELETED(dying_brain), "Death left the brain running")
 	TEST_ASSERT(!(dying in GLOB.ai_human_list), "Death left the human in the AI list")
 	TEST_ASSERT(!attach_human_ai(dying), "A dead human took a brain")

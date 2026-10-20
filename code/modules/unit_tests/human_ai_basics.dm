@@ -66,7 +66,7 @@
 	TEST_ASSERT(rifle.current_mag.current_rounds < rounds_before, "The rifle was never fired")
 	TEST_ASSERT(brain.intent == HAI_INTENT_ENGAGE, "The rifleman fought without the engage intent")
 
-	dummy.death()
+	dummy.death(create_cause_data("unit test"))
 	TEST_ASSERT(wait_until(CALLBACK(src, PROC_REF(idle_again), brain), 15), "The rifleman kept its dead target, intent [brain.intent]")
 	TEST_ASSERT(length(brain.decision_log), "The decision log stayed empty")
 	detach_human_ai(shooter)
