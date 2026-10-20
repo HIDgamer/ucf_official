@@ -7,6 +7,7 @@
 import { type BooleanLike, classes } from 'common/react';
 import {
   createElement,
+  type CSSProperties,
   type KeyboardEventHandler,
   type MouseEventHandler,
   type ReactNode,
@@ -38,7 +39,7 @@ export type BoxProps = Partial<{
   as: string;
   children: ReactNode;
   className: string | BooleanLike;
-  style: Partial<CSSStyleDeclaration>;
+  style: CSSProperties;
 }> &
   BooleanProps &
   StringProps &

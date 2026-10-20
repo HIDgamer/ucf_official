@@ -62,7 +62,7 @@ type Data = {
   local_current_menu: string;
   local_last_page: string;
   local_logged_in: string;
-  local_sudo: BooleanLike;
+  local_sudo: number;
   local_access_text: string;
   local_access_level: number;
   local_spying_conversation: string[];

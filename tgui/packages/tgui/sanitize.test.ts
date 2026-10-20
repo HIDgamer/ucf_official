@@ -4,7 +4,9 @@ import { JSDOM } from 'jsdom';
 
 // happy-dom breaks the node iteration DOMPurify relies on, so these tests sanitize through jsdom
 mock.module('dompurify', () => ({
-  default: createDOMPurify(new JSDOM('').window as unknown as Window),
+  default: createDOMPurify(
+    new JSDOM('').window as unknown as Parameters<typeof createDOMPurify>[0],
+  ),
 }));
 
 const { sanitizeText } = await import('./sanitize');

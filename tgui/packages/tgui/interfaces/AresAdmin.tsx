@@ -85,7 +85,7 @@ type Data = {
   local_last_page: string;
   local_admin_login: string;
   ares_logged_in: string;
-  ares_sudo: BooleanLike;
+  ares_sudo: number;
   ares_access_text: string;
   local_spying_conversation: string[];
   local_active_convo: string[];
@@ -469,7 +469,7 @@ const MainMenu = () => {
                 px="2rem"
                 width="25vw"
                 bold
-                disabled={ares_access_text}
+                disabled={!!ares_access_text}
               >
                 Sudo Login
               </Button>
@@ -484,7 +484,7 @@ const MainMenu = () => {
                 px="2rem"
                 width="25vw"
                 bold
-                disabled={ares_access_text}
+                disabled={!!ares_access_text}
               >
                 Sudo Logout
               </Button>
@@ -655,7 +655,7 @@ const AnnouncementLogs = () => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="You cannot do this via remote console."
-                  disabled={ares_access_text}
+                  disabled={!!ares_access_text}
                 />
               </Flex.Item>
             </Flex>
@@ -754,7 +754,7 @@ const BioscanLogs = () => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="You cannot do this via remote console."
-                  disabled={ares_access_text}
+                  disabled={!!ares_access_text}
                 />
               </Flex.Item>
             </Flex>
@@ -857,7 +857,7 @@ const BombardmentLogs = () => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="You cannot do this via remote console."
-                  disabled={ares_access_text}
+                  disabled={!!ares_access_text}
                 />
               </Flex.Item>
             </Flex>
@@ -1664,7 +1664,7 @@ const FlightLogs = () => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={ares_access_text}
+                  disabled={!!ares_access_text}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>
@@ -1763,7 +1763,7 @@ const Security = () => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="You cannot do this via remote console."
-                  disabled={ares_access_text}
+                  disabled={!!ares_access_text}
                 />
               </Flex.Item>
             </Flex>
@@ -1836,7 +1836,7 @@ const Emergency = () => {
           p="1rem"
           mt="5rem"
           bold
-          disabled={ares_access_text}
+          disabled={!!ares_access_text}
         >
           Call General Quarters
         </Button.Confirm>
@@ -1850,7 +1850,7 @@ const Emergency = () => {
           p="1rem"
           mt="5rem"
           bold
-          disabled={ares_access_text}
+          disabled={!!ares_access_text}
         >
           Initiate Evacuation
         </Button.Confirm>
@@ -1864,7 +1864,7 @@ const Emergency = () => {
           p="1rem"
           mt="5rem"
           bold
-          disabled={ares_access_text}
+          disabled={!!ares_access_text}
         >
           Launch Distress Beacon
         </Button.Confirm>
@@ -1878,7 +1878,7 @@ const Emergency = () => {
           p="1rem"
           mt="5rem"
           bold
-          disabled={ares_access_text}
+          disabled={!!ares_access_text}
         >
           Request Nuclear Device
         </Button.Confirm>
@@ -1993,7 +1993,7 @@ const TechLogs = () => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={local_current_menu}
+                  disabled={!!local_current_menu}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>
@@ -2247,7 +2247,7 @@ const AccessManagement = () => {
             update_tooltip =
               'Access self-returned. No further changes possible.';
           }
-          let can_reject = 'Yes';
+          let can_reject: 'Yes' | 'No' = 'Yes';
           if (can_update === 'No') {
             can_reject = 'No';
           }

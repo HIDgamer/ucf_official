@@ -19,9 +19,9 @@ const deferredFocusMap = () => setTimeout(() => focusMap());
 
 export const setupPanelFocusHacks = () => {
   let focusStolen = false;
-  let clickStartPos = null;
+  let clickStartPos: number[] | null = null;
   window.addEventListener('focusin', (e) => {
-    focusStolen = canStealFocus(e.target);
+    focusStolen = canStealFocus(e.target as HTMLElement);
   });
   window.addEventListener('mousedown', (e) => {
     clickStartPos = [e.screenX, e.screenY];

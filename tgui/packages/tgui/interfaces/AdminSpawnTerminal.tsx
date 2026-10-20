@@ -1,6 +1,6 @@
 import { playClickBlip } from 'common/audio';
 import { type BooleanLike } from 'common/react';
-import { useEffect, useState } from 'react';
+import { type CSSProperties, useEffect, useState } from 'react';
 
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
@@ -121,10 +121,7 @@ const searchInputStyle = (accent: string): React.CSSProperties => ({
   fontFamily: 'monospace',
 });
 
-const modePickerStyle = (
-  active: boolean,
-  accent: string,
-): Partial<CSSStyleDeclaration> => ({
+const modePickerStyle = (active: boolean, accent: string): CSSProperties => ({
   flex: '1',
   padding: '6px 4px',
   border: active ? `1px solid ${accent}` : '1px solid rgba(255,255,255,0.15)',
