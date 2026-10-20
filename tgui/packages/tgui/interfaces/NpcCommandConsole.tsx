@@ -1,6 +1,5 @@
+import { type BooleanLike } from 'common/react';
 import { useState } from 'react';
-
-import { BooleanLike } from 'common/react';
 
 import { useBackend } from '../backend';
 import {
@@ -500,7 +499,10 @@ const StanceBar = () => {
   );
 };
 
-const SortHeader = (props: { column: string; label: string }) => {
+const SortHeader = (props: {
+  readonly column: string;
+  readonly label: string;
+}) => {
   const { act, data } = useBackend<Data>();
   const { sort_key, sort_desc } = data;
   const { column, label } = props;
