@@ -106,11 +106,6 @@ GLOBAL_VAR_INIT(npc_roster_sort_key, "name")
 	var/list/data = list()
 	if(!has_access(user))
 		return data
-	var/admin = is_admin(user)
-	if(!admin && !(tab in GLOB.npc_command_commander_tabs))
-		tab = "roster"
-	data["restricted"] = !admin
-	data["faction_scope"] = selection.faction_scope
 	data["tab"] = tab
 	data["selecting_mode"] = selecting_mode
 	data["request_mode"] = request_mode
@@ -120,7 +115,7 @@ GLOBAL_VAR_INIT(npc_roster_sort_key, "name")
 	data["selected_count"] = length(selection.selected)
 	data["last_report"] = last_report
 	data["paused"] = SShuman_ai.paused
-	data["brains"] = admin ? length(SShuman_ai.brains) : length(get_snapshot())
+	data["brains"] = length(SShuman_ai.brains)
 	data["page_size"] = HAI_COMMAND_PAGE_SIZE
 	switch(tab)
 		if("roster")
@@ -180,7 +175,7 @@ GLOBAL_VAR_INIT(npc_roster_sort_key, "name")
 /datum/npc_command_console/proc/squad_data()
 	var/list/squads = list()
 	for(var/datum/human_ai_squad/squad as anything in GLOB.human_ai_squads)
-		if(QDELETED(squad) || !squad_in_scope(squad))
+		if(QDELETED(squad))
 			continue
 		var/list/names = list()
 		for(var/datum/human_ai_brain/member as anything in squad.members)
@@ -200,8 +195,6 @@ GLOBAL_VAR_INIT(npc_roster_sort_key, "name")
 /datum/npc_command_console/proc/order_data()
 	var/list/active = list()
 	for(var/mob/living/carbon/human/human as anything in GLOB.ai_human_list)
-		if(!selection.valid(human))
-			continue
 		var/datum/human_ai_brain/brain = human.ai_brain
 		var/datum/npc_order/order = brain?.current_order
 		if(!order || order.status != HAI_ORDER_ACTIVE)

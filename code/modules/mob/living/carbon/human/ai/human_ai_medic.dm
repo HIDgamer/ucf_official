@@ -3,46 +3,8 @@ GLOBAL_LIST_EMPTY(human_ai_patient_claims)
 /// Ref of a wounded body that called for a medic to when, where it stood and the faction it belongs to
 GLOBAL_LIST_EMPTY(human_ai_medic_calls)
 
-/// The chemicals a brain will inject and the kinds of damage each one treats, plain injector chemicals that do one job and are not dangerous at the dose of an injector
-GLOBAL_LIST_INIT(human_ai_healing_chems, list(
-	"bicaridine" = list("brute"),
-	"meralyne" = list("brute"),
-	"kelotane" = list("burn"),
-	"dermaline" = list("burn"),
-	"tricordrazine" = list("brute", "burn", "toxin"),
-	"dexalinp" = list("oxygen"),
-))
-
-/// How much of a kind of damage the patient has
-/proc/human_ai_damage_of(mob/living/carbon/human/patient, kind)
-	switch(kind)
-		if("brute")
-			return patient.getBruteLoss()
-		if("burn")
-			return patient.getFireLoss()
-		if("toxin")
-			return patient.getToxLoss()
-		if("oxygen")
-			return patient.getOxyLoss()
-	return 0
-
-/// The chemical an injector holds when it is a plain healing injector with doses left, null otherwise
-/proc/human_ai_injector_chem(obj/item/reagent_container/hypospray/autoinjector/injector)
-	if(QDELETED(injector) || injector.uses_left <= 0 || !injector.reagents || injector.reagents.total_volume <= 0)
-		return null
-	if(length(injector.reagents.reagent_list) != 1)
-		return null
-	var/datum/reagent/chem = injector.reagents.reagent_list[1]
-	return GLOB.human_ai_healing_chems[chem.id] ? chem.id : null
-
-/// Whether the user knows how to work the injector, one that needs training can still be fumbled with
-/proc/human_ai_can_use_injector(mob/living/carbon/human/user, obj/item/reagent_container/hypospray/autoinjector/injector)
-	return injector.skilllock == SKILL_MEDICAL_TRAINED || skillcheck(user, SKILL_MEDICAL, injector.skilllock)
-
 /// What a medical item does
 /proc/human_ai_medical_kind(obj/item/thing)
-	if(istype(thing, /obj/item/reagent_container/hypospray/autoinjector))
-		return human_ai_injector_chem(thing) ? HAI_MED_INJECTOR : null
 	if(istype(thing, /obj/item/stack/medical))
 		var/obj/item/stack/medical/pack = thing
 		if(pack.alien || pack.amount <= 0)
@@ -59,7 +21,7 @@ GLOBAL_LIST_INIT(human_ai_healing_chems, list(
 /datum/human_ai_brain/proc/medical_supplies()
 	if(med_cache && world.time < med_cache_time + 50)
 		return med_cache
-	var/list/found = list(HAI_MED_BANDAGE = list(), HAI_MED_SALVE = list(), HAI_MED_SPLINT = list(), HAI_MED_INJECTOR = list())
+	var/list/found = list(HAI_MED_BANDAGE = list(), HAI_MED_SALVE = list(), HAI_MED_SPLINT = list())
 	for(var/obj/item/thing in body.get_contents())
 		var/kind = human_ai_medical_kind(thing)
 		if(kind)
@@ -80,45 +42,7 @@ GLOBAL_LIST_INIT(human_ai_healing_chems, list(
 			return TRUE
 	return FALSE
 
-/**
- * Whether the injection would leave the patient safely under the overdose limit of the chemical. What the patient already has counts, so a body
- * that was injected a moment ago is not injected again until it has worked through the first dose, and a chemical with no known limit is never given.
- */
-/datum/human_ai_brain/proc/injection_is_safe(mob/living/carbon/human/patient, obj/item/reagent_container/hypospray/autoinjector/injector, chem_id)
-	var/datum/reagent/chem = GLOB.chemical_reagents_list[chem_id]
-	if(!chem || !chem.overdose || !patient.reagents)
-		return FALSE
-	var/dose = min(injector.amount_per_transfer_from_this, injector.reagents.total_volume)
-	if(patient.reagents.get_reagent_amount(chem_id) + dose > chem.overdose * HAI_INJECT_OD_MARGIN)
-		return FALSE
-	var/list/given = inject_times[REF(patient)]
-	if(given && given[chem_id] && world.time < given[chem_id] + HAI_INJECT_GAP)
-		return FALSE
-	return TRUE
-
-/// The injection that would help the patient most and is safe to give, as list(injector, score), null when none is worth it
-/datum/human_ai_brain/proc/injector_need(mob/living/carbon/human/patient)
-	var/list/supplies = medical_supplies()
-	var/obj/item/reagent_container/hypospray/autoinjector/best_injector
-	var/best_score = 0
-	for(var/obj/item/reagent_container/hypospray/autoinjector/injector as anything in supplies[HAI_MED_INJECTOR])
-		var/chem_id = human_ai_injector_chem(injector)
-		if(!chem_id || !human_ai_can_use_injector(body, injector))
-			continue
-		var/damage = 0
-		for(var/kind in GLOB.human_ai_healing_chems[chem_id])
-			damage = max(damage, human_ai_damage_of(patient, kind))
-		if(damage < HAI_INJECT_MIN_DAMAGE || !injection_is_safe(patient, injector, chem_id))
-			continue
-		var/score = 30 + damage * 0.6
-		if(score > best_score)
-			best_score = score
-			best_injector = injector
-	if(!best_injector)
-		return null
-	return list(best_injector, best_score)
-
-/// The treatment the patient needs most that the body has the supplies for, as list(kind, limb or injector), null when there is none
+/// The treatment the patient needs most that the body has the supplies for, as list(kind, limb), null when there is none
 /datum/human_ai_brain/proc/patient_need(mob/living/carbon/human/patient)
 	var/list/supplies = medical_supplies()
 	var/best_kind
@@ -142,9 +66,6 @@ GLOBAL_LIST_INIT(human_ai_healing_chems, list(
 			best_score = score
 			best_kind = kind
 			best_limb = limb
-	var/list/injection = injector_need(patient)
-	if(injection && injection[2] > best_score)
-		return list(HAI_MED_INJECTOR, injection[1])
 	if(!best_kind)
 		return null
 	return list(best_kind, best_limb)
@@ -216,8 +137,6 @@ GLOBAL_LIST_INIT(human_ai_healing_chems, list(
 		return FALSE
 	if(body.pulling)
 		body.stop_pulling()
-	if(need[1] == HAI_MED_INJECTOR)
-		return inject(patient, need[2])
 	var/obj/limb/limb = need[2]
 	var/list/packs = medical_supplies()[need[1]]
 	var/obj/item/stack/medical/pack
@@ -241,31 +160,6 @@ GLOBAL_LIST_INIT(human_ai_healing_chems, list(
 		GLOB.human_ai_patient_claims[REF(patient)] = list(src, world.time + HAI_PATIENT_CLAIM_TIME)
 	return TRUE
 
-/// Gives the patient the injection chosen for them, true while it works on them
-/datum/human_ai_brain/proc/inject(mob/living/carbon/human/patient, obj/item/reagent_container/hypospray/autoinjector/injector)
-	var/chem_id = human_ai_injector_chem(injector)
-	if(!chem_id || !injection_is_safe(patient, injector, chem_id) || !hand_item(injector))
-		return FALSE
-	body.zone_selected = "chest"
-	body.face_atom(patient)
-	acting_until = world.time + HAI_TREAT_TIME
-	med_cache_time = 0
-	utility_ref = WEAKREF(injector)
-	var/list/given = inject_times[REF(patient)]
-	if(!given)
-		if(length(inject_times) >= 20)
-			inject_times.Cut(1, 2)
-		given = list()
-		inject_times[REF(patient)] = given
-	given[chem_id] = world.time
-	INVOKE_ASYNC(injector, TYPE_PROC_REF(/obj/item/reagent_container/hypospray, attack), patient, body)
-	injections++
-	treatments++
-	log_decision("injecting [patient] with [injector], [patient.reagents.get_reagent_amount(chem_id)] units of [chem_id] in them already")
-	if(patient != body)
-		GLOB.human_ai_patient_claims[REF(patient)] = list(src, world.time + HAI_PATIENT_CLAIM_TIME)
-	return TRUE
-
 /// Puts away what the hands were using once the work is done
 /datum/human_ai_brain/proc/tidy_hands()
 	if(!utility_ref || is_acting())
@@ -275,7 +169,7 @@ GLOBAL_LIST_INIT(human_ai_healing_chems, list(
 	if(used && !QDELETED(used) && used.loc == body)
 		log_decision("put away [used]: [stow_item(used)]")
 	for(var/obj/item/held in list(body.get_active_hand(), body.get_inactive_hand()))
-		if(istype(held, /obj/item/stack/medical) || istype(held, /obj/item/restraint) || istype(held, /obj/item/reagent_container/hypospray/autoinjector))
+		if(istype(held, /obj/item/stack/medical) || istype(held, /obj/item/restraint))
 			log_decision("put away [held]: [stow_item(held)]")
 
 /// Where a recent call for a medic came from, the nearest one of this side within reach
@@ -346,14 +240,14 @@ GLOBAL_LIST_INIT(human_ai_healing_chems, list(
 		return FALSE
 	return brain.move_to(where, 2, get_dist(brain.body, where) > HAI_SPRINT_MIN_DISTANCE)
 
-/// Anyone who carries medical supplies and has nobody else to look after treats themselves when nothing is going on
+/// A medic that has nobody else to look after bandages itself
 /datum/human_ai_action/self_care
 	id = "self_care"
 	conflicts = HAI_LIMB_HANDS
 	intents = list(HAI_INTENT_IDLE, HAI_INTENT_ALERT)
 
 /datum/human_ai_action/self_care/get_weight(datum/human_ai_brain/brain)
-	if(brain.is_acting() || brain.get_target() || (!brain.is_medic() && brain.surrendered))
+	if(!brain.is_medic() || brain.is_acting() || brain.get_target())
 		return 0
 	return brain.patient_need(brain.body) ? 30 : 0
 

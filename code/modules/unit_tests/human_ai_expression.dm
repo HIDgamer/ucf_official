@@ -125,7 +125,7 @@
 			quiet++
 		SShuman_ai.talk_log = list()
 	TEST_NOTICE(src, "Out of 300 tries a friendly brain makes a routine remark [talkative] times, a veteran [quiet] times")
-	TEST_ASSERT(talkative > quiet + 25, "Chattiness does not change how much a brain says: [talkative] against [quiet]")
+	TEST_ASSERT(talkative > quiet + 60, "Chattiness does not change how much a brain says: [talkative] against [quiet]")
 
 	var/obj/item/device/radio/headset/headset = new(body)
 	headset.forceMove(body)
@@ -272,7 +272,7 @@
 	SShuman_ai.record_talk = FALSE
 	detach_human_ai(soldier)
 
-/// Brains left alone take a post and stay on it, glancing about now and then and seldom saying anything, within their budgets
+/// Brains left alone wander, look around and chat, within their budgets
 /datum/unit_test/human_ai_idle_life
 	var/list/datum/human_ai_brain/crowd = list()
 
@@ -304,25 +304,20 @@
 		crowd += idler.ai_brain
 		homes[idler.ai_brain] = get_turf(idler)
 	TEST_ASSERT_EQUAL(length(crowd), 8, "Not every idler got a brain")
-	// Idlers rarely chat on their own now, so the conversation itself is started by hand and the rest of the time is spent watching how quiet they stay
-	var/datum/human_ai_brain/opener = crowd[1]
-	opener.next_convo_time = 0
-	TEST_ASSERT(opener.start_conversation(), "A brain among idle friends could not start a conversation")
-	TEST_ASSERT(ai_wait(CALLBACK(src, PROC_REF(talked)), 10), "The neighbor never answered the conversation")
-	sleep(60 SECONDS)
-	var/posted = 0
+	TEST_ASSERT(ai_wait(CALLBACK(src, PROC_REF(talked)), 120), "Nobody had a conversation in two minutes")
+	sleep(30 SECONDS)
+	var/wanderers = 0
 	for(var/datum/human_ai_brain/brain as anything in crowd)
-		if(brain.post_turf)
-			posted++
-		TEST_ASSERT_EQUAL(brain.idle_wanders, 0, "An idler on watch strolled about")
-		TEST_ASSERT(get_dist(brain.body, homes[brain]) <= HAI_POST_RADIUS + 1, "An idler went [get_dist(brain.body, homes[brain])] tiles from home")
+		if(brain.idle_wanders)
+			wanderers++
+		TEST_ASSERT(get_dist(brain.body, homes[brain]) <= HAI_IDLE_WANDER_RADIUS + 2, "An idler wandered [get_dist(brain.body, homes[brain])] tiles from home")
 		TEST_ASSERT_EQUAL(brain.intent, HAI_INTENT_IDLE, "An idler left the idle intent")
 		TEST_ASSERT_EQUAL(brain.error_total, 0, "An idler's brain threw errors")
-	TEST_ASSERT(posted >= 6, "Only [posted] of 8 idlers took a post")
-	TEST_NOTICE(src, "[SShuman_ai.total_barks] things said by 8 idlers, [posted] on a post")
+	TEST_ASSERT(wanderers >= 3, "Only [wanderers] of 8 idlers ever strolled")
+	TEST_NOTICE(src, "[SShuman_ai.total_barks] things said by 8 idlers, [wanderers] strollers")
 	for(var/list/entry in SShuman_ai.talk_log)
 		TEST_ASSERT(entry[3] == HAI_EXPR_IDLE || entry[3] == HAI_EXPR_CONVO || entry[3] == HAI_EXPR_GREET, "An idler said something of kind [entry[3]]")
-	TEST_ASSERT(length(SShuman_ai.talk_log) <= 10, "Eight idlers said [length(SShuman_ai.talk_log)] things in a minute and a half")
+	TEST_ASSERT(length(SShuman_ai.talk_log) <= 40, "Eight idlers said [length(SShuman_ai.talk_log)] things")
 	SShuman_ai.record_talk = FALSE
 	for(var/datum/human_ai_brain/brain as anything in crowd)
 		detach_human_ai(brain.body)
@@ -370,7 +365,7 @@
 		TEST_ASSERT_EQUAL(entry[6], CONSCIOUS, "A [kind] bark came from a body that was not conscious")
 		TEST_ASSERT(!line || (istext(line) && !findtext(line, "%")), "A bark has a broken line: [line]")
 		if(last_by_brain[who])
-			TEST_ASSERT(when - last_by_brain[who] >= HAI_TALK_CRITICAL_GAP, "[who.body] spoke twice within [when - last_by_brain[who]] ticks")
+			TEST_ASSERT(when - last_by_brain[who] >= HAI_TALK_MIN_GAP, "[who.body] spoke twice within [when - last_by_brain[who]] ticks")
 		last_by_brain[who] = when
 		var/list/rule = GLOB.human_ai_expressions[kind]
 		var/key = "[REF(who)][kind]"
@@ -383,8 +378,8 @@
 			area_times[where] = list()
 		area_times[where] += when
 	TEST_NOTICE(src, "[total] barks of [length(kinds)] kinds in [seconds] seconds from 30 brains, [SShuman_ai.total_barks] counted")
-	TEST_ASSERT(total >= 3, "Thirty fighting brains said only [total] things")
-	TEST_ASSERT(length(kinds) >= 2, "The chatter had only [length(kinds)] kinds")
+	TEST_ASSERT(total >= 10, "Thirty fighting brains said only [total] things")
+	TEST_ASSERT(length(kinds) >= 3, "The chatter had only [length(kinds)] kinds")
 	TEST_ASSERT(total <= HAI_TALK_GLOBAL_CAP * (seconds / 10 + 1), "[total] barks in [seconds] seconds broke the global cap")
 	for(var/index in 1 to length(times))
 		var/inside = 0

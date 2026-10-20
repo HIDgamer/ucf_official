@@ -385,26 +385,20 @@
 #define HAI_EXPR_MOVING "moving"
 #define HAI_EXPR_EXPLOSION "explosion"
 #define HAI_EXPR_CONVO "convo"
-/// Fewest deciseconds between two things one brain says, and between two when the later one is a call-out that matters.
-#define HAI_TALK_MIN_GAP 80
-#define HAI_TALK_CRITICAL_GAP 30
+/// Fewest deciseconds between two things one brain says.
+#define HAI_TALK_MIN_GAP 30
 /// Things all brains together may say in one window, and in one area in the same window.
-#define HAI_TALK_AREA_WINDOW 150
-#define HAI_TALK_AREA_CAP 3
-#define HAI_TALK_GLOBAL_CAP 15
-/// How many times longer a routine remark waits than a call-out that matters, the base chance and the chance per point of chattiness that it is said at all, and the chance an emote goes along with a line.
-#define HAI_TALK_ROUTINE_COOLDOWN_MULT 3
-#define HAI_TALK_ROLL_BASE 5
-#define HAI_TALK_ROLL_PER_CHATTINESS 0.4
-#define HAI_TALK_EMOTE_CHANCE 15
+#define HAI_TALK_AREA_WINDOW 100
+#define HAI_TALK_AREA_CAP 6
+#define HAI_TALK_GLOBAL_CAP 30
 /// Fewest deciseconds between two radio calls of one squad.
 #define HAI_RADIO_GAP 60
 /// Deciseconds between idle things, tiles an idle brain strolls from home, deciseconds between conversations of one brain and how long a stranger stays greeted.
 #define HAI_IDLE_GAP_MIN 80
 #define HAI_IDLE_GAP_MAX 200
 #define HAI_IDLE_WANDER_RADIUS 5
-#define HAI_CONVO_GAP 2400
-#define HAI_GREET_MEMORY 3000
+#define HAI_CONVO_GAP 600
+#define HAI_GREET_MEMORY 600
 
 /// What a medical item treats.
 #define HAI_MED_BANDAGE "bandage"
@@ -532,46 +526,3 @@
 #define HAI_ARBITER_INTERVAL (10 SECONDS)
 #define HAI_BUDGET_TOTAL_MS 200
 #define HAI_ARBITER_MAX_SLOWDOWN 3
-
-/// Tiles around home an idle armed brain looks for a place to stand watch, the spots it weighs, how long it keeps a post before weighing again and the tiles it can see from one.
-#define HAI_POST_RADIUS 7
-#define HAI_POST_CANDIDATES 40
-#define HAI_POST_RECHECK (3 MINUTES)
-#define HAI_POST_VIEW 8
-
-/// Deciseconds a brain remembers having turned down a climb, how long it waits between two vaults and how many times it looks for a way round before it climbs when nothing presses it.
-#define HAI_DETOUR_MEMORY (12 SECONDS)
-#define HAI_VAULT_COOLDOWN (6 SECONDS)
-#define HAI_CLIMB_DETOURS 2
-/// How long a door that will not open for the brain is left alone.
-#define HAI_DOOR_DENIED_MEMORY (3 MINUTES)
-
-/// Tiles past the target that a missed shot is still checked for friends, the most spread in tiles a friend beside the target is tolerated at, aim rolls tried before holding fire and how long fire is held when no aim is safe.
-#define HAI_FF_OVERSHOOT 5
-#define HAI_FF_SPREAD 0.5
-#define HAI_FF_AIM_TRIES 3
-#define HAI_FF_HOLD 10
-
-/// Tiles a brain wants to keep between itself and something that wins by getting close, and anything else, how far it looks to back off to, deciseconds between steps back and how many it takes before it stands and fights.
-#define HAI_KEEP_AWAY_MELEE 5
-#define HAI_KEEP_AWAY_OTHER 3
-#define HAI_KITE_RADIUS 3
-#define HAI_KITE_INTERVAL 6
-#define HAI_KITE_STEP_LIMIT 6
-#define HAI_KITE_WINDOW (12 SECONDS)
-
-/// What a chemical treatment is, how much of a patient's damage it takes to be worth an injection, the gap between two injections of one chemical into one patient and the share of the overdose limit a patient may be brought up to.
-#define HAI_MED_INJECTOR "injector"
-#define HAI_INJECT_MIN_DAMAGE 15
-#define HAI_INJECT_GAP (20 SECONDS)
-#define HAI_INJECT_OD_MARGIN 0.9
-
-/// How long it takes a hacker to break into a door it has no access to.
-#define HAI_HACK_TIME (7 SECONDS)
-
-/// Whitelist flags that make a job senior staff for the NPC panel, the commander tiers, and the scope that matches no faction at all.
-#define HAI_COMMAND_WHITELISTS (WHITELIST_COMMANDER|WHITELIST_COMMANDER_COUNCIL|WHITELIST_COMMANDER_COUNCIL_LEGACY|WHITELIST_COMMANDER_LEADER|WHITELIST_COMMANDER_COLONEL)
-#define HAI_COMMAND_NO_SCOPE "no faction"
-
-/// How long after a body is revived the brain waits for a player to take it before the AI takes it back.
-#define HAI_REVIVE_GRACE (5 SECONDS)

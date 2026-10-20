@@ -32,22 +32,12 @@
 	var/min_distance = (kind == HAI_GRENADE_LETHAL) ? HAI_GRENADE_LETHAL_RANGE : HAI_GRENADE_SOFT_RANGE
 	if(get_dist(body, spot) < min_distance)
 		return FALSE
-	// A blast reaches further than a flash, and it must spare anyone who is not an enemy, not only friends
-	var/lethal = (kind == HAI_GRENADE_LETHAL)
-	for(var/mob/living/bystander in view(HAI_GRENADE_SAFE_RADIUS + (lethal ? 1 : 0), spot))
-		if(lethal ? is_protected(bystander) : (bystander != body && bystander.stat != DEAD && get_disposition(bystander) <= HAI_DISP_FRIEND))
+	for(var/mob/living/bystander in view(HAI_GRENADE_SAFE_RADIUS, spot))
+		if(bystander != body && bystander.stat != DEAD && get_disposition(bystander) <= HAI_DISP_FRIEND)
 			return FALSE
-	var/turf/here = get_turf(body)
-	for(var/turf/line_turf in get_line(here, spot))
-		if(line_turf == spot)
-			continue
-		if(line_turf.density || line_turf.opacity)
+	for(var/turf/line_turf in get_line(get_turf(body), spot))
+		if(line_turf != spot && (line_turf.density || line_turf.opacity))
 			return FALSE
-		// A thrown grenade stops at the first body it meets
-		if(line_turf != here)
-			for(var/mob/living/in_flight in line_turf)
-				if(is_protected(in_flight))
-					return FALSE
 	return TRUE
 
 /// How many enemies the brain has in view within a couple of tiles of the point
