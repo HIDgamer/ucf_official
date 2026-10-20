@@ -7,7 +7,7 @@
  */
 
 import { type BooleanLike, classes } from 'common/react';
-import { type ReactNode } from 'react';
+import { type CSSProperties, type ReactNode } from 'react';
 
 import { type BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
@@ -18,7 +18,7 @@ type IconPropsUnique = { readonly name: string } & Partial<{
   spin: BooleanLike;
   className: string;
   rotation: number;
-  style: Partial<HTMLDivElement['style']>;
+  style: CSSProperties;
 }>;
 
 export type IconProps = IconPropsUnique & BoxProps;

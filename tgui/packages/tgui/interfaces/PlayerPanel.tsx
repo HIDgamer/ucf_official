@@ -425,7 +425,6 @@ const GeneralActions = (props) => {
             <Stack.Item align="right" grow={1}>
               <Input
                 width="100%"
-                grow={1}
                 onEnter={(e, value) => act('mob_force_say', { to_say: value })}
               />
             </Stack.Item>
@@ -439,7 +438,6 @@ const GeneralActions = (props) => {
             <Stack.Item align="right" grow={1}>
               <Input
                 width="100%"
-                grow={1}
                 onEnter={(e, value) =>
                   act('mob_force_emote', { to_emote: value })
                 }
@@ -668,7 +666,6 @@ const FunActions = (props) => {
             <Stack.Item align="right" grow={1}>
               <Input
                 width="100%"
-                grow={1}
                 onEnter={(e, value) =>
                   act('mob_narrate', {
                     to_narrate: `<span class='${getSpanSetting}'>${value}</span>`,

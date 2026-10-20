@@ -5,6 +5,7 @@
  */
 
 import { classes } from 'common/react';
+import { type CSSProperties } from 'react';
 
 import {
   type BoxProps,
@@ -19,7 +20,7 @@ export type FlexProps = Partial<{
   inline: boolean;
   justify: string;
   scrollable: boolean;
-  style: Partial<HTMLDivElement['style']>;
+  style: CSSProperties;
   wrap: string | boolean;
 }> &
   BoxProps;
@@ -64,7 +65,7 @@ export type FlexItemProps = BoxProps &
     shrink: number | boolean;
     basis: string | number;
     align: string | boolean;
-    style: Partial<HTMLDivElement['style']>;
+    style: CSSProperties;
   }>;
 
 export const computeFlexItemClassName = (props: FlexItemProps) => {

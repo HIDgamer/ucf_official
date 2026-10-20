@@ -77,7 +77,7 @@ export const VehicleStatus = (props) => {
             <NoticeBox danger>Hull destroyed!</NoticeBox>
           )}
           <Box height="5px" />
-          <NoticeBox info={door_locked ? 0 : 1} danger={door_locked ? 1 : 0}>
+          <NoticeBox {...(door_locked ? { danger: true } : { info: true })}>
             {door_locked ? 'Door locks: enabled.' : 'Door locks: disabled.'}
           </NoticeBox>
           <Collapsible title="Current armour resistances">

@@ -328,7 +328,6 @@ export const RichTextEditor = forwardRef<RichTextEditorHandle, Props>(
                   <Dropdown
                     icon="palette"
                     displayText="Text Color"
-                    tooltip="Select text first, then pick a color"
                     selected={null}
                     options={TEXT_COLORS.map((c) => c.label)}
                     onSelected={(label) => {

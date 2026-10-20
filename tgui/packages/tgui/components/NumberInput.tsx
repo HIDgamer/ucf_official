@@ -66,6 +66,8 @@ export class NumberInput extends Component<Props, State> {
     suppressingFlicker: false,
   };
   static defaultProps: {
+    minValue: number;
+    maxValue: number;
     step: number;
     stepPixelSize: number;
     suppressFlicker: number;
@@ -372,6 +374,8 @@ export class NumberInput extends Component<Props, State> {
 }
 
 NumberInput.defaultProps = {
+  minValue: -Infinity,
+  maxValue: Infinity,
   step: 1,
   stepPixelSize: 1,
   suppressFlicker: 50,

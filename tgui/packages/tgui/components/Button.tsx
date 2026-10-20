@@ -59,6 +59,7 @@ type Props = Partial<{
   iconSpin: BooleanLike;
   onClick: (e: any) => void;
   selected: BooleanLike;
+  title: string;
   tooltip: ReactNode;
   tooltipPosition: Placement;
   verticalAlignContent: string;

@@ -713,7 +713,6 @@ class PresetsPage extends Component<{}, PresetsPageState> {
             />
             <span color="label"> Hue: </span>
             <NumberInput
-              inline
               animated
               width="40px"
               step={5}
@@ -725,7 +724,7 @@ class PresetsPage extends Component<{}, PresetsPageState> {
             />
             <Input
               inline
-              autofocus
+              autoFocus
               placeholder="Preset Name"
               onChange={(e, value) => this.setState({ newNameText: value })}
             />
@@ -756,7 +755,7 @@ class PresetsPage extends Component<{}, PresetsPageState> {
                         borderStyle: 'solid',
                         borderColor: `hsl(${preset.hue}, 80%, 80%)`,
                       }
-                    : ''
+                    : undefined
                 }
               >
                 {preset.title}

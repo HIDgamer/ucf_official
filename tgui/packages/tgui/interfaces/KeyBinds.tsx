@@ -390,7 +390,7 @@ export class ButtonKeybind extends Component<
 
     return (
       <Button
-        {...rest}
+        {...(rest as object)}
         selected={focused}
         inline
         onClick={(e) => {

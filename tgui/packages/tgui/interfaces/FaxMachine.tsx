@@ -320,7 +320,7 @@ const ConfirmSend = () => {
                 {!!paper_icon && (
                   <DmIcon
                     icon={paper_icon}
-                    icon_state={paper_icon_state}
+                    icon_state={paper_icon_state ?? ''}
                     mr={1}
                   />
                 )}
@@ -417,8 +417,8 @@ const FaxEmpty = () => {
   return (
     <Section textAlign="center" fill>
       <Flex height="100%">
-        <Flex.Item grow="1" align="center" color="red">
-          <Icon name="times-circle" mb="0.5rem" size="5" color="red" />
+        <Flex.Item grow={1} align="center" color="red">
+          <Icon name="times-circle" mb="0.5rem" size={5} color="red" />
           <br />
           No ID card detected.
           <br />

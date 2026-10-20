@@ -1,4 +1,4 @@
-import { classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 
 import { type BoxProps, unit } from './Box';
@@ -20,8 +20,8 @@ type Props = {
   /** Called when a value is picked from the list, `value` is the value that was picked */
   readonly onSelected: (value: any) => void;
   /** Currently selected entry to display. Can be left stateless to permanently display this value. */
-  readonly selected: DropdownOption | null | undefined;
 } & Partial<{
+  readonly selected: DropdownOption | null | undefined;
   /** Whether to scroll automatically on open. Defaults to true */
   autoScroll: boolean;
   /** Whether to display previous / next buttons */
@@ -31,7 +31,7 @@ type Props = {
   /** Color of dropdown button */
   color: string;
   /** Disables the dropdown */
-  disabled: boolean;
+  disabled: BooleanLike;
   /** Overwrites selection text with this. Good for objects etc. */
   displayText: ReactNode;
   /** Icon to display in dropdown button */

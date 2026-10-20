@@ -210,7 +210,7 @@ const IncidentDetails = (props) => {
           value={progress}
           p="1.25rem"
           color="average"
-          style={{ border: 'none', margin: 0 }}
+          style={{ border: 'none', margin: '0' }}
         >
           <Flex justify="center" fontSize="2rem" bold>
             {time_left_pretty}

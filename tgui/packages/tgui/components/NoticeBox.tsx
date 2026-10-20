@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 
 import { Box, type BoxProps } from './Box';
 
@@ -20,16 +20,16 @@ type None = {
 type ExclusiveProps =
   | None
   | (Omit<None, 'info'> & {
-      info: boolean;
+      info: BooleanLike;
     })
   | (Omit<None, 'success'> & {
-      success: boolean;
+      success: BooleanLike;
     })
   | (Omit<None, 'warning'> & {
-      warning: boolean;
+      warning: BooleanLike;
     })
   | (Omit<None, 'danger'> & {
-      danger: boolean;
+      danger: BooleanLike;
     });
 
 export function NoticeBox(props: Props) {

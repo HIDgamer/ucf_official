@@ -8,6 +8,7 @@ import { type BooleanLike, classes } from 'common/react';
 import {
   createElement,
   type CSSProperties,
+  type FocusEventHandler,
   type KeyboardEventHandler,
   type MouseEventHandler,
   type ReactNode,
@@ -33,6 +34,8 @@ export type EventHandlers = Partial<{
   onMouseOver: MouseEventHandler<HTMLDivElement>;
   onMouseUp: MouseEventHandler<HTMLDivElement>;
   onScroll: UIEventHandler<HTMLDivElement>;
+  onFocus: FocusEventHandler<HTMLDivElement>;
+  onBlur: FocusEventHandler<HTMLDivElement>;
 }>;
 
 export type BoxProps = Partial<{
@@ -40,6 +43,7 @@ export type BoxProps = Partial<{
   children: ReactNode;
   className: string | BooleanLike;
   style: CSSProperties;
+  tabIndex: number;
 }> &
   BooleanProps &
   StringProps &
@@ -237,7 +241,9 @@ export const computeBoxClassName = (props: BoxProps) => {
   ]);
 };
 
-export const Box = (props: BoxProps & DangerDoNotUse) => {
+export const Box = (
+  props: BoxProps & DangerDoNotUse & { readonly title?: string },
+) => {
   const { as = 'div', className, children, ...rest } = props;
 
   // Compute class name and styles

@@ -182,8 +182,8 @@ const SquadPanel = (props) => {
       </Stack.Item>
       <Stack.Item grow>
         {category === 'monitor' && <SquadMonitor />}
-        {category === 'supply' && data.can_launch_crates && <SupplyDrop />}
-        {category === 'ob' && data.can_launch_obs && <OrbitalBombardment />}
+        {category === 'supply' && !!data.can_launch_crates && <SupplyDrop />}
+        {category === 'ob' && !!data.can_launch_obs && <OrbitalBombardment />}
       </Stack.Item>
     </Stack>
   );
@@ -533,7 +533,7 @@ const SquadMonitor = (props) => {
         fluid
         placeholder="Search.."
         mb="4px"
-        value={marineSearch}
+        value={marineSearch ?? ''}
         onInput={(e, value) => setMarineSearch(value)}
       />
       <Section m="2px" mb="4px" fill height="95%" scrollable>

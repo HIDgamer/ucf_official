@@ -81,7 +81,7 @@ export const XenomorphExtractor = () => {
               Recepticle is empty, analyzing is impossible!
             </NoticeBox>
           ) : (
-            <NoticeBox notice>Biomass accepted. Ready to analyze.</NoticeBox>
+            <NoticeBox>Biomass accepted. Ready to analyze.</NoticeBox>
           )}
         </Section>
         <Divider />

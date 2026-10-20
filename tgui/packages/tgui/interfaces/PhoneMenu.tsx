@@ -121,7 +121,7 @@ export const GeneralPanel = (props) => {
                     color={val.phone_color}
                     onFocus={() =>
                       document.activeElement
-                        ? document.activeElement.blur()
+                        ? (document.activeElement as HTMLElement).blur()
                         : false
                     }
                     icon={val.phone_icon ?? undefined}

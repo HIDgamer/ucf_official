@@ -60,7 +60,7 @@ export const BioSyntheticPrinter = () => {
             </Box>
           </ProgressBar>
         </Section>
-        <Section title="Limbs" grow>
+        <Section title="Limbs">
           {!!Working && (
             <Box>
               <NoticeBox>Currently printing : {data.printingitem}</NoticeBox>
@@ -69,17 +69,12 @@ export const BioSyntheticPrinter = () => {
             </Box>
           )}
 
-          <LabeledList vertical>
+          <LabeledList>
             {recipes.map((val) => {
               return (
                 <LabeledList.Item
                   key={val.recipe_id}
                   label={val.name}
-                  onFocus={() =>
-                    document.activeElement
-                      ? (document.activeElement as HTMLElement).blur()
-                      : false
-                  }
                   buttons={
                     <Button
                       color="good"

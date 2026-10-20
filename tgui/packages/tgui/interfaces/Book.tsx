@@ -37,7 +37,7 @@ export const Book = () => {
       (overrideContents ? overrideContents : contents)
         .trim()
         .replaceAll(replacementRegex, ''),
-    );
+    ) as string;
 
     const matches = Array.from(toParse.matchAll(imageRegex));
     for (const match of matches) {

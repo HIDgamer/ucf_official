@@ -2284,7 +2284,6 @@ const AccessManagement = () => {
                   <Button.Confirm
                     icon="user-minus"
                     tooltip="Reject Ticket"
-                    disabled={can_reject === 'No'}
                     onClick={() => act('reject_access', { ticket: ticket.ref })}
                   />
                 )}
