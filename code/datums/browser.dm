@@ -226,7 +226,7 @@
 		mob.unset_interaction()
 	return
 
-/proc/show_browser(target, browser_content, browser_name, id = null, window_options = null, closeref)
+/proc/show_browser(target, browser_content, browser_name, id = null, window_options = null, closeref, use_onclose = TRUE)
 	var/client/C = target
 
 	if (ismob(target))
@@ -245,7 +245,7 @@
 	popup.set_content(browser_content)
 	if (window_options)
 		popup.set_window_options(window_options)
-	popup.open()
+	popup.open(use_onclose)
 
 /datum/browser/modal
 	var/opentime = 0

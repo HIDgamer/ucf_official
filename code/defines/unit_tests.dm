@@ -124,6 +124,8 @@
 #include "..\modules\unit_tests\human_ai_weapons.dm"
 #include "..\modules\unit_tests\human_ai_arena.dm"
 #include "..\modules\unit_tests\emote_panels.dm"
+#include "..\modules\unit_tests\icon2base64.dm"
+#include "..\modules\unit_tests\map_item.dm"
 #include "..\modules\unit_tests\missing_icons.dm"
 #include "..\modules\unit_tests\melee_golden.dm"
 #include "..\modules\unit_tests\movement_golden.dm"
