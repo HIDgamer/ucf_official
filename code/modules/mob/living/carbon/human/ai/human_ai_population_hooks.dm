@@ -46,6 +46,7 @@ GLOBAL_LIST_INIT(npc_population_hooks, init_npc_population_hooks())
 	return enabled && (forced || suits_round())
 
 /datum/npc_population_hook/proc/validate()
+	RETURN_TYPE(/list)
 	var/list/problems = list()
 	for(var/datum/npc_population_group/group as anything in groups)
 		problems += group.validate()

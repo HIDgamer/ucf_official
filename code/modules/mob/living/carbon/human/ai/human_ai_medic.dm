@@ -201,7 +201,8 @@ GLOBAL_LIST_INIT(human_ai_healing_chems, list(
 		if(!will_treat(other) || patient_skips[REF(other)] > world.time)
 			continue
 		var/list/claim = GLOB.human_ai_patient_claims[REF(other)]
-		if(claim && claim[1] != src && claim[2] > world.time && !QDELETED(claim[1]))
+		var/datum/claimant = claim ? claim[1] : null
+		if(claim && claimant != src && claim[2] > world.time && !QDELETED(claimant))
 			continue
 		var/list/need = patient_need(other)
 		if(!need)

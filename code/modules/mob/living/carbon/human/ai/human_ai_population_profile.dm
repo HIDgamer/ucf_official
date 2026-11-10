@@ -29,6 +29,7 @@ GLOBAL_LIST_EMPTY(npc_population_extra_watchers)
 	return ..()
 
 /datum/npc_population_profile/proc/get_group(group_id)
+	RETURN_TYPE(/datum/npc_population_group)
 	for(var/datum/npc_population_group/group as anything in groups)
 		if(group.id == group_id)
 			return group

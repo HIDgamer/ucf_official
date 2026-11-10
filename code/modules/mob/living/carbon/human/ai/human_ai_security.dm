@@ -92,7 +92,8 @@
 		if(!restraint_candidate(other) || (get_disposition(other) <= HAI_DISP_FRIEND && !other.ai_brain?.surrendered))
 			continue
 		var/list/claim = GLOB.human_ai_patient_claims["cuff[REF(other)]"]
-		if(claim && claim[1] != src && claim[2] > world.time && !QDELETED(claim[1]))
+		var/datum/claimant = claim ? claim[1] : null
+		if(claim && claimant != src && claim[2] > world.time && !QDELETED(claimant))
 			continue
 		var/distance = get_dist(body, other)
 		if(distance < best_distance)

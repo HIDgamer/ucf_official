@@ -1,5 +1,5 @@
 /// Every personality preset by id, built once on first use
-GLOBAL_LIST_INIT(human_ai_personalities, init_human_ai_personalities())
+GLOBAL_LIST_INIT_TYPED(human_ai_personalities, /datum/human_ai_personality, init_human_ai_personalities())
 
 /proc/init_human_ai_personalities()
 	var/list/presets = list()
@@ -12,6 +12,7 @@ GLOBAL_LIST_INIT(human_ai_personalities, init_human_ai_personalities())
 	return presets
 
 /proc/get_human_ai_personality(id)
+	RETURN_TYPE(/datum/human_ai_personality)
 	return GLOB.human_ai_personalities[id] || GLOB.human_ai_personalities["neutral"]
 
 /// A shared set of 0 to 100 trait scores, brains read their behavior weights through it
