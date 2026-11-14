@@ -66,7 +66,6 @@
 	.["ghost_radio"] = !!(prefs.toggles_chat & CHAT_GHOSTRADIO)
 	.["ghost_spyradio"] = !!(prefs.toggles_chat & CHAT_LISTENINGBUG)
 	.["ghost_hivemind"] = !!(prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
-	.["ghost_announce_clarity"] = !!(prefs.toggles_chat & CHAT_GHOSTANNOUNCECLARITY)
 	.["lang_chat_disabled"] = prefs.lang_chat_disabled
 	.["langchat_emotes"] = !!(prefs.toggles_langchat & LANGCHAT_SEE_EMOTES)
 
@@ -145,8 +144,6 @@
 			toggle_bitflag(prefs, "toggles_chat", CHAT_LISTENINGBUG)
 		if("ghost_hivemind")
 			toggle_bitflag(prefs, "toggles_chat", CHAT_GHOSTHIVEMIND)
-		if("ghost_announce_clarity")
-			toggle_bitflag(prefs, "toggles_chat", CHAT_GHOSTANNOUNCECLARITY)
 		if("lang_chat_disabled")
 			prefs.lang_chat_disabled = !prefs.lang_chat_disabled
 		if("langchat_emotes")

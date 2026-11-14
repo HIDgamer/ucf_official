@@ -27,7 +27,6 @@ type Data = {
   ghost_radio: BooleanLike;
   ghost_spyradio: BooleanLike;
   ghost_hivemind: BooleanLike;
-  ghost_announce_clarity: BooleanLike;
   lang_chat_disabled: BooleanLike;
   langchat_emotes: BooleanLike;
 
@@ -260,13 +259,6 @@ export const SettingsSetup = () => {
                       action="ghost_hivemind"
                       onLabel="Show"
                       offLabel="Hide"
-                    />
-                    <Toggle
-                      label="Ghost Announcement Clarity"
-                      on={!!data.ghost_announce_clarity}
-                      action="ghost_announce_clarity"
-                      onLabel="Full Clarity"
-                      offLabel="Garbled"
                     />
                     <Toggle
                       label="Abovehead Chat"
