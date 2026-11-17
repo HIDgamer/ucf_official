@@ -23,6 +23,8 @@
 	if(get_dist(here, goal_turf) <= arrive_distance)
 		move_state = HAI_MOVE_ARRIVED
 		climb_detours = 0
+		hazard_detours = 0
+		hazard_waits = 0
 		set_sprint(FALSE)
 		clear_stairs()
 		return FALSE
@@ -72,6 +74,9 @@
 			move_state = HAI_MOVE_BLOCKED
 			return FALSE
 	else if(next_turf)
+		var/obj/hazard_ahead = find_hazard_on(next_turf)
+		if(hazard_ahead && handle_hazard_ahead(hazard_ahead, next_turf))
+			return TRUE
 		if(step_to_turf(next_turf))
 			return TRUE
 		var/list/obstacle = find_obstacle(here, next_turf)
@@ -88,6 +93,8 @@
 	route_retries = 0
 	climb_detours = 0
 	no_route_count = 0
+	hazard_detours = 0
+	hazard_waits = 0
 	path = null
 
 /// Gets the body onto its feet, false while that takes the turn
@@ -248,6 +255,10 @@
 
 /// Keeps the body in its formation slot behind the leader
 /datum/human_ai_brain/proc/follow_leader(atom/leader, slot = 0)
+	// A leader inside a vehicle is on a level of its own, the way on is to get in after them, which is what the board action is for
+	var/turf/leader_turf = get_turf(leader)
+	if(isliving(leader) && leader_turf && leader_turf.z != body.z && human_ai_vehicle_of(leader))
+		return FALSE
 	var/turf/slot_turf = formation_turf(leader, slot)
 	if(!slot_turf)
 		return FALSE

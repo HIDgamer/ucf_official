@@ -12,8 +12,12 @@ GLOBAL_LIST_EMPTY(ai_human_list)
 
 	human.forget_human_ai()
 	// A synthetic is calm and collected unless somebody picked a nature for it
-	if(personality_id == "neutral" && issynth(human))
-		personality_id = "synthetic"
+	if(personality_id == "neutral")
+		if(issynth(human))
+			personality_id = "synthetic"
+		else
+			// Nobody picked a nature, so he is what his people are like
+			personality_id = human_ai_nature_for(human) || personality_id
 	var/datum/human_ai_brain/brain = new(human, personality_id)
 	human.ai_brain = brain
 	human.is_human_ai_controlled = TRUE
@@ -28,12 +32,15 @@ GLOBAL_LIST_EMPTY(ai_human_list)
 	var/inferred_role = human_ai_role_for_job(human.job)
 	if(!inferred_role && isworkingjoe(human))
 		inferred_role = "working_joe"
+	if(!inferred_role)
+		inferred_role = human_ai_role_for_gear(human)
 	if(inferred_role)
 		brain.set_role(inferred_role)
 		brain.role.equip_kit(brain)
 	brain.issue_hack_tools()
 	brain.issue_repair_tools()
 	brain.issue_first_aid()
+	brain.issue_faction_kit()
 	brain.start()
 	brain.log_decision("attached ([brain.personality.id])")
 	return TRUE

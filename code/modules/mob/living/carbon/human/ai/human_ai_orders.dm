@@ -6,6 +6,8 @@
 	var/delivery = HAI_DELIVERY_COMMAND
 	var/status = HAI_ORDER_ACTIVE
 	var/issuer
+	/// 0 to 1, how much the one who gave a hand signal is respected, which is what a signal is obeyed by
+	var/authority = 1
 	var/turf/target_turf
 	var/datum/weakref/target_ref
 	var/radius = 0
@@ -44,6 +46,8 @@
 	return target_ref?.resolve()
 
 /datum/npc_order/proc/set_target(atom/movable/new_target)
+	if(!ismovable(new_target))
+		new_target = null
 	target_ref = new_target ? WEAKREF(new_target) : null
 
 /// Why the performer cannot carry this out, null when it can
@@ -90,6 +94,7 @@
 	var/datum/npc_order/copy = new type
 	copy.delivery = delivery
 	copy.issuer = issuer
+	copy.authority = authority
 	copy.target_turf = target_turf
 	copy.target_ref = target_ref
 	copy.radius = radius
@@ -146,13 +151,13 @@
 
 /datum/npc_order/attack/can_perform(datum/human_ai_brain/performer)
 	var/mob/living/victim = get_target()
-	if(!victim || QDELETED(victim) || victim.stat == DEAD)
+	if(!isliving(victim) || QDELETED(victim) || victim.stat == DEAD)
 		return "no target"
 	return null
 
 /datum/npc_order/attack/forced_target()
 	var/mob/living/victim = get_target()
-	return (victim && !QDELETED(victim) && victim.stat != DEAD) ? victim : null
+	return (isliving(victim) && !QDELETED(victim) && victim.stat != DEAD) ? victim : null
 
 /datum/npc_order/attack/tick(datum/human_ai_brain/performer)
 	var/mob/living/victim = forced_target()
@@ -448,7 +453,7 @@
 	var/reason = new_order.can_perform(src)
 	if(reason)
 		return refuse_order(new_order, reason)
-	if(delivery == HAI_DELIVERY_REQUEST && !prob(comply_chance(new_order) * 100))
+	if(delivery != HAI_DELIVERY_COMMAND && !prob(comply_chance(new_order) * 100))
 		return refuse_order(new_order, "balked")
 	if(current_order)
 		current_order.finish(HAI_ORDER_CANCELLED)
@@ -501,13 +506,19 @@
 
 /// 0 to 1, how likely the brain is to go along with an order that is not forced
 /datum/human_ai_brain/proc/comply_chance(datum/npc_order/asked)
-	var/risk = asked.estimate_danger(src)
-	if(risk <= 0 || asked.delivery == HAI_DELIVERY_COMMAND)
+	if(asked.delivery == HAI_DELIVERY_COMMAND)
 		return 1
-	var/willing = personality.trait("discipline") * 0.0025 + personality.trait("loyalty") * 0.0035 + personality.trait("courage") * 0.004
-	if(personality.trait("courage") >= 95)
-		willing = min(1, willing + 0.2)
-	return clamp(1 - risk * (1 - willing) * (1 + stress * 0.01), 0.02, 1)
+	var/risk = asked.estimate_danger(src)
+	var/chance = 1
+	if(risk > 0)
+		var/willing = personality.trait("discipline") * 0.0025 + personality.trait("loyalty") * 0.0035 + personality.trait("courage") * 0.004
+		if(personality.trait("courage") >= 95)
+			willing = min(1, willing + 0.2)
+		chance = clamp(1 - risk * (1 - willing) * (1 + stress * 0.01), 0.02, 1)
+	// A hand signal is heeded as far as the one who made it is respected, and by the disciplined and the loyal more than by the rest
+	if(asked.delivery == HAI_DELIVERY_SIGNAL)
+		chance *= clamp(asked.authority * (0.7 + (personality.trait("discipline") + personality.trait("loyalty")) * 0.003), 0.05, 1)
+	return chance
 
 /// 0 to 1, how many known enemies stand near the turf
 /datum/human_ai_brain/proc/danger_at(turf/where)

@@ -22,8 +22,10 @@ GLOBAL_LIST_INIT(human_ai_voices, init_human_ai_voices())
 			voice_id = "upp"
 		if(FACTION_PMC, FACTION_WY, FACTION_HYPERDYNE, FACTION_WY_DEATHSQUAD, FACTION_CONTRACTOR)
 			voice_id = "corporate"
-		if(FACTION_CLF, FACTION_PIRATE, FACTION_MERCENARY, FACTION_FREELANCER, FACTION_DUTCH)
+		if(FACTION_CLF, FACTION_PIRATE)
 			voice_id = "rebel"
+		if(FACTION_MERCENARY, FACTION_FREELANCER, FACTION_DUTCH)
+			voice_id = "mercenary"
 		if(FACTION_MARSHAL, FACTION_NSPA, FACTION_PAP)
 			voice_id = "police"
 		if(FACTION_COLONIST, FACTION_SURVIVOR, FACTION_NEUTRAL)
@@ -193,6 +195,28 @@ GLOBAL_LIST_INIT(human_ai_voices, init_human_ai_voices())
 	convos = list(
 		list("Think we'll win this?", "We'd better, we've got nowhere else to go."),
 		list("Got any smokes left?", "Last pack went three days ago."),
+	)
+
+/datum/human_ai_voice/mercenary
+	id = "mercenary"
+	lines = list(
+		"contact" = list("Contact, %dir%!", "Hostiles, %dir%! Weapons free!", "Movement %dir%, get ready!"),
+		"reload" = list("Reloading, cover me!", "Mag change!", "Dry, reloading!"),
+		"frag" = list("Frag out!", "Grenade, get down!", "Fire in the hole!"),
+		"man_down" = list("Merc down!", "We've got a casualty!", "Man down, I need cover!"),
+		"medic" = list("Medic! Somebody!", "I'm hit, patch me up!", "Medic, over here!"),
+		"fall_back" = list("Fall back, this isn't worth the pay!", "Pull back, regroup!", "Break contact, move!"),
+		"challenge" = list("Stop right there!", "Hands up, slowly!", "Weapons down, now!"),
+		"kill" = list("Contract's a contract.", "Target down.", "That's one."),
+		"ack" = list("Copy.", "On it.", "Understood."),
+	)
+	flavor = list(
+		"professional" = list("taunt" = list("Nothing personal.", "It's just business.")),
+		"ruthless" = list("taunt" = list("Pay's better when you don't make it.", "Should've asked for more money.")),
+	)
+	convos = list(
+		list("Is the contract worth it?", "Ask me again when I'm alive tomorrow."),
+		list("When do we get paid?", "After we're out of here, so move."),
 	)
 
 /datum/human_ai_voice/police

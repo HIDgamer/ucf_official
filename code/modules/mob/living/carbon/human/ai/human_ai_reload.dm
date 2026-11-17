@@ -117,6 +117,13 @@
 	if(istype(item.loc, /obj/item/storage))
 		var/obj/item/storage/holder = item.loc
 		holder.remove_from_storage(item, body.loc)
+	else if(istype(item.loc, /obj/item/clothing/shoes))
+		// What is carried in a boot, a knife or a holdout pistol, is slid out of it
+		var/obj/item/clothing/shoes/boots = item.loc
+		if(boots.stored_item == item)
+			boots.stored_item = null
+			boots.update_icon()
+		item.forceMove(body.loc)
 	else if(item.loc == body)
 		body.drop_inv_item_to_loc(item, body.loc)
 
@@ -130,6 +137,8 @@
 			return FALSE
 	if(world.time < reload_until)
 		return TRUE
+	if(istype(gun, /obj/item/weapon/gun/smartgun))
+		return smartgun_reload_step(gun, appraisal)
 	switch(reload_phase)
 		if(HAI_RELOAD_SWAP)
 			finish_swap(gun, appraisal)
@@ -166,6 +175,10 @@
 	if(appraisal.feed == HAI_FEED_INTERNAL)
 		reload_phase = HAI_RELOAD_OPEN
 		reload_until = world.time + 1
+	else if(istype(gun, /obj/item/weapon/gun/smartgun))
+		// The feed cover is opened first, see smartgun_reload_step
+		reload_phase = HAI_RELOAD_OPEN
+		reload_until = world.time + HAI_SG_COVER_TIME
 	else
 		reload_phase = HAI_RELOAD_SWAP
 		reload_until = world.time + max(spare.reload_delay, HAI_RELOAD_MIN_TIME)

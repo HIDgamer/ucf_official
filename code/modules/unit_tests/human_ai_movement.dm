@@ -138,6 +138,165 @@
 	TEST_ASSERT(clearance.first_door("A").density, "The restricted door was opened without access")
 	detach_human_ai(walker)
 
+/// A walker that has made a few climbs in a short while turns the next one down, unless it is running for its life
+/datum/unit_test/human_ai_climb_burst
+
+/datum/unit_test/human_ai_climb_burst/Run()
+	TEST_ASSERT(SSxeno_pathfinding.available, "The native pathfinder is not available, these scenarios need it")
+	var/datum/human_ai_arena/hall = new(list(
+		"##############",
+		"#............#",
+		"#............#",
+		"#............#",
+		"##############",
+	), run_loc_floor_bottom_left)
+	var/turf/start = locate(hall.origin_x + 3, hall.origin_y + 2, hall.z)
+	var/turf/table_turf = locate(start.x + 1, start.y, start.z)
+	var/obj/structure/surface/table/table = allocate(/obj/structure/surface/table, table_turf)
+	var/mob/living/carbon/human/walker = make_soldier(start, FACTION_MARINE, FALSE)
+	var/datum/human_ai_brain/brain = walker.ai_brain
+	var/datum/npc_order/move/go = new
+	go.target_turf = locate(start.x + 8, start.y, start.z)
+	TEST_ASSERT(brain.give_order(go), "A move command was refused")
+	for(var/attempt in 1 to HAI_CLIMB_BURST)
+		brain.climb_detours = HAI_CLIMB_DETOURS
+		brain.next_vault_time = 0
+		brain.acting_until = 0
+		TEST_ASSERT(brain.handle_climb(table, table_turf), "Climb [attempt] was turned down: [brain.decision_log.Join(" | ")]")
+		sleep(3 SECONDS)
+		walker.forceMove(start)
+		brain.acting_until = 0
+	TEST_ASSERT_EQUAL(brain.vaults, HAI_CLIMB_BURST, "The walker made [brain.vaults] climbs")
+	brain.climb_detours = HAI_CLIMB_DETOURS
+	brain.next_vault_time = 0
+	brain.acting_until = 0
+	TEST_ASSERT(!brain.handle_climb(table, table_turf), "The walker agreed to a climb after [HAI_CLIMB_BURST] in a short while")
+	TEST_ASSERT(brain.is_blocked_turf(table_turf), "The table was not remembered as not worth climbing again")
+	TEST_ASSERT_EQUAL(brain.vaults, HAI_CLIMB_BURST, "The walker climbed once too often")
+	// Running for its life it goes over anyway
+	brain.panic_until = world.time + 10 SECONDS
+	brain.next_vault_time = 0
+	TEST_ASSERT(brain.handle_climb(table, table_turf), "A walker in a panic was kept from climbing")
+	detach_human_ai(walker)
+
+/// Walkers keep out of flames and bad air, put a gas mask on when a cloud is near and get out of one that rolls over them
+/datum/unit_test/human_ai_hazards
+	var/list/seen = list()
+
+/datum/unit_test/human_ai_hazards/proc/spawn_walker(turf/start, turf/goal)
+	var/mob/living/carbon/human/walker = allocate(/mob/living/carbon/human, start)
+	walker.faction = FACTION_MARINE
+	attach_human_ai(walker)
+	walker.ai_brain.keep_awake = TRUE
+	walker.ai_brain.waypoint = goal
+	return walker
+
+/datum/unit_test/human_ai_hazards/proc/watch(mob/living/carbon/human/walker, seconds)
+	seen = list()
+	for(var/step_count in 1 to seconds * 4)
+		var/turf/here = get_turf(walker)
+		if(here)
+			seen[here] = TRUE
+		if(!walker.ai_brain?.waypoint)
+			return TRUE
+		sleep(2.5)
+	return !walker.ai_brain?.waypoint
+
+/datum/unit_test/human_ai_hazards/proc/cloud(turf/where)
+	var/obj/effect/particle_effect/smoke/bad/gas = new(where)
+	gas.time_to_live = 900
+	return gas
+
+/datum/unit_test/human_ai_hazards/proc/fire_on(turf/where)
+	var/obj/flamer_fire/flames = new(where, null, new /datum/reagent/napalm/ut(), 0)
+	flames.firelevel = 900
+	return flames
+
+/datum/unit_test/human_ai_hazards/Run()
+	TEST_ASSERT(SSxeno_pathfinding.available, "The native pathfinder is not available, these scenarios need it")
+	TEST_ASSERT(xeno_pathfind_profiles_available(), "The loaded rust-g predates route profiles")
+
+	// A cloud across the way in a wide hall is walked round
+	var/datum/human_ai_arena/hall = new(list(
+		"###########",
+		"#.........#",
+		"#1.......2#",
+		"#.........#",
+		"###########",
+	), run_loc_floor_bottom_left)
+	var/turf/cloud_turf = locate(hall.mark("1").x + 4, hall.mark("1").y, hall.z)
+	var/obj/effect/particle_effect/smoke/bad/gas = cloud(cloud_turf)
+	var/mob/living/carbon/human/walker = spawn_walker(hall.mark("1"), hall.mark("2"))
+	TEST_ASSERT(watch(walker, 40), "The walker never crossed the hall with the cloud in it, it is at [walker.x],[walker.y]: [walker.ai_brain.decision_log.Join(" | ")]")
+	TEST_ASSERT(get_dist(walker, hall.mark("2")) <= 1, "The walker did not get across: [walker.ai_brain.decision_log.Join(" | ")]")
+	TEST_ASSERT(!(cloud_turf in seen), "The walker walked through the cloud with a clear way round: [walker.ai_brain.decision_log.Join(" | ")]")
+	detach_human_ai(walker)
+	qdel(gas)
+
+	// Flames across the only way on are waited out and not walked into
+	var/datum/human_ai_arena/corridor = new(list(
+		"#########",
+		"#1..F..2#",
+		"#########",
+	), run_loc_floor_bottom_left)
+	var/turf/flame_turf = locate(corridor.mark("1").x + 3, corridor.mark("1").y, corridor.z)
+	var/obj/flamer_fire/flames = fire_on(flame_turf)
+	walker = spawn_walker(corridor.mark("1"), corridor.mark("2"))
+	// The walker waits for the flames to burn out and never goes into them
+	TEST_ASSERT(!watch(walker, 12), "The walker got through the corridor with flames in it: [walker.ai_brain.decision_log.Join(" | ")]")
+	TEST_ASSERT(!(flame_turf in seen), "The walker walked into the flames: [walker.ai_brain.decision_log.Join(" | ")]")
+	TEST_ASSERT(!walker.on_fire, "The walker is burning")
+	TEST_ASSERT(walker.x < flame_turf.x, "The walker got past the flames at [walker.x],[walker.y]")
+	qdel(flames)
+	TEST_ASSERT(watch(walker, 30), "The walker never went on once the flames were out, it is at [walker.x],[walker.y]: [walker.ai_brain.decision_log.Join(" | ")]")
+	TEST_ASSERT(get_dist(walker, corridor.mark("2")) <= 1, "The walker did not finish the corridor: [walker.ai_brain.decision_log.Join(" | ")]")
+	detach_human_ai(walker)
+
+	// Caught inside a cloud the walker gets out of it
+	var/datum/human_ai_arena/open = new(list(
+		"###########",
+		"#.........#",
+		"#....1....#",
+		"#.........#",
+		"###########",
+	), run_loc_floor_bottom_left)
+	var/list/cloud_pieces = list()
+	for(var/turf/piece as anything in block(open.mark("1").x - 1, open.mark("1").y - 1, open.z, open.mark("1").x + 1, open.mark("1").y + 1, open.z))
+		cloud_pieces += cloud(piece)
+	walker = allocate(/mob/living/carbon/human, open.mark("1"))
+	walker.faction = FACTION_MARINE
+	attach_human_ai(walker)
+	walker.ai_brain.keep_awake = TRUE
+	sleep(8 SECONDS)
+	TEST_ASSERT(!walker.ai_brain.harmful_gas_on(get_turf(walker)), "The walker is still standing in the cloud at [walker.x],[walker.y]: [walker.ai_brain.decision_log.Join(" | ")]")
+	TEST_ASSERT(walker.ai_brain.hazard_dodges >= 1, "The walker never tried to get out of the cloud: [walker.ai_brain.decision_log.Join(" | ")]")
+	detach_human_ai(walker)
+	QDEL_LIST(cloud_pieces)
+
+	// A mask in the walker's pack goes on the face when a cloud comes near, and the cloud is no hazard after that
+	var/datum/human_ai_arena/yard = new(list(
+		"###########",
+		"#.........#",
+		"#1.........#",
+		"#.........#",
+		"###########",
+	), run_loc_floor_bottom_left)
+	walker = allocate(/mob/living/carbon/human, yard.mark("1"))
+	walker.faction = FACTION_MARINE
+	var/obj/item/storage/backpack/pack = new(walker)
+	dress(walker, pack, WEAR_BACK)
+	var/obj/item/clothing/mask/gas/mask = new(pack)
+	TEST_ASSERT(mask.loc == pack, "The mask is not in the pack")
+	attach_human_ai(walker)
+	walker.ai_brain.keep_awake = TRUE
+	gas = cloud(locate(yard.mark("1").x + 4, yard.mark("1").y, yard.z))
+	sleep(8 SECONDS)
+	TEST_ASSERT_EQUAL(walker.wear_mask, mask, "The walker did not put the mask on: [walker.ai_brain.decision_log.Join(" | ")]")
+	TEST_ASSERT(walker.ai_brain.gas_protected(), "The mask does not protect the walker")
+	TEST_ASSERT(!walker.ai_brain.gas_hurts(gas), "The cloud still counts as a hazard with the mask on")
+	detach_human_ai(walker)
+	qdel(gas)
+
 /// Followers keep formation slots, long walks sprint, lying bodies stand up and blocked corridors get given up on
 /datum/unit_test/human_ai_following
 

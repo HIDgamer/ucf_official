@@ -553,6 +553,7 @@
 
 /obj/flamer_fire/Initialize(mapload, datum/cause_data/cause_data, datum/reagent/R, fire_spread_amount = 0, datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, atom/target = null, datum/callback/C, fuel_pressure = 1, fire_type = FIRE_VARIANT_DEFAULT)
 	. = ..()
+	GLOB.live_flamer_fires += src
 	if(!R)
 		R = new /datum/reagent/napalm/ut()
 
@@ -700,6 +701,7 @@
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(update_in_weather_status))
 
 /obj/flamer_fire/Destroy()
+	GLOB.live_flamer_fires -= src
 	STOP_PROCESSING(SSobj, src)
 	to_call = null
 	tied_reagent = null

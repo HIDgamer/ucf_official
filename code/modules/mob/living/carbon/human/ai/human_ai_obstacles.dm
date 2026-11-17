@@ -158,9 +158,13 @@
 
 /// Whether getting over something climbable is worth the time right now: the brain has an enemy in sight, is under fire, running or clear of a hazard. A hard order alone is not a hurry
 /datum/human_ai_brain/proc/climb_urgent()
+	return in_a_hurry() || hazard_turf
+
+/// Whether the brain has no time to spare: an enemy in sight, fire coming at it or running
+/datum/human_ai_brain/proc/in_a_hurry()
 	if(get_target() && world.time <= target_seen_time + 40)
 		return TRUE
-	return suppressed() || broken_kind || hazard_turf || world.time < panic_until
+	return suppressed() || broken_kind || world.time < panic_until
 
 /**
  * Climbing is the last resort. A brain with nothing pressing never climbs, it takes another way or gives the goal up. One that has a goal to
@@ -174,13 +178,24 @@
 	if(world.time < next_vault_time)
 		next_step_time = world.time + 5
 		return TRUE
+	// A brain that keeps going over ledges, trench walls and tables gets nowhere for it, it stays where it is for a while once it has done enough of it
+	if(climbs_lately() >= HAI_CLIMB_BURST && !hazard_turf && !broken_kind && world.time >= panic_until)
+		remember_blocked(next_turf, "has climbed enough for now", HAI_CLIMB_REST)
+		return FALSE
 	if(!urgent && climb_detours < HAI_CLIMB_DETOURS)
 		climb_detours++
 		prefer_other_way(next_turf, "would rather go round [structure]")
 		return FALSE
 	next_vault_time = world.time + HAI_VAULT_COOLDOWN
 	vaults++
+	LAZYADD(climb_times, world.time)
 	return start_vault(structure)
+
+/// How many climbs the brain has made in the last stretch of time, older ones are forgotten
+/datum/human_ai_brain/proc/climbs_lately()
+	while(length(climb_times) && world.time - climb_times[1] > HAI_CLIMB_WINDOW)
+		climb_times.Cut(1, 2)
+	return length(climb_times)
 
 /datum/human_ai_brain/proc/start_vault(obj/structure/structure)
 	if(!structure.can_climb(body))

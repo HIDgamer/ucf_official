@@ -36,6 +36,31 @@ GLOBAL_LIST_INIT(human_ai_roles, init_human_ai_roles())
 			return "security"
 	return null
 
+/**
+ * What a man's gear says he does when his job does not: a sniper rifle a sniper, a machinegun a machinegunner and
+ * a grenade launcher a grenadier. Null for anyone else, who fights as a rifleman does.
+ */
+/proc/human_ai_role_for_gear(mob/living/carbon/human/human)
+	var/found_mg = FALSE
+	var/found_launcher = FALSE
+	for(var/obj/item/weapon/gun/gun in human.get_contents())
+		if(istype(gun, /obj/item/weapon/gun/rifle/sniper))
+			return "sniper"
+		if(istype(gun, /obj/item/weapon/gun/m60) || istype(gun, /obj/item/weapon/gun/rifle/lmg) || istype(gun, /obj/item/weapon/gun/rifle/mar40/lmg))
+			found_mg = TRUE
+		else if(istype(gun, /obj/item/weapon/gun/launcher/grenade))
+			found_launcher = TRUE
+	// A cloak on the back makes a scout, unless the gun in the hands says a gunner
+	if(istype(human.back, /obj/item/storage/backpack/marine/satchel/scout_cloak) && !found_mg && !found_launcher)
+		return "scout"
+	if(found_mg)
+		return "machinegunner"
+	if(found_launcher)
+		return "grenadier"
+	if(locate(/obj/item/mortar_shell) in human.get_contents())
+		return "mortar"
+	return null
+
 /// What a brain does for a living: the orders beyond the base set it can carry out
 /datum/human_ai_role
 	/// Unique key, empty leaves the type abstract
@@ -130,6 +155,12 @@ GLOBAL_LIST_INIT(human_ai_roles, init_human_ai_roles())
 	id = "sniper"
 	name = "Sniper"
 	nests = TRUE
+	covert = TRUE
+
+/datum/human_ai_role/scout
+	id = "scout"
+	name = "Scout"
+	flanks = TRUE
 	covert = TRUE
 
 /datum/human_ai_role/machinegunner

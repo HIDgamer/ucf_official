@@ -270,6 +270,8 @@
 /// How an order reaches the brain: forced, or a request that goes through the compliance roll.
 #define HAI_DELIVERY_COMMAND 1
 #define HAI_DELIVERY_REQUEST 2
+/// A hand signal anybody can make, heeded as far as the one who made it is respected.
+#define HAI_DELIVERY_SIGNAL 3
 /// Where an order stands.
 #define HAI_ORDER_ACTIVE 1
 #define HAI_ORDER_DONE 2
@@ -465,6 +467,22 @@
 
 /// Sheets one metal barricade costs, deciseconds it takes to build, free turfs the builder must keep around it, mines laid per order.
 #define HAI_BARRICADE_COST 4
+/// Walling up the openings of a held area: how long the list of openings is kept, how far from itself a unit breaks up furniture and how long that takes, how long it waits before it tries again with nothing to build from, and how many openings it walls up.
+#define HAI_OPENING_CACHE (5 SECONDS)
+#define HAI_SCRAP_RANGE 7
+#define HAI_SCRAP_TIME (3 SECONDS)
+#define HAI_FORTIFY_RETRY (30 SECONDS)
+#define HAI_OPENINGS_MAX 6
+/// Mortar crews: how far a man looks for a mortar and how often, how near to the gun an enemy may be and how near to a friend before a shell is not fired at it, how old a sighting may be,
+/// the wait between two fire missions, the shells of one, and how close an enemy has to be for the crewman to deal with it himself.
+#define HAI_MORTAR_RANGE 14
+#define HAI_MORTAR_SCAN_GAP (4 SECONDS)
+#define HAI_MORTAR_MIN_DISTANCE 8
+#define HAI_MORTAR_SAFE_RADIUS 6
+#define HAI_MORTAR_SPOT_AGE (8 SECONDS)
+#define HAI_MORTAR_COOLDOWN (25 SECONDS)
+#define HAI_MORTAR_SHELLS 3
+#define HAI_MORTAR_SELF_DEFENSE 6
 #define HAI_BUILD_TIME 40
 #define HAI_ROOM_NEEDED 14
 #define HAI_MAX_MINES 3
@@ -555,6 +573,33 @@
 #define HAI_DETOUR_MEMORY (12 SECONDS)
 #define HAI_VAULT_COOLDOWN (6 SECONDS)
 #define HAI_CLIMB_DETOURS 2
+/// Climbs a brain makes in HAI_CLIMB_WINDOW before it stays on its side of the next ledge for HAI_CLIMB_REST, unless it is running for its life.
+#define HAI_CLIMB_BURST 4
+#define HAI_CLIMB_WINDOW (40 SECONDS)
+#define HAI_CLIMB_REST (20 SECONDS)
+/// Mounted machineguns: how far a unit looks for one, the time between looks, how long it stays on the gun with nothing to shoot at, the rounds and time of a burst, how old a sighting may be for the gun to be worth manning,
+/// how close an enemy may be before the unit stays with its own weapon, and the share of its health a gun must have left to be worth going to.
+#define HAI_EMPLACEMENT_RANGE 7
+#define HAI_EMPLACEMENT_SCAN_GAP (3 SECONDS)
+#define HAI_EMPLACEMENT_IDLE (20 SECONDS)
+#define HAI_EMPLACEMENT_BURST 6
+#define HAI_EMPLACEMENT_BURST_TIME (4 SECONDS)
+#define HAI_EMPLACEMENT_TARGET_AGE (10 SECONDS)
+#define HAI_EMPLACEMENT_MIN_ENEMY 2
+#define HAI_EMPLACEMENT_MIN_HEALTH 0.3
+/// How many times a brain looks for a way round strung barbed wire before it goes through or cuts it, and how long the cutting takes.
+#define HAI_WIRE_DETOURS 2
+#define HAI_WIRE_CUT_TIME (4 SECONDS)
+/// Gas and fire: how far a brain notices a cloud or flames and how long it has a mask on its face, the danger and the deciseconds between reports a pathfinder is given for each hazard turf, and how often and how long a brain waits for a hazard in its way to go.
+#define HAI_GAS_WARN_RANGE 6
+#define HAI_GAS_MASK_TIME (2 SECONDS)
+#define HAI_HAZARD_PATH_DANGER 160
+#define HAI_HAZARD_REPORT_GAP (4 SECONDS)
+#define HAI_FIRE_WAITS 12
+#define HAI_GAS_WAITS 4
+#define HAI_HAZARD_WAIT_TIME 15
+/// Deciseconds a brain keeps to the turf it picked to get clear of a hazard.
+#define HAI_ESCAPE_KEEP (4 SECONDS)
 /// How long a door that will not open for the brain is left alone.
 #define HAI_DOOR_DENIED_MEMORY (3 MINUTES)
 
@@ -637,6 +682,9 @@
 
 /// Tiles from the enemy at which a suicider arms its grenade, and the tiles from which a stealth unit that has not been found opens fire.
 #define HAI_BOMBER_RANGE 7
+/// A suicider in an explosive vest sets it off when the enemy is this close, and nobody it fights for may stand this close to the body or to the enemy when it does.
+#define HAI_VEST_RANGE 5
+#define HAI_VEST_SAFE_RADIUS 4
 #define HAI_AMBUSH_RANGE 7
 
 /// The stages of forcing a door with a charge: none under way, planting it, backing off and waiting for it to go off.
@@ -763,3 +811,46 @@
 #define NPC_AI_HUMAN "human"
 #define NPC_AI_ZOMBIE "zombie"
 #define NPC_AI_XENO "xeno"
+
+/// Riding and driving: how far a goal has to be for a vehicle to be worth it, how far a unit looks for one, how often, and how near the enemy a ride ends.
+#define HAI_RIDE_MIN_DISTANCE 28
+#define HAI_RIDE_SCAN_RANGE 12
+#define HAI_RIDE_SCAN_GAP (3 SECONDS)
+#define HAI_RIDE_CONTACT_RANGE 10
+#define HAI_RIDE_ALARM_GAP (1 SECONDS)
+#define HAI_RIDE_ARRIVE 5
+/// How many times in a row the way is blocked before the driver gives the vehicle up
+#define HAI_RIDE_STUCK 5
+#define HAI_RIDE_MAX_TIME (4 MINUTES)
+#define HAI_RIDE_WAIT (12 SECONDS)
+#define HAI_RIDE_ORPHAN (5 SECONDS)
+#define HAI_RIDE_UNLOAD_TIME (15 SECONDS)
+#define HAI_RIDE_PATH_AGE (15 SECONDS)
+/// How long after a ride the unit does not look for another, and how long the vehicle it left is not taken again
+#define HAI_RIDE_REBOARD (30 SECONDS)
+#define HAI_RIDE_SKIP (2 MINUTES)
+/// The share of its health a vehicle has to be left with for its riders to stay in it
+#define HAI_RIDE_WRECK 0.35
+
+/// Hand signals (the follow me and hold position emotes): how far a signal from somebody with no proper rank, a leader and an officer is heeded, at best, and how many units answer one signal.
+#define HAI_SIGNAL_UNRANKED 0.55
+#define HAI_SIGNAL_LEADER 0.75
+#define HAI_SIGNAL_OFFICER 0.9
+#define HAI_SIGNAL_ANSWERS 10
+
+/// Following somebody into a vehicle: how often the one who follows looks for the vehicle the leader got into, and how long before it gets in again after the leader got out and in
+#define HAI_RIDE_FOLLOW_SCAN_GAP (1 SECONDS)
+#define HAI_RIDE_REJOIN (3 SECONDS)
+
+/// Cloaks and ghillie suits: the share of its health a body is hurt to before it wants out of a fight, how far an enemy has to be for a scout to close in on it unseen, how often a cloak is looked at, how long it is left on once there is nothing to hide from, and how long a sniper stands still before it hides.
+#define HAI_CLOAK_ESCAPE_HEALTH 0.6
+#define HAI_CLOAK_AMBUSH_RANGE 8
+#define HAI_CLOAK_GAP (6 SECONDS)
+#define HAI_CLOAK_IDLE (20 SECONDS)
+#define HAI_CAMO_STILL (6 SECONDS)
+
+/// Smartgunners: the charge left in a battery below which a spare one is put in, how long a job on the gun and the opening or closing of the feed cover take, and how long a job is left alone after it failed.
+#define HAI_SG_LOW_BATTERY 0.12
+#define HAI_SG_TOGGLE_TIME (1 SECONDS)
+#define HAI_SG_COVER_TIME (1 SECONDS)
+#define HAI_SG_RETRY (8 SECONDS)

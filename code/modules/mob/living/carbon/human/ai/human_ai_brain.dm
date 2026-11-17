@@ -213,6 +213,62 @@
 	var/posts_taken = 0
 	/// Looking for a way round something climbable before climbing it, when the next vault is allowed and how many were made
 	var/climb_detours = 0
+	/// When the last few climbs were made
+	var/list/climb_times
+	/// Looks for a way round fire or gas ahead, times it has stood and waited for one to go, and masks it has put on
+	/// The mounted gun it is heading for, when it last looked for one, when it last fired the one it is on, when its burst ends, and what it has done with them
+	var/datum/weakref/emplacement_ref
+	var/next_emplacement_scan = 0
+	var/emplacement_idle_since = 0
+	var/emplacement_burst_until = 0
+	var/emplacement_shots = 0
+	var/emplacements_manned = 0
+	/// Walling up a held area: the openings found, those given up on, the furniture being broken up and given up on, when to try again and what has been done
+	var/list/opening_cache
+	var/opening_cache_until = 0
+	var/list/skipped_openings
+	var/datum/weakref/scrap_ref
+	var/list/skipped_scrap
+	var/next_fortify_time = 0
+	var/openings_walled = 0
+	var/scrapped = 0
+	/// Serving a mortar: the gun, when it looked for one, the place being fired at and the shells left for it, when to take another mission and the shells fired
+	var/datum/weakref/mortar_ref
+	var/next_mortar_scan = 0
+	var/turf/mortar_mission
+	var/mortar_mission_shells = 0
+	var/next_mortar_mission = 0
+	var/mortar_shells_fired = 0
+	/// Riding in a vehicle: which one, whether the body drives it or only sits in it, where it is going and the route there, and when the ride began
+	var/datum/weakref/ride_ref
+	/// Who the body is riding along with, set when it got in because somebody it follows did, and whether it got out because that one did
+	var/datum/weakref/ride_leader_ref
+	var/ride_rejoin = FALSE
+	var/ride_role
+	var/turf/ride_goal
+	var/list/ride_path
+	var/ride_path_at = 0
+	var/ride_blocked = 0
+	var/ride_started = 0
+	var/ride_wait_until = 0
+	var/ride_orphaned_since = 0
+	var/next_ride_alarm = 0
+	/// Looking for a vehicle: when it looked last, the one it found and what it would do in it, when it may look again after a ride and the vehicles it has left alone
+	var/next_ride_scan = 0
+	var/datum/weakref/ride_pick_ref
+	var/ride_pick_role
+	var/ride_cooldown_until = 0
+	var/list/ride_skipped
+	var/rides = 0
+	var/drive_steps = 0
+	var/hazard_detours = 0
+	var/hazard_waits = 0
+	var/gas_masks = 0
+	/// A cloud that would hurt the body is close
+	var/gas_alert = FALSE
+	/// Where the body is getting to to be clear of a hazard, and until when it keeps to that
+	var/turf/escape_goal
+	var/escape_goal_until = 0
 	var/next_vault_time = 0
 	var/vaults = 0
 	/// Shots held back for a friend in the way, steps taken backing off, the window those steps are counted in and the time of the next one
@@ -258,6 +314,15 @@
 	var/revives = 0
 	/// When it may rig a ghillie suit up again and how often it has
 	var/next_camo_time = 0
+	/// When the cloak is looked at again, when it was last found to be of no use and how often one was put on or off
+	var/next_cloak_time = 0
+	var/cloak_idle_since = 0
+	var/cloak_uses = 0
+	var/next_slip_time = 0
+	/// Smartgun: when the gun is looked at next, how many jobs were done on it and how many batteries were swapped
+	var/next_service_time = 0
+	var/sg_services = 0
+	var/sg_battery_swaps = 0
 	var/camo_uses = 0
 	/// Hits from its own side by shooter reference text, calls for backup made and answered
 	var/list/tolerance = list()
@@ -381,6 +446,13 @@
 	cover_goal_object = null
 	last_cover_object = null
 	hazard_turf = null
+	escape_goal = null
+	ride_leader_ref = null
+	ride_ref = null
+	ride_goal = null
+	ride_path = null
+	ride_pick_ref = null
+	ride_skipped = null
 	target_memo = null
 	hive_cache = null
 	cover_memo_here = null
@@ -551,6 +623,10 @@
 		return
 	if(body.is_mob_incapacitated())
 		return
+	// A man in a vehicle has nothing to do but ride it and drive it, what is outside is not his to see
+	if(ride_ref)
+		ride_think()
+		return
 	validate_target()
 	check_order()
 	tidy_hands()
@@ -593,7 +669,7 @@
 
 /datum/human_ai_brain/proc/update_tier()
 	var/wanted = HAI_TIER_IDLE
-	if(get_target() || waypoint || investigate_turf || (follow_ref && move_state == HAI_MOVE_WALKING) || (current_order && move_state == HAI_MOVE_WALKING) || hazard_turf)
+	if(ride_ref || get_target() || waypoint || investigate_turf || (follow_ref && move_state == HAI_MOVE_WALKING) || (current_order && move_state == HAI_MOVE_WALKING) || hazard_turf)
 		wanted = HAI_TIER_ENGAGED
 	else if(follow_ref || current_order || alert_until > world.time)
 		wanted = HAI_TIER_ALERT

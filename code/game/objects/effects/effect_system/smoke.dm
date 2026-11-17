@@ -29,6 +29,7 @@
 
 /obj/effect/particle_effect/smoke/Initialize(mapload, oldamount, datum/cause_data/new_cause_data)
 	. = ..()
+	GLOB.live_smoke_clouds += src
 	if(oldamount)
 		amount = oldamount - 1
 	if(!istype(new_cause_data))
@@ -41,6 +42,7 @@
 	START_PROCESSING(SSeffects, src)
 
 /obj/effect/particle_effect/smoke/Destroy()
+	GLOB.live_smoke_clouds -= src
 	. = ..()
 	if(opacity)
 		set_opacity(0)
